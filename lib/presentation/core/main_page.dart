@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:phonesed/application/core/bottom_navigation/bottom_navigation_bloc.dart';
 import 'package:phonesed/constants.dart';
 import 'package:phonesed/injection.dart';
@@ -13,26 +12,40 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<BottomNavigationBloc>(
       create: (context) => getIt<BottomNavigationBloc>(),
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text(
-            'Home',
-            style: TextStyle(color: kPrimaryDarkColor),
-          ),
-          leading: IconButton(
-            icon: const Icon(Icons.filter_list, size: 28),
-            onPressed: () {},
-          ),
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.add),
-              onPressed: () {},
-              iconSize: 34,
+      child: BlocBuilder<BottomNavigationBloc, BottomNavigationState>(
+        builder: (context, state) {
+          return Scaffold(
+            appBar: AppBar(
+              title: Text(
+                state.map(index: (i) {
+                  if (i.currentIndex == 0) {
+                    return 'Home';
+                  } else if (i.currentIndex == 1) {
+                    return 'Favorite';
+                  } else if (i.currentIndex == 2) {
+                    return 'Chat';
+                  } else {
+                    return 'Profile';
+                  }
+                }),
+                style: const TextStyle(color: kPrimaryDarkColor),
+              ),
+              leading: IconButton(
+                icon: const Icon(Icons.filter_list, size: 28),
+                onPressed: () {},
+              ),
+              actions: [
+                IconButton(
+                  icon: const Icon(Icons.add),
+                  onPressed: () {},
+                  iconSize: 34,
+                ),
+              ],
             ),
-          ],
-        ),
-        body: const TabBarViewWidget(),
-        bottomNavigationBar: BottomNavigationBarWidget(),
+            body: const TabBarViewWidget(),
+            bottomNavigationBar: BottomNavigationBarWidget(),
+          );
+        },
       ),
     );
   }

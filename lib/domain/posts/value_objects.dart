@@ -1,0 +1,122 @@
+import 'package:dartz/dartz.dart';
+import 'package:kt_dart/kt.dart';
+import 'package:phonesed/domain/core/failures.dart';
+import 'package:phonesed/domain/core/value_objects.dart';
+import 'package:phonesed/domain/core/value_validators.dart';
+
+class PostTitle extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  static const maxLength = 100;
+
+  factory PostTitle(String input) {
+    assert(input != null);
+    return PostTitle._(validateMaxStringLength(input, maxLength)
+        .flatMap(validateStringNotEmpty)
+        .flatMap(validateSingleLine));
+  }
+
+  const PostTitle._(this.value);
+}
+
+class PostDescription extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  static const maxLength = 1000;
+
+  factory PostDescription(String input) {
+    assert(input != null);
+    return PostDescription._(validateMaxStringLength(input, maxLength));
+  }
+
+  const PostDescription._(this.value);
+}
+
+class PostPrice extends ValueObject<int> {
+  @override
+  final Either<ValueFailure<int>, int> value;
+
+  static const minAmount = 10;
+
+  factory PostPrice(int input) {
+    assert(input != null);
+    return PostPrice._(
+        validateAmount(input, minAmount).flatMap(validateAmountNotEmpty));
+  }
+
+  const PostPrice._(this.value);
+}
+
+class PostImagesList<T> extends ValueObject<KtList<T>> {
+  @override
+  final Either<ValueFailure<KtList<T>>, KtList<T>> value;
+
+  static const maxLength = 3;
+
+  factory PostImagesList(KtList<T> input) {
+    assert(input != null);
+    return PostImagesList._(
+        validateMaxListLength(input, maxLength).flatMap(validateListNotEmpty));
+  }
+
+  const PostImagesList._(this.value);
+
+  int get length {
+    return value.getOrElse(() => emptyList()).size;
+  }
+
+  bool get isFull {
+    return length == maxLength;
+  }
+}
+
+class PostCity extends ValueObject<String> {
+  static const List<String> uaeCities = [
+    'Abu dhabi',
+    'Dubai',
+    'Sharjah',
+    'Ajman',
+    'Ras al khima',
+    'um al qiun',
+    'Fujira',
+  ];
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  factory PostCity(String input) {
+    assert(input != null);
+    return PostCity._(right(input));
+  }
+
+  const PostCity._(this.value);
+}
+
+class PostMoreAccessories extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  static const maxLength = 400;
+
+  factory PostMoreAccessories(String input) {
+    assert(input != null);
+    return PostMoreAccessories._(validateMaxStringLength(input, maxLength));
+  }
+
+  const PostMoreAccessories._(this.value);
+}
+
+class PostPublishedDate extends ValueObject<DateTime> {
+  @override
+  final Either<ValueFailure<DateTime>, DateTime> value;
+
+  factory PostPublishedDate(DateTime input) {
+    assert(input != null);
+    return PostPublishedDate._(
+      right(input),
+    );
+  }
+
+  const PostPublishedDate._(this.value);
+}

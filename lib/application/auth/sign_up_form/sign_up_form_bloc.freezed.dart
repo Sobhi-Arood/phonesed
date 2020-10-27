@@ -594,14 +594,14 @@ class _$SignUpFormStateTearOff {
   const _$SignUpFormStateTearOff();
 
 // ignore: unused_element
-  _SignInFormState call(
-      {@required String name,
-      @required String emailAddress,
-      @required String password,
+  _SignUpFormState call(
+      {@required UserName name,
+      @required EmailAddress emailAddress,
+      @required Password password,
       @required bool showErrorMessages,
       @required bool isSubmitting,
       @required Option<Either<AuthFailure, Unit>> authFailureOrSuccess}) {
-    return _SignInFormState(
+    return _SignUpFormState(
       name: name,
       emailAddress: emailAddress,
       password: password,
@@ -618,9 +618,9 @@ const $SignUpFormState = _$SignUpFormStateTearOff();
 
 /// @nodoc
 mixin _$SignUpFormState {
-  String get name;
-  String get emailAddress;
-  String get password;
+  UserName get name;
+  EmailAddress get emailAddress;
+  Password get password;
   bool get showErrorMessages;
   bool get isSubmitting;
   Option<Either<AuthFailure, Unit>> get authFailureOrSuccess;
@@ -634,9 +634,9 @@ abstract class $SignUpFormStateCopyWith<$Res> {
           SignUpFormState value, $Res Function(SignUpFormState) then) =
       _$SignUpFormStateCopyWithImpl<$Res>;
   $Res call(
-      {String name,
-      String emailAddress,
-      String password,
+      {UserName name,
+      EmailAddress emailAddress,
+      Password password,
       bool showErrorMessages,
       bool isSubmitting,
       Option<Either<AuthFailure, Unit>> authFailureOrSuccess});
@@ -661,11 +661,11 @@ class _$SignUpFormStateCopyWithImpl<$Res>
     Object authFailureOrSuccess = freezed,
   }) {
     return _then(_value.copyWith(
-      name: name == freezed ? _value.name : name as String,
+      name: name == freezed ? _value.name : name as UserName,
       emailAddress: emailAddress == freezed
           ? _value.emailAddress
-          : emailAddress as String,
-      password: password == freezed ? _value.password : password as String,
+          : emailAddress as EmailAddress,
+      password: password == freezed ? _value.password : password as Password,
       showErrorMessages: showErrorMessages == freezed
           ? _value.showErrorMessages
           : showErrorMessages as bool,
@@ -679,31 +679,31 @@ class _$SignUpFormStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$SignInFormStateCopyWith<$Res>
+abstract class _$SignUpFormStateCopyWith<$Res>
     implements $SignUpFormStateCopyWith<$Res> {
-  factory _$SignInFormStateCopyWith(
-          _SignInFormState value, $Res Function(_SignInFormState) then) =
-      __$SignInFormStateCopyWithImpl<$Res>;
+  factory _$SignUpFormStateCopyWith(
+          _SignUpFormState value, $Res Function(_SignUpFormState) then) =
+      __$SignUpFormStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String name,
-      String emailAddress,
-      String password,
+      {UserName name,
+      EmailAddress emailAddress,
+      Password password,
       bool showErrorMessages,
       bool isSubmitting,
       Option<Either<AuthFailure, Unit>> authFailureOrSuccess});
 }
 
 /// @nodoc
-class __$SignInFormStateCopyWithImpl<$Res>
+class __$SignUpFormStateCopyWithImpl<$Res>
     extends _$SignUpFormStateCopyWithImpl<$Res>
-    implements _$SignInFormStateCopyWith<$Res> {
-  __$SignInFormStateCopyWithImpl(
-      _SignInFormState _value, $Res Function(_SignInFormState) _then)
-      : super(_value, (v) => _then(v as _SignInFormState));
+    implements _$SignUpFormStateCopyWith<$Res> {
+  __$SignUpFormStateCopyWithImpl(
+      _SignUpFormState _value, $Res Function(_SignUpFormState) _then)
+      : super(_value, (v) => _then(v as _SignUpFormState));
 
   @override
-  _SignInFormState get _value => super._value as _SignInFormState;
+  _SignUpFormState get _value => super._value as _SignUpFormState;
 
   @override
   $Res call({
@@ -714,12 +714,12 @@ class __$SignInFormStateCopyWithImpl<$Res>
     Object isSubmitting = freezed,
     Object authFailureOrSuccess = freezed,
   }) {
-    return _then(_SignInFormState(
-      name: name == freezed ? _value.name : name as String,
+    return _then(_SignUpFormState(
+      name: name == freezed ? _value.name : name as UserName,
       emailAddress: emailAddress == freezed
           ? _value.emailAddress
-          : emailAddress as String,
-      password: password == freezed ? _value.password : password as String,
+          : emailAddress as EmailAddress,
+      password: password == freezed ? _value.password : password as Password,
       showErrorMessages: showErrorMessages == freezed
           ? _value.showErrorMessages
           : showErrorMessages as bool,
@@ -733,8 +733,8 @@ class __$SignInFormStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$_SignInFormState implements _SignInFormState {
-  const _$_SignInFormState(
+class _$_SignUpFormState implements _SignUpFormState {
+  const _$_SignUpFormState(
       {@required this.name,
       @required this.emailAddress,
       @required this.password,
@@ -749,11 +749,11 @@ class _$_SignInFormState implements _SignInFormState {
         assert(authFailureOrSuccess != null);
 
   @override
-  final String name;
+  final UserName name;
   @override
-  final String emailAddress;
+  final EmailAddress emailAddress;
   @override
-  final String password;
+  final Password password;
   @override
   final bool showErrorMessages;
   @override
@@ -769,7 +769,7 @@ class _$_SignInFormState implements _SignInFormState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _SignInFormState &&
+        (other is _SignUpFormState &&
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.emailAddress, emailAddress) ||
@@ -800,26 +800,26 @@ class _$_SignInFormState implements _SignInFormState {
       const DeepCollectionEquality().hash(authFailureOrSuccess);
 
   @override
-  _$SignInFormStateCopyWith<_SignInFormState> get copyWith =>
-      __$SignInFormStateCopyWithImpl<_SignInFormState>(this, _$identity);
+  _$SignUpFormStateCopyWith<_SignUpFormState> get copyWith =>
+      __$SignUpFormStateCopyWithImpl<_SignUpFormState>(this, _$identity);
 }
 
-abstract class _SignInFormState implements SignUpFormState {
-  const factory _SignInFormState(
-          {@required String name,
-          @required String emailAddress,
-          @required String password,
+abstract class _SignUpFormState implements SignUpFormState {
+  const factory _SignUpFormState(
+          {@required UserName name,
+          @required EmailAddress emailAddress,
+          @required Password password,
           @required bool showErrorMessages,
           @required bool isSubmitting,
           @required Option<Either<AuthFailure, Unit>> authFailureOrSuccess}) =
-      _$_SignInFormState;
+      _$_SignUpFormState;
 
   @override
-  String get name;
+  UserName get name;
   @override
-  String get emailAddress;
+  EmailAddress get emailAddress;
   @override
-  String get password;
+  Password get password;
   @override
   bool get showErrorMessages;
   @override
@@ -827,5 +827,5 @@ abstract class _SignInFormState implements SignUpFormState {
   @override
   Option<Either<AuthFailure, Unit>> get authFailureOrSuccess;
   @override
-  _$SignInFormStateCopyWith<_SignInFormState> get copyWith;
+  _$SignUpFormStateCopyWith<_SignUpFormState> get copyWith;
 }
