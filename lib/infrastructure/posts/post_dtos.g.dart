@@ -14,9 +14,11 @@ _$_PostDto _$_$_PostDtoFromJson(Map<String, dynamic> json) {
     price: json['price'] as int,
     description: json['description'] as String,
     images: (json['images'] as List)?.map((e) => e as String)?.toList(),
-    publishedDate:
-        const ServerTimestampConverter().fromJson(json['publishedDate']),
+    publishedDate: json['publishedDate'] == null
+        ? null
+        : DateTime.parse(json['publishedDate'] as String),
     city: json['city'] as String,
+    area: json['area'] as String,
     country: json['country'] as String,
     moreAccessories: json['moreAccessories'] as String,
     avaliable: json['avaliable'] as bool,
@@ -39,9 +41,9 @@ Map<String, dynamic> _$_$_PostDtoToJson(_$_PostDto instance) =>
       'price': instance.price,
       'description': instance.description,
       'images': instance.images,
-      'publishedDate':
-          const ServerTimestampConverter().toJson(instance.publishedDate),
+      'publishedDate': instance.publishedDate?.toIso8601String(),
       'city': instance.city,
+      'area': instance.area,
       'country': instance.country,
       'moreAccessories': instance.moreAccessories,
       'avaliable': instance.avaliable,

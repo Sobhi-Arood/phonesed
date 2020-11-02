@@ -1,7 +1,9 @@
+import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:phonesed/domain/core/errors.dart';
 import 'package:phonesed/domain/core/failures.dart';
+import 'package:phonesed/domain/core/value_validators.dart';
 
 @immutable
 abstract class ValueObject<T> {
@@ -30,4 +32,28 @@ abstract class ValueObject<T> {
 
   @override
   String toString() => 'Value($value)';
+}
+
+class UserAvatar extends ValueObject<File> {
+  @override
+  final Either<ValueFailure<File>, File> value;
+
+  factory UserAvatar(File input) {
+    assert(input != null);
+    return UserAvatar._(validateAvatar(input));
+  }
+
+  const UserAvatar._(this.value);
+}
+
+class JoinDate extends ValueObject<DateTime> {
+  @override
+  final Either<ValueFailure<DateTime>, DateTime> value;
+
+  factory JoinDate(DateTime input) {
+    assert(input != null);
+    return JoinDate._(validateDate(input));
+  }
+
+  const JoinDate._(this.value);
 }

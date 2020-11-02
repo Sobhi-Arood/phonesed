@@ -6,6 +6,7 @@ import 'package:phonesed/domain/entities/user.dart';
 
 abstract class IAuthFacade {
   Future<Option<String>> getSignedInUserUid();
+  Future<Option<User>> getSignedInUser();
 
   Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword({
     @required UserName userName,

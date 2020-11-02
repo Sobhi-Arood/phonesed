@@ -22,6 +22,7 @@ class _$PostTearOff {
       @required PostImagesList<String> images,
       @required PostPublishedDate publishedDate,
       @required PostCity city,
+      @required String area,
       @required String country,
       @required PostMoreAccessories moreAccessories,
       @required bool avaliable,
@@ -29,10 +30,10 @@ class _$PostTearOff {
       @required bool negiotable,
       @required bool headphones,
       @required bool charger,
-      @required String brand,
+      @required PostBrand brand,
       @required String device,
-      @required String age,
-      @required String condition}) {
+      @required PostAge age,
+      @required PostCondition condition}) {
     return _Post(
       id: id,
       title: title,
@@ -41,6 +42,7 @@ class _$PostTearOff {
       images: images,
       publishedDate: publishedDate,
       city: city,
+      area: area,
       country: country,
       moreAccessories: moreAccessories,
       avaliable: avaliable,
@@ -69,6 +71,7 @@ mixin _$Post {
   PostImagesList<String> get images;
   PostPublishedDate get publishedDate;
   PostCity get city;
+  String get area;
   String get country;
   PostMoreAccessories get moreAccessories;
   bool get avaliable;
@@ -76,10 +79,10 @@ mixin _$Post {
   bool get negiotable;
   bool get headphones;
   bool get charger;
-  String get brand;
+  PostBrand get brand;
   String get device;
-  String get age;
-  String get condition;
+  PostAge get age;
+  PostCondition get condition;
 
   $PostCopyWith<Post> get copyWith;
 }
@@ -96,6 +99,7 @@ abstract class $PostCopyWith<$Res> {
       PostImagesList<String> images,
       PostPublishedDate publishedDate,
       PostCity city,
+      String area,
       String country,
       PostMoreAccessories moreAccessories,
       bool avaliable,
@@ -103,10 +107,10 @@ abstract class $PostCopyWith<$Res> {
       bool negiotable,
       bool headphones,
       bool charger,
-      String brand,
+      PostBrand brand,
       String device,
-      String age,
-      String condition});
+      PostAge age,
+      PostCondition condition});
 }
 
 /// @nodoc
@@ -126,6 +130,7 @@ class _$PostCopyWithImpl<$Res> implements $PostCopyWith<$Res> {
     Object images = freezed,
     Object publishedDate = freezed,
     Object city = freezed,
+    Object area = freezed,
     Object country = freezed,
     Object moreAccessories = freezed,
     Object avaliable = freezed,
@@ -151,6 +156,7 @@ class _$PostCopyWithImpl<$Res> implements $PostCopyWith<$Res> {
           ? _value.publishedDate
           : publishedDate as PostPublishedDate,
       city: city == freezed ? _value.city : city as PostCity,
+      area: area == freezed ? _value.area : area as String,
       country: country == freezed ? _value.country : country as String,
       moreAccessories: moreAccessories == freezed
           ? _value.moreAccessories
@@ -163,10 +169,11 @@ class _$PostCopyWithImpl<$Res> implements $PostCopyWith<$Res> {
       headphones:
           headphones == freezed ? _value.headphones : headphones as bool,
       charger: charger == freezed ? _value.charger : charger as bool,
-      brand: brand == freezed ? _value.brand : brand as String,
+      brand: brand == freezed ? _value.brand : brand as PostBrand,
       device: device == freezed ? _value.device : device as String,
-      age: age == freezed ? _value.age : age as String,
-      condition: condition == freezed ? _value.condition : condition as String,
+      age: age == freezed ? _value.age : age as PostAge,
+      condition:
+          condition == freezed ? _value.condition : condition as PostCondition,
     ));
   }
 }
@@ -184,6 +191,7 @@ abstract class _$PostCopyWith<$Res> implements $PostCopyWith<$Res> {
       PostImagesList<String> images,
       PostPublishedDate publishedDate,
       PostCity city,
+      String area,
       String country,
       PostMoreAccessories moreAccessories,
       bool avaliable,
@@ -191,10 +199,10 @@ abstract class _$PostCopyWith<$Res> implements $PostCopyWith<$Res> {
       bool negiotable,
       bool headphones,
       bool charger,
-      String brand,
+      PostBrand brand,
       String device,
-      String age,
-      String condition});
+      PostAge age,
+      PostCondition condition});
 }
 
 /// @nodoc
@@ -215,6 +223,7 @@ class __$PostCopyWithImpl<$Res> extends _$PostCopyWithImpl<$Res>
     Object images = freezed,
     Object publishedDate = freezed,
     Object city = freezed,
+    Object area = freezed,
     Object country = freezed,
     Object moreAccessories = freezed,
     Object avaliable = freezed,
@@ -240,6 +249,7 @@ class __$PostCopyWithImpl<$Res> extends _$PostCopyWithImpl<$Res>
           ? _value.publishedDate
           : publishedDate as PostPublishedDate,
       city: city == freezed ? _value.city : city as PostCity,
+      area: area == freezed ? _value.area : area as String,
       country: country == freezed ? _value.country : country as String,
       moreAccessories: moreAccessories == freezed
           ? _value.moreAccessories
@@ -252,10 +262,11 @@ class __$PostCopyWithImpl<$Res> extends _$PostCopyWithImpl<$Res>
       headphones:
           headphones == freezed ? _value.headphones : headphones as bool,
       charger: charger == freezed ? _value.charger : charger as bool,
-      brand: brand == freezed ? _value.brand : brand as String,
+      brand: brand == freezed ? _value.brand : brand as PostBrand,
       device: device == freezed ? _value.device : device as String,
-      age: age == freezed ? _value.age : age as String,
-      condition: condition == freezed ? _value.condition : condition as String,
+      age: age == freezed ? _value.age : age as PostAge,
+      condition:
+          condition == freezed ? _value.condition : condition as PostCondition,
     ));
   }
 }
@@ -270,6 +281,7 @@ class _$_Post extends _Post {
       @required this.images,
       @required this.publishedDate,
       @required this.city,
+      @required this.area,
       @required this.country,
       @required this.moreAccessories,
       @required this.avaliable,
@@ -288,6 +300,7 @@ class _$_Post extends _Post {
         assert(images != null),
         assert(publishedDate != null),
         assert(city != null),
+        assert(area != null),
         assert(country != null),
         assert(moreAccessories != null),
         assert(avaliable != null),
@@ -316,6 +329,8 @@ class _$_Post extends _Post {
   @override
   final PostCity city;
   @override
+  final String area;
+  @override
   final String country;
   @override
   final PostMoreAccessories moreAccessories;
@@ -330,17 +345,17 @@ class _$_Post extends _Post {
   @override
   final bool charger;
   @override
-  final String brand;
+  final PostBrand brand;
   @override
   final String device;
   @override
-  final String age;
+  final PostAge age;
   @override
-  final String condition;
+  final PostCondition condition;
 
   @override
   String toString() {
-    return 'Post(id: $id, title: $title, price: $price, description: $description, images: $images, publishedDate: $publishedDate, city: $city, country: $country, moreAccessories: $moreAccessories, avaliable: $avaliable, exhangable: $exhangable, negiotable: $negiotable, headphones: $headphones, charger: $charger, brand: $brand, device: $device, age: $age, condition: $condition)';
+    return 'Post(id: $id, title: $title, price: $price, description: $description, images: $images, publishedDate: $publishedDate, city: $city, area: $area, country: $country, moreAccessories: $moreAccessories, avaliable: $avaliable, exhangable: $exhangable, negiotable: $negiotable, headphones: $headphones, charger: $charger, brand: $brand, device: $device, age: $age, condition: $condition)';
   }
 
   @override
@@ -363,6 +378,8 @@ class _$_Post extends _Post {
                     .equals(other.publishedDate, publishedDate)) &&
             (identical(other.city, city) ||
                 const DeepCollectionEquality().equals(other.city, city)) &&
+            (identical(other.area, area) ||
+                const DeepCollectionEquality().equals(other.area, area)) &&
             (identical(other.country, country) ||
                 const DeepCollectionEquality()
                     .equals(other.country, country)) &&
@@ -405,6 +422,7 @@ class _$_Post extends _Post {
       const DeepCollectionEquality().hash(images) ^
       const DeepCollectionEquality().hash(publishedDate) ^
       const DeepCollectionEquality().hash(city) ^
+      const DeepCollectionEquality().hash(area) ^
       const DeepCollectionEquality().hash(country) ^
       const DeepCollectionEquality().hash(moreAccessories) ^
       const DeepCollectionEquality().hash(avaliable) ^
@@ -432,6 +450,7 @@ abstract class _Post extends Post {
       @required PostImagesList<String> images,
       @required PostPublishedDate publishedDate,
       @required PostCity city,
+      @required String area,
       @required String country,
       @required PostMoreAccessories moreAccessories,
       @required bool avaliable,
@@ -439,10 +458,10 @@ abstract class _Post extends Post {
       @required bool negiotable,
       @required bool headphones,
       @required bool charger,
-      @required String brand,
+      @required PostBrand brand,
       @required String device,
-      @required String age,
-      @required String condition}) = _$_Post;
+      @required PostAge age,
+      @required PostCondition condition}) = _$_Post;
 
   @override
   UniqueId get id;
@@ -459,6 +478,8 @@ abstract class _Post extends Post {
   @override
   PostCity get city;
   @override
+  String get area;
+  @override
   String get country;
   @override
   PostMoreAccessories get moreAccessories;
@@ -473,13 +494,13 @@ abstract class _Post extends Post {
   @override
   bool get charger;
   @override
-  String get brand;
+  PostBrand get brand;
   @override
   String get device;
   @override
-  String get age;
+  PostAge get age;
   @override
-  String get condition;
+  PostCondition get condition;
   @override
   _$PostCopyWith<_Post> get copyWith;
 }

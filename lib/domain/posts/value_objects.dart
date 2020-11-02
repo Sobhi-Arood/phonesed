@@ -120,3 +120,73 @@ class PostPublishedDate extends ValueObject<DateTime> {
 
   const PostPublishedDate._(this.value);
 }
+
+class PostBrand extends ValueObject<String> {
+  static const List<String> brands = [
+    'Apple',
+    'Samsung',
+    'Google',
+    'Huwawi',
+    'Motorola',
+    'OnePlus',
+    'Other',
+  ];
+
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  factory PostBrand(String input) {
+    assert(input != null);
+    return PostBrand._(
+      right(input),
+    );
+  }
+
+  const PostBrand._(this.value);
+}
+
+class PostAge extends ValueObject<String> {
+  static const List<String> ages = [
+    'New',
+    '1 month',
+    '3 months',
+    '6 months',
+    '1 year',
+    '2 years',
+    '3 years or more',
+  ];
+
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  factory PostAge(String input) {
+    assert(input != null);
+    return PostAge._(
+      right(input),
+    );
+  }
+
+  const PostAge._(this.value);
+}
+
+class PostCondition extends ValueObject<String> {
+  static const List<String> conditions = [
+    'New',
+    'Excellent',
+    'Very good',
+    'Good',
+    'Broken',
+  ];
+
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  factory PostCondition(String input) {
+    assert(input != null);
+    return PostCondition._(
+      right(input),
+    );
+  }
+
+  const PostCondition._(this.value);
+}

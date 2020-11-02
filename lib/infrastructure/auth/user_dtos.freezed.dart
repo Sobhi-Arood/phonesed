@@ -22,7 +22,8 @@ class _$UserDtoTearOff {
       @required String name,
       @required String email,
       @required String avatar,
-      @required @ServerTimestampConverter() FieldValue joinDate,
+      @required String phoneNumber,
+      @required DateTime joinDate,
       @required int numberOfPublishedPosts,
       @required bool verified}) {
     return _UserDto(
@@ -30,6 +31,7 @@ class _$UserDtoTearOff {
       name: name,
       email: email,
       avatar: avatar,
+      phoneNumber: phoneNumber,
       joinDate: joinDate,
       numberOfPublishedPosts: numberOfPublishedPosts,
       verified: verified,
@@ -52,8 +54,9 @@ mixin _$UserDto {
   String get name;
   String get email;
   String get avatar;
-  @ServerTimestampConverter()
-  FieldValue get joinDate;
+  String
+      get phoneNumber; // @required @ServerTimestampConverter() FieldValue joinDate,
+  DateTime get joinDate;
   int get numberOfPublishedPosts;
   bool get verified;
 
@@ -70,7 +73,8 @@ abstract class $UserDtoCopyWith<$Res> {
       String name,
       String email,
       String avatar,
-      @ServerTimestampConverter() FieldValue joinDate,
+      String phoneNumber,
+      DateTime joinDate,
       int numberOfPublishedPosts,
       bool verified});
 }
@@ -89,6 +93,7 @@ class _$UserDtoCopyWithImpl<$Res> implements $UserDtoCopyWith<$Res> {
     Object name = freezed,
     Object email = freezed,
     Object avatar = freezed,
+    Object phoneNumber = freezed,
     Object joinDate = freezed,
     Object numberOfPublishedPosts = freezed,
     Object verified = freezed,
@@ -98,7 +103,9 @@ class _$UserDtoCopyWithImpl<$Res> implements $UserDtoCopyWith<$Res> {
       name: name == freezed ? _value.name : name as String,
       email: email == freezed ? _value.email : email as String,
       avatar: avatar == freezed ? _value.avatar : avatar as String,
-      joinDate: joinDate == freezed ? _value.joinDate : joinDate as FieldValue,
+      phoneNumber:
+          phoneNumber == freezed ? _value.phoneNumber : phoneNumber as String,
+      joinDate: joinDate == freezed ? _value.joinDate : joinDate as DateTime,
       numberOfPublishedPosts: numberOfPublishedPosts == freezed
           ? _value.numberOfPublishedPosts
           : numberOfPublishedPosts as int,
@@ -117,7 +124,8 @@ abstract class _$UserDtoCopyWith<$Res> implements $UserDtoCopyWith<$Res> {
       String name,
       String email,
       String avatar,
-      @ServerTimestampConverter() FieldValue joinDate,
+      String phoneNumber,
+      DateTime joinDate,
       int numberOfPublishedPosts,
       bool verified});
 }
@@ -137,6 +145,7 @@ class __$UserDtoCopyWithImpl<$Res> extends _$UserDtoCopyWithImpl<$Res>
     Object name = freezed,
     Object email = freezed,
     Object avatar = freezed,
+    Object phoneNumber = freezed,
     Object joinDate = freezed,
     Object numberOfPublishedPosts = freezed,
     Object verified = freezed,
@@ -146,7 +155,9 @@ class __$UserDtoCopyWithImpl<$Res> extends _$UserDtoCopyWithImpl<$Res>
       name: name == freezed ? _value.name : name as String,
       email: email == freezed ? _value.email : email as String,
       avatar: avatar == freezed ? _value.avatar : avatar as String,
-      joinDate: joinDate == freezed ? _value.joinDate : joinDate as FieldValue,
+      phoneNumber:
+          phoneNumber == freezed ? _value.phoneNumber : phoneNumber as String,
+      joinDate: joinDate == freezed ? _value.joinDate : joinDate as DateTime,
       numberOfPublishedPosts: numberOfPublishedPosts == freezed
           ? _value.numberOfPublishedPosts
           : numberOfPublishedPosts as int,
@@ -164,13 +175,15 @@ class _$_UserDto extends _UserDto {
       @required this.name,
       @required this.email,
       @required this.avatar,
-      @required @ServerTimestampConverter() this.joinDate,
+      @required this.phoneNumber,
+      @required this.joinDate,
       @required this.numberOfPublishedPosts,
       @required this.verified})
       : assert(id != null),
         assert(name != null),
         assert(email != null),
         assert(avatar != null),
+        assert(phoneNumber != null),
         assert(joinDate != null),
         assert(numberOfPublishedPosts != null),
         assert(verified != null),
@@ -188,8 +201,9 @@ class _$_UserDto extends _UserDto {
   @override
   final String avatar;
   @override
-  @ServerTimestampConverter()
-  final FieldValue joinDate;
+  final String phoneNumber;
+  @override // @required @ServerTimestampConverter() FieldValue joinDate,
+  final DateTime joinDate;
   @override
   final int numberOfPublishedPosts;
   @override
@@ -197,7 +211,7 @@ class _$_UserDto extends _UserDto {
 
   @override
   String toString() {
-    return 'UserDto(id: $id, name: $name, email: $email, avatar: $avatar, joinDate: $joinDate, numberOfPublishedPosts: $numberOfPublishedPosts, verified: $verified)';
+    return 'UserDto(id: $id, name: $name, email: $email, avatar: $avatar, phoneNumber: $phoneNumber, joinDate: $joinDate, numberOfPublishedPosts: $numberOfPublishedPosts, verified: $verified)';
   }
 
   @override
@@ -212,6 +226,9 @@ class _$_UserDto extends _UserDto {
                 const DeepCollectionEquality().equals(other.email, email)) &&
             (identical(other.avatar, avatar) ||
                 const DeepCollectionEquality().equals(other.avatar, avatar)) &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                const DeepCollectionEquality()
+                    .equals(other.phoneNumber, phoneNumber)) &&
             (identical(other.joinDate, joinDate) ||
                 const DeepCollectionEquality()
                     .equals(other.joinDate, joinDate)) &&
@@ -230,6 +247,7 @@ class _$_UserDto extends _UserDto {
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(email) ^
       const DeepCollectionEquality().hash(avatar) ^
+      const DeepCollectionEquality().hash(phoneNumber) ^
       const DeepCollectionEquality().hash(joinDate) ^
       const DeepCollectionEquality().hash(numberOfPublishedPosts) ^
       const DeepCollectionEquality().hash(verified);
@@ -251,7 +269,8 @@ abstract class _UserDto extends UserDto {
       @required String name,
       @required String email,
       @required String avatar,
-      @required @ServerTimestampConverter() FieldValue joinDate,
+      @required String phoneNumber,
+      @required DateTime joinDate,
       @required int numberOfPublishedPosts,
       @required bool verified}) = _$_UserDto;
 
@@ -266,8 +285,9 @@ abstract class _UserDto extends UserDto {
   @override
   String get avatar;
   @override
-  @ServerTimestampConverter()
-  FieldValue get joinDate;
+  String get phoneNumber;
+  @override // @required @ServerTimestampConverter() FieldValue joinDate,
+  DateTime get joinDate;
   @override
   int get numberOfPublishedPosts;
   @override

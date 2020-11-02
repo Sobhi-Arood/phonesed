@@ -24,8 +24,9 @@ class _$PostDtoTearOff {
       @required int price,
       @required String description,
       @required List<String> images,
-      @required @ServerTimestampConverter() FieldValue publishedDate,
+      @required DateTime publishedDate,
       @required String city,
+      @required String area,
       @required String country,
       @required String moreAccessories,
       @required bool avaliable,
@@ -46,6 +47,7 @@ class _$PostDtoTearOff {
       images: images,
       publishedDate: publishedDate,
       city: city,
+      area: area,
       country: country,
       moreAccessories: moreAccessories,
       avaliable: avaliable,
@@ -77,10 +79,11 @@ mixin _$PostDto {
   String get title;
   int get price;
   String get description;
-  List<String> get images;
-  @ServerTimestampConverter()
-  FieldValue get publishedDate;
+  List<String>
+      get images; // @required @ServerTimestampConverter() FieldValue publishedDate,
+  DateTime get publishedDate;
   String get city;
+  String get area;
   String get country;
   String get moreAccessories;
   bool get avaliable;
@@ -108,8 +111,9 @@ abstract class $PostDtoCopyWith<$Res> {
       int price,
       String description,
       List<String> images,
-      @ServerTimestampConverter() FieldValue publishedDate,
+      DateTime publishedDate,
       String city,
+      String area,
       String country,
       String moreAccessories,
       bool avaliable,
@@ -141,6 +145,7 @@ class _$PostDtoCopyWithImpl<$Res> implements $PostDtoCopyWith<$Res> {
     Object images = freezed,
     Object publishedDate = freezed,
     Object city = freezed,
+    Object area = freezed,
     Object country = freezed,
     Object moreAccessories = freezed,
     Object avaliable = freezed,
@@ -163,8 +168,9 @@ class _$PostDtoCopyWithImpl<$Res> implements $PostDtoCopyWith<$Res> {
       images: images == freezed ? _value.images : images as List<String>,
       publishedDate: publishedDate == freezed
           ? _value.publishedDate
-          : publishedDate as FieldValue,
+          : publishedDate as DateTime,
       city: city == freezed ? _value.city : city as String,
+      area: area == freezed ? _value.area : area as String,
       country: country == freezed ? _value.country : country as String,
       moreAccessories: moreAccessories == freezed
           ? _value.moreAccessories
@@ -197,8 +203,9 @@ abstract class _$PostDtoCopyWith<$Res> implements $PostDtoCopyWith<$Res> {
       int price,
       String description,
       List<String> images,
-      @ServerTimestampConverter() FieldValue publishedDate,
+      DateTime publishedDate,
       String city,
+      String area,
       String country,
       String moreAccessories,
       bool avaliable,
@@ -231,6 +238,7 @@ class __$PostDtoCopyWithImpl<$Res> extends _$PostDtoCopyWithImpl<$Res>
     Object images = freezed,
     Object publishedDate = freezed,
     Object city = freezed,
+    Object area = freezed,
     Object country = freezed,
     Object moreAccessories = freezed,
     Object avaliable = freezed,
@@ -253,8 +261,9 @@ class __$PostDtoCopyWithImpl<$Res> extends _$PostDtoCopyWithImpl<$Res>
       images: images == freezed ? _value.images : images as List<String>,
       publishedDate: publishedDate == freezed
           ? _value.publishedDate
-          : publishedDate as FieldValue,
+          : publishedDate as DateTime,
       city: city == freezed ? _value.city : city as String,
+      area: area == freezed ? _value.area : area as String,
       country: country == freezed ? _value.country : country as String,
       moreAccessories: moreAccessories == freezed
           ? _value.moreAccessories
@@ -286,8 +295,9 @@ class _$_PostDto extends _PostDto {
       @required this.price,
       @required this.description,
       @required this.images,
-      @required @ServerTimestampConverter() this.publishedDate,
+      @required this.publishedDate,
       @required this.city,
+      @required this.area,
       @required this.country,
       @required this.moreAccessories,
       @required this.avaliable,
@@ -307,6 +317,7 @@ class _$_PostDto extends _PostDto {
         assert(images != null),
         assert(publishedDate != null),
         assert(city != null),
+        assert(area != null),
         assert(country != null),
         assert(moreAccessories != null),
         assert(avaliable != null),
@@ -335,11 +346,12 @@ class _$_PostDto extends _PostDto {
   final String description;
   @override
   final List<String> images;
-  @override
-  @ServerTimestampConverter()
-  final FieldValue publishedDate;
+  @override // @required @ServerTimestampConverter() FieldValue publishedDate,
+  final DateTime publishedDate;
   @override
   final String city;
+  @override
+  final String area;
   @override
   final String country;
   @override
@@ -365,7 +377,7 @@ class _$_PostDto extends _PostDto {
 
   @override
   String toString() {
-    return 'PostDto(id: $id, userId: $userId, title: $title, price: $price, description: $description, images: $images, publishedDate: $publishedDate, city: $city, country: $country, moreAccessories: $moreAccessories, avaliable: $avaliable, exhangable: $exhangable, negiotable: $negiotable, headphones: $headphones, charger: $charger, brand: $brand, device: $device, age: $age, condition: $condition)';
+    return 'PostDto(id: $id, userId: $userId, title: $title, price: $price, description: $description, images: $images, publishedDate: $publishedDate, city: $city, area: $area, country: $country, moreAccessories: $moreAccessories, avaliable: $avaliable, exhangable: $exhangable, negiotable: $negiotable, headphones: $headphones, charger: $charger, brand: $brand, device: $device, age: $age, condition: $condition)';
   }
 
   @override
@@ -390,6 +402,8 @@ class _$_PostDto extends _PostDto {
                     .equals(other.publishedDate, publishedDate)) &&
             (identical(other.city, city) ||
                 const DeepCollectionEquality().equals(other.city, city)) &&
+            (identical(other.area, area) ||
+                const DeepCollectionEquality().equals(other.area, area)) &&
             (identical(other.country, country) ||
                 const DeepCollectionEquality()
                     .equals(other.country, country)) &&
@@ -433,6 +447,7 @@ class _$_PostDto extends _PostDto {
       const DeepCollectionEquality().hash(images) ^
       const DeepCollectionEquality().hash(publishedDate) ^
       const DeepCollectionEquality().hash(city) ^
+      const DeepCollectionEquality().hash(area) ^
       const DeepCollectionEquality().hash(country) ^
       const DeepCollectionEquality().hash(moreAccessories) ^
       const DeepCollectionEquality().hash(avaliable) ^
@@ -464,8 +479,9 @@ abstract class _PostDto extends PostDto {
       @required int price,
       @required String description,
       @required List<String> images,
-      @required @ServerTimestampConverter() FieldValue publishedDate,
+      @required DateTime publishedDate,
       @required String city,
+      @required String area,
       @required String country,
       @required String moreAccessories,
       @required bool avaliable,
@@ -492,11 +508,12 @@ abstract class _PostDto extends PostDto {
   String get description;
   @override
   List<String> get images;
-  @override
-  @ServerTimestampConverter()
-  FieldValue get publishedDate;
+  @override // @required @ServerTimestampConverter() FieldValue publishedDate,
+  DateTime get publishedDate;
   @override
   String get city;
+  @override
+  String get area;
   @override
   String get country;
   @override

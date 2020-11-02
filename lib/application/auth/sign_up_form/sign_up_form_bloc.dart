@@ -6,9 +6,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:phonesed/domain/auth/auth_failure.dart';
 import 'package:phonesed/domain/auth/i_auth_facade.dart';
-import 'package:phonesed/domain/auth/i_user_repository.dart';
 import 'package:phonesed/domain/auth/value_objects.dart';
-import 'package:phonesed/domain/entities/user.dart';
 
 part 'sign_up_form_event.dart';
 part 'sign_up_form_state.dart';

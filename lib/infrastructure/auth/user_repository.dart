@@ -8,22 +8,45 @@ import 'package:phonesed/domain/core/errors.dart';
 import 'package:phonesed/domain/posts/post_failure.dart';
 import 'package:phonesed/domain/entities/user.dart';
 import 'package:phonesed/infrastructure/auth/user_dtos.dart';
-
+import 'package:phonesed/infrastructure/core/firestore_helpers.dart';
+import 'package:rxdart/rxdart.dart';
 import '../../injection.dart';
 
 @LazySingleton(as: IUserRepository)
 class UserRepository implements IUserRepository {
   final FirebaseFirestore _firestore;
   UserRepository(this._firestore);
+
+  @override
+  Stream<Either<PostFailure, User>> watch() async* {
+    final userDoc = await _firestore.userDocument();
+    yield* userDoc
+        .snapshots()
+        .map((event) =>
+            right<PostFailure, User>(UserDto.fromJson(event.data()).toDomain()))
+        .onErrorReturnWith((e) {
+      if (e is FirebaseException && e.message.contains('permission-denied')) {
+        return left(const PostFailure.insufficientPermission());
+      } else {
+        return left(const PostFailure.unexpected());
+      }
+    });
+    // yield* userDoc.snapshots().map((event) => right<PostFailure, User>(
+    // event.data().map((key, value) => print(value));
+    // UserDto.fromFirestore(event.data()).toDomain(),
+    // ));
+  }
+
   @override
   Future<Either<PostFailure, User>> read() async {
     try {
       final currentUser = await getIt<IAuthFacade>().getSignedInUserUid();
       final uId = currentUser.getOrElse(() => throw NotAuthenticatedError());
       final userDoc = await _firestore.collection('Users').doc(uId).get();
-      return right(UserDto.fromJson(userDoc.data()).toDomain());
+      final user = UserDto.fromJson(userDoc.data()).toDomain();
+      return right(user);
     } on FirebaseException catch (e) {
-      if (e is FirebaseException && e.message.contains('PERMISSION_DENIED')) {
+      if (e is FirebaseException && e.message.contains('permission-denied')) {
         return left(const PostFailure.insufficientPermission());
       } else {
         return left(const PostFailure.unexpected());
@@ -51,7 +74,7 @@ class UserRepository implements IUserRepository {
           .set(userDto.toJson());
       return right(unit);
     } on FirebaseException catch (e) {
-      if (e is FirebaseException && e.message.contains('PERMISSION_DENIED')) {
+      if (e is FirebaseException && e.message.contains('permission-denied')) {
         return left(const PostFailure.insufficientPermission());
       } else {
         return left(const PostFailure.unexpected());
@@ -69,9 +92,9 @@ class UserRepository implements IUserRepository {
           .update(userDto.toJson());
       return right(unit);
     } on FirebaseException catch (e) {
-      if (e is FirebaseException && e.message.contains('PERMISSION_DENIED')) {
+      if (e is FirebaseException && e.message.contains('permission-denied')) {
         return left(const PostFailure.insufficientPermission());
-      } else if (e is FirebaseException && e.message.contains('NOT_FOUND')) {
+      } else if (e is FirebaseException && e.message.contains('not-found')) {
         return left(const PostFailure.unableToUpdate());
       } else {
         return left(const PostFailure.unexpected());

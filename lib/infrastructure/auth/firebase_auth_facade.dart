@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide User;
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -10,7 +9,6 @@ import 'package:phonesed/domain/auth/i_user_repository.dart';
 import 'package:phonesed/domain/auth/value_objects.dart';
 import 'package:phonesed/domain/core/unique_id.dart';
 import 'package:phonesed/domain/entities/user.dart';
-import 'package:phonesed/infrastructure/auth/user_dtos.dart';
 
 @LazySingleton(as: IAuthFacade)
 class FirebaseAuthFacade implements IAuthFacade {
@@ -33,14 +31,17 @@ class FirebaseAuthFacade implements IAuthFacade {
       final createdUser = await _firebaseAuth.createUserWithEmailAndPassword(
           email: emailAddressStr, password: passwordStr);
 
-      _userRepository.create(User(
-          id: UniqueId.fromUniqueString(createdUser.user.uid),
-          name: UserName(userNameStr),
-          email: EmailAddress(emailAddressStr),
-          avatarUrl: '',
-          joinDate: DateTime.now(),
-          numOfPublishedPosts: 0,
-          verified: false));
+      _userRepository.create(
+        User(
+            id: UniqueId.fromUniqueString(createdUser.user.uid),
+            name: UserName(userNameStr),
+            email: EmailAddress(emailAddressStr),
+            phoneNumber: '',
+            avatarUrl: '',
+            joinDate: DateTime.now(),
+            numOfPublishedPosts: 0,
+            verified: false),
+      );
       return right(unit);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'email-already-in-use') {
@@ -85,7 +86,19 @@ class FirebaseAuthFacade implements IAuthFacade {
       final authCredential = GoogleAuthProvider.credential(
           idToken: googleAuth.idToken, accessToken: googleAuth.accessToken);
 
-      await _firebaseAuth.signInWithCredential(authCredential);
+      final createdUser =
+          await _firebaseAuth.signInWithCredential(authCredential);
+      _userRepository.create(
+        User(
+            id: UniqueId.fromUniqueString(createdUser.user.uid),
+            name: UserName(createdUser.user.displayName),
+            email: EmailAddress(createdUser.user.email),
+            phoneNumber: '',
+            avatarUrl: createdUser.user.photoURL ?? '',
+            joinDate: DateTime.now(),
+            numOfPublishedPosts: 0,
+            verified: false),
+      );
       return right(unit);
     } on FirebaseAuthException catch (_) {
       return left(const AuthFailure.serverError());
@@ -99,4 +112,10 @@ class FirebaseAuthFacade implements IAuthFacade {
   @override
   Future<Option<String>> getSignedInUserUid() async =>
       optionOf(_firebaseAuth.currentUser?.uid);
+
+  @override
+  Future<Option<User>> getSignedInUser() async {
+    final u = await _userRepository.read();
+    return u.fold((l) => none(), (r) => some(r));
+  }
 }

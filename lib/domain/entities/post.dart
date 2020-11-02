@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -19,6 +21,7 @@ abstract class Post implements _$Post {
     @required PostImagesList<String> images,
     @required PostPublishedDate publishedDate,
     @required PostCity city,
+    @required String area,
     @required String country,
     @required PostMoreAccessories moreAccessories,
     @required bool avaliable,
@@ -26,10 +29,10 @@ abstract class Post implements _$Post {
     @required bool negiotable,
     @required bool headphones,
     @required bool charger,
-    @required String brand,
+    @required PostBrand brand,
     @required String device,
-    @required String age,
-    @required String condition,
+    @required PostAge age,
+    @required PostCondition condition,
   }) = _Post;
 
   factory Post.empty() => Post(
@@ -40,6 +43,7 @@ abstract class Post implements _$Post {
       images: PostImagesList(emptyList()),
       publishedDate: PostPublishedDate(DateTime.now()),
       city: PostCity(PostCity.uaeCities[0]),
+      area: 'Majaz 3',
       country: 'UAE',
       moreAccessories: PostMoreAccessories(''),
       avaliable: true,
@@ -47,10 +51,10 @@ abstract class Post implements _$Post {
       negiotable: false,
       headphones: false,
       charger: false,
-      brand: 'Apple',
+      brand: PostBrand(PostBrand.brands[0]),
       device: 'iPhone 11',
-      age: '6 months',
-      condition: 'Good');
+      age: PostAge(PostAge.ages[0]),
+      condition: PostCondition(PostCondition.conditions[0]));
 
   Option<ValueFailure<dynamic>> get failureOption {
     return title.failureOrUnit

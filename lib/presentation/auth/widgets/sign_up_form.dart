@@ -82,6 +82,16 @@ class SignUpForm extends StatelessWidget {
                         onChanged: (value) => context
                             .bloc<SignUpFormBloc>()
                             .add(SignUpFormEvent.nameChanged(value)),
+                        validator: (_) => context
+                            .bloc<SignUpFormBloc>()
+                            .state
+                            .name
+                            .value
+                            .fold(
+                                (f) => f.maybeMap(
+                                    empty: (_) => 'Cannot be empty',
+                                    orElse: () => null),
+                                (_) => null),
                       ),
                     ),
                   ],
@@ -112,6 +122,19 @@ class SignUpForm extends StatelessWidget {
                           ),
                           hintText: 'Enter your email ...',
                         ),
+                        onChanged: (value) => context
+                            .bloc<SignUpFormBloc>()
+                            .add(SignUpFormEvent.emailChanged(value)),
+                        validator: (_) => context
+                            .bloc<SignUpFormBloc>()
+                            .state
+                            .emailAddress
+                            .value
+                            .fold(
+                                (f) => f.maybeMap(
+                                    invalidEmail: (_) => 'Invalid Email',
+                                    orElse: () => null),
+                                (r) => null),
                       ),
                     ),
                   ],
@@ -143,6 +166,20 @@ class SignUpForm extends StatelessWidget {
                           ),
                           hintText: 'Enter your password ...',
                         ),
+                        onChanged: (value) => context
+                            .bloc<SignUpFormBloc>()
+                            .add(SignUpFormEvent.passwordChanged(value)),
+                        validator: (_) => context
+                            .bloc<SignUpFormBloc>()
+                            .state
+                            .password
+                            .value
+                            .fold(
+                                (f) => f.maybeMap(
+                                      shortPassword: (_) => 'Short Password',
+                                      orElse: () => null,
+                                    ),
+                                (r) => null),
                       ),
                     ),
                   ],
@@ -180,8 +217,10 @@ class SignUpForm extends StatelessWidget {
                     children: [
                       const Text('Already have an account ?'),
                       const SizedBox(width: 10),
-                      const InkWell(
-                        child: Text(
+                      InkWell(
+                        onTap: () =>
+                            ExtendedNavigator.of(context).pushSignInPage(),
+                        child: const Text(
                           'Login',
                           style: TextStyle(
                               color: kPrimaryColor,
@@ -210,6 +249,9 @@ class SignUpForm extends StatelessWidget {
                     ],
                   ),
                 ),
+                if (state.isSubmitting) ...[
+                  const CircularProgressIndicator(),
+                ],
               ],
             ),
           ),

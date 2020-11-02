@@ -66,6 +66,28 @@ class _$ValueFailureTearOff {
       min: min,
     );
   }
+
+// ignore: unused_element
+  NoImageSelected<T> noImageSelected<T>({@required T failedValue}) {
+    return NoImageSelected<T>(
+      failedValue: failedValue,
+    );
+  }
+
+// ignore: unused_element
+  InvalidPhoneNumber<T> invalidPhoneNumber<T>({@required T failedValue}) {
+    return InvalidPhoneNumber<T>(
+      failedValue: failedValue,
+    );
+  }
+
+// ignore: unused_element
+  InvalidExactDigitsLength<T> invalidExactDigitsLength<T>(
+      {@required T failedValue}) {
+    return InvalidExactDigitsLength<T>(
+      failedValue: failedValue,
+    );
+  }
 }
 
 /// @nodoc
@@ -85,6 +107,9 @@ mixin _$ValueFailure<T> {
     @required Result invalidEmail(T failedValue),
     @required Result shortPassword(T failedValue),
     @required Result negitaveOrLessAmount(T failedValue, int min),
+    @required Result noImageSelected(T failedValue),
+    @required Result invalidPhoneNumber(T failedValue),
+    @required Result invalidExactDigitsLength(T failedValue),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
@@ -95,6 +120,9 @@ mixin _$ValueFailure<T> {
     Result invalidEmail(T failedValue),
     Result shortPassword(T failedValue),
     Result negitaveOrLessAmount(T failedValue, int min),
+    Result noImageSelected(T failedValue),
+    Result invalidPhoneNumber(T failedValue),
+    Result invalidExactDigitsLength(T failedValue),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -106,6 +134,10 @@ mixin _$ValueFailure<T> {
     @required Result invalidEmail(InvalidEmail<T> value),
     @required Result shortPassword(ShortPassword<T> value),
     @required Result negitaveOrLessAmount(NegitaveOrLessAmount<T> value),
+    @required Result noImageSelected(NoImageSelected<T> value),
+    @required Result invalidPhoneNumber(InvalidPhoneNumber<T> value),
+    @required
+        Result invalidExactDigitsLength(InvalidExactDigitsLength<T> value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
@@ -116,6 +148,9 @@ mixin _$ValueFailure<T> {
     Result invalidEmail(InvalidEmail<T> value),
     Result shortPassword(ShortPassword<T> value),
     Result negitaveOrLessAmount(NegitaveOrLessAmount<T> value),
+    Result noImageSelected(NoImageSelected<T> value),
+    Result invalidPhoneNumber(InvalidPhoneNumber<T> value),
+    Result invalidExactDigitsLength(InvalidExactDigitsLength<T> value),
     @required Result orElse(),
   });
 
@@ -231,6 +266,9 @@ class _$ExceedingLength<T> implements ExceedingLength<T> {
     @required Result invalidEmail(T failedValue),
     @required Result shortPassword(T failedValue),
     @required Result negitaveOrLessAmount(T failedValue, int min),
+    @required Result noImageSelected(T failedValue),
+    @required Result invalidPhoneNumber(T failedValue),
+    @required Result invalidExactDigitsLength(T failedValue),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -239,6 +277,9 @@ class _$ExceedingLength<T> implements ExceedingLength<T> {
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(negitaveOrLessAmount != null);
+    assert(noImageSelected != null);
+    assert(invalidPhoneNumber != null);
+    assert(invalidExactDigitsLength != null);
     return exceedingLength(failedValue, max);
   }
 
@@ -252,6 +293,9 @@ class _$ExceedingLength<T> implements ExceedingLength<T> {
     Result invalidEmail(T failedValue),
     Result shortPassword(T failedValue),
     Result negitaveOrLessAmount(T failedValue, int min),
+    Result noImageSelected(T failedValue),
+    Result invalidPhoneNumber(T failedValue),
+    Result invalidExactDigitsLength(T failedValue),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -271,6 +315,10 @@ class _$ExceedingLength<T> implements ExceedingLength<T> {
     @required Result invalidEmail(InvalidEmail<T> value),
     @required Result shortPassword(ShortPassword<T> value),
     @required Result negitaveOrLessAmount(NegitaveOrLessAmount<T> value),
+    @required Result noImageSelected(NoImageSelected<T> value),
+    @required Result invalidPhoneNumber(InvalidPhoneNumber<T> value),
+    @required
+        Result invalidExactDigitsLength(InvalidExactDigitsLength<T> value),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -279,6 +327,9 @@ class _$ExceedingLength<T> implements ExceedingLength<T> {
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(negitaveOrLessAmount != null);
+    assert(noImageSelected != null);
+    assert(invalidPhoneNumber != null);
+    assert(invalidExactDigitsLength != null);
     return exceedingLength(this);
   }
 
@@ -292,6 +343,9 @@ class _$ExceedingLength<T> implements ExceedingLength<T> {
     Result invalidEmail(InvalidEmail<T> value),
     Result shortPassword(ShortPassword<T> value),
     Result negitaveOrLessAmount(NegitaveOrLessAmount<T> value),
+    Result noImageSelected(NoImageSelected<T> value),
+    Result invalidPhoneNumber(InvalidPhoneNumber<T> value),
+    Result invalidExactDigitsLength(InvalidExactDigitsLength<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -381,6 +435,9 @@ class _$Empty<T> implements Empty<T> {
     @required Result invalidEmail(T failedValue),
     @required Result shortPassword(T failedValue),
     @required Result negitaveOrLessAmount(T failedValue, int min),
+    @required Result noImageSelected(T failedValue),
+    @required Result invalidPhoneNumber(T failedValue),
+    @required Result invalidExactDigitsLength(T failedValue),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -389,6 +446,9 @@ class _$Empty<T> implements Empty<T> {
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(negitaveOrLessAmount != null);
+    assert(noImageSelected != null);
+    assert(invalidPhoneNumber != null);
+    assert(invalidExactDigitsLength != null);
     return empty(failedValue);
   }
 
@@ -402,6 +462,9 @@ class _$Empty<T> implements Empty<T> {
     Result invalidEmail(T failedValue),
     Result shortPassword(T failedValue),
     Result negitaveOrLessAmount(T failedValue, int min),
+    Result noImageSelected(T failedValue),
+    Result invalidPhoneNumber(T failedValue),
+    Result invalidExactDigitsLength(T failedValue),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -421,6 +484,10 @@ class _$Empty<T> implements Empty<T> {
     @required Result invalidEmail(InvalidEmail<T> value),
     @required Result shortPassword(ShortPassword<T> value),
     @required Result negitaveOrLessAmount(NegitaveOrLessAmount<T> value),
+    @required Result noImageSelected(NoImageSelected<T> value),
+    @required Result invalidPhoneNumber(InvalidPhoneNumber<T> value),
+    @required
+        Result invalidExactDigitsLength(InvalidExactDigitsLength<T> value),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -429,6 +496,9 @@ class _$Empty<T> implements Empty<T> {
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(negitaveOrLessAmount != null);
+    assert(noImageSelected != null);
+    assert(invalidPhoneNumber != null);
+    assert(invalidExactDigitsLength != null);
     return empty(this);
   }
 
@@ -442,6 +512,9 @@ class _$Empty<T> implements Empty<T> {
     Result invalidEmail(InvalidEmail<T> value),
     Result shortPassword(ShortPassword<T> value),
     Result negitaveOrLessAmount(NegitaveOrLessAmount<T> value),
+    Result noImageSelected(NoImageSelected<T> value),
+    Result invalidPhoneNumber(InvalidPhoneNumber<T> value),
+    Result invalidExactDigitsLength(InvalidExactDigitsLength<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -532,6 +605,9 @@ class _$Multiline<T> implements Multiline<T> {
     @required Result invalidEmail(T failedValue),
     @required Result shortPassword(T failedValue),
     @required Result negitaveOrLessAmount(T failedValue, int min),
+    @required Result noImageSelected(T failedValue),
+    @required Result invalidPhoneNumber(T failedValue),
+    @required Result invalidExactDigitsLength(T failedValue),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -540,6 +616,9 @@ class _$Multiline<T> implements Multiline<T> {
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(negitaveOrLessAmount != null);
+    assert(noImageSelected != null);
+    assert(invalidPhoneNumber != null);
+    assert(invalidExactDigitsLength != null);
     return multiline(failedValue);
   }
 
@@ -553,6 +632,9 @@ class _$Multiline<T> implements Multiline<T> {
     Result invalidEmail(T failedValue),
     Result shortPassword(T failedValue),
     Result negitaveOrLessAmount(T failedValue, int min),
+    Result noImageSelected(T failedValue),
+    Result invalidPhoneNumber(T failedValue),
+    Result invalidExactDigitsLength(T failedValue),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -572,6 +654,10 @@ class _$Multiline<T> implements Multiline<T> {
     @required Result invalidEmail(InvalidEmail<T> value),
     @required Result shortPassword(ShortPassword<T> value),
     @required Result negitaveOrLessAmount(NegitaveOrLessAmount<T> value),
+    @required Result noImageSelected(NoImageSelected<T> value),
+    @required Result invalidPhoneNumber(InvalidPhoneNumber<T> value),
+    @required
+        Result invalidExactDigitsLength(InvalidExactDigitsLength<T> value),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -580,6 +666,9 @@ class _$Multiline<T> implements Multiline<T> {
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(negitaveOrLessAmount != null);
+    assert(noImageSelected != null);
+    assert(invalidPhoneNumber != null);
+    assert(invalidExactDigitsLength != null);
     return multiline(this);
   }
 
@@ -593,6 +682,9 @@ class _$Multiline<T> implements Multiline<T> {
     Result invalidEmail(InvalidEmail<T> value),
     Result shortPassword(ShortPassword<T> value),
     Result negitaveOrLessAmount(NegitaveOrLessAmount<T> value),
+    Result noImageSelected(NoImageSelected<T> value),
+    Result invalidPhoneNumber(InvalidPhoneNumber<T> value),
+    Result invalidExactDigitsLength(InvalidExactDigitsLength<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -693,6 +785,9 @@ class _$ListTooLong<T> implements ListTooLong<T> {
     @required Result invalidEmail(T failedValue),
     @required Result shortPassword(T failedValue),
     @required Result negitaveOrLessAmount(T failedValue, int min),
+    @required Result noImageSelected(T failedValue),
+    @required Result invalidPhoneNumber(T failedValue),
+    @required Result invalidExactDigitsLength(T failedValue),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -701,6 +796,9 @@ class _$ListTooLong<T> implements ListTooLong<T> {
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(negitaveOrLessAmount != null);
+    assert(noImageSelected != null);
+    assert(invalidPhoneNumber != null);
+    assert(invalidExactDigitsLength != null);
     return listTooLong(failedValue, max);
   }
 
@@ -714,6 +812,9 @@ class _$ListTooLong<T> implements ListTooLong<T> {
     Result invalidEmail(T failedValue),
     Result shortPassword(T failedValue),
     Result negitaveOrLessAmount(T failedValue, int min),
+    Result noImageSelected(T failedValue),
+    Result invalidPhoneNumber(T failedValue),
+    Result invalidExactDigitsLength(T failedValue),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -733,6 +834,10 @@ class _$ListTooLong<T> implements ListTooLong<T> {
     @required Result invalidEmail(InvalidEmail<T> value),
     @required Result shortPassword(ShortPassword<T> value),
     @required Result negitaveOrLessAmount(NegitaveOrLessAmount<T> value),
+    @required Result noImageSelected(NoImageSelected<T> value),
+    @required Result invalidPhoneNumber(InvalidPhoneNumber<T> value),
+    @required
+        Result invalidExactDigitsLength(InvalidExactDigitsLength<T> value),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -741,6 +846,9 @@ class _$ListTooLong<T> implements ListTooLong<T> {
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(negitaveOrLessAmount != null);
+    assert(noImageSelected != null);
+    assert(invalidPhoneNumber != null);
+    assert(invalidExactDigitsLength != null);
     return listTooLong(this);
   }
 
@@ -754,6 +862,9 @@ class _$ListTooLong<T> implements ListTooLong<T> {
     Result invalidEmail(InvalidEmail<T> value),
     Result shortPassword(ShortPassword<T> value),
     Result negitaveOrLessAmount(NegitaveOrLessAmount<T> value),
+    Result noImageSelected(NoImageSelected<T> value),
+    Result invalidPhoneNumber(InvalidPhoneNumber<T> value),
+    Result invalidExactDigitsLength(InvalidExactDigitsLength<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -847,6 +958,9 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     @required Result invalidEmail(T failedValue),
     @required Result shortPassword(T failedValue),
     @required Result negitaveOrLessAmount(T failedValue, int min),
+    @required Result noImageSelected(T failedValue),
+    @required Result invalidPhoneNumber(T failedValue),
+    @required Result invalidExactDigitsLength(T failedValue),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -855,6 +969,9 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(negitaveOrLessAmount != null);
+    assert(noImageSelected != null);
+    assert(invalidPhoneNumber != null);
+    assert(invalidExactDigitsLength != null);
     return invalidEmail(failedValue);
   }
 
@@ -868,6 +985,9 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     Result invalidEmail(T failedValue),
     Result shortPassword(T failedValue),
     Result negitaveOrLessAmount(T failedValue, int min),
+    Result noImageSelected(T failedValue),
+    Result invalidPhoneNumber(T failedValue),
+    Result invalidExactDigitsLength(T failedValue),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -887,6 +1007,10 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     @required Result invalidEmail(InvalidEmail<T> value),
     @required Result shortPassword(ShortPassword<T> value),
     @required Result negitaveOrLessAmount(NegitaveOrLessAmount<T> value),
+    @required Result noImageSelected(NoImageSelected<T> value),
+    @required Result invalidPhoneNumber(InvalidPhoneNumber<T> value),
+    @required
+        Result invalidExactDigitsLength(InvalidExactDigitsLength<T> value),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -895,6 +1019,9 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(negitaveOrLessAmount != null);
+    assert(noImageSelected != null);
+    assert(invalidPhoneNumber != null);
+    assert(invalidExactDigitsLength != null);
     return invalidEmail(this);
   }
 
@@ -908,6 +1035,9 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     Result invalidEmail(InvalidEmail<T> value),
     Result shortPassword(ShortPassword<T> value),
     Result negitaveOrLessAmount(NegitaveOrLessAmount<T> value),
+    Result noImageSelected(NoImageSelected<T> value),
+    Result invalidPhoneNumber(InvalidPhoneNumber<T> value),
+    Result invalidExactDigitsLength(InvalidExactDigitsLength<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -999,6 +1129,9 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     @required Result invalidEmail(T failedValue),
     @required Result shortPassword(T failedValue),
     @required Result negitaveOrLessAmount(T failedValue, int min),
+    @required Result noImageSelected(T failedValue),
+    @required Result invalidPhoneNumber(T failedValue),
+    @required Result invalidExactDigitsLength(T failedValue),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -1007,6 +1140,9 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(negitaveOrLessAmount != null);
+    assert(noImageSelected != null);
+    assert(invalidPhoneNumber != null);
+    assert(invalidExactDigitsLength != null);
     return shortPassword(failedValue);
   }
 
@@ -1020,6 +1156,9 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     Result invalidEmail(T failedValue),
     Result shortPassword(T failedValue),
     Result negitaveOrLessAmount(T failedValue, int min),
+    Result noImageSelected(T failedValue),
+    Result invalidPhoneNumber(T failedValue),
+    Result invalidExactDigitsLength(T failedValue),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1039,6 +1178,10 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     @required Result invalidEmail(InvalidEmail<T> value),
     @required Result shortPassword(ShortPassword<T> value),
     @required Result negitaveOrLessAmount(NegitaveOrLessAmount<T> value),
+    @required Result noImageSelected(NoImageSelected<T> value),
+    @required Result invalidPhoneNumber(InvalidPhoneNumber<T> value),
+    @required
+        Result invalidExactDigitsLength(InvalidExactDigitsLength<T> value),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -1047,6 +1190,9 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(negitaveOrLessAmount != null);
+    assert(noImageSelected != null);
+    assert(invalidPhoneNumber != null);
+    assert(invalidExactDigitsLength != null);
     return shortPassword(this);
   }
 
@@ -1060,6 +1206,9 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     Result invalidEmail(InvalidEmail<T> value),
     Result shortPassword(ShortPassword<T> value),
     Result negitaveOrLessAmount(NegitaveOrLessAmount<T> value),
+    Result noImageSelected(NoImageSelected<T> value),
+    Result invalidPhoneNumber(InvalidPhoneNumber<T> value),
+    Result invalidExactDigitsLength(InvalidExactDigitsLength<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1161,6 +1310,9 @@ class _$NegitaveOrLessAmount<T> implements NegitaveOrLessAmount<T> {
     @required Result invalidEmail(T failedValue),
     @required Result shortPassword(T failedValue),
     @required Result negitaveOrLessAmount(T failedValue, int min),
+    @required Result noImageSelected(T failedValue),
+    @required Result invalidPhoneNumber(T failedValue),
+    @required Result invalidExactDigitsLength(T failedValue),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -1169,6 +1321,9 @@ class _$NegitaveOrLessAmount<T> implements NegitaveOrLessAmount<T> {
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(negitaveOrLessAmount != null);
+    assert(noImageSelected != null);
+    assert(invalidPhoneNumber != null);
+    assert(invalidExactDigitsLength != null);
     return negitaveOrLessAmount(failedValue, min);
   }
 
@@ -1182,6 +1337,9 @@ class _$NegitaveOrLessAmount<T> implements NegitaveOrLessAmount<T> {
     Result invalidEmail(T failedValue),
     Result shortPassword(T failedValue),
     Result negitaveOrLessAmount(T failedValue, int min),
+    Result noImageSelected(T failedValue),
+    Result invalidPhoneNumber(T failedValue),
+    Result invalidExactDigitsLength(T failedValue),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1201,6 +1359,10 @@ class _$NegitaveOrLessAmount<T> implements NegitaveOrLessAmount<T> {
     @required Result invalidEmail(InvalidEmail<T> value),
     @required Result shortPassword(ShortPassword<T> value),
     @required Result negitaveOrLessAmount(NegitaveOrLessAmount<T> value),
+    @required Result noImageSelected(NoImageSelected<T> value),
+    @required Result invalidPhoneNumber(InvalidPhoneNumber<T> value),
+    @required
+        Result invalidExactDigitsLength(InvalidExactDigitsLength<T> value),
   }) {
     assert(exceedingLength != null);
     assert(empty != null);
@@ -1209,6 +1371,9 @@ class _$NegitaveOrLessAmount<T> implements NegitaveOrLessAmount<T> {
     assert(invalidEmail != null);
     assert(shortPassword != null);
     assert(negitaveOrLessAmount != null);
+    assert(noImageSelected != null);
+    assert(invalidPhoneNumber != null);
+    assert(invalidExactDigitsLength != null);
     return negitaveOrLessAmount(this);
   }
 
@@ -1222,6 +1387,9 @@ class _$NegitaveOrLessAmount<T> implements NegitaveOrLessAmount<T> {
     Result invalidEmail(InvalidEmail<T> value),
     Result shortPassword(ShortPassword<T> value),
     Result negitaveOrLessAmount(NegitaveOrLessAmount<T> value),
+    Result noImageSelected(NoImageSelected<T> value),
+    Result invalidPhoneNumber(InvalidPhoneNumber<T> value),
+    Result invalidExactDigitsLength(InvalidExactDigitsLength<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1241,4 +1409,524 @@ abstract class NegitaveOrLessAmount<T> implements ValueFailure<T> {
   int get min;
   @override
   $NegitaveOrLessAmountCopyWith<T, NegitaveOrLessAmount<T>> get copyWith;
+}
+
+/// @nodoc
+abstract class $NoImageSelectedCopyWith<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
+  factory $NoImageSelectedCopyWith(
+          NoImageSelected<T> value, $Res Function(NoImageSelected<T>) then) =
+      _$NoImageSelectedCopyWithImpl<T, $Res>;
+  @override
+  $Res call({T failedValue});
+}
+
+/// @nodoc
+class _$NoImageSelectedCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
+    implements $NoImageSelectedCopyWith<T, $Res> {
+  _$NoImageSelectedCopyWithImpl(
+      NoImageSelected<T> _value, $Res Function(NoImageSelected<T>) _then)
+      : super(_value, (v) => _then(v as NoImageSelected<T>));
+
+  @override
+  NoImageSelected<T> get _value => super._value as NoImageSelected<T>;
+
+  @override
+  $Res call({
+    Object failedValue = freezed,
+  }) {
+    return _then(NoImageSelected<T>(
+      failedValue:
+          failedValue == freezed ? _value.failedValue : failedValue as T,
+    ));
+  }
+}
+
+/// @nodoc
+class _$NoImageSelected<T> implements NoImageSelected<T> {
+  const _$NoImageSelected({@required this.failedValue})
+      : assert(failedValue != null);
+
+  @override
+  final T failedValue;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.noImageSelected(failedValue: $failedValue)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is NoImageSelected<T> &&
+            (identical(other.failedValue, failedValue) ||
+                const DeepCollectionEquality()
+                    .equals(other.failedValue, failedValue)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(failedValue);
+
+  @override
+  $NoImageSelectedCopyWith<T, NoImageSelected<T>> get copyWith =>
+      _$NoImageSelectedCopyWithImpl<T, NoImageSelected<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result exceedingLength(T failedValue, int max),
+    @required Result empty(T failedValue),
+    @required Result multiline(T failedValue),
+    @required Result listTooLong(T failedValue, int max),
+    @required Result invalidEmail(T failedValue),
+    @required Result shortPassword(T failedValue),
+    @required Result negitaveOrLessAmount(T failedValue, int min),
+    @required Result noImageSelected(T failedValue),
+    @required Result invalidPhoneNumber(T failedValue),
+    @required Result invalidExactDigitsLength(T failedValue),
+  }) {
+    assert(exceedingLength != null);
+    assert(empty != null);
+    assert(multiline != null);
+    assert(listTooLong != null);
+    assert(invalidEmail != null);
+    assert(shortPassword != null);
+    assert(negitaveOrLessAmount != null);
+    assert(noImageSelected != null);
+    assert(invalidPhoneNumber != null);
+    assert(invalidExactDigitsLength != null);
+    return noImageSelected(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result exceedingLength(T failedValue, int max),
+    Result empty(T failedValue),
+    Result multiline(T failedValue),
+    Result listTooLong(T failedValue, int max),
+    Result invalidEmail(T failedValue),
+    Result shortPassword(T failedValue),
+    Result negitaveOrLessAmount(T failedValue, int min),
+    Result noImageSelected(T failedValue),
+    Result invalidPhoneNumber(T failedValue),
+    Result invalidExactDigitsLength(T failedValue),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (noImageSelected != null) {
+      return noImageSelected(failedValue);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result exceedingLength(ExceedingLength<T> value),
+    @required Result empty(Empty<T> value),
+    @required Result multiline(Multiline<T> value),
+    @required Result listTooLong(ListTooLong<T> value),
+    @required Result invalidEmail(InvalidEmail<T> value),
+    @required Result shortPassword(ShortPassword<T> value),
+    @required Result negitaveOrLessAmount(NegitaveOrLessAmount<T> value),
+    @required Result noImageSelected(NoImageSelected<T> value),
+    @required Result invalidPhoneNumber(InvalidPhoneNumber<T> value),
+    @required
+        Result invalidExactDigitsLength(InvalidExactDigitsLength<T> value),
+  }) {
+    assert(exceedingLength != null);
+    assert(empty != null);
+    assert(multiline != null);
+    assert(listTooLong != null);
+    assert(invalidEmail != null);
+    assert(shortPassword != null);
+    assert(negitaveOrLessAmount != null);
+    assert(noImageSelected != null);
+    assert(invalidPhoneNumber != null);
+    assert(invalidExactDigitsLength != null);
+    return noImageSelected(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result exceedingLength(ExceedingLength<T> value),
+    Result empty(Empty<T> value),
+    Result multiline(Multiline<T> value),
+    Result listTooLong(ListTooLong<T> value),
+    Result invalidEmail(InvalidEmail<T> value),
+    Result shortPassword(ShortPassword<T> value),
+    Result negitaveOrLessAmount(NegitaveOrLessAmount<T> value),
+    Result noImageSelected(NoImageSelected<T> value),
+    Result invalidPhoneNumber(InvalidPhoneNumber<T> value),
+    Result invalidExactDigitsLength(InvalidExactDigitsLength<T> value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (noImageSelected != null) {
+      return noImageSelected(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class NoImageSelected<T> implements ValueFailure<T> {
+  const factory NoImageSelected({@required T failedValue}) =
+      _$NoImageSelected<T>;
+
+  @override
+  T get failedValue;
+  @override
+  $NoImageSelectedCopyWith<T, NoImageSelected<T>> get copyWith;
+}
+
+/// @nodoc
+abstract class $InvalidPhoneNumberCopyWith<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
+  factory $InvalidPhoneNumberCopyWith(InvalidPhoneNumber<T> value,
+          $Res Function(InvalidPhoneNumber<T>) then) =
+      _$InvalidPhoneNumberCopyWithImpl<T, $Res>;
+  @override
+  $Res call({T failedValue});
+}
+
+/// @nodoc
+class _$InvalidPhoneNumberCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
+    implements $InvalidPhoneNumberCopyWith<T, $Res> {
+  _$InvalidPhoneNumberCopyWithImpl(
+      InvalidPhoneNumber<T> _value, $Res Function(InvalidPhoneNumber<T>) _then)
+      : super(_value, (v) => _then(v as InvalidPhoneNumber<T>));
+
+  @override
+  InvalidPhoneNumber<T> get _value => super._value as InvalidPhoneNumber<T>;
+
+  @override
+  $Res call({
+    Object failedValue = freezed,
+  }) {
+    return _then(InvalidPhoneNumber<T>(
+      failedValue:
+          failedValue == freezed ? _value.failedValue : failedValue as T,
+    ));
+  }
+}
+
+/// @nodoc
+class _$InvalidPhoneNumber<T> implements InvalidPhoneNumber<T> {
+  const _$InvalidPhoneNumber({@required this.failedValue})
+      : assert(failedValue != null);
+
+  @override
+  final T failedValue;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.invalidPhoneNumber(failedValue: $failedValue)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is InvalidPhoneNumber<T> &&
+            (identical(other.failedValue, failedValue) ||
+                const DeepCollectionEquality()
+                    .equals(other.failedValue, failedValue)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(failedValue);
+
+  @override
+  $InvalidPhoneNumberCopyWith<T, InvalidPhoneNumber<T>> get copyWith =>
+      _$InvalidPhoneNumberCopyWithImpl<T, InvalidPhoneNumber<T>>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result exceedingLength(T failedValue, int max),
+    @required Result empty(T failedValue),
+    @required Result multiline(T failedValue),
+    @required Result listTooLong(T failedValue, int max),
+    @required Result invalidEmail(T failedValue),
+    @required Result shortPassword(T failedValue),
+    @required Result negitaveOrLessAmount(T failedValue, int min),
+    @required Result noImageSelected(T failedValue),
+    @required Result invalidPhoneNumber(T failedValue),
+    @required Result invalidExactDigitsLength(T failedValue),
+  }) {
+    assert(exceedingLength != null);
+    assert(empty != null);
+    assert(multiline != null);
+    assert(listTooLong != null);
+    assert(invalidEmail != null);
+    assert(shortPassword != null);
+    assert(negitaveOrLessAmount != null);
+    assert(noImageSelected != null);
+    assert(invalidPhoneNumber != null);
+    assert(invalidExactDigitsLength != null);
+    return invalidPhoneNumber(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result exceedingLength(T failedValue, int max),
+    Result empty(T failedValue),
+    Result multiline(T failedValue),
+    Result listTooLong(T failedValue, int max),
+    Result invalidEmail(T failedValue),
+    Result shortPassword(T failedValue),
+    Result negitaveOrLessAmount(T failedValue, int min),
+    Result noImageSelected(T failedValue),
+    Result invalidPhoneNumber(T failedValue),
+    Result invalidExactDigitsLength(T failedValue),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (invalidPhoneNumber != null) {
+      return invalidPhoneNumber(failedValue);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result exceedingLength(ExceedingLength<T> value),
+    @required Result empty(Empty<T> value),
+    @required Result multiline(Multiline<T> value),
+    @required Result listTooLong(ListTooLong<T> value),
+    @required Result invalidEmail(InvalidEmail<T> value),
+    @required Result shortPassword(ShortPassword<T> value),
+    @required Result negitaveOrLessAmount(NegitaveOrLessAmount<T> value),
+    @required Result noImageSelected(NoImageSelected<T> value),
+    @required Result invalidPhoneNumber(InvalidPhoneNumber<T> value),
+    @required
+        Result invalidExactDigitsLength(InvalidExactDigitsLength<T> value),
+  }) {
+    assert(exceedingLength != null);
+    assert(empty != null);
+    assert(multiline != null);
+    assert(listTooLong != null);
+    assert(invalidEmail != null);
+    assert(shortPassword != null);
+    assert(negitaveOrLessAmount != null);
+    assert(noImageSelected != null);
+    assert(invalidPhoneNumber != null);
+    assert(invalidExactDigitsLength != null);
+    return invalidPhoneNumber(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result exceedingLength(ExceedingLength<T> value),
+    Result empty(Empty<T> value),
+    Result multiline(Multiline<T> value),
+    Result listTooLong(ListTooLong<T> value),
+    Result invalidEmail(InvalidEmail<T> value),
+    Result shortPassword(ShortPassword<T> value),
+    Result negitaveOrLessAmount(NegitaveOrLessAmount<T> value),
+    Result noImageSelected(NoImageSelected<T> value),
+    Result invalidPhoneNumber(InvalidPhoneNumber<T> value),
+    Result invalidExactDigitsLength(InvalidExactDigitsLength<T> value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (invalidPhoneNumber != null) {
+      return invalidPhoneNumber(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class InvalidPhoneNumber<T> implements ValueFailure<T> {
+  const factory InvalidPhoneNumber({@required T failedValue}) =
+      _$InvalidPhoneNumber<T>;
+
+  @override
+  T get failedValue;
+  @override
+  $InvalidPhoneNumberCopyWith<T, InvalidPhoneNumber<T>> get copyWith;
+}
+
+/// @nodoc
+abstract class $InvalidExactDigitsLengthCopyWith<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
+  factory $InvalidExactDigitsLengthCopyWith(InvalidExactDigitsLength<T> value,
+          $Res Function(InvalidExactDigitsLength<T>) then) =
+      _$InvalidExactDigitsLengthCopyWithImpl<T, $Res>;
+  @override
+  $Res call({T failedValue});
+}
+
+/// @nodoc
+class _$InvalidExactDigitsLengthCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
+    implements $InvalidExactDigitsLengthCopyWith<T, $Res> {
+  _$InvalidExactDigitsLengthCopyWithImpl(InvalidExactDigitsLength<T> _value,
+      $Res Function(InvalidExactDigitsLength<T>) _then)
+      : super(_value, (v) => _then(v as InvalidExactDigitsLength<T>));
+
+  @override
+  InvalidExactDigitsLength<T> get _value =>
+      super._value as InvalidExactDigitsLength<T>;
+
+  @override
+  $Res call({
+    Object failedValue = freezed,
+  }) {
+    return _then(InvalidExactDigitsLength<T>(
+      failedValue:
+          failedValue == freezed ? _value.failedValue : failedValue as T,
+    ));
+  }
+}
+
+/// @nodoc
+class _$InvalidExactDigitsLength<T> implements InvalidExactDigitsLength<T> {
+  const _$InvalidExactDigitsLength({@required this.failedValue})
+      : assert(failedValue != null);
+
+  @override
+  final T failedValue;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.invalidExactDigitsLength(failedValue: $failedValue)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is InvalidExactDigitsLength<T> &&
+            (identical(other.failedValue, failedValue) ||
+                const DeepCollectionEquality()
+                    .equals(other.failedValue, failedValue)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(failedValue);
+
+  @override
+  $InvalidExactDigitsLengthCopyWith<T, InvalidExactDigitsLength<T>>
+      get copyWith => _$InvalidExactDigitsLengthCopyWithImpl<T,
+          InvalidExactDigitsLength<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result exceedingLength(T failedValue, int max),
+    @required Result empty(T failedValue),
+    @required Result multiline(T failedValue),
+    @required Result listTooLong(T failedValue, int max),
+    @required Result invalidEmail(T failedValue),
+    @required Result shortPassword(T failedValue),
+    @required Result negitaveOrLessAmount(T failedValue, int min),
+    @required Result noImageSelected(T failedValue),
+    @required Result invalidPhoneNumber(T failedValue),
+    @required Result invalidExactDigitsLength(T failedValue),
+  }) {
+    assert(exceedingLength != null);
+    assert(empty != null);
+    assert(multiline != null);
+    assert(listTooLong != null);
+    assert(invalidEmail != null);
+    assert(shortPassword != null);
+    assert(negitaveOrLessAmount != null);
+    assert(noImageSelected != null);
+    assert(invalidPhoneNumber != null);
+    assert(invalidExactDigitsLength != null);
+    return invalidExactDigitsLength(failedValue);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result exceedingLength(T failedValue, int max),
+    Result empty(T failedValue),
+    Result multiline(T failedValue),
+    Result listTooLong(T failedValue, int max),
+    Result invalidEmail(T failedValue),
+    Result shortPassword(T failedValue),
+    Result negitaveOrLessAmount(T failedValue, int min),
+    Result noImageSelected(T failedValue),
+    Result invalidPhoneNumber(T failedValue),
+    Result invalidExactDigitsLength(T failedValue),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (invalidExactDigitsLength != null) {
+      return invalidExactDigitsLength(failedValue);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result exceedingLength(ExceedingLength<T> value),
+    @required Result empty(Empty<T> value),
+    @required Result multiline(Multiline<T> value),
+    @required Result listTooLong(ListTooLong<T> value),
+    @required Result invalidEmail(InvalidEmail<T> value),
+    @required Result shortPassword(ShortPassword<T> value),
+    @required Result negitaveOrLessAmount(NegitaveOrLessAmount<T> value),
+    @required Result noImageSelected(NoImageSelected<T> value),
+    @required Result invalidPhoneNumber(InvalidPhoneNumber<T> value),
+    @required
+        Result invalidExactDigitsLength(InvalidExactDigitsLength<T> value),
+  }) {
+    assert(exceedingLength != null);
+    assert(empty != null);
+    assert(multiline != null);
+    assert(listTooLong != null);
+    assert(invalidEmail != null);
+    assert(shortPassword != null);
+    assert(negitaveOrLessAmount != null);
+    assert(noImageSelected != null);
+    assert(invalidPhoneNumber != null);
+    assert(invalidExactDigitsLength != null);
+    return invalidExactDigitsLength(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result exceedingLength(ExceedingLength<T> value),
+    Result empty(Empty<T> value),
+    Result multiline(Multiline<T> value),
+    Result listTooLong(ListTooLong<T> value),
+    Result invalidEmail(InvalidEmail<T> value),
+    Result shortPassword(ShortPassword<T> value),
+    Result negitaveOrLessAmount(NegitaveOrLessAmount<T> value),
+    Result noImageSelected(NoImageSelected<T> value),
+    Result invalidPhoneNumber(InvalidPhoneNumber<T> value),
+    Result invalidExactDigitsLength(InvalidExactDigitsLength<T> value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (invalidExactDigitsLength != null) {
+      return invalidExactDigitsLength(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class InvalidExactDigitsLength<T> implements ValueFailure<T> {
+  const factory InvalidExactDigitsLength({@required T failedValue}) =
+      _$InvalidExactDigitsLength<T>;
+
+  @override
+  T get failedValue;
+  @override
+  $InvalidExactDigitsLengthCopyWith<T, InvalidExactDigitsLength<T>>
+      get copyWith;
 }

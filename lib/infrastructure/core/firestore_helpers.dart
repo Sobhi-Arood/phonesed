@@ -3,6 +3,12 @@ import 'package:phonesed/domain/auth/i_auth_facade.dart';
 import 'package:phonesed/domain/core/errors.dart';
 import 'package:phonesed/injection.dart';
 
+extension ServerTimestampX on FieldValue {
+  // DateTime toDateTimeConvert() {
+  //   return serverTimestamp();
+  // }
+}
+
 extension FirestoreX on FirebaseFirestore {
   Future<DocumentReference> userDocument() async {
     final userId = await getIt<IAuthFacade>().getSignedInUserUid();
@@ -12,5 +18,6 @@ extension FirestoreX on FirebaseFirestore {
 }
 
 extension DocumentReferenceX on DocumentReference {
-  CollectionReference get postCollection => collection('Posts');
+  CollectionReference get postsCollection => collection('Posts');
+  // CollectionReference get postsCollection => collection('Users').doc().snapshots();
 }

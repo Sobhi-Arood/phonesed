@@ -3,7 +3,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:phonesed/domain/auth/value_objects.dart';
 import 'package:phonesed/domain/core/unique_id.dart';
 import 'package:phonesed/domain/entities/user.dart';
-import 'package:phonesed/infrastructure/core/json_converters.dart';
 
 part 'user_dtos.freezed.dart';
 part 'user_dtos.g.dart';
@@ -16,7 +15,9 @@ abstract class UserDto implements _$UserDto {
     @required String name,
     @required String email,
     @required String avatar,
-    @required @ServerTimestampConverter() FieldValue joinDate,
+    @required String phoneNumber,
+    // @required @ServerTimestampConverter() FieldValue joinDate,
+    @required DateTime joinDate,
     @required int numberOfPublishedPosts,
     @required bool verified,
   }) = _UserDto;
@@ -26,8 +27,9 @@ abstract class UserDto implements _$UserDto {
         id: user.id.getOrCrash(),
         name: user.name.getOrCrash(),
         email: user.email.getOrCrash(),
+        phoneNumber: user.phoneNumber,
         avatar: user.avatarUrl,
-        joinDate: FieldValue.serverTimestamp(),
+        joinDate: user.joinDate,
         numberOfPublishedPosts: user.numOfPublishedPosts,
         verified: user.verified);
   }
@@ -37,8 +39,9 @@ abstract class UserDto implements _$UserDto {
         id: UniqueId.fromUniqueString(id),
         name: UserName(name),
         email: EmailAddress(email),
+        phoneNumber: phoneNumber,
         avatarUrl: avatar,
-        joinDate: DateTime.parse(joinDate.toString()),
+        joinDate: joinDate,
         numOfPublishedPosts: numberOfPublishedPosts,
         verified: verified);
   }

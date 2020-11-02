@@ -4,7 +4,7 @@ import 'package:injectable/injectable.dart';
 import 'package:phonesed/injection.dart';
 import 'package:phonesed/presentation/core/app_widget.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   configureInjection(Environment.prod);
   await Firebase.initializeApp();

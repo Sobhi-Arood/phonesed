@@ -1,131 +1,200 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:phonesed/application/auth/auth_bloc/auth_bloc.dart';
+import 'package:phonesed/application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:phonesed/constants.dart';
+import 'package:phonesed/presentation/routes/router.gr.dart';
 
 class SignInForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Form(
-      child: Padding(
-        padding: const EdgeInsets.all(8),
-        child: ListView(
-          padding: const EdgeInsets.all(16),
-          children: [
-            const Text(
-              'Login',
-              style: TextStyle(
-                color: kPrimaryDarkColor,
-                fontSize: 58,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 30),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  'Email',
-                  style: TextStyle(
-                    color: kSecondaryLightColor,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 10),
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    color: kPrimaryLightColor,
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: TextFormField(
-                    // style: const TextStyle(
-                    //   fontSize: 17,
-                    //   fontWeight: FontWeight.w600,
-                    // ),
-                    decoration: const InputDecoration(
-                      prefixIcon: Icon(
-                        Icons.email,
-                        color: kSecondaryLightColor,
-                      ),
-                      hintText: 'Enter your email ...',
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 30),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  'Password',
-                  style: TextStyle(
-                    color: kSecondaryLightColor,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 10),
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    color: kPrimaryLightColor,
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: TextFormField(
-                    obscureText: true,
-                    decoration: const InputDecoration(
-                      prefixIcon: Icon(
-                        Icons.lock,
-                        color: kSecondaryLightColor,
-                      ),
-                      hintText: 'Enter your password ...',
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 50),
-            RaisedButton(
-              onPressed: () {},
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8),
-              ),
-              elevation: 0,
-              highlightElevation: 0,
-              color: kPrimaryColor,
-              child: const Padding(
-                padding: EdgeInsets.symmetric(vertical: 1.0),
-                child: Padding(
-                  padding: EdgeInsets.all(16),
-                  child: Text(
-                    'Sign in',
-                    style: TextStyle(
-                      fontSize: 21,
-                      color: Colors.white,
-                    ),
-                  ),
+    return BlocConsumer<SignInFormBloc, SignInFormState>(
+        listener: (context, state) {
+      state.authFailureOrSuccess.fold(
+          () => {},
+          (either) => either.fold(
+                  (failure) => {
+                        FlushbarHelper.createError(
+                          message: failure.map(
+                              canelledByUser: (_) => 'Cancelled',
+                              serverError: (_) => 'Server error',
+                              emailAlreadyInUse: (_) => 'Email already in use',
+                              invalidEmailAndPasswordCombination: (_) =>
+                                  'Invalid email and password',
+                              weakPassword: (_) => 'Weak password'),
+                        ).show(context),
+                      }, (_) {
+                ExtendedNavigator.of(context).replace(Routes.mainPage);
+              }));
+    }, builder: (context, state) {
+      return Form(
+        autovalidate: state.showErrorMessages,
+        child: Padding(
+          padding: const EdgeInsets.all(8),
+          child: ListView(
+            padding: const EdgeInsets.all(16),
+            children: [
+              const Text(
+                'Login',
+                style: TextStyle(
+                  color: kPrimaryDarkColor,
+                  fontSize: 58,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-            ),
-            const SizedBox(height: 70),
-            Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+              const SizedBox(height: 30),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text('New user ?'),
-                  const SizedBox(width: 10),
-                  const InkWell(
-                    child: Text(
-                      'Sign up',
-                      style: TextStyle(
-                          color: kPrimaryColor, fontWeight: FontWeight.w600),
+                  const Text(
+                    'Email',
+                    style: TextStyle(
+                      color: kSecondaryLightColor,
+                      fontWeight: FontWeight.bold,
                     ),
-                  )
+                  ),
+                  const SizedBox(height: 10),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: kPrimaryLightColor,
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: TextFormField(
+                      // style: const TextStyle(
+                      //   fontSize: 17,
+                      //   fontWeight: FontWeight.w600,
+                      // ),
+                      decoration: const InputDecoration(
+                        prefixIcon: Icon(
+                          Icons.email,
+                          color: kSecondaryLightColor,
+                        ),
+                        hintText: 'Enter your email ...',
+                      ),
+                      autocorrect: false,
+                      onChanged: (value) => context
+                          .bloc<SignInFormBloc>()
+                          .add(SignInFormEvent.emailChanged(value)),
+                      validator: (_) => context
+                          .bloc<SignInFormBloc>()
+                          .state
+                          .emailAddress
+                          .value
+                          .fold(
+                            (f) => f.maybeMap(
+                                empty: (_) => 'Cannot be empty',
+                                invalidEmail: (_) => 'Invalid Email',
+                                orElse: () => null),
+                            (_) => null,
+                          ),
+                    ),
+                  ),
                 ],
               ),
-            ),
-          ],
+              const SizedBox(height: 30),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Password',
+                    style: TextStyle(
+                      color: kSecondaryLightColor,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: kPrimaryLightColor,
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: TextFormField(
+                      obscureText: true,
+                      decoration: const InputDecoration(
+                        prefixIcon: Icon(
+                          Icons.lock,
+                          color: kSecondaryLightColor,
+                        ),
+                        hintText: 'Enter your password ...',
+                      ),
+                      autocorrect: false,
+                      onChanged: (value) => context
+                          .bloc<SignInFormBloc>()
+                          .add(SignInFormEvent.passwordChanged(value)),
+                      validator: (_) => context
+                          .bloc<SignInFormBloc>()
+                          .state
+                          .password
+                          .value
+                          .fold(
+                            (f) => f.maybeMap(
+                                empty: (_) => 'Cannot be empty',
+                                shortPassword: (_) => 'Short Password',
+                                orElse: () => null),
+                            (_) => null,
+                          ),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 50),
+              RaisedButton(
+                onPressed: () {
+                  context
+                      .bloc<SignInFormBloc>()
+                      .add(const SignInFormEvent.signInWithEmailAndPassword());
+                },
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                elevation: 0,
+                highlightElevation: 0,
+                color: kPrimaryColor,
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 1.0),
+                  child: Padding(
+                    padding: EdgeInsets.all(16),
+                    child: Text(
+                      'Sign in',
+                      style: TextStyle(
+                        fontSize: 21,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 70),
+              Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text('New user ?'),
+                    const SizedBox(width: 10),
+                    InkWell(
+                      onTap: () {
+                        ExtendedNavigator.of(context).pushSignUpPage();
+                      },
+                      child: const Text(
+                        'Sign up',
+                        style: TextStyle(
+                            color: kPrimaryColor, fontWeight: FontWeight.w600),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              if (state.isSubmitting) ...[
+                const Center(child: CircularProgressIndicator()),
+              ],
+            ],
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 }

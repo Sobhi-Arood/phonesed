@@ -12,7 +12,10 @@ _$_UserDto _$_$_UserDtoFromJson(Map<String, dynamic> json) {
     name: json['name'] as String,
     email: json['email'] as String,
     avatar: json['avatar'] as String,
-    joinDate: const ServerTimestampConverter().fromJson(json['joinDate']),
+    phoneNumber: json['phoneNumber'] as String,
+    joinDate: json['joinDate'] == null
+        ? null
+        : DateTime.parse(json['joinDate'] as String),
     numberOfPublishedPosts: json['numberOfPublishedPosts'] as int,
     verified: json['verified'] as bool,
   );
@@ -24,7 +27,8 @@ Map<String, dynamic> _$_$_UserDtoToJson(_$_UserDto instance) =>
       'name': instance.name,
       'email': instance.email,
       'avatar': instance.avatar,
-      'joinDate': const ServerTimestampConverter().toJson(instance.joinDate),
+      'phoneNumber': instance.phoneNumber,
+      'joinDate': instance.joinDate?.toIso8601String(),
       'numberOfPublishedPosts': instance.numberOfPublishedPosts,
       'verified': instance.verified,
     };

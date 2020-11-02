@@ -18,6 +18,7 @@ class _$UserTearOff {
       {@required UniqueId id,
       @required UserName name,
       @required EmailAddress email,
+      @required String phoneNumber,
       @required String avatarUrl,
       @required DateTime joinDate,
       @required int numOfPublishedPosts,
@@ -26,6 +27,7 @@ class _$UserTearOff {
       id: id,
       name: name,
       email: email,
+      phoneNumber: phoneNumber,
       avatarUrl: avatarUrl,
       joinDate: joinDate,
       numOfPublishedPosts: numOfPublishedPosts,
@@ -43,6 +45,7 @@ mixin _$User {
   UniqueId get id;
   UserName get name;
   EmailAddress get email;
+  String get phoneNumber;
   String get avatarUrl;
   DateTime get joinDate;
   int get numOfPublishedPosts;
@@ -59,6 +62,7 @@ abstract class $UserCopyWith<$Res> {
       {UniqueId id,
       UserName name,
       EmailAddress email,
+      String phoneNumber,
       String avatarUrl,
       DateTime joinDate,
       int numOfPublishedPosts,
@@ -78,6 +82,7 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
     Object id = freezed,
     Object name = freezed,
     Object email = freezed,
+    Object phoneNumber = freezed,
     Object avatarUrl = freezed,
     Object joinDate = freezed,
     Object numOfPublishedPosts = freezed,
@@ -87,6 +92,8 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
       id: id == freezed ? _value.id : id as UniqueId,
       name: name == freezed ? _value.name : name as UserName,
       email: email == freezed ? _value.email : email as EmailAddress,
+      phoneNumber:
+          phoneNumber == freezed ? _value.phoneNumber : phoneNumber as String,
       avatarUrl: avatarUrl == freezed ? _value.avatarUrl : avatarUrl as String,
       joinDate: joinDate == freezed ? _value.joinDate : joinDate as DateTime,
       numOfPublishedPosts: numOfPublishedPosts == freezed
@@ -106,6 +113,7 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       {UniqueId id,
       UserName name,
       EmailAddress email,
+      String phoneNumber,
       String avatarUrl,
       DateTime joinDate,
       int numOfPublishedPosts,
@@ -126,6 +134,7 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
     Object id = freezed,
     Object name = freezed,
     Object email = freezed,
+    Object phoneNumber = freezed,
     Object avatarUrl = freezed,
     Object joinDate = freezed,
     Object numOfPublishedPosts = freezed,
@@ -135,6 +144,8 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
       id: id == freezed ? _value.id : id as UniqueId,
       name: name == freezed ? _value.name : name as UserName,
       email: email == freezed ? _value.email : email as EmailAddress,
+      phoneNumber:
+          phoneNumber == freezed ? _value.phoneNumber : phoneNumber as String,
       avatarUrl: avatarUrl == freezed ? _value.avatarUrl : avatarUrl as String,
       joinDate: joinDate == freezed ? _value.joinDate : joinDate as DateTime,
       numOfPublishedPosts: numOfPublishedPosts == freezed
@@ -146,11 +157,12 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$_User with DiagnosticableTreeMixin implements _User {
+class _$_User extends _User with DiagnosticableTreeMixin {
   const _$_User(
       {@required this.id,
       @required this.name,
       @required this.email,
+      @required this.phoneNumber,
       @required this.avatarUrl,
       @required this.joinDate,
       @required this.numOfPublishedPosts,
@@ -158,10 +170,12 @@ class _$_User with DiagnosticableTreeMixin implements _User {
       : assert(id != null),
         assert(name != null),
         assert(email != null),
+        assert(phoneNumber != null),
         assert(avatarUrl != null),
         assert(joinDate != null),
         assert(numOfPublishedPosts != null),
-        assert(verified != null);
+        assert(verified != null),
+        super._();
 
   @override
   final UniqueId id;
@@ -169,6 +183,8 @@ class _$_User with DiagnosticableTreeMixin implements _User {
   final UserName name;
   @override
   final EmailAddress email;
+  @override
+  final String phoneNumber;
   @override
   final String avatarUrl;
   @override
@@ -180,7 +196,7 @@ class _$_User with DiagnosticableTreeMixin implements _User {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'User(id: $id, name: $name, email: $email, avatarUrl: $avatarUrl, joinDate: $joinDate, numOfPublishedPosts: $numOfPublishedPosts, verified: $verified)';
+    return 'User(id: $id, name: $name, email: $email, phoneNumber: $phoneNumber, avatarUrl: $avatarUrl, joinDate: $joinDate, numOfPublishedPosts: $numOfPublishedPosts, verified: $verified)';
   }
 
   @override
@@ -191,6 +207,7 @@ class _$_User with DiagnosticableTreeMixin implements _User {
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('name', name))
       ..add(DiagnosticsProperty('email', email))
+      ..add(DiagnosticsProperty('phoneNumber', phoneNumber))
       ..add(DiagnosticsProperty('avatarUrl', avatarUrl))
       ..add(DiagnosticsProperty('joinDate', joinDate))
       ..add(DiagnosticsProperty('numOfPublishedPosts', numOfPublishedPosts))
@@ -207,6 +224,9 @@ class _$_User with DiagnosticableTreeMixin implements _User {
                 const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.email, email) ||
                 const DeepCollectionEquality().equals(other.email, email)) &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                const DeepCollectionEquality()
+                    .equals(other.phoneNumber, phoneNumber)) &&
             (identical(other.avatarUrl, avatarUrl) ||
                 const DeepCollectionEquality()
                     .equals(other.avatarUrl, avatarUrl)) &&
@@ -227,6 +247,7 @@ class _$_User with DiagnosticableTreeMixin implements _User {
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(email) ^
+      const DeepCollectionEquality().hash(phoneNumber) ^
       const DeepCollectionEquality().hash(avatarUrl) ^
       const DeepCollectionEquality().hash(joinDate) ^
       const DeepCollectionEquality().hash(numOfPublishedPosts) ^
@@ -237,11 +258,13 @@ class _$_User with DiagnosticableTreeMixin implements _User {
       __$UserCopyWithImpl<_User>(this, _$identity);
 }
 
-abstract class _User implements User {
+abstract class _User extends User {
+  const _User._() : super._();
   const factory _User(
       {@required UniqueId id,
       @required UserName name,
       @required EmailAddress email,
+      @required String phoneNumber,
       @required String avatarUrl,
       @required DateTime joinDate,
       @required int numOfPublishedPosts,
@@ -253,6 +276,8 @@ abstract class _User implements User {
   UserName get name;
   @override
   EmailAddress get email;
+  @override
+  String get phoneNumber;
   @override
   String get avatarUrl;
   @override

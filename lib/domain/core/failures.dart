@@ -24,4 +24,10 @@ abstract class ValueFailure<T> with _$ValueFailure<T> {
       ShortPassword<T>;
   const factory ValueFailure.negitaveOrLessAmount(
       {@required T failedValue, @required int min}) = NegitaveOrLessAmount<T>;
+  const factory ValueFailure.noImageSelected({@required T failedValue}) =
+      NoImageSelected<T>;
+  const factory ValueFailure.invalidPhoneNumber({@required T failedValue}) =
+      InvalidPhoneNumber<T>;
+  const factory ValueFailure.invalidExactDigitsLength(
+      {@required T failedValue}) = InvalidExactDigitsLength<T>;
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:phonesed/application/core/bottom_navigation/bottom_navigation_bloc.dart';
 import 'package:phonesed/constants.dart';
 
@@ -77,7 +76,6 @@ class BottomNavBarItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final active = useState(isActive);
     return GestureDetector(
       onTap: () => onPressed(),
       child: Container(
