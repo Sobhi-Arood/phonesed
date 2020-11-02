@@ -31,7 +31,14 @@ import 'package:kt_dart/collection.dart';
 
 class CardImagesCarousel extends HookWidget {
   final KtList<String> images;
-  const CardImagesCarousel({Key key, @required this.images}) : super(key: key);
+  final bool circularBorder;
+  final double height;
+  const CardImagesCarousel(
+      {Key key,
+      @required this.images,
+      @required this.circularBorder,
+      @required this.height})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     final _currentIndex = useState(0);
@@ -41,13 +48,14 @@ class CardImagesCarousel extends HookWidget {
           itemCount: images.size,
           itemBuilder: (context, index) {
             return ClipRRect(
-              borderRadius: BorderRadius.circular(8),
+              borderRadius:
+                  circularBorder ? BorderRadius.circular(8) : BorderRadius.zero,
               child: CachedNetworkImage(
                 fadeInDuration: const Duration(milliseconds: 0),
                 placeholderFadeInDuration: Duration.zero,
                 imageUrl: images[index],
                 fit: BoxFit.cover,
-                height: 200,
+                height: height,
                 width: MediaQuery.of(context).size.width,
                 placeholder: (context, url) =>
                     const Center(child: CircularProgressIndicator()),
@@ -63,7 +71,7 @@ class CardImagesCarousel extends HookWidget {
           },
           options: CarouselOptions(
               // enlargeCenterPage: true,
-              height: 200,
+              height: height,
               viewportFraction: 1,
               enableInfiniteScroll: false,
               onPageChanged: (index, _) {

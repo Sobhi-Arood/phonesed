@@ -3,6 +3,7 @@ import 'package:phonesed/presentation/auth/sign_in_page.dart';
 import 'package:phonesed/presentation/auth/sign_up_page.dart';
 import 'package:phonesed/presentation/auth/welcome_page.dart';
 import 'package:phonesed/presentation/core/main_page.dart';
+import 'package:phonesed/presentation/posts/post_detail/post_detail_page.dart';
 import 'package:phonesed/presentation/posts/post_form/post_form_page.dart';
 
 @MaterialAutoRouter(
@@ -12,7 +13,8 @@ import 'package:phonesed/presentation/posts/post_form/post_form_page.dart';
     MaterialRoute(page: WelcomePage),
     MaterialRoute(page: SignInPage),
     MaterialRoute(page: SignUpPage),
-    MaterialRoute(page: PostFormPage),
+    MaterialRoute(page: PostFormPage, fullscreenDialog: true),
+    MaterialRoute(page: PostDetailPage),
   ],
 )
 class $Router {}

@@ -30,6 +30,8 @@ class FavoritePostCard extends StatelessWidget {
                   children: [
                     CardImagesCarousel(
                       images: post.images.getOrCrash(),
+                      circularBorder: true,
+                      height: 200,
                     ),
                     Positioned(
                         top: 9,

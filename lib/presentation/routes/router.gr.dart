@@ -14,6 +14,7 @@ import '../auth/sign_in_page.dart';
 import '../auth/sign_up_page.dart';
 import '../auth/welcome_page.dart';
 import '../core/main_page.dart';
+import '../posts/post_detail/post_detail_page.dart';
 import '../posts/post_form/post_form_page.dart';
 
 class Routes {
@@ -22,12 +23,14 @@ class Routes {
   static const String signInPage = '/sign-in-page';
   static const String signUpPage = '/sign-up-page';
   static const String postFormPage = '/post-form-page';
+  static const String postDetailPage = '/post-detail-page';
   static const all = <String>{
     mainPage,
     welcomePage,
     signInPage,
     signUpPage,
     postFormPage,
+    postDetailPage,
   };
 }
 
@@ -40,6 +43,7 @@ class Router extends RouterBase {
     RouteDef(Routes.signInPage, page: SignInPage),
     RouteDef(Routes.signUpPage, page: SignUpPage),
     RouteDef(Routes.postFormPage, page: PostFormPage),
+    RouteDef(Routes.postDetailPage, page: PostDetailPage),
   ];
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
@@ -76,6 +80,17 @@ class Router extends RouterBase {
           editedPost: args.editedPost,
         ),
         settings: data,
+        fullscreenDialog: true,
+      );
+    },
+    PostDetailPage: (data) {
+      final args = data.getArgs<PostDetailPageArguments>(nullOk: false);
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => PostDetailPage(
+          key: args.key,
+          post: args.post,
+        ),
+        settings: data,
       );
     },
   };
@@ -102,6 +117,15 @@ extension RouterExtendedNavigatorStateX on ExtendedNavigatorState {
         Routes.postFormPage,
         arguments: PostFormPageArguments(key: key, editedPost: editedPost),
       );
+
+  Future<dynamic> pushPostDetailPage({
+    Key key,
+    @required Post post,
+  }) =>
+      push<dynamic>(
+        Routes.postDetailPage,
+        arguments: PostDetailPageArguments(key: key, post: post),
+      );
 }
 
 /// ************************************************************************
@@ -113,4 +137,11 @@ class PostFormPageArguments {
   final Key key;
   final Post editedPost;
   PostFormPageArguments({this.key, @required this.editedPost});
+}
+
+/// PostDetailPage arguments holder class
+class PostDetailPageArguments {
+  final Key key;
+  final Post post;
+  PostDetailPageArguments({this.key, @required this.post});
 }

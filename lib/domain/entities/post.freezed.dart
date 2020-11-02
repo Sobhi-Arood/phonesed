@@ -33,7 +33,10 @@ class _$PostTearOff {
       @required PostBrand brand,
       @required String device,
       @required PostAge age,
-      @required PostCondition condition}) {
+      @required PostCondition condition,
+      UniqueId userId,
+      String userAvatar,
+      UserName userName}) {
     return _Post(
       id: id,
       title: title,
@@ -54,6 +57,9 @@ class _$PostTearOff {
       device: device,
       age: age,
       condition: condition,
+      userId: userId,
+      userAvatar: userAvatar,
+      userName: userName,
     );
   }
 }
@@ -83,6 +89,9 @@ mixin _$Post {
   String get device;
   PostAge get age;
   PostCondition get condition;
+  UniqueId get userId;
+  String get userAvatar;
+  UserName get userName;
 
   $PostCopyWith<Post> get copyWith;
 }
@@ -110,7 +119,10 @@ abstract class $PostCopyWith<$Res> {
       PostBrand brand,
       String device,
       PostAge age,
-      PostCondition condition});
+      PostCondition condition,
+      UniqueId userId,
+      String userAvatar,
+      UserName userName});
 }
 
 /// @nodoc
@@ -142,6 +154,9 @@ class _$PostCopyWithImpl<$Res> implements $PostCopyWith<$Res> {
     Object device = freezed,
     Object age = freezed,
     Object condition = freezed,
+    Object userId = freezed,
+    Object userAvatar = freezed,
+    Object userName = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as UniqueId,
@@ -174,6 +189,10 @@ class _$PostCopyWithImpl<$Res> implements $PostCopyWith<$Res> {
       age: age == freezed ? _value.age : age as PostAge,
       condition:
           condition == freezed ? _value.condition : condition as PostCondition,
+      userId: userId == freezed ? _value.userId : userId as UniqueId,
+      userAvatar:
+          userAvatar == freezed ? _value.userAvatar : userAvatar as String,
+      userName: userName == freezed ? _value.userName : userName as UserName,
     ));
   }
 }
@@ -202,7 +221,10 @@ abstract class _$PostCopyWith<$Res> implements $PostCopyWith<$Res> {
       PostBrand brand,
       String device,
       PostAge age,
-      PostCondition condition});
+      PostCondition condition,
+      UniqueId userId,
+      String userAvatar,
+      UserName userName});
 }
 
 /// @nodoc
@@ -235,6 +257,9 @@ class __$PostCopyWithImpl<$Res> extends _$PostCopyWithImpl<$Res>
     Object device = freezed,
     Object age = freezed,
     Object condition = freezed,
+    Object userId = freezed,
+    Object userAvatar = freezed,
+    Object userName = freezed,
   }) {
     return _then(_Post(
       id: id == freezed ? _value.id : id as UniqueId,
@@ -267,6 +292,10 @@ class __$PostCopyWithImpl<$Res> extends _$PostCopyWithImpl<$Res>
       age: age == freezed ? _value.age : age as PostAge,
       condition:
           condition == freezed ? _value.condition : condition as PostCondition,
+      userId: userId == freezed ? _value.userId : userId as UniqueId,
+      userAvatar:
+          userAvatar == freezed ? _value.userAvatar : userAvatar as String,
+      userName: userName == freezed ? _value.userName : userName as UserName,
     ));
   }
 }
@@ -292,7 +321,10 @@ class _$_Post extends _Post {
       @required this.brand,
       @required this.device,
       @required this.age,
-      @required this.condition})
+      @required this.condition,
+      this.userId,
+      this.userAvatar,
+      this.userName})
       : assert(id != null),
         assert(title != null),
         assert(price != null),
@@ -352,10 +384,16 @@ class _$_Post extends _Post {
   final PostAge age;
   @override
   final PostCondition condition;
+  @override
+  final UniqueId userId;
+  @override
+  final String userAvatar;
+  @override
+  final UserName userName;
 
   @override
   String toString() {
-    return 'Post(id: $id, title: $title, price: $price, description: $description, images: $images, publishedDate: $publishedDate, city: $city, area: $area, country: $country, moreAccessories: $moreAccessories, avaliable: $avaliable, exhangable: $exhangable, negiotable: $negiotable, headphones: $headphones, charger: $charger, brand: $brand, device: $device, age: $age, condition: $condition)';
+    return 'Post(id: $id, title: $title, price: $price, description: $description, images: $images, publishedDate: $publishedDate, city: $city, area: $area, country: $country, moreAccessories: $moreAccessories, avaliable: $avaliable, exhangable: $exhangable, negiotable: $negiotable, headphones: $headphones, charger: $charger, brand: $brand, device: $device, age: $age, condition: $condition, userId: $userId, userAvatar: $userAvatar, userName: $userName)';
   }
 
   @override
@@ -409,7 +447,15 @@ class _$_Post extends _Post {
                 const DeepCollectionEquality().equals(other.age, age)) &&
             (identical(other.condition, condition) ||
                 const DeepCollectionEquality()
-                    .equals(other.condition, condition)));
+                    .equals(other.condition, condition)) &&
+            (identical(other.userId, userId) ||
+                const DeepCollectionEquality().equals(other.userId, userId)) &&
+            (identical(other.userAvatar, userAvatar) ||
+                const DeepCollectionEquality()
+                    .equals(other.userAvatar, userAvatar)) &&
+            (identical(other.userName, userName) ||
+                const DeepCollectionEquality()
+                    .equals(other.userName, userName)));
   }
 
   @override
@@ -433,7 +479,10 @@ class _$_Post extends _Post {
       const DeepCollectionEquality().hash(brand) ^
       const DeepCollectionEquality().hash(device) ^
       const DeepCollectionEquality().hash(age) ^
-      const DeepCollectionEquality().hash(condition);
+      const DeepCollectionEquality().hash(condition) ^
+      const DeepCollectionEquality().hash(userId) ^
+      const DeepCollectionEquality().hash(userAvatar) ^
+      const DeepCollectionEquality().hash(userName);
 
   @override
   _$PostCopyWith<_Post> get copyWith =>
@@ -461,7 +510,10 @@ abstract class _Post extends Post {
       @required PostBrand brand,
       @required String device,
       @required PostAge age,
-      @required PostCondition condition}) = _$_Post;
+      @required PostCondition condition,
+      UniqueId userId,
+      String userAvatar,
+      UserName userName}) = _$_Post;
 
   @override
   UniqueId get id;
@@ -501,6 +553,12 @@ abstract class _Post extends Post {
   PostAge get age;
   @override
   PostCondition get condition;
+  @override
+  UniqueId get userId;
+  @override
+  String get userAvatar;
+  @override
+  UserName get userName;
   @override
   _$PostCopyWith<_Post> get copyWith;
 }

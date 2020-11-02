@@ -33,6 +33,7 @@ class PostRepository implements IPostRepository {
                   .toImmutableList(),
             ))
         .onErrorReturnWith((e) {
+      print(e.toString());
       if (e is FirebaseException && e.message.contains('permission-denied')) {
         return left(const PostFailure.insufficientPermission());
       } else {
@@ -95,8 +96,8 @@ class PostRepository implements IPostRepository {
       await _firestore.runTransaction((transaction) async {
         return transaction
             .get(user)
-            .then((value) => UserDto.fromFirestore(value))
-            .then((value) async {
+            .then((userData) => UserDto.fromFirestore(userData))
+            .then((u) async {
           final List<String> urls = [];
           final List<String> imgs = [];
           final p = post.images.getOrCrash();
@@ -109,26 +110,29 @@ class PostRepository implements IPostRepository {
             await Future.forEach(r, (String element) => urls.add(element));
           });
           final postDto = PostDto(
-              id: post.id.getOrCrash(),
-              userId: user.id,
-              title: post.title.getOrCrash(),
-              price: post.price.getOrCrash(),
-              description: post.description.getOrCrash(),
-              images: urls,
-              city: post.city.getOrCrash(),
-              area: post.area,
-              country: post.country,
-              moreAccessories: post.moreAccessories.getOrCrash(),
-              avaliable: post.avaliable,
-              exhangable: post.exhangable,
-              negiotable: post.negiotable,
-              headphones: post.headphones,
-              charger: post.charger,
-              brand: post.brand.getOrCrash(),
-              device: post.device,
-              age: post.age.getOrCrash(),
-              condition: post.condition.getOrCrash(),
-              publishedDate: DateTime.now());
+            id: post.id.getOrCrash(),
+            userId: user.id,
+            title: post.title.getOrCrash(),
+            price: post.price.getOrCrash(),
+            description: post.description.getOrCrash(),
+            images: urls,
+            city: post.city.getOrCrash(),
+            area: post.area,
+            country: post.country,
+            moreAccessories: post.moreAccessories.getOrCrash(),
+            avaliable: post.avaliable,
+            exhangable: post.exhangable,
+            negiotable: post.negiotable,
+            headphones: post.headphones,
+            charger: post.charger,
+            brand: post.brand.getOrCrash(),
+            device: post.device,
+            age: post.age.getOrCrash(),
+            condition: post.condition.getOrCrash(),
+            publishedDate: DateTime.now(),
+            userAvatar: u.avatar,
+            userName: u.name,
+          );
 
           transaction.set(newPost, postDto.toJson());
 
@@ -149,7 +153,6 @@ class PostRepository implements IPostRepository {
 
   @override
   Future<Either<PostFailure, Unit>> delete(Post post) {
-    // TODO: implement delete
     throw UnimplementedError();
   }
 

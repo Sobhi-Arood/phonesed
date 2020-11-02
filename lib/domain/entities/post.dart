@@ -1,9 +1,8 @@
-import 'dart:io';
-
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:kt_dart/collection.dart';
+import 'package:phonesed/domain/auth/value_objects.dart';
 import 'package:phonesed/domain/core/failures.dart';
 import 'package:phonesed/domain/core/unique_id.dart';
 import 'package:phonesed/domain/posts/value_objects.dart';
@@ -33,28 +32,34 @@ abstract class Post implements _$Post {
     @required String device,
     @required PostAge age,
     @required PostCondition condition,
+    UniqueId userId,
+    String userAvatar,
+    UserName userName,
   }) = _Post;
 
   factory Post.empty() => Post(
-      id: UniqueId(),
-      title: PostTitle(''),
-      price: PostPrice(100),
-      description: PostDescription(''),
-      images: PostImagesList(emptyList()),
-      publishedDate: PostPublishedDate(DateTime.now()),
-      city: PostCity(PostCity.uaeCities[0]),
-      area: 'Majaz 3',
-      country: 'UAE',
-      moreAccessories: PostMoreAccessories(''),
-      avaliable: true,
-      exhangable: false,
-      negiotable: false,
-      headphones: false,
-      charger: false,
-      brand: PostBrand(PostBrand.brands[0]),
-      device: 'iPhone 11',
-      age: PostAge(PostAge.ages[0]),
-      condition: PostCondition(PostCondition.conditions[0]));
+        id: UniqueId(),
+        title: PostTitle(''),
+        price: PostPrice(100),
+        description: PostDescription(''),
+        images: PostImagesList(emptyList()),
+        publishedDate: PostPublishedDate(DateTime.now()),
+        city: PostCity(PostCity.uaeCities[0]),
+        area: 'Majaz 3',
+        country: 'UAE',
+        moreAccessories: PostMoreAccessories(''),
+        avaliable: true,
+        exhangable: false,
+        negiotable: false,
+        headphones: false,
+        charger: false,
+        brand: PostBrand(PostBrand.brands[0]),
+        device: 'iPhone 11',
+        age: PostAge(PostAge.ages[0]),
+        condition: PostCondition(PostCondition.conditions[0]),
+        // userId: UniqueId.fromUniqueString(userId),
+        // userAvatart: avatar,
+      );
 
   Option<ValueFailure<dynamic>> get failureOption {
     return title.failureOrUnit

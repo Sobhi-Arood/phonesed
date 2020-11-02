@@ -30,6 +30,8 @@ _$_PostDto _$_$_PostDtoFromJson(Map<String, dynamic> json) {
     device: json['device'] as String,
     age: json['age'] as String,
     condition: json['condition'] as String,
+    userAvatar: json['userAvatar'] as String,
+    userName: json['userName'] as String,
   );
 }
 
@@ -55,4 +57,6 @@ Map<String, dynamic> _$_$_PostDtoToJson(_$_PostDto instance) =>
       'device': instance.device,
       'age': instance.age,
       'condition': instance.condition,
+      'userAvatar': instance.userAvatar,
+      'userName': instance.userName,
     };

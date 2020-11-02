@@ -37,7 +37,9 @@ class _$PostDtoTearOff {
       @required String brand,
       @required String device,
       @required String age,
-      @required String condition}) {
+      @required String condition,
+      @required String userAvatar,
+      @required String userName}) {
     return _PostDto(
       id: id,
       userId: userId,
@@ -59,6 +61,8 @@ class _$PostDtoTearOff {
       device: device,
       age: age,
       condition: condition,
+      userAvatar: userAvatar,
+      userName: userName,
     );
   }
 
@@ -95,6 +99,8 @@ mixin _$PostDto {
   String get device;
   String get age;
   String get condition;
+  String get userAvatar;
+  String get userName;
 
   Map<String, dynamic> toJson();
   $PostDtoCopyWith<PostDto> get copyWith;
@@ -124,7 +130,9 @@ abstract class $PostDtoCopyWith<$Res> {
       String brand,
       String device,
       String age,
-      String condition});
+      String condition,
+      String userAvatar,
+      String userName});
 }
 
 /// @nodoc
@@ -157,6 +165,8 @@ class _$PostDtoCopyWithImpl<$Res> implements $PostDtoCopyWith<$Res> {
     Object device = freezed,
     Object age = freezed,
     Object condition = freezed,
+    Object userAvatar = freezed,
+    Object userName = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as String,
@@ -187,6 +197,9 @@ class _$PostDtoCopyWithImpl<$Res> implements $PostDtoCopyWith<$Res> {
       device: device == freezed ? _value.device : device as String,
       age: age == freezed ? _value.age : age as String,
       condition: condition == freezed ? _value.condition : condition as String,
+      userAvatar:
+          userAvatar == freezed ? _value.userAvatar : userAvatar as String,
+      userName: userName == freezed ? _value.userName : userName as String,
     ));
   }
 }
@@ -216,7 +229,9 @@ abstract class _$PostDtoCopyWith<$Res> implements $PostDtoCopyWith<$Res> {
       String brand,
       String device,
       String age,
-      String condition});
+      String condition,
+      String userAvatar,
+      String userName});
 }
 
 /// @nodoc
@@ -250,6 +265,8 @@ class __$PostDtoCopyWithImpl<$Res> extends _$PostDtoCopyWithImpl<$Res>
     Object device = freezed,
     Object age = freezed,
     Object condition = freezed,
+    Object userAvatar = freezed,
+    Object userName = freezed,
   }) {
     return _then(_PostDto(
       id: id == freezed ? _value.id : id as String,
@@ -280,6 +297,9 @@ class __$PostDtoCopyWithImpl<$Res> extends _$PostDtoCopyWithImpl<$Res>
       device: device == freezed ? _value.device : device as String,
       age: age == freezed ? _value.age : age as String,
       condition: condition == freezed ? _value.condition : condition as String,
+      userAvatar:
+          userAvatar == freezed ? _value.userAvatar : userAvatar as String,
+      userName: userName == freezed ? _value.userName : userName as String,
     ));
   }
 }
@@ -308,7 +328,9 @@ class _$_PostDto extends _PostDto {
       @required this.brand,
       @required this.device,
       @required this.age,
-      @required this.condition})
+      @required this.condition,
+      @required this.userAvatar,
+      @required this.userName})
       : assert(id != null),
         assert(userId != null),
         assert(title != null),
@@ -329,6 +351,8 @@ class _$_PostDto extends _PostDto {
         assert(device != null),
         assert(age != null),
         assert(condition != null),
+        assert(userAvatar != null),
+        assert(userName != null),
         super._();
 
   factory _$_PostDto.fromJson(Map<String, dynamic> json) =>
@@ -374,10 +398,14 @@ class _$_PostDto extends _PostDto {
   final String age;
   @override
   final String condition;
+  @override
+  final String userAvatar;
+  @override
+  final String userName;
 
   @override
   String toString() {
-    return 'PostDto(id: $id, userId: $userId, title: $title, price: $price, description: $description, images: $images, publishedDate: $publishedDate, city: $city, area: $area, country: $country, moreAccessories: $moreAccessories, avaliable: $avaliable, exhangable: $exhangable, negiotable: $negiotable, headphones: $headphones, charger: $charger, brand: $brand, device: $device, age: $age, condition: $condition)';
+    return 'PostDto(id: $id, userId: $userId, title: $title, price: $price, description: $description, images: $images, publishedDate: $publishedDate, city: $city, area: $area, country: $country, moreAccessories: $moreAccessories, avaliable: $avaliable, exhangable: $exhangable, negiotable: $negiotable, headphones: $headphones, charger: $charger, brand: $brand, device: $device, age: $age, condition: $condition, userAvatar: $userAvatar, userName: $userName)';
   }
 
   @override
@@ -433,7 +461,13 @@ class _$_PostDto extends _PostDto {
                 const DeepCollectionEquality().equals(other.age, age)) &&
             (identical(other.condition, condition) ||
                 const DeepCollectionEquality()
-                    .equals(other.condition, condition)));
+                    .equals(other.condition, condition)) &&
+            (identical(other.userAvatar, userAvatar) ||
+                const DeepCollectionEquality()
+                    .equals(other.userAvatar, userAvatar)) &&
+            (identical(other.userName, userName) ||
+                const DeepCollectionEquality()
+                    .equals(other.userName, userName)));
   }
 
   @override
@@ -458,7 +492,9 @@ class _$_PostDto extends _PostDto {
       const DeepCollectionEquality().hash(brand) ^
       const DeepCollectionEquality().hash(device) ^
       const DeepCollectionEquality().hash(age) ^
-      const DeepCollectionEquality().hash(condition);
+      const DeepCollectionEquality().hash(condition) ^
+      const DeepCollectionEquality().hash(userAvatar) ^
+      const DeepCollectionEquality().hash(userName);
 
   @override
   _$PostDtoCopyWith<_PostDto> get copyWith =>
@@ -492,7 +528,9 @@ abstract class _PostDto extends PostDto {
       @required String brand,
       @required String device,
       @required String age,
-      @required String condition}) = _$_PostDto;
+      @required String condition,
+      @required String userAvatar,
+      @required String userName}) = _$_PostDto;
 
   factory _PostDto.fromJson(Map<String, dynamic> json) = _$_PostDto.fromJson;
 
@@ -536,6 +574,10 @@ abstract class _PostDto extends PostDto {
   String get age;
   @override
   String get condition;
+  @override
+  String get userAvatar;
+  @override
+  String get userName;
   @override
   _$PostDtoCopyWith<_PostDto> get copyWith;
 }

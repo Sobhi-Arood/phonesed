@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:phonesed/domain/auth/value_objects.dart';
 import 'package:phonesed/domain/core/unique_id.dart';
 import 'package:phonesed/domain/entities/post.dart';
 import 'package:phonesed/domain/posts/value_objects.dart';
-import 'package:phonesed/infrastructure/core/json_converters.dart';
 import 'package:kt_dart/kt.dart';
 
 part 'post_dtos.freezed.dart';
@@ -34,32 +34,37 @@ abstract class PostDto implements _$PostDto {
     @required String device,
     @required String age,
     @required String condition,
+    @required String userAvatar,
+    @required String userName,
   }) = _PostDto;
 
-  factory PostDto.fromDomain(Post post, String uid) {
-    return PostDto(
-      id: post.id.getOrCrash(),
-      userId: uid,
-      title: post.title.getOrCrash(),
-      price: post.price.getOrCrash(),
-      description: post.description.getOrCrash(),
-      images: post.images.getOrCrash().asList(),
-      publishedDate: DateTime.now(),
-      city: post.city.getOrCrash(),
-      area: post.area,
-      country: post.country,
-      moreAccessories: post.moreAccessories.getOrCrash(),
-      avaliable: post.avaliable,
-      exhangable: post.exhangable,
-      negiotable: post.negiotable,
-      headphones: post.headphones,
-      charger: post.charger,
-      brand: post.brand.getOrCrash(),
-      device: post.device,
-      age: post.age.getOrCrash(),
-      condition: post.condition.getOrCrash(),
-    );
-  }
+  // factory PostDto.fromDomain(
+  //     Post post, String uid, String userAvatar, String userName) {
+  //   return PostDto(
+  //     id: post.id.getOrCrash(),
+  //     userId: uid,
+  //     title: post.title.getOrCrash(),
+  //     price: post.price.getOrCrash(),
+  //     description: post.description.getOrCrash(),
+  //     images: post.images.getOrCrash().asList(),
+  //     publishedDate: DateTime.now(),
+  //     city: post.city.getOrCrash(),
+  //     area: post.area,
+  //     country: post.country,
+  //     moreAccessories: post.moreAccessories.getOrCrash(),
+  //     avaliable: post.avaliable,
+  //     exhangable: post.exhangable,
+  //     negiotable: post.negiotable,
+  //     headphones: post.headphones,
+  //     charger: post.charger,
+  //     brand: post.brand.getOrCrash(),
+  //     device: post.device,
+  //     age: post.age.getOrCrash(),
+  //     condition: post.condition.getOrCrash(),
+  //     userAvatar: userAvatar ?? '-',
+  //     userName: userName,
+  //   );
+  // }
 
   Post toDomain() {
     return Post(
@@ -82,6 +87,9 @@ abstract class PostDto implements _$PostDto {
       device: device,
       age: PostAge(age),
       condition: PostCondition(condition),
+      userId: UniqueId.fromUniqueString(userId),
+      userAvatar: userAvatar,
+      userName: UserName(userName),
     );
   }
 

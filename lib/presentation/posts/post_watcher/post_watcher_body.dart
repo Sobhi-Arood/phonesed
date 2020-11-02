@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phonesed/application/posts/post_watcher/post_watcher_bloc.dart';
 import 'package:phonesed/presentation/posts/post_watcher/post_card/post_card_widget.dart';
+import 'package:phonesed/presentation/routes/router.gr.dart';
 
 class PostWatcherBody extends StatelessWidget {
   const PostWatcherBody({Key key}) : super(key: key);
@@ -28,8 +29,8 @@ class PostWatcherBody extends StatelessWidget {
                 },
               );
             },
-            loadFailure: (f) => Container(
-                  child: Text(f.postFailure.toString()),
+            loadFailure: (f) => const Center(
+                  child: Text('Error'),
                 ));
       },
     );
