@@ -1,0 +1,93 @@
+[
+  {
+    "city": "Abu Dhabi",
+     "areas": [
+        "Al Aman",
+        "Al Bateen",
+        "Al Dhafrah",
+        "Al Falah",
+        "Al Karama",
+        "Al Khubeirah",
+        "Al Lulu Island",
+        "Al Madina",
+        "Al Maryah Island",
+        "Al Manaseer",
+        "Al Manhal",
+        "Al Maqtaa",
+        "Al Markaziyah",
+        "Al Meena",
+        "Al Moroor",
+        "Al Mushrif",
+        "Al Muzoon",
+        "Al Nahyan",
+        "Al Qubesat",
+        "Al Ras Al Akhdar",
+        "Al Reef",
+        "Al Reem Island"
+      ]
+  },
+  {
+    "city": "Dubai",
+    "areas": [
+      "Al Jumairah",
+      "Al Karama",
+      "Abu hail"
+    ]
+  },
+  {
+    "city": "Sharjah",
+    "areas": [
+      "Majaz 3",
+      "Abu shagarah",
+      "Abu hail"
+    ]
+  },
+  {
+    "city": "Ajman",
+    "areas": [
+      "Al Jumairah",
+      "Al Karama",
+      "Abu hail"
+    ]
+  },
+  {
+    "city": "Al Ain",
+    "areas": [
+      "Al Jumairah",
+      "Al Karama",
+      "Abu hail"
+    ]
+  },
+  {
+    "city": "Umm al Quwain",
+    "areas": [
+      "Al Jumairah",
+      "Al Karama",
+      "Abu hail"
+    ]
+  },
+  {
+    "city": "Ras Al-Khaimah",
+    "areas": [
+      "Al Jumairah",
+      "Al Karama",
+      "Abu hail"
+    ]
+  },
+  {
+    "city": "Al Fujairah",
+    "areas": [
+      "Al Jumairah",
+      "Al Karama",
+      "Abu hail"
+    ]
+  },
+  {
+    "city": "Dibba Al Fujairah",
+    "areas": [
+      "Al Jumairah",
+      "Al Karama",
+      "Abu hail"
+    ]
+  }
+]

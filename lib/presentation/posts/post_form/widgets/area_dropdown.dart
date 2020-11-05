@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:phonesed/application/posts/post_form/post_form_bloc.dart';
-import 'package:phonesed/domain/posts/value_objects.dart';
 
 import '../../../../constants.dart';
 
-class AreaDropdown extends StatelessWidget {
+class AreaDropdown extends HookWidget {
   const AreaDropdown({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // final brandValue = useState('Apple');
-    return BlocBuilder<PostFormBloc, PostFormState>(
-      buildWhen: (p, c) => p.post.city != c.post.city,
+    final brandValue = useState(List.empty());
+    return BlocConsumer<PostFormBloc, PostFormState>(
+      listener: (context, state) {
+        // brandValue.value.add()
+        brandValue.value.addAll(state.cities[1]);
+        print(brandValue.value);
+      },
+      buildWhen: (p, c) => p.post.area != c.post.area,
       builder: (context, state) {
         return Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -33,7 +38,7 @@ class AreaDropdown extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: DropdownButton<String>(
-                    value: state.post.city.getOrCrash(),
+                    value: state.post.area,
                     elevation: 0,
                     isExpanded: true,
                     style: TextStyle(
@@ -46,11 +51,11 @@ class AreaDropdown extends StatelessWidget {
                           .bloc<PostFormBloc>()
                           .add(PostFormEvent.cityChanged(v));
                     },
-                    items: PostCity.uaeCities
-                        .map<DropdownMenuItem<String>>((value) {
+                    items:
+                        brandValue.value.map<DropdownMenuItem<String>>((value) {
                       return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
+                        value: value[0].toString(),
+                        child: Text(value[0].toString()),
                       );
                     }).toList(),
                   ),

@@ -1,5 +1,9 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:phonesed/domain/core/errors.dart';
 import 'package:phonesed/domain/core/upload/i_upload_facade.dart';
@@ -9,10 +13,12 @@ import 'package:kt_dart/kt.dart';
 import 'package:dartz/dartz.dart';
 import 'package:phonesed/domain/posts/i_post_repository.dart';
 import 'package:phonesed/domain/posts/post_failure.dart';
+import 'package:phonesed/domain/posts/post_location.dart';
 import 'package:phonesed/infrastructure/auth/user_dtos.dart';
 import 'package:phonesed/infrastructure/core/firestore_helpers.dart';
 import 'package:phonesed/infrastructure/posts/post_dtos.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:flutter/services.dart' show rootBundle;
 
 @LazySingleton(as: IPostRepository)
 class PostRepository implements IPostRepository {
@@ -43,48 +49,52 @@ class PostRepository implements IPostRepository {
   }
 
   @override
-  Stream<Either<PostFailure, KtList<Post>>> fetchAllFavorites() async* {
+  Stream<Either<PostFailure, KtList<Post>>> fetchAllFavorites(
+      String id) async* {
     final posts = KtList<Post>.empty();
     final postDoc = _firestore.collection('Posts');
 
     final user = await _firestore.userDocument();
-    final u = await user.get();
-    final userData = u.data();
-    final favorites = userData['favorites'] as List<dynamic>;
-    print(favorites);
-    yield* postDoc
-        .where('id',
-            isGreaterThan: '',
-            arrayContains: ['247d4340-1c81-11eb-ad10-f3f8df30ef71'])
-        // .orderBy('publishedDate', descending: true)
-        .snapshots()
-        .map((snapshot) => right<PostFailure, KtList<Post>>(
-              snapshot.docs
-                  .map((doc) => PostDto.fromFirestore(doc).toDomain())
-                  .toImmutableList(),
-            ))
-        .onErrorReturnWith((e) {
-          print(e.toString());
-          if (e is FirebaseException &&
-              e.message.contains('permission-denied')) {
-            return left(const PostFailure.insufficientPermission());
-          } else {
-            return left(const PostFailure.unexpected());
-          }
-        });
 
-    // favorites.forEach((postId) async* {
-    // final g = await postDoc.doc(postId.toString()).get();
-    // final post = PostDto.fromFirestore(g).toDomain();
-    // posts.plusElement(post);
-    //   // return right(posts);
-    // }).onErrorReturnWith((e) {
-    //   if (e is FirebaseException && e.message.contains('permission-denied')) {
-    //     return left(const PostFailure.insufficientPermission());
-    //   } else {
-    //     return left(const PostFailure.unexpected());
-    //   }
-    // });
+    // final arr = user.snapshots().map((event) => event.data()['favorites']);
+    // arr.listen((event) {
+    //   final o = postDoc
+    //       .where('id', isEqualTo: event.toString())
+    //       .snapshots()
+    //       .map((event) => event.docs);
+    //   o.listen((event) {
+    //     print(event);
+    //   });
+    _firestore
+        .collection('Users')
+        .where('id', isEqualTo: user.id)
+        .snapshots()
+        .listen((event) {
+      event.docs.forEach((element) {
+        // print(element.data()['favorites']);
+        final List<dynamic> m = element.data()['favorites'] as List<dynamic>;
+        m.forEach((element) async* {
+          yield* postDoc
+              .where('id', isEqualTo: element.toString())
+              .snapshots()
+              .map(
+                (snapshot) => right<PostFailure, KtList<Post>>(snapshot.docs
+                    .map((doc) => PostDto.fromFirestore(doc).toDomain())
+                    .toImmutableList()),
+              )
+              .onErrorReturnWith((e) {
+            if (e is FirebaseException &&
+                e.message.contains('permission-denied')) {
+              return left(const PostFailure.insufficientPermission());
+            } else {
+              return left(const PostFailure.unexpected());
+            }
+          });
+        });
+      });
+    });
+    // print(o);
+    // final a = postDoc.where('id', isEqualTo: event.toString()).snapshots()
   }
 
   @override
@@ -104,7 +114,8 @@ class PostRepository implements IPostRepository {
           await Future.forEach(
               p.asList(), (String element) => imgs.add(element));
 
-          final i = await _uploadFacade.uploadPostImages(imgs, user.id);
+          final i =
+              await _uploadFacade.uploadPostImages(imgs, post.id.getOrCrash());
 
           i.fold((l) => null, (r) async {
             await Future.forEach(r, (String element) => urls.add(element));
@@ -152,8 +163,24 @@ class PostRepository implements IPostRepository {
   }
 
   @override
-  Future<Either<PostFailure, Unit>> delete(Post post) {
-    throw UnimplementedError();
+  Future<Either<PostFailure, Unit>> delete(Post post) async {
+    try {
+      final postId = post.id.getOrCrash();
+
+      await _uploadFacade.deleteImages(postId);
+      await _firestore.collection('Posts').doc(postId).delete();
+
+      return right(unit);
+    } on FirebaseException catch (e) {
+      print(e.message);
+      if (e is FirebaseException && e.message.contains('permission-denied')) {
+        return left(const PostFailure.insufficientPermission());
+      } else if (e is FirebaseException && e.message.contains('not-found')) {
+        return left(const PostFailure.unableToUpdate());
+      } else {
+        return left(const PostFailure.unexpected());
+      }
+    }
   }
 
   @override
@@ -169,6 +196,7 @@ class PostRepository implements IPostRepository {
       await userDoc.update({
         'favorites': FieldValue.arrayUnion([postId])
       });
+
       return right(unit);
     } on FirebaseException catch (e) {
       if (e is FirebaseException && e.message.contains('permission-denied')) {
@@ -221,7 +249,8 @@ class PostRepository implements IPostRepository {
         posts.add(post);
         // print(posts);
       });
-      posts.map((s) => print(s.id));
+
+      // posts.map((s) => print(s.id));
       // print(posts);
       return right(posts.toImmutableList());
     } on FirebaseException catch (e) {
@@ -233,6 +262,65 @@ class PostRepository implements IPostRepository {
     } catch (_) {
       return left(const PostFailure.unexpected());
     }
+  }
+
+  @override
+  Future<Either<PostFailure, KtList<List<dynamic>>>> getArea(
+      String city) async {
+    try {
+      final String decoded =
+          await rootBundle.loadString('assets/locations.json');
+      final List<dynamic> jsonRes = json.decode(decoded) as List<dynamic>;
+      // final locs = <PostLocation>[];
+      final List<PostLocation> locs = jsonRes
+          .map<PostLocation>(
+              (json) => PostLocation.fromJson(json as Map<String, dynamic>))
+          .toList();
+
+      final areas = locs.map((e) {
+        // print(e.city);
+        // print(city);
+        if (e.city == city) {
+          return e.areas;
+        }
+      });
+      // print(areas);
+      // final parsed = json.decode(await rootBundle.loadString('assets/locations.json'));
+
+      // await Future.forEach(jsonRes, (element) async {
+      //   final loc = PostLocation.fromJson(element as Map<String, dynamic>);
+      //   locs.add(loc);
+      //   print(loc.city);
+      // });
+
+      // return right(areas.toList().toImmutableList());
+      return right(areas.toImmutableList());
+    } catch (e) {
+      print(e);
+      return left(const PostFailure.unexpected());
+    }
+  }
+
+  @override
+  Stream<Either<PostFailure, KtList<String>>> fetchFavoritesIds() async* {
+    final user = await _firestore.userDocument();
+
+    yield* user
+        .collection('favorites')
+        .snapshots()
+        .map((snapshot) => right<PostFailure, KtList<String>>(
+              snapshot.docs
+                  .map((e) => e.data()['is'].toString())
+                  .toImmutableList(),
+            ))
+        .onErrorReturnWith((e) {
+      print(e.toString());
+      if (e is FirebaseException && e.message.contains('permission-denied')) {
+        return left(const PostFailure.insufficientPermission());
+      } else {
+        return left(const PostFailure.unexpected());
+      }
+    });
   }
 }
 

@@ -16,10 +16,15 @@ import 'application/auth/auth_bloc/auth_bloc.dart';
 import 'infrastructure/core/avatar_picker_facade.dart';
 import 'application/core/user_profile/avatar_user/avatar_user_bloc.dart';
 import 'application/core/bottom_navigation/bottom_navigation_bloc.dart';
+import 'application/chats/chat_form/chat_form_bloc.dart';
+import 'infrastructure/chats/chat_repository.dart';
+import 'application/chats/chat_watcher/chat_watcher_bloc.dart';
+import 'application/chats/conversations_watcher/conversations_watcher_bloc.dart';
 import 'infrastructure/auth/firebase_auth_facade.dart';
 import 'infrastructure/core/firebase_injectable_module.dart';
 import 'domain/auth/i_auth_facade.dart';
 import 'domain/core/avatar/i_avatar_picker.dart';
+import 'domain/chats/i_chat_repository.dart';
 import 'domain/posts/i_post_repository.dart';
 import 'domain/core/upload/i_upload_facade.dart';
 import 'domain/auth/i_user_repository.dart';
@@ -50,11 +55,17 @@ GetIt $initGetIt(
   gh.lazySingleton<FirebaseFirestore>(() => firebaseInjectableModule.firestore);
   gh.lazySingleton<FirebaseStorage>(() => firebaseInjectableModule.storage);
   gh.lazySingleton<GoogleSignIn>(() => firebaseInjectableModule.googleSignIn);
+  gh.lazySingleton<IChatRepository>(
+      () => ChatRepository(get<FirebaseFirestore>()));
   gh.lazySingleton<IUploadFacade>(() => UploadFacade(get<FirebaseStorage>()));
   gh.lazySingleton<IUserRepository>(
       () => UserRepository(get<FirebaseFirestore>()));
   gh.lazySingleton<ImagePicker>(() => firebaseInjectableModule.imagePicker);
   gh.factory<UserProfileBloc>(() => UserProfileBloc(get<IUserRepository>()));
+  gh.factory<ChatFormBloc>(() => ChatFormBloc(get<IChatRepository>()));
+  gh.factory<ChatWatcherBloc>(() => ChatWatcherBloc(get<IChatRepository>()));
+  gh.factory<ConversationsWatcherBloc>(
+      () => ConversationsWatcherBloc(get<IChatRepository>()));
   gh.lazySingleton<IAuthFacade>(() => FirebaseAuthFacade(
         get<FirebaseAuth>(),
         get<GoogleSignIn>(),

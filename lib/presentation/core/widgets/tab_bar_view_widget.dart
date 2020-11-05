@@ -5,6 +5,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:phonesed/application/auth/auth_bloc/auth_bloc.dart';
 import 'package:phonesed/application/core/bottom_navigation/bottom_navigation_bloc.dart';
 import 'package:phonesed/constants.dart';
+import 'package:phonesed/presentation/chats/conversations_page/conversations_page.dart';
 import 'package:phonesed/presentation/posts/post_watcher/favorite_posts_watcher_page.dart';
 import 'package:phonesed/presentation/posts/post_watcher/post_watcher_page.dart';
 import 'package:phonesed/presentation/profile/profile_page.dart';
@@ -24,9 +25,7 @@ class TabBarViewWidget extends HookWidget {
           children: [
             PostWatcherPage(),
             FavoritePostsWatcherPage(),
-            Container(
-              color: Colors.green,
-            ),
+            ConversationsPage(),
             // const ProfilePage(),
             BlocBuilder<AuthBloc, AuthState>(
               builder: (context, state) {

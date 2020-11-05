@@ -7,4 +7,7 @@ abstract class PostActorState with _$PostActorState {
   const factory PostActorState.likeFailure(PostFailure postFailure) =
       _LikeFailure;
   const factory PostActorState.likeSuccess() = _LikeSuccess;
+  const factory PostActorState.deleteFailure(PostFailure postFailure) =
+      _DeleteFailure;
+  const factory PostActorState.deleteSuccess() = _DeleteSuccess;
 }

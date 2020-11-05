@@ -26,6 +26,13 @@ class _$PostActorEventTearOff {
       post,
     );
   }
+
+// ignore: unused_element
+  _Delete delete(Post post) {
+    return _Delete(
+      post,
+    );
+  }
 }
 
 /// @nodoc
@@ -40,22 +47,26 @@ mixin _$PostActorEvent {
   Result when<Result extends Object>({
     @required Result liked(Post post),
     @required Result unLiked(Post post),
+    @required Result delete(Post post),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result liked(Post post),
     Result unLiked(Post post),
+    Result delete(Post post),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result liked(_Liked value),
     @required Result unLiked(_UnLiked value),
+    @required Result delete(_Delete value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result liked(_Liked value),
     Result unLiked(_UnLiked value),
+    Result delete(_Delete value),
     @required Result orElse(),
   });
 
@@ -164,9 +175,11 @@ class _$_Liked implements _Liked {
   Result when<Result extends Object>({
     @required Result liked(Post post),
     @required Result unLiked(Post post),
+    @required Result delete(Post post),
   }) {
     assert(liked != null);
     assert(unLiked != null);
+    assert(delete != null);
     return liked(post);
   }
 
@@ -175,6 +188,7 @@ class _$_Liked implements _Liked {
   Result maybeWhen<Result extends Object>({
     Result liked(Post post),
     Result unLiked(Post post),
+    Result delete(Post post),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -189,9 +203,11 @@ class _$_Liked implements _Liked {
   Result map<Result extends Object>({
     @required Result liked(_Liked value),
     @required Result unLiked(_UnLiked value),
+    @required Result delete(_Delete value),
   }) {
     assert(liked != null);
     assert(unLiked != null);
+    assert(delete != null);
     return liked(this);
   }
 
@@ -200,6 +216,7 @@ class _$_Liked implements _Liked {
   Result maybeMap<Result extends Object>({
     Result liked(_Liked value),
     Result unLiked(_UnLiked value),
+    Result delete(_Delete value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -283,9 +300,11 @@ class _$_UnLiked implements _UnLiked {
   Result when<Result extends Object>({
     @required Result liked(Post post),
     @required Result unLiked(Post post),
+    @required Result delete(Post post),
   }) {
     assert(liked != null);
     assert(unLiked != null);
+    assert(delete != null);
     return unLiked(post);
   }
 
@@ -294,6 +313,7 @@ class _$_UnLiked implements _UnLiked {
   Result maybeWhen<Result extends Object>({
     Result liked(Post post),
     Result unLiked(Post post),
+    Result delete(Post post),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -308,9 +328,11 @@ class _$_UnLiked implements _UnLiked {
   Result map<Result extends Object>({
     @required Result liked(_Liked value),
     @required Result unLiked(_UnLiked value),
+    @required Result delete(_Delete value),
   }) {
     assert(liked != null);
     assert(unLiked != null);
+    assert(delete != null);
     return unLiked(this);
   }
 
@@ -319,6 +341,7 @@ class _$_UnLiked implements _UnLiked {
   Result maybeMap<Result extends Object>({
     Result liked(_Liked value),
     Result unLiked(_UnLiked value),
+    Result delete(_Delete value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -336,6 +359,130 @@ abstract class _UnLiked implements PostActorEvent {
   Post get post;
   @override
   _$UnLikedCopyWith<_UnLiked> get copyWith;
+}
+
+/// @nodoc
+abstract class _$DeleteCopyWith<$Res> implements $PostActorEventCopyWith<$Res> {
+  factory _$DeleteCopyWith(_Delete value, $Res Function(_Delete) then) =
+      __$DeleteCopyWithImpl<$Res>;
+  @override
+  $Res call({Post post});
+
+  @override
+  $PostCopyWith<$Res> get post;
+}
+
+/// @nodoc
+class __$DeleteCopyWithImpl<$Res> extends _$PostActorEventCopyWithImpl<$Res>
+    implements _$DeleteCopyWith<$Res> {
+  __$DeleteCopyWithImpl(_Delete _value, $Res Function(_Delete) _then)
+      : super(_value, (v) => _then(v as _Delete));
+
+  @override
+  _Delete get _value => super._value as _Delete;
+
+  @override
+  $Res call({
+    Object post = freezed,
+  }) {
+    return _then(_Delete(
+      post == freezed ? _value.post : post as Post,
+    ));
+  }
+}
+
+/// @nodoc
+class _$_Delete implements _Delete {
+  const _$_Delete(this.post) : assert(post != null);
+
+  @override
+  final Post post;
+
+  @override
+  String toString() {
+    return 'PostActorEvent.delete(post: $post)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _Delete &&
+            (identical(other.post, post) ||
+                const DeepCollectionEquality().equals(other.post, post)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(post);
+
+  @override
+  _$DeleteCopyWith<_Delete> get copyWith =>
+      __$DeleteCopyWithImpl<_Delete>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result liked(Post post),
+    @required Result unLiked(Post post),
+    @required Result delete(Post post),
+  }) {
+    assert(liked != null);
+    assert(unLiked != null);
+    assert(delete != null);
+    return delete(post);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result liked(Post post),
+    Result unLiked(Post post),
+    Result delete(Post post),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (delete != null) {
+      return delete(post);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result liked(_Liked value),
+    @required Result unLiked(_UnLiked value),
+    @required Result delete(_Delete value),
+  }) {
+    assert(liked != null);
+    assert(unLiked != null);
+    assert(delete != null);
+    return delete(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result liked(_Liked value),
+    Result unLiked(_UnLiked value),
+    Result delete(_Delete value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (delete != null) {
+      return delete(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Delete implements PostActorEvent {
+  const factory _Delete(Post post) = _$_Delete;
+
+  @override
+  Post get post;
+  @override
+  _$DeleteCopyWith<_Delete> get copyWith;
 }
 
 /// @nodoc
@@ -363,6 +510,18 @@ class _$PostActorStateTearOff {
   _LikeSuccess likeSuccess() {
     return const _LikeSuccess();
   }
+
+// ignore: unused_element
+  _DeleteFailure deleteFailure(PostFailure postFailure) {
+    return _DeleteFailure(
+      postFailure,
+    );
+  }
+
+// ignore: unused_element
+  _DeleteSuccess deleteSuccess() {
+    return const _DeleteSuccess();
+  }
 }
 
 /// @nodoc
@@ -377,6 +536,8 @@ mixin _$PostActorState {
     @required Result actionInProgress(),
     @required Result likeFailure(PostFailure postFailure),
     @required Result likeSuccess(),
+    @required Result deleteFailure(PostFailure postFailure),
+    @required Result deleteSuccess(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
@@ -384,6 +545,8 @@ mixin _$PostActorState {
     Result actionInProgress(),
     Result likeFailure(PostFailure postFailure),
     Result likeSuccess(),
+    Result deleteFailure(PostFailure postFailure),
+    Result deleteSuccess(),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -392,6 +555,8 @@ mixin _$PostActorState {
     @required Result actionInProgress(_ActionInProgress value),
     @required Result likeFailure(_LikeFailure value),
     @required Result likeSuccess(_LikeSuccess value),
+    @required Result deleteFailure(_DeleteFailure value),
+    @required Result deleteSuccess(_DeleteSuccess value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
@@ -399,6 +564,8 @@ mixin _$PostActorState {
     Result actionInProgress(_ActionInProgress value),
     Result likeFailure(_LikeFailure value),
     Result likeSuccess(_LikeSuccess value),
+    Result deleteFailure(_DeleteFailure value),
+    Result deleteSuccess(_DeleteSuccess value),
     @required Result orElse(),
   });
 }
@@ -460,11 +627,15 @@ class _$_Initial implements _Initial {
     @required Result actionInProgress(),
     @required Result likeFailure(PostFailure postFailure),
     @required Result likeSuccess(),
+    @required Result deleteFailure(PostFailure postFailure),
+    @required Result deleteSuccess(),
   }) {
     assert(initial != null);
     assert(actionInProgress != null);
     assert(likeFailure != null);
     assert(likeSuccess != null);
+    assert(deleteFailure != null);
+    assert(deleteSuccess != null);
     return initial();
   }
 
@@ -475,6 +646,8 @@ class _$_Initial implements _Initial {
     Result actionInProgress(),
     Result likeFailure(PostFailure postFailure),
     Result likeSuccess(),
+    Result deleteFailure(PostFailure postFailure),
+    Result deleteSuccess(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -491,11 +664,15 @@ class _$_Initial implements _Initial {
     @required Result actionInProgress(_ActionInProgress value),
     @required Result likeFailure(_LikeFailure value),
     @required Result likeSuccess(_LikeSuccess value),
+    @required Result deleteFailure(_DeleteFailure value),
+    @required Result deleteSuccess(_DeleteSuccess value),
   }) {
     assert(initial != null);
     assert(actionInProgress != null);
     assert(likeFailure != null);
     assert(likeSuccess != null);
+    assert(deleteFailure != null);
+    assert(deleteSuccess != null);
     return initial(this);
   }
 
@@ -506,6 +683,8 @@ class _$_Initial implements _Initial {
     Result actionInProgress(_ActionInProgress value),
     Result likeFailure(_LikeFailure value),
     Result likeSuccess(_LikeSuccess value),
+    Result deleteFailure(_DeleteFailure value),
+    Result deleteSuccess(_DeleteSuccess value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -563,11 +742,15 @@ class _$_ActionInProgress implements _ActionInProgress {
     @required Result actionInProgress(),
     @required Result likeFailure(PostFailure postFailure),
     @required Result likeSuccess(),
+    @required Result deleteFailure(PostFailure postFailure),
+    @required Result deleteSuccess(),
   }) {
     assert(initial != null);
     assert(actionInProgress != null);
     assert(likeFailure != null);
     assert(likeSuccess != null);
+    assert(deleteFailure != null);
+    assert(deleteSuccess != null);
     return actionInProgress();
   }
 
@@ -578,6 +761,8 @@ class _$_ActionInProgress implements _ActionInProgress {
     Result actionInProgress(),
     Result likeFailure(PostFailure postFailure),
     Result likeSuccess(),
+    Result deleteFailure(PostFailure postFailure),
+    Result deleteSuccess(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -594,11 +779,15 @@ class _$_ActionInProgress implements _ActionInProgress {
     @required Result actionInProgress(_ActionInProgress value),
     @required Result likeFailure(_LikeFailure value),
     @required Result likeSuccess(_LikeSuccess value),
+    @required Result deleteFailure(_DeleteFailure value),
+    @required Result deleteSuccess(_DeleteSuccess value),
   }) {
     assert(initial != null);
     assert(actionInProgress != null);
     assert(likeFailure != null);
     assert(likeSuccess != null);
+    assert(deleteFailure != null);
+    assert(deleteSuccess != null);
     return actionInProgress(this);
   }
 
@@ -609,6 +798,8 @@ class _$_ActionInProgress implements _ActionInProgress {
     Result actionInProgress(_ActionInProgress value),
     Result likeFailure(_LikeFailure value),
     Result likeSuccess(_LikeSuccess value),
+    Result deleteFailure(_DeleteFailure value),
+    Result deleteSuccess(_DeleteSuccess value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -700,11 +891,15 @@ class _$_LikeFailure implements _LikeFailure {
     @required Result actionInProgress(),
     @required Result likeFailure(PostFailure postFailure),
     @required Result likeSuccess(),
+    @required Result deleteFailure(PostFailure postFailure),
+    @required Result deleteSuccess(),
   }) {
     assert(initial != null);
     assert(actionInProgress != null);
     assert(likeFailure != null);
     assert(likeSuccess != null);
+    assert(deleteFailure != null);
+    assert(deleteSuccess != null);
     return likeFailure(postFailure);
   }
 
@@ -715,6 +910,8 @@ class _$_LikeFailure implements _LikeFailure {
     Result actionInProgress(),
     Result likeFailure(PostFailure postFailure),
     Result likeSuccess(),
+    Result deleteFailure(PostFailure postFailure),
+    Result deleteSuccess(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -731,11 +928,15 @@ class _$_LikeFailure implements _LikeFailure {
     @required Result actionInProgress(_ActionInProgress value),
     @required Result likeFailure(_LikeFailure value),
     @required Result likeSuccess(_LikeSuccess value),
+    @required Result deleteFailure(_DeleteFailure value),
+    @required Result deleteSuccess(_DeleteSuccess value),
   }) {
     assert(initial != null);
     assert(actionInProgress != null);
     assert(likeFailure != null);
     assert(likeSuccess != null);
+    assert(deleteFailure != null);
+    assert(deleteSuccess != null);
     return likeFailure(this);
   }
 
@@ -746,6 +947,8 @@ class _$_LikeFailure implements _LikeFailure {
     Result actionInProgress(_ActionInProgress value),
     Result likeFailure(_LikeFailure value),
     Result likeSuccess(_LikeSuccess value),
+    Result deleteFailure(_DeleteFailure value),
+    Result deleteSuccess(_DeleteSuccess value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -806,11 +1009,15 @@ class _$_LikeSuccess implements _LikeSuccess {
     @required Result actionInProgress(),
     @required Result likeFailure(PostFailure postFailure),
     @required Result likeSuccess(),
+    @required Result deleteFailure(PostFailure postFailure),
+    @required Result deleteSuccess(),
   }) {
     assert(initial != null);
     assert(actionInProgress != null);
     assert(likeFailure != null);
     assert(likeSuccess != null);
+    assert(deleteFailure != null);
+    assert(deleteSuccess != null);
     return likeSuccess();
   }
 
@@ -821,6 +1028,8 @@ class _$_LikeSuccess implements _LikeSuccess {
     Result actionInProgress(),
     Result likeFailure(PostFailure postFailure),
     Result likeSuccess(),
+    Result deleteFailure(PostFailure postFailure),
+    Result deleteSuccess(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -837,11 +1046,15 @@ class _$_LikeSuccess implements _LikeSuccess {
     @required Result actionInProgress(_ActionInProgress value),
     @required Result likeFailure(_LikeFailure value),
     @required Result likeSuccess(_LikeSuccess value),
+    @required Result deleteFailure(_DeleteFailure value),
+    @required Result deleteSuccess(_DeleteSuccess value),
   }) {
     assert(initial != null);
     assert(actionInProgress != null);
     assert(likeFailure != null);
     assert(likeSuccess != null);
+    assert(deleteFailure != null);
+    assert(deleteSuccess != null);
     return likeSuccess(this);
   }
 
@@ -852,6 +1065,8 @@ class _$_LikeSuccess implements _LikeSuccess {
     Result actionInProgress(_ActionInProgress value),
     Result likeFailure(_LikeFailure value),
     Result likeSuccess(_LikeSuccess value),
+    Result deleteFailure(_DeleteFailure value),
+    Result deleteSuccess(_DeleteSuccess value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -864,4 +1079,271 @@ class _$_LikeSuccess implements _LikeSuccess {
 
 abstract class _LikeSuccess implements PostActorState {
   const factory _LikeSuccess() = _$_LikeSuccess;
+}
+
+/// @nodoc
+abstract class _$DeleteFailureCopyWith<$Res> {
+  factory _$DeleteFailureCopyWith(
+          _DeleteFailure value, $Res Function(_DeleteFailure) then) =
+      __$DeleteFailureCopyWithImpl<$Res>;
+  $Res call({PostFailure postFailure});
+
+  $PostFailureCopyWith<$Res> get postFailure;
+}
+
+/// @nodoc
+class __$DeleteFailureCopyWithImpl<$Res>
+    extends _$PostActorStateCopyWithImpl<$Res>
+    implements _$DeleteFailureCopyWith<$Res> {
+  __$DeleteFailureCopyWithImpl(
+      _DeleteFailure _value, $Res Function(_DeleteFailure) _then)
+      : super(_value, (v) => _then(v as _DeleteFailure));
+
+  @override
+  _DeleteFailure get _value => super._value as _DeleteFailure;
+
+  @override
+  $Res call({
+    Object postFailure = freezed,
+  }) {
+    return _then(_DeleteFailure(
+      postFailure == freezed ? _value.postFailure : postFailure as PostFailure,
+    ));
+  }
+
+  @override
+  $PostFailureCopyWith<$Res> get postFailure {
+    if (_value.postFailure == null) {
+      return null;
+    }
+    return $PostFailureCopyWith<$Res>(_value.postFailure, (value) {
+      return _then(_value.copyWith(postFailure: value));
+    });
+  }
+}
+
+/// @nodoc
+class _$_DeleteFailure implements _DeleteFailure {
+  const _$_DeleteFailure(this.postFailure) : assert(postFailure != null);
+
+  @override
+  final PostFailure postFailure;
+
+  @override
+  String toString() {
+    return 'PostActorState.deleteFailure(postFailure: $postFailure)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _DeleteFailure &&
+            (identical(other.postFailure, postFailure) ||
+                const DeepCollectionEquality()
+                    .equals(other.postFailure, postFailure)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(postFailure);
+
+  @override
+  _$DeleteFailureCopyWith<_DeleteFailure> get copyWith =>
+      __$DeleteFailureCopyWithImpl<_DeleteFailure>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required Result actionInProgress(),
+    @required Result likeFailure(PostFailure postFailure),
+    @required Result likeSuccess(),
+    @required Result deleteFailure(PostFailure postFailure),
+    @required Result deleteSuccess(),
+  }) {
+    assert(initial != null);
+    assert(actionInProgress != null);
+    assert(likeFailure != null);
+    assert(likeSuccess != null);
+    assert(deleteFailure != null);
+    assert(deleteSuccess != null);
+    return deleteFailure(postFailure);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result actionInProgress(),
+    Result likeFailure(PostFailure postFailure),
+    Result likeSuccess(),
+    Result deleteFailure(PostFailure postFailure),
+    Result deleteSuccess(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (deleteFailure != null) {
+      return deleteFailure(postFailure);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(_Initial value),
+    @required Result actionInProgress(_ActionInProgress value),
+    @required Result likeFailure(_LikeFailure value),
+    @required Result likeSuccess(_LikeSuccess value),
+    @required Result deleteFailure(_DeleteFailure value),
+    @required Result deleteSuccess(_DeleteSuccess value),
+  }) {
+    assert(initial != null);
+    assert(actionInProgress != null);
+    assert(likeFailure != null);
+    assert(likeSuccess != null);
+    assert(deleteFailure != null);
+    assert(deleteSuccess != null);
+    return deleteFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(_Initial value),
+    Result actionInProgress(_ActionInProgress value),
+    Result likeFailure(_LikeFailure value),
+    Result likeSuccess(_LikeSuccess value),
+    Result deleteFailure(_DeleteFailure value),
+    Result deleteSuccess(_DeleteSuccess value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (deleteFailure != null) {
+      return deleteFailure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeleteFailure implements PostActorState {
+  const factory _DeleteFailure(PostFailure postFailure) = _$_DeleteFailure;
+
+  PostFailure get postFailure;
+  _$DeleteFailureCopyWith<_DeleteFailure> get copyWith;
+}
+
+/// @nodoc
+abstract class _$DeleteSuccessCopyWith<$Res> {
+  factory _$DeleteSuccessCopyWith(
+          _DeleteSuccess value, $Res Function(_DeleteSuccess) then) =
+      __$DeleteSuccessCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$DeleteSuccessCopyWithImpl<$Res>
+    extends _$PostActorStateCopyWithImpl<$Res>
+    implements _$DeleteSuccessCopyWith<$Res> {
+  __$DeleteSuccessCopyWithImpl(
+      _DeleteSuccess _value, $Res Function(_DeleteSuccess) _then)
+      : super(_value, (v) => _then(v as _DeleteSuccess));
+
+  @override
+  _DeleteSuccess get _value => super._value as _DeleteSuccess;
+}
+
+/// @nodoc
+class _$_DeleteSuccess implements _DeleteSuccess {
+  const _$_DeleteSuccess();
+
+  @override
+  String toString() {
+    return 'PostActorState.deleteSuccess()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _DeleteSuccess);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required Result actionInProgress(),
+    @required Result likeFailure(PostFailure postFailure),
+    @required Result likeSuccess(),
+    @required Result deleteFailure(PostFailure postFailure),
+    @required Result deleteSuccess(),
+  }) {
+    assert(initial != null);
+    assert(actionInProgress != null);
+    assert(likeFailure != null);
+    assert(likeSuccess != null);
+    assert(deleteFailure != null);
+    assert(deleteSuccess != null);
+    return deleteSuccess();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result actionInProgress(),
+    Result likeFailure(PostFailure postFailure),
+    Result likeSuccess(),
+    Result deleteFailure(PostFailure postFailure),
+    Result deleteSuccess(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (deleteSuccess != null) {
+      return deleteSuccess();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(_Initial value),
+    @required Result actionInProgress(_ActionInProgress value),
+    @required Result likeFailure(_LikeFailure value),
+    @required Result likeSuccess(_LikeSuccess value),
+    @required Result deleteFailure(_DeleteFailure value),
+    @required Result deleteSuccess(_DeleteSuccess value),
+  }) {
+    assert(initial != null);
+    assert(actionInProgress != null);
+    assert(likeFailure != null);
+    assert(likeSuccess != null);
+    assert(deleteFailure != null);
+    assert(deleteSuccess != null);
+    return deleteSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(_Initial value),
+    Result actionInProgress(_ActionInProgress value),
+    Result likeFailure(_LikeFailure value),
+    Result likeSuccess(_LikeSuccess value),
+    Result deleteFailure(_DeleteFailure value),
+    Result deleteSuccess(_DeleteSuccess value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (deleteSuccess != null) {
+      return deleteSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeleteSuccess implements PostActorState {
+  const factory _DeleteSuccess() = _$_DeleteSuccess;
 }

@@ -8,4 +8,5 @@ abstract class IUploadFacade {
   Future<Either<UploadFailure, String>> uploadAvatar(File avatar);
   Future<Either<UploadFailure, List<String>>> uploadPostImages(
       List<String> images, String postName);
+  Future<Either<UploadFailure, Unit>> deleteImages(String postId);
 }

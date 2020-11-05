@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phonesed/application/posts/post_form/post_form_bloc.dart';
+import 'package:phonesed/domain/posts/post_location.dart';
 import 'package:phonesed/domain/posts/value_objects.dart';
 
 import '../../../../constants.dart';
@@ -14,6 +17,7 @@ class CityDropdown extends StatelessWidget {
     return BlocBuilder<PostFormBloc, PostFormState>(
       buildWhen: (p, c) => p.post.city != c.post.city,
       builder: (context, state) {
+        // print(state.post.city.getOrCrash());
         return Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.start,

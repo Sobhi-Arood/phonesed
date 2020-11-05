@@ -13,6 +13,7 @@ import '../../domain/entities/post.dart';
 import '../auth/sign_in_page.dart';
 import '../auth/sign_up_page.dart';
 import '../auth/welcome_page.dart';
+import '../chats/chat_page/chat_page.dart';
 import '../core/main_page.dart';
 import '../posts/post_detail/post_detail_page.dart';
 import '../posts/post_form/post_form_page.dart';
@@ -24,6 +25,7 @@ class Routes {
   static const String signUpPage = '/sign-up-page';
   static const String postFormPage = '/post-form-page';
   static const String postDetailPage = '/post-detail-page';
+  static const String chatPage = '/chat-page';
   static const all = <String>{
     mainPage,
     welcomePage,
@@ -31,6 +33,7 @@ class Routes {
     signUpPage,
     postFormPage,
     postDetailPage,
+    chatPage,
   };
 }
 
@@ -44,6 +47,7 @@ class Router extends RouterBase {
     RouteDef(Routes.signUpPage, page: SignUpPage),
     RouteDef(Routes.postFormPage, page: PostFormPage),
     RouteDef(Routes.postDetailPage, page: PostDetailPage),
+    RouteDef(Routes.chatPage, page: ChatPage),
   ];
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
@@ -93,6 +97,17 @@ class Router extends RouterBase {
         settings: data,
       );
     },
+    ChatPage: (data) {
+      final args = data.getArgs<ChatPageArguments>(nullOk: false);
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => ChatPage(
+          key: args.key,
+          post: args.post,
+        ),
+        settings: data,
+        fullscreenDialog: true,
+      );
+    },
   };
 }
 
@@ -126,6 +141,15 @@ extension RouterExtendedNavigatorStateX on ExtendedNavigatorState {
         Routes.postDetailPage,
         arguments: PostDetailPageArguments(key: key, post: post),
       );
+
+  Future<dynamic> pushChatPage({
+    Key key,
+    @required Post post,
+  }) =>
+      push<dynamic>(
+        Routes.chatPage,
+        arguments: ChatPageArguments(key: key, post: post),
+      );
 }
 
 /// ************************************************************************
@@ -144,4 +168,11 @@ class PostDetailPageArguments {
   final Key key;
   final Post post;
   PostDetailPageArguments({this.key, @required this.post});
+}
+
+/// ChatPage arguments holder class
+class ChatPageArguments {
+  final Key key;
+  final Post post;
+  ChatPageArguments({this.key, @required this.post});
 }

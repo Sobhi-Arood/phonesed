@@ -4,6 +4,7 @@ part of 'post_form_bloc.dart';
 abstract class PostFormState with _$PostFormState {
   const factory PostFormState({
     @required Post post,
+    @required KtList<List<dynamic>> cities,
     @required bool showErrorMessages,
     @required bool isEditing,
     @required bool isSaving,
@@ -12,6 +13,7 @@ abstract class PostFormState with _$PostFormState {
 
   factory PostFormState.initial() => PostFormState(
         post: Post.empty(),
+        cities: KtList.empty(),
         showErrorMessages: false,
         isEditing: false,
         isSaving: false,

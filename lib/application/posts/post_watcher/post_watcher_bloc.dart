@@ -34,12 +34,17 @@ class PostWatcherBloc extends Bloc<PostWatcherEvent, PostWatcherState> {
               add(PostWatcherEvent.postsReceived(failureOrPosts)));
     }, watchAllFavoritesStarted: (e) async* {
       yield const PostWatcherState.loadInProgress();
-      // await _postStreamSubscription?.cancel();
+      await _postStreamSubscription?.cancel();
       final g = await _postRepository.getAllFavorites();
       add(PostWatcherEvent.postsReceived(g));
       // await _postStreamSubscription?.cancel();
       // _postStreamSubscription = _postRepository.fetchAllFavorites().listen(
       //     (failureOrPosts) =>
+      //         print(failureOrPosts.fold((l) => print(l), (r) => print(r))));
+
+      // _postStreamSubscription = _postRepository
+      //     .fetchAllFavorites(event.toString())
+      //     .listen((failureOrPosts) =>
       //         add(PostWatcherEvent.postsReceived(failureOrPosts)));
     }, postsReceived: (e) async* {
       yield e.failureOrPosts.fold((f) => PostWatcherState.loadFailure(f),

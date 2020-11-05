@@ -9,6 +9,7 @@ import 'package:kt_dart/kt.dart';
 import 'package:phonesed/domain/entities/post.dart';
 import 'package:phonesed/domain/posts/i_post_repository.dart';
 import 'package:phonesed/domain/posts/post_failure.dart';
+import 'package:phonesed/domain/posts/post_location.dart';
 import 'package:phonesed/domain/posts/value_objects.dart';
 
 part 'post_form_event.dart';
@@ -24,11 +25,15 @@ class PostFormBloc extends Bloc<PostFormEvent, PostFormState> {
   Stream<PostFormState> mapEventToState(
     PostFormEvent event,
   ) async* {
+    Either<PostFailure, KtList<List<dynamic>>> lis;
     yield* event.map(initialized: (e) async* {
+      // final pos = Post.empty();
+      // final li = lis.getOrElse(() => emptyList());
       yield e.initialPostOption.fold(
         () => state,
         (initialPost) => state.copyWith(
           post: initialPost,
+          cities: emptyList(),
           isEditing: true,
         ),
       );
@@ -75,11 +80,19 @@ class PostFormBloc extends Bloc<PostFormEvent, PostFormState> {
         saveFailureOrSuccessOption: none(),
       );
     }, cityChanged: (e) async* {
+      lis = await _postRepository.getArea('Dubai');
+      final li = lis.getOrElse(() => emptyList());
+      print(li);
       yield state.copyWith(
         post: state.post.copyWith(city: PostCity(e.cityStr)),
+        cities: li,
+        // cities: li.fold((l) => emptyList(), (r) => r[0].),
         saveFailureOrSuccessOption: none(),
       );
     }, areaChanged: (e) async* {
+      // final posE = pos.copyWith(
+      //   area: lis.fold((l) => '', (r) => r[0][0]),
+      // );
       yield state.copyWith(
         post: state.post.copyWith(area: e.areaStr),
         saveFailureOrSuccessOption: none(),

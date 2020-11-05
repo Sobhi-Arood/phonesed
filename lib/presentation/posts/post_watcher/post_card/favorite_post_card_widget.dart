@@ -43,7 +43,9 @@ class FavoritePostCard extends StatelessWidget {
                               color: const Color(0x50000000),
                               borderRadius: BorderRadius.circular(8)),
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 3, vertical: 0),
+                            horizontal: 3,
+                            vertical: 0,
+                          ),
                           // color: const Color(0x50000000),
                           child: IconButton(
                             onPressed: () {

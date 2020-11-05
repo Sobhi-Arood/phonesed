@@ -32,6 +32,13 @@ class PostActorBloc extends Bloc<PostActorEvent, PostActorState> {
           await _postRepository.unlike(event.post.id.getOrCrash());
       yield possibleFailure.fold((f) => PostActorState.likeFailure(f),
           (_) => const PostActorState.likeSuccess());
+    }, delete: (e) async* {
+      yield const PostActorState.actionInProgress();
+      final possibleFailure = await _postRepository.delete(e.post);
+      yield possibleFailure.fold(
+        (f) => PostActorState.deleteFailure(f),
+        (_) => const PostActorState.deleteSuccess(),
+      );
     });
   }
 }

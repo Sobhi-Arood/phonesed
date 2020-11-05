@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route_annotations.dart';
 import 'package:phonesed/presentation/auth/sign_in_page.dart';
 import 'package:phonesed/presentation/auth/sign_up_page.dart';
 import 'package:phonesed/presentation/auth/welcome_page.dart';
+import 'package:phonesed/presentation/chats/chat_page/chat_page.dart';
 import 'package:phonesed/presentation/core/main_page.dart';
 import 'package:phonesed/presentation/posts/post_detail/post_detail_page.dart';
 import 'package:phonesed/presentation/posts/post_form/post_form_page.dart';
@@ -15,6 +16,7 @@ import 'package:phonesed/presentation/posts/post_form/post_form_page.dart';
     MaterialRoute(page: SignUpPage),
     MaterialRoute(page: PostFormPage, fullscreenDialog: true),
     MaterialRoute(page: PostDetailPage),
+    MaterialRoute(page: ChatPage, fullscreenDialog: true),
   ],
 )
 class $Router {}
