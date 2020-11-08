@@ -18,6 +18,7 @@ _$_UserDto _$_$_UserDtoFromJson(Map<String, dynamic> json) {
         : DateTime.parse(json['joinDate'] as String),
     numberOfPublishedPosts: json['numberOfPublishedPosts'] as int,
     verified: json['verified'] as bool,
+    favorites: (json['favorites'] as List)?.map((e) => e as String)?.toList(),
   );
 }
 
@@ -31,4 +32,5 @@ Map<String, dynamic> _$_$_UserDtoToJson(_$_UserDto instance) =>
       'joinDate': instance.joinDate?.toIso8601String(),
       'numberOfPublishedPosts': instance.numberOfPublishedPosts,
       'verified': instance.verified,
+      'favorites': instance.favorites,
     };

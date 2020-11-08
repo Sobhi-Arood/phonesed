@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:kt_dart/kt.dart';
 import 'package:phonesed/domain/core/failures.dart';
 import 'package:phonesed/domain/core/value_objects.dart';
 import 'package:phonesed/domain/core/value_validators.dart';
@@ -63,4 +64,16 @@ class PhoneNumber extends ValueObject<String> {
     return PhoneNumber._(validatePhoneNumberDigits(input));
   }
   const PhoneNumber._(this.value);
+}
+
+class ListFavorites<T> extends ValueObject<KtList<T>> {
+  @override
+  final Either<ValueFailure<KtList<T>>, KtList<T>> value;
+
+  factory ListFavorites(KtList<T> input) {
+    assert(input != null);
+    return ListFavorites._(right(input));
+  }
+
+  const ListFavorites._(this.value);
 }

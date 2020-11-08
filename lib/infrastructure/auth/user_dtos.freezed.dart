@@ -25,7 +25,8 @@ class _$UserDtoTearOff {
       @required String phoneNumber,
       @required DateTime joinDate,
       @required int numberOfPublishedPosts,
-      @required bool verified}) {
+      @required bool verified,
+      @required List<String> favorites}) {
     return _UserDto(
       id: id,
       name: name,
@@ -35,6 +36,7 @@ class _$UserDtoTearOff {
       joinDate: joinDate,
       numberOfPublishedPosts: numberOfPublishedPosts,
       verified: verified,
+      favorites: favorites,
     );
   }
 
@@ -59,6 +61,7 @@ mixin _$UserDto {
   DateTime get joinDate;
   int get numberOfPublishedPosts;
   bool get verified;
+  List<String> get favorites;
 
   Map<String, dynamic> toJson();
   $UserDtoCopyWith<UserDto> get copyWith;
@@ -76,7 +79,8 @@ abstract class $UserDtoCopyWith<$Res> {
       String phoneNumber,
       DateTime joinDate,
       int numberOfPublishedPosts,
-      bool verified});
+      bool verified,
+      List<String> favorites});
 }
 
 /// @nodoc
@@ -97,6 +101,7 @@ class _$UserDtoCopyWithImpl<$Res> implements $UserDtoCopyWith<$Res> {
     Object joinDate = freezed,
     Object numberOfPublishedPosts = freezed,
     Object verified = freezed,
+    Object favorites = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as String,
@@ -110,6 +115,8 @@ class _$UserDtoCopyWithImpl<$Res> implements $UserDtoCopyWith<$Res> {
           ? _value.numberOfPublishedPosts
           : numberOfPublishedPosts as int,
       verified: verified == freezed ? _value.verified : verified as bool,
+      favorites:
+          favorites == freezed ? _value.favorites : favorites as List<String>,
     ));
   }
 }
@@ -127,7 +134,8 @@ abstract class _$UserDtoCopyWith<$Res> implements $UserDtoCopyWith<$Res> {
       String phoneNumber,
       DateTime joinDate,
       int numberOfPublishedPosts,
-      bool verified});
+      bool verified,
+      List<String> favorites});
 }
 
 /// @nodoc
@@ -149,6 +157,7 @@ class __$UserDtoCopyWithImpl<$Res> extends _$UserDtoCopyWithImpl<$Res>
     Object joinDate = freezed,
     Object numberOfPublishedPosts = freezed,
     Object verified = freezed,
+    Object favorites = freezed,
   }) {
     return _then(_UserDto(
       id: id == freezed ? _value.id : id as String,
@@ -162,6 +171,8 @@ class __$UserDtoCopyWithImpl<$Res> extends _$UserDtoCopyWithImpl<$Res>
           ? _value.numberOfPublishedPosts
           : numberOfPublishedPosts as int,
       verified: verified == freezed ? _value.verified : verified as bool,
+      favorites:
+          favorites == freezed ? _value.favorites : favorites as List<String>,
     ));
   }
 }
@@ -178,7 +189,8 @@ class _$_UserDto extends _UserDto {
       @required this.phoneNumber,
       @required this.joinDate,
       @required this.numberOfPublishedPosts,
-      @required this.verified})
+      @required this.verified,
+      @required this.favorites})
       : assert(id != null),
         assert(name != null),
         assert(email != null),
@@ -187,6 +199,7 @@ class _$_UserDto extends _UserDto {
         assert(joinDate != null),
         assert(numberOfPublishedPosts != null),
         assert(verified != null),
+        assert(favorites != null),
         super._();
 
   factory _$_UserDto.fromJson(Map<String, dynamic> json) =>
@@ -208,10 +221,12 @@ class _$_UserDto extends _UserDto {
   final int numberOfPublishedPosts;
   @override
   final bool verified;
+  @override
+  final List<String> favorites;
 
   @override
   String toString() {
-    return 'UserDto(id: $id, name: $name, email: $email, avatar: $avatar, phoneNumber: $phoneNumber, joinDate: $joinDate, numberOfPublishedPosts: $numberOfPublishedPosts, verified: $verified)';
+    return 'UserDto(id: $id, name: $name, email: $email, avatar: $avatar, phoneNumber: $phoneNumber, joinDate: $joinDate, numberOfPublishedPosts: $numberOfPublishedPosts, verified: $verified, favorites: $favorites)';
   }
 
   @override
@@ -237,7 +252,10 @@ class _$_UserDto extends _UserDto {
                     other.numberOfPublishedPosts, numberOfPublishedPosts)) &&
             (identical(other.verified, verified) ||
                 const DeepCollectionEquality()
-                    .equals(other.verified, verified)));
+                    .equals(other.verified, verified)) &&
+            (identical(other.favorites, favorites) ||
+                const DeepCollectionEquality()
+                    .equals(other.favorites, favorites)));
   }
 
   @override
@@ -250,7 +268,8 @@ class _$_UserDto extends _UserDto {
       const DeepCollectionEquality().hash(phoneNumber) ^
       const DeepCollectionEquality().hash(joinDate) ^
       const DeepCollectionEquality().hash(numberOfPublishedPosts) ^
-      const DeepCollectionEquality().hash(verified);
+      const DeepCollectionEquality().hash(verified) ^
+      const DeepCollectionEquality().hash(favorites);
 
   @override
   _$UserDtoCopyWith<_UserDto> get copyWith =>
@@ -272,7 +291,8 @@ abstract class _UserDto extends UserDto {
       @required String phoneNumber,
       @required DateTime joinDate,
       @required int numberOfPublishedPosts,
-      @required bool verified}) = _$_UserDto;
+      @required bool verified,
+      @required List<String> favorites}) = _$_UserDto;
 
   factory _UserDto.fromJson(Map<String, dynamic> json) = _$_UserDto.fromJson;
 
@@ -292,6 +312,8 @@ abstract class _UserDto extends UserDto {
   int get numberOfPublishedPosts;
   @override
   bool get verified;
+  @override
+  List<String> get favorites;
   @override
   _$UserDtoCopyWith<_UserDto> get copyWith;
 }

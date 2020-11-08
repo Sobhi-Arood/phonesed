@@ -7,6 +7,8 @@ import 'package:phonesed/application/auth/auth_bloc/auth_bloc.dart';
 import 'package:phonesed/application/posts/post_actor/post_actor_bloc.dart';
 import 'package:phonesed/constants.dart';
 import 'package:phonesed/domain/entities/post.dart';
+import 'package:phonesed/infrastructure/posts/post_primitive_presentation.dart';
+import 'package:phonesed/presentation/core/widgets/saving_overlay.dart';
 import 'package:phonesed/presentation/posts/post_detail/widgets/detail_bottom_widget.dart';
 import 'package:phonesed/presentation/posts/post_detail/widgets/detail_top_widget.dart';
 import 'package:phonesed/presentation/posts/post_watcher/post_card/images_card.dart';
@@ -35,7 +37,7 @@ class PostDetailPage extends HookWidget {
         backgroundColor: kPrimaryLightColor,
         appBar: AppBar(
           title: Text(
-            post.device,
+            post.device.getOrCrash(),
             style: const TextStyle(color: kPrimaryDarkColor),
           ),
           actions: [
@@ -123,8 +125,13 @@ class PostDetailPage extends HookWidget {
                       // width: double.infinity,
                       child: RaisedButton(
                         onPressed: loggedIn.value
-                            ? () => ExtendedNavigator.of(context)
-                                .pushChatPage(post: post)
+                            ? () => ExtendedNavigator.of(context).pushChatPage(
+                                  postPrimitive: PostPrimitive.fromDomain(post)
+                                      .copyWith(
+                                          conversationId:
+                                              '${post.id.getOrCrash()}+${post.userId.getOrCrash()}+${userId.value}'),
+                                  // conversation: null,
+                                )
                             : null,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
@@ -152,14 +159,18 @@ class PostDetailPage extends HookWidget {
                       listener: (context, state) {
                         state.maybeMap(
                             initial: (_) => {},
+                            actionInProgress: (_) =>
+                                const SavingInProgressOverlay(isSaving: true),
                             deleteSuccess: (_) {
-                              ExtendedNavigator.of(context).pop();
+                              ExtendedNavigator.of(context).popUntil((route) =>
+                                  route.settings.name == Routes.mainPage);
                             },
-                            orElse: () {
+                            deleteFailure: (f) {
                               FlushbarHelper.createError(
                                       message: 'Unable to delete')
                                   .show(context);
-                            });
+                            },
+                            orElse: () {});
                       },
                       builder: (context, state) {
                         return Column(

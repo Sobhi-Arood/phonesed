@@ -22,9 +22,13 @@ class PostWatcherBody extends StatelessWidget {
                 itemBuilder: (context, index) {
                   final post = state.posts[index];
                   if (post.failureOption.isSome()) {
-                    return Container(color: Colors.red);
+                    return Container(
+                      color: Colors.red,
+                      child: Text(post.failureOption
+                          .fold(() => '', (f) => f.toString())),
+                    );
                   } else {
-                    return PostCard(post: post);
+                    return PostCard(key: ValueKey(post.id), post: post);
                   }
                 },
               );

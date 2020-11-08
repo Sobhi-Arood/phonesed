@@ -3725,14 +3725,12 @@ class _$PostFormStateTearOff {
 // ignore: unused_element
   _PostFormState call(
       {@required Post post,
-      @required KtList<List<dynamic>> cities,
       @required bool showErrorMessages,
       @required bool isEditing,
       @required bool isSaving,
       @required Option<Either<PostFailure, Unit>> saveFailureOrSuccessOption}) {
     return _PostFormState(
       post: post,
-      cities: cities,
       showErrorMessages: showErrorMessages,
       isEditing: isEditing,
       isSaving: isSaving,
@@ -3748,7 +3746,6 @@ const $PostFormState = _$PostFormStateTearOff();
 /// @nodoc
 mixin _$PostFormState {
   Post get post;
-  KtList<List<dynamic>> get cities;
   bool get showErrorMessages;
   bool get isEditing;
   bool get isSaving;
@@ -3764,7 +3761,6 @@ abstract class $PostFormStateCopyWith<$Res> {
       _$PostFormStateCopyWithImpl<$Res>;
   $Res call(
       {Post post,
-      KtList<List<dynamic>> cities,
       bool showErrorMessages,
       bool isEditing,
       bool isSaving,
@@ -3785,7 +3781,6 @@ class _$PostFormStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object post = freezed,
-    Object cities = freezed,
     Object showErrorMessages = freezed,
     Object isEditing = freezed,
     Object isSaving = freezed,
@@ -3793,8 +3788,6 @@ class _$PostFormStateCopyWithImpl<$Res>
   }) {
     return _then(_value.copyWith(
       post: post == freezed ? _value.post : post as Post,
-      cities:
-          cities == freezed ? _value.cities : cities as KtList<List<dynamic>>,
       showErrorMessages: showErrorMessages == freezed
           ? _value.showErrorMessages
           : showErrorMessages as bool,
@@ -3826,7 +3819,6 @@ abstract class _$PostFormStateCopyWith<$Res>
   @override
   $Res call(
       {Post post,
-      KtList<List<dynamic>> cities,
       bool showErrorMessages,
       bool isEditing,
       bool isSaving,
@@ -3850,7 +3842,6 @@ class __$PostFormStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object post = freezed,
-    Object cities = freezed,
     Object showErrorMessages = freezed,
     Object isEditing = freezed,
     Object isSaving = freezed,
@@ -3858,8 +3849,6 @@ class __$PostFormStateCopyWithImpl<$Res>
   }) {
     return _then(_PostFormState(
       post: post == freezed ? _value.post : post as Post,
-      cities:
-          cities == freezed ? _value.cities : cities as KtList<List<dynamic>>,
       showErrorMessages: showErrorMessages == freezed
           ? _value.showErrorMessages
           : showErrorMessages as bool,
@@ -3876,13 +3865,11 @@ class __$PostFormStateCopyWithImpl<$Res>
 class _$_PostFormState implements _PostFormState {
   const _$_PostFormState(
       {@required this.post,
-      @required this.cities,
       @required this.showErrorMessages,
       @required this.isEditing,
       @required this.isSaving,
       @required this.saveFailureOrSuccessOption})
       : assert(post != null),
-        assert(cities != null),
         assert(showErrorMessages != null),
         assert(isEditing != null),
         assert(isSaving != null),
@@ -3890,8 +3877,6 @@ class _$_PostFormState implements _PostFormState {
 
   @override
   final Post post;
-  @override
-  final KtList<List<dynamic>> cities;
   @override
   final bool showErrorMessages;
   @override
@@ -3903,7 +3888,7 @@ class _$_PostFormState implements _PostFormState {
 
   @override
   String toString() {
-    return 'PostFormState(post: $post, cities: $cities, showErrorMessages: $showErrorMessages, isEditing: $isEditing, isSaving: $isSaving, saveFailureOrSuccessOption: $saveFailureOrSuccessOption)';
+    return 'PostFormState(post: $post, showErrorMessages: $showErrorMessages, isEditing: $isEditing, isSaving: $isSaving, saveFailureOrSuccessOption: $saveFailureOrSuccessOption)';
   }
 
   @override
@@ -3912,8 +3897,6 @@ class _$_PostFormState implements _PostFormState {
         (other is _PostFormState &&
             (identical(other.post, post) ||
                 const DeepCollectionEquality().equals(other.post, post)) &&
-            (identical(other.cities, cities) ||
-                const DeepCollectionEquality().equals(other.cities, cities)) &&
             (identical(other.showErrorMessages, showErrorMessages) ||
                 const DeepCollectionEquality()
                     .equals(other.showErrorMessages, showErrorMessages)) &&
@@ -3934,7 +3917,6 @@ class _$_PostFormState implements _PostFormState {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(post) ^
-      const DeepCollectionEquality().hash(cities) ^
       const DeepCollectionEquality().hash(showErrorMessages) ^
       const DeepCollectionEquality().hash(isEditing) ^
       const DeepCollectionEquality().hash(isSaving) ^
@@ -3950,8 +3932,6 @@ abstract class _PostFormState implements PostFormState {
           {@required
               Post post,
           @required
-              KtList<List<dynamic>> cities,
-          @required
               bool showErrorMessages,
           @required
               bool isEditing,
@@ -3963,8 +3943,6 @@ abstract class _PostFormState implements PostFormState {
 
   @override
   Post get post;
-  @override
-  KtList<List<dynamic>> get cities;
   @override
   bool get showErrorMessages;
   @override

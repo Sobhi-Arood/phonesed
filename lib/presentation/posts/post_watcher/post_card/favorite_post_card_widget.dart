@@ -1,8 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phonesed/application/posts/post_actor/post_actor_bloc.dart';
 import 'package:phonesed/application/posts/post_watcher/post_watcher_bloc.dart';
 import 'package:phonesed/domain/entities/post.dart';
+import 'package:phonesed/presentation/routes/router.gr.dart';
 
 import '../../../../constants.dart';
 import 'images_card.dart';
@@ -21,7 +23,8 @@ class FavoritePostCard extends StatelessWidget {
         elevation: 0,
         color: Colors.white,
         child: InkWell(
-          onTap: () {},
+          onTap: () =>
+              ExtendedNavigator.of(context).pushPostDetailPage(post: post),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(

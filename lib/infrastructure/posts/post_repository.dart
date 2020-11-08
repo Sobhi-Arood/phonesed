@@ -1,19 +1,12 @@
-import 'dart:convert';
-import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
-import 'package:phonesed/domain/core/errors.dart';
 import 'package:phonesed/domain/core/upload/i_upload_facade.dart';
 import 'package:phonesed/domain/entities/post.dart';
-// import 'package:kt_dart/src/collection/kt_list.dart';
 import 'package:kt_dart/kt.dart';
 import 'package:dartz/dartz.dart';
 import 'package:phonesed/domain/posts/i_post_repository.dart';
 import 'package:phonesed/domain/posts/post_failure.dart';
-import 'package:phonesed/domain/posts/post_location.dart';
 import 'package:phonesed/infrastructure/auth/user_dtos.dart';
 import 'package:phonesed/infrastructure/core/firestore_helpers.dart';
 import 'package:phonesed/infrastructure/posts/post_dtos.dart';
@@ -128,7 +121,7 @@ class PostRepository implements IPostRepository {
             description: post.description.getOrCrash(),
             images: urls,
             city: post.city.getOrCrash(),
-            area: post.area,
+            area: post.area.getOrCrash(),
             country: post.country,
             moreAccessories: post.moreAccessories.getOrCrash(),
             avaliable: post.avaliable,
@@ -137,7 +130,7 @@ class PostRepository implements IPostRepository {
             headphones: post.headphones,
             charger: post.charger,
             brand: post.brand.getOrCrash(),
-            device: post.device,
+            device: post.device.getOrCrash(),
             age: post.age.getOrCrash(),
             condition: post.condition.getOrCrash(),
             publishedDate: DateTime.now(),
@@ -165,14 +158,23 @@ class PostRepository implements IPostRepository {
   @override
   Future<Either<PostFailure, Unit>> delete(Post post) async {
     try {
+      final user = await _firestore.userDocument();
       final postId = post.id.getOrCrash();
 
-      await _uploadFacade.deleteImages(postId);
-      await _firestore.collection('Posts').doc(postId).delete();
+      // await _uploadFacade.deleteImages(postId);
+      await _firestore.runTransaction((transaction) {
+        return transaction.get(user).then((_) async {
+          transaction.delete(_firestore.collection('Posts').doc(postId));
+
+          final increment = FieldValue.increment(-1);
+          transaction.update(user, {'numberOfPublishedPosts': increment});
+        });
+      });
+      // await _firestore.collection('Posts').doc(postId).delete();
 
       return right(unit);
     } on FirebaseException catch (e) {
-      print(e.message);
+      // print(e.message);
       if (e is FirebaseException && e.message.contains('permission-denied')) {
         return left(const PostFailure.insufficientPermission());
       } else if (e is FirebaseException && e.message.contains('not-found')) {
@@ -260,43 +262,6 @@ class PostRepository implements IPostRepository {
         return left(const PostFailure.unexpected());
       }
     } catch (_) {
-      return left(const PostFailure.unexpected());
-    }
-  }
-
-  @override
-  Future<Either<PostFailure, KtList<List<dynamic>>>> getArea(
-      String city) async {
-    try {
-      final String decoded =
-          await rootBundle.loadString('assets/locations.json');
-      final List<dynamic> jsonRes = json.decode(decoded) as List<dynamic>;
-      // final locs = <PostLocation>[];
-      final List<PostLocation> locs = jsonRes
-          .map<PostLocation>(
-              (json) => PostLocation.fromJson(json as Map<String, dynamic>))
-          .toList();
-
-      final areas = locs.map((e) {
-        // print(e.city);
-        // print(city);
-        if (e.city == city) {
-          return e.areas;
-        }
-      });
-      // print(areas);
-      // final parsed = json.decode(await rootBundle.loadString('assets/locations.json'));
-
-      // await Future.forEach(jsonRes, (element) async {
-      //   final loc = PostLocation.fromJson(element as Map<String, dynamic>);
-      //   locs.add(loc);
-      //   print(loc.city);
-      // });
-
-      // return right(areas.toList().toImmutableList());
-      return right(areas.toImmutableList());
-    } catch (e) {
-      print(e);
       return left(const PostFailure.unexpected());
     }
   }

@@ -22,7 +22,8 @@ class _$UserTearOff {
       @required String avatarUrl,
       @required DateTime joinDate,
       @required int numOfPublishedPosts,
-      @required bool verified}) {
+      @required bool verified,
+      @required Option<ListFavorites<UniqueId>> favorites}) {
     return _User(
       id: id,
       name: name,
@@ -32,6 +33,7 @@ class _$UserTearOff {
       joinDate: joinDate,
       numOfPublishedPosts: numOfPublishedPosts,
       verified: verified,
+      favorites: favorites,
     );
   }
 }
@@ -50,6 +52,7 @@ mixin _$User {
   DateTime get joinDate;
   int get numOfPublishedPosts;
   bool get verified;
+  Option<ListFavorites<UniqueId>> get favorites;
 
   $UserCopyWith<User> get copyWith;
 }
@@ -66,7 +69,8 @@ abstract class $UserCopyWith<$Res> {
       String avatarUrl,
       DateTime joinDate,
       int numOfPublishedPosts,
-      bool verified});
+      bool verified,
+      Option<ListFavorites<UniqueId>> favorites});
 }
 
 /// @nodoc
@@ -87,6 +91,7 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
     Object joinDate = freezed,
     Object numOfPublishedPosts = freezed,
     Object verified = freezed,
+    Object favorites = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as UniqueId,
@@ -100,6 +105,9 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
           ? _value.numOfPublishedPosts
           : numOfPublishedPosts as int,
       verified: verified == freezed ? _value.verified : verified as bool,
+      favorites: favorites == freezed
+          ? _value.favorites
+          : favorites as Option<ListFavorites<UniqueId>>,
     ));
   }
 }
@@ -117,7 +125,8 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       String avatarUrl,
       DateTime joinDate,
       int numOfPublishedPosts,
-      bool verified});
+      bool verified,
+      Option<ListFavorites<UniqueId>> favorites});
 }
 
 /// @nodoc
@@ -139,6 +148,7 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
     Object joinDate = freezed,
     Object numOfPublishedPosts = freezed,
     Object verified = freezed,
+    Object favorites = freezed,
   }) {
     return _then(_User(
       id: id == freezed ? _value.id : id as UniqueId,
@@ -152,6 +162,9 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
           ? _value.numOfPublishedPosts
           : numOfPublishedPosts as int,
       verified: verified == freezed ? _value.verified : verified as bool,
+      favorites: favorites == freezed
+          ? _value.favorites
+          : favorites as Option<ListFavorites<UniqueId>>,
     ));
   }
 }
@@ -166,7 +179,8 @@ class _$_User extends _User with DiagnosticableTreeMixin {
       @required this.avatarUrl,
       @required this.joinDate,
       @required this.numOfPublishedPosts,
-      @required this.verified})
+      @required this.verified,
+      @required this.favorites})
       : assert(id != null),
         assert(name != null),
         assert(email != null),
@@ -175,6 +189,7 @@ class _$_User extends _User with DiagnosticableTreeMixin {
         assert(joinDate != null),
         assert(numOfPublishedPosts != null),
         assert(verified != null),
+        assert(favorites != null),
         super._();
 
   @override
@@ -193,10 +208,12 @@ class _$_User extends _User with DiagnosticableTreeMixin {
   final int numOfPublishedPosts;
   @override
   final bool verified;
+  @override
+  final Option<ListFavorites<UniqueId>> favorites;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'User(id: $id, name: $name, email: $email, phoneNumber: $phoneNumber, avatarUrl: $avatarUrl, joinDate: $joinDate, numOfPublishedPosts: $numOfPublishedPosts, verified: $verified)';
+    return 'User(id: $id, name: $name, email: $email, phoneNumber: $phoneNumber, avatarUrl: $avatarUrl, joinDate: $joinDate, numOfPublishedPosts: $numOfPublishedPosts, verified: $verified, favorites: $favorites)';
   }
 
   @override
@@ -211,7 +228,8 @@ class _$_User extends _User with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('avatarUrl', avatarUrl))
       ..add(DiagnosticsProperty('joinDate', joinDate))
       ..add(DiagnosticsProperty('numOfPublishedPosts', numOfPublishedPosts))
-      ..add(DiagnosticsProperty('verified', verified));
+      ..add(DiagnosticsProperty('verified', verified))
+      ..add(DiagnosticsProperty('favorites', favorites));
   }
 
   @override
@@ -238,7 +256,10 @@ class _$_User extends _User with DiagnosticableTreeMixin {
                     .equals(other.numOfPublishedPosts, numOfPublishedPosts)) &&
             (identical(other.verified, verified) ||
                 const DeepCollectionEquality()
-                    .equals(other.verified, verified)));
+                    .equals(other.verified, verified)) &&
+            (identical(other.favorites, favorites) ||
+                const DeepCollectionEquality()
+                    .equals(other.favorites, favorites)));
   }
 
   @override
@@ -251,7 +272,8 @@ class _$_User extends _User with DiagnosticableTreeMixin {
       const DeepCollectionEquality().hash(avatarUrl) ^
       const DeepCollectionEquality().hash(joinDate) ^
       const DeepCollectionEquality().hash(numOfPublishedPosts) ^
-      const DeepCollectionEquality().hash(verified);
+      const DeepCollectionEquality().hash(verified) ^
+      const DeepCollectionEquality().hash(favorites);
 
   @override
   _$UserCopyWith<_User> get copyWith =>
@@ -268,7 +290,8 @@ abstract class _User extends User {
       @required String avatarUrl,
       @required DateTime joinDate,
       @required int numOfPublishedPosts,
-      @required bool verified}) = _$_User;
+      @required bool verified,
+      @required Option<ListFavorites<UniqueId>> favorites}) = _$_User;
 
   @override
   UniqueId get id;
@@ -286,6 +309,8 @@ abstract class _User extends User {
   int get numOfPublishedPosts;
   @override
   bool get verified;
+  @override
+  Option<ListFavorites<UniqueId>> get favorites;
   @override
   _$UserCopyWith<_User> get copyWith;
 }

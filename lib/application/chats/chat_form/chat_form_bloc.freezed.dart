@@ -21,9 +21,9 @@ class _$ChatFormEventTearOff {
   }
 
 // ignore: unused_element
-  _PostChanged postChanged(Post post) {
-    return _PostChanged(
-      post,
+  _PostPrimitiveChanged postPrimitiveChanged(PostPrimitive postPrimitive) {
+    return _PostPrimitiveChanged(
+      postPrimitive,
     );
   }
 
@@ -35,8 +35,10 @@ class _$ChatFormEventTearOff {
   }
 
 // ignore: unused_element
-  _Send sended() {
-    return const _Send();
+  _Send sended(String recId) {
+    return _Send(
+      recId,
+    );
   }
 }
 
@@ -49,29 +51,29 @@ mixin _$ChatFormEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initialized(Option<Message> initialMessageOption),
-    @required Result postChanged(Post post),
+    @required Result postPrimitiveChanged(PostPrimitive postPrimitive),
     @required Result contentChanged(String contentStr),
-    @required Result sended(),
+    @required Result sended(String recId),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initialized(Option<Message> initialMessageOption),
-    Result postChanged(Post post),
+    Result postPrimitiveChanged(PostPrimitive postPrimitive),
     Result contentChanged(String contentStr),
-    Result sended(),
+    Result sended(String recId),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initialized(_Initialized value),
-    @required Result postChanged(_PostChanged value),
+    @required Result postPrimitiveChanged(_PostPrimitiveChanged value),
     @required Result contentChanged(_ContentChanged value),
     @required Result sended(_Send value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initialized(_Initialized value),
-    Result postChanged(_PostChanged value),
+    Result postPrimitiveChanged(_PostPrimitiveChanged value),
     Result contentChanged(_ContentChanged value),
     Result sended(_Send value),
     @required Result orElse(),
@@ -160,12 +162,12 @@ class _$_Initialized implements _Initialized {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initialized(Option<Message> initialMessageOption),
-    @required Result postChanged(Post post),
+    @required Result postPrimitiveChanged(PostPrimitive postPrimitive),
     @required Result contentChanged(String contentStr),
-    @required Result sended(),
+    @required Result sended(String recId),
   }) {
     assert(initialized != null);
-    assert(postChanged != null);
+    assert(postPrimitiveChanged != null);
     assert(contentChanged != null);
     assert(sended != null);
     return initialized(initialMessageOption);
@@ -175,9 +177,9 @@ class _$_Initialized implements _Initialized {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initialized(Option<Message> initialMessageOption),
-    Result postChanged(Post post),
+    Result postPrimitiveChanged(PostPrimitive postPrimitive),
     Result contentChanged(String contentStr),
-    Result sended(),
+    Result sended(String recId),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -191,12 +193,12 @@ class _$_Initialized implements _Initialized {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initialized(_Initialized value),
-    @required Result postChanged(_PostChanged value),
+    @required Result postPrimitiveChanged(_PostPrimitiveChanged value),
     @required Result contentChanged(_ContentChanged value),
     @required Result sended(_Send value),
   }) {
     assert(initialized != null);
-    assert(postChanged != null);
+    assert(postPrimitiveChanged != null);
     assert(contentChanged != null);
     assert(sended != null);
     return initialized(this);
@@ -206,7 +208,7 @@ class _$_Initialized implements _Initialized {
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initialized(_Initialized value),
-    Result postChanged(_PostChanged value),
+    Result postPrimitiveChanged(_PostPrimitiveChanged value),
     Result contentChanged(_ContentChanged value),
     Result sended(_Send value),
     @required Result orElse(),
@@ -228,100 +230,106 @@ abstract class _Initialized implements ChatFormEvent {
 }
 
 /// @nodoc
-abstract class _$PostChangedCopyWith<$Res> {
-  factory _$PostChangedCopyWith(
-          _PostChanged value, $Res Function(_PostChanged) then) =
-      __$PostChangedCopyWithImpl<$Res>;
-  $Res call({Post post});
+abstract class _$PostPrimitiveChangedCopyWith<$Res> {
+  factory _$PostPrimitiveChangedCopyWith(_PostPrimitiveChanged value,
+          $Res Function(_PostPrimitiveChanged) then) =
+      __$PostPrimitiveChangedCopyWithImpl<$Res>;
+  $Res call({PostPrimitive postPrimitive});
 
-  $PostCopyWith<$Res> get post;
+  $PostPrimitiveCopyWith<$Res> get postPrimitive;
 }
 
 /// @nodoc
-class __$PostChangedCopyWithImpl<$Res> extends _$ChatFormEventCopyWithImpl<$Res>
-    implements _$PostChangedCopyWith<$Res> {
-  __$PostChangedCopyWithImpl(
-      _PostChanged _value, $Res Function(_PostChanged) _then)
-      : super(_value, (v) => _then(v as _PostChanged));
+class __$PostPrimitiveChangedCopyWithImpl<$Res>
+    extends _$ChatFormEventCopyWithImpl<$Res>
+    implements _$PostPrimitiveChangedCopyWith<$Res> {
+  __$PostPrimitiveChangedCopyWithImpl(
+      _PostPrimitiveChanged _value, $Res Function(_PostPrimitiveChanged) _then)
+      : super(_value, (v) => _then(v as _PostPrimitiveChanged));
 
   @override
-  _PostChanged get _value => super._value as _PostChanged;
+  _PostPrimitiveChanged get _value => super._value as _PostPrimitiveChanged;
 
   @override
   $Res call({
-    Object post = freezed,
+    Object postPrimitive = freezed,
   }) {
-    return _then(_PostChanged(
-      post == freezed ? _value.post : post as Post,
+    return _then(_PostPrimitiveChanged(
+      postPrimitive == freezed
+          ? _value.postPrimitive
+          : postPrimitive as PostPrimitive,
     ));
   }
 
   @override
-  $PostCopyWith<$Res> get post {
-    if (_value.post == null) {
+  $PostPrimitiveCopyWith<$Res> get postPrimitive {
+    if (_value.postPrimitive == null) {
       return null;
     }
-    return $PostCopyWith<$Res>(_value.post, (value) {
-      return _then(_value.copyWith(post: value));
+    return $PostPrimitiveCopyWith<$Res>(_value.postPrimitive, (value) {
+      return _then(_value.copyWith(postPrimitive: value));
     });
   }
 }
 
 /// @nodoc
-class _$_PostChanged implements _PostChanged {
-  const _$_PostChanged(this.post) : assert(post != null);
+class _$_PostPrimitiveChanged implements _PostPrimitiveChanged {
+  const _$_PostPrimitiveChanged(this.postPrimitive)
+      : assert(postPrimitive != null);
 
   @override
-  final Post post;
+  final PostPrimitive postPrimitive;
 
   @override
   String toString() {
-    return 'ChatFormEvent.postChanged(post: $post)';
+    return 'ChatFormEvent.postPrimitiveChanged(postPrimitive: $postPrimitive)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _PostChanged &&
-            (identical(other.post, post) ||
-                const DeepCollectionEquality().equals(other.post, post)));
+        (other is _PostPrimitiveChanged &&
+            (identical(other.postPrimitive, postPrimitive) ||
+                const DeepCollectionEquality()
+                    .equals(other.postPrimitive, postPrimitive)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(post);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(postPrimitive);
 
   @override
-  _$PostChangedCopyWith<_PostChanged> get copyWith =>
-      __$PostChangedCopyWithImpl<_PostChanged>(this, _$identity);
+  _$PostPrimitiveChangedCopyWith<_PostPrimitiveChanged> get copyWith =>
+      __$PostPrimitiveChangedCopyWithImpl<_PostPrimitiveChanged>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initialized(Option<Message> initialMessageOption),
-    @required Result postChanged(Post post),
+    @required Result postPrimitiveChanged(PostPrimitive postPrimitive),
     @required Result contentChanged(String contentStr),
-    @required Result sended(),
+    @required Result sended(String recId),
   }) {
     assert(initialized != null);
-    assert(postChanged != null);
+    assert(postPrimitiveChanged != null);
     assert(contentChanged != null);
     assert(sended != null);
-    return postChanged(post);
+    return postPrimitiveChanged(postPrimitive);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initialized(Option<Message> initialMessageOption),
-    Result postChanged(Post post),
+    Result postPrimitiveChanged(PostPrimitive postPrimitive),
     Result contentChanged(String contentStr),
-    Result sended(),
+    Result sended(String recId),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (postChanged != null) {
-      return postChanged(post);
+    if (postPrimitiveChanged != null) {
+      return postPrimitiveChanged(postPrimitive);
     }
     return orElse();
   }
@@ -330,39 +338,40 @@ class _$_PostChanged implements _PostChanged {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initialized(_Initialized value),
-    @required Result postChanged(_PostChanged value),
+    @required Result postPrimitiveChanged(_PostPrimitiveChanged value),
     @required Result contentChanged(_ContentChanged value),
     @required Result sended(_Send value),
   }) {
     assert(initialized != null);
-    assert(postChanged != null);
+    assert(postPrimitiveChanged != null);
     assert(contentChanged != null);
     assert(sended != null);
-    return postChanged(this);
+    return postPrimitiveChanged(this);
   }
 
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initialized(_Initialized value),
-    Result postChanged(_PostChanged value),
+    Result postPrimitiveChanged(_PostPrimitiveChanged value),
     Result contentChanged(_ContentChanged value),
     Result sended(_Send value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (postChanged != null) {
-      return postChanged(this);
+    if (postPrimitiveChanged != null) {
+      return postPrimitiveChanged(this);
     }
     return orElse();
   }
 }
 
-abstract class _PostChanged implements ChatFormEvent {
-  const factory _PostChanged(Post post) = _$_PostChanged;
+abstract class _PostPrimitiveChanged implements ChatFormEvent {
+  const factory _PostPrimitiveChanged(PostPrimitive postPrimitive) =
+      _$_PostPrimitiveChanged;
 
-  Post get post;
-  _$PostChangedCopyWith<_PostChanged> get copyWith;
+  PostPrimitive get postPrimitive;
+  _$PostPrimitiveChangedCopyWith<_PostPrimitiveChanged> get copyWith;
 }
 
 /// @nodoc
@@ -427,12 +436,12 @@ class _$_ContentChanged implements _ContentChanged {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initialized(Option<Message> initialMessageOption),
-    @required Result postChanged(Post post),
+    @required Result postPrimitiveChanged(PostPrimitive postPrimitive),
     @required Result contentChanged(String contentStr),
-    @required Result sended(),
+    @required Result sended(String recId),
   }) {
     assert(initialized != null);
-    assert(postChanged != null);
+    assert(postPrimitiveChanged != null);
     assert(contentChanged != null);
     assert(sended != null);
     return contentChanged(contentStr);
@@ -442,9 +451,9 @@ class _$_ContentChanged implements _ContentChanged {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initialized(Option<Message> initialMessageOption),
-    Result postChanged(Post post),
+    Result postPrimitiveChanged(PostPrimitive postPrimitive),
     Result contentChanged(String contentStr),
-    Result sended(),
+    Result sended(String recId),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -458,12 +467,12 @@ class _$_ContentChanged implements _ContentChanged {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initialized(_Initialized value),
-    @required Result postChanged(_PostChanged value),
+    @required Result postPrimitiveChanged(_PostPrimitiveChanged value),
     @required Result contentChanged(_ContentChanged value),
     @required Result sended(_Send value),
   }) {
     assert(initialized != null);
-    assert(postChanged != null);
+    assert(postPrimitiveChanged != null);
     assert(contentChanged != null);
     assert(sended != null);
     return contentChanged(this);
@@ -473,7 +482,7 @@ class _$_ContentChanged implements _ContentChanged {
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initialized(_Initialized value),
-    Result postChanged(_PostChanged value),
+    Result postPrimitiveChanged(_PostPrimitiveChanged value),
     Result contentChanged(_ContentChanged value),
     Result sended(_Send value),
     @required Result orElse(),
@@ -497,6 +506,7 @@ abstract class _ContentChanged implements ChatFormEvent {
 abstract class _$SendCopyWith<$Res> {
   factory _$SendCopyWith(_Send value, $Res Function(_Send) then) =
       __$SendCopyWithImpl<$Res>;
+  $Res call({String recId});
 }
 
 /// @nodoc
@@ -507,52 +517,72 @@ class __$SendCopyWithImpl<$Res> extends _$ChatFormEventCopyWithImpl<$Res>
 
   @override
   _Send get _value => super._value as _Send;
+
+  @override
+  $Res call({
+    Object recId = freezed,
+  }) {
+    return _then(_Send(
+      recId == freezed ? _value.recId : recId as String,
+    ));
+  }
 }
 
 /// @nodoc
 class _$_Send implements _Send {
-  const _$_Send();
+  const _$_Send(this.recId) : assert(recId != null);
+
+  @override
+  final String recId;
 
   @override
   String toString() {
-    return 'ChatFormEvent.sended()';
+    return 'ChatFormEvent.sended(recId: $recId)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Send);
+    return identical(this, other) ||
+        (other is _Send &&
+            (identical(other.recId, recId) ||
+                const DeepCollectionEquality().equals(other.recId, recId)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(recId);
+
+  @override
+  _$SendCopyWith<_Send> get copyWith =>
+      __$SendCopyWithImpl<_Send>(this, _$identity);
 
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initialized(Option<Message> initialMessageOption),
-    @required Result postChanged(Post post),
+    @required Result postPrimitiveChanged(PostPrimitive postPrimitive),
     @required Result contentChanged(String contentStr),
-    @required Result sended(),
+    @required Result sended(String recId),
   }) {
     assert(initialized != null);
-    assert(postChanged != null);
+    assert(postPrimitiveChanged != null);
     assert(contentChanged != null);
     assert(sended != null);
-    return sended();
+    return sended(recId);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initialized(Option<Message> initialMessageOption),
-    Result postChanged(Post post),
+    Result postPrimitiveChanged(PostPrimitive postPrimitive),
     Result contentChanged(String contentStr),
-    Result sended(),
+    Result sended(String recId),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (sended != null) {
-      return sended();
+      return sended(recId);
     }
     return orElse();
   }
@@ -561,12 +591,12 @@ class _$_Send implements _Send {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initialized(_Initialized value),
-    @required Result postChanged(_PostChanged value),
+    @required Result postPrimitiveChanged(_PostPrimitiveChanged value),
     @required Result contentChanged(_ContentChanged value),
     @required Result sended(_Send value),
   }) {
     assert(initialized != null);
-    assert(postChanged != null);
+    assert(postPrimitiveChanged != null);
     assert(contentChanged != null);
     assert(sended != null);
     return sended(this);
@@ -576,7 +606,7 @@ class _$_Send implements _Send {
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initialized(_Initialized value),
-    Result postChanged(_PostChanged value),
+    Result postPrimitiveChanged(_PostPrimitiveChanged value),
     Result contentChanged(_ContentChanged value),
     Result sended(_Send value),
     @required Result orElse(),
@@ -590,7 +620,10 @@ class _$_Send implements _Send {
 }
 
 abstract class _Send implements ChatFormEvent {
-  const factory _Send() = _$_Send;
+  const factory _Send(String recId) = _$_Send;
+
+  String get recId;
+  _$SendCopyWith<_Send> get copyWith;
 }
 
 /// @nodoc
@@ -602,7 +635,7 @@ class _$ChatFormStateTearOff {
       {@required
           Message message,
       @required
-          Post post,
+          PostPrimitive postPrimitive,
       @required
           bool showErrorMessages,
       @required
@@ -613,7 +646,7 @@ class _$ChatFormStateTearOff {
           Option<Either<MessageFailure, Unit>> sendFailureOrSuccessOption}) {
     return _ChatFormState(
       message: message,
-      post: post,
+      postPrimitive: postPrimitive,
       showErrorMessages: showErrorMessages,
       isEditing: isEditing,
       isSending: isSending,
@@ -629,7 +662,7 @@ const $ChatFormState = _$ChatFormStateTearOff();
 /// @nodoc
 mixin _$ChatFormState {
   Message get message;
-  Post get post;
+  PostPrimitive get postPrimitive;
   bool get showErrorMessages;
   bool get isEditing;
   bool get isSending;
@@ -645,14 +678,14 @@ abstract class $ChatFormStateCopyWith<$Res> {
       _$ChatFormStateCopyWithImpl<$Res>;
   $Res call(
       {Message message,
-      Post post,
+      PostPrimitive postPrimitive,
       bool showErrorMessages,
       bool isEditing,
       bool isSending,
       Option<Either<MessageFailure, Unit>> sendFailureOrSuccessOption});
 
   $MessageCopyWith<$Res> get message;
-  $PostCopyWith<$Res> get post;
+  $PostPrimitiveCopyWith<$Res> get postPrimitive;
 }
 
 /// @nodoc
@@ -667,7 +700,7 @@ class _$ChatFormStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object message = freezed,
-    Object post = freezed,
+    Object postPrimitive = freezed,
     Object showErrorMessages = freezed,
     Object isEditing = freezed,
     Object isSending = freezed,
@@ -675,7 +708,9 @@ class _$ChatFormStateCopyWithImpl<$Res>
   }) {
     return _then(_value.copyWith(
       message: message == freezed ? _value.message : message as Message,
-      post: post == freezed ? _value.post : post as Post,
+      postPrimitive: postPrimitive == freezed
+          ? _value.postPrimitive
+          : postPrimitive as PostPrimitive,
       showErrorMessages: showErrorMessages == freezed
           ? _value.showErrorMessages
           : showErrorMessages as bool,
@@ -698,12 +733,12 @@ class _$ChatFormStateCopyWithImpl<$Res>
   }
 
   @override
-  $PostCopyWith<$Res> get post {
-    if (_value.post == null) {
+  $PostPrimitiveCopyWith<$Res> get postPrimitive {
+    if (_value.postPrimitive == null) {
       return null;
     }
-    return $PostCopyWith<$Res>(_value.post, (value) {
-      return _then(_value.copyWith(post: value));
+    return $PostPrimitiveCopyWith<$Res>(_value.postPrimitive, (value) {
+      return _then(_value.copyWith(postPrimitive: value));
     });
   }
 }
@@ -717,7 +752,7 @@ abstract class _$ChatFormStateCopyWith<$Res>
   @override
   $Res call(
       {Message message,
-      Post post,
+      PostPrimitive postPrimitive,
       bool showErrorMessages,
       bool isEditing,
       bool isSending,
@@ -726,7 +761,7 @@ abstract class _$ChatFormStateCopyWith<$Res>
   @override
   $MessageCopyWith<$Res> get message;
   @override
-  $PostCopyWith<$Res> get post;
+  $PostPrimitiveCopyWith<$Res> get postPrimitive;
 }
 
 /// @nodoc
@@ -743,7 +778,7 @@ class __$ChatFormStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object message = freezed,
-    Object post = freezed,
+    Object postPrimitive = freezed,
     Object showErrorMessages = freezed,
     Object isEditing = freezed,
     Object isSending = freezed,
@@ -751,7 +786,9 @@ class __$ChatFormStateCopyWithImpl<$Res>
   }) {
     return _then(_ChatFormState(
       message: message == freezed ? _value.message : message as Message,
-      post: post == freezed ? _value.post : post as Post,
+      postPrimitive: postPrimitive == freezed
+          ? _value.postPrimitive
+          : postPrimitive as PostPrimitive,
       showErrorMessages: showErrorMessages == freezed
           ? _value.showErrorMessages
           : showErrorMessages as bool,
@@ -768,13 +805,13 @@ class __$ChatFormStateCopyWithImpl<$Res>
 class _$_ChatFormState implements _ChatFormState {
   const _$_ChatFormState(
       {@required this.message,
-      @required this.post,
+      @required this.postPrimitive,
       @required this.showErrorMessages,
       @required this.isEditing,
       @required this.isSending,
       @required this.sendFailureOrSuccessOption})
       : assert(message != null),
-        assert(post != null),
+        assert(postPrimitive != null),
         assert(showErrorMessages != null),
         assert(isEditing != null),
         assert(isSending != null),
@@ -783,7 +820,7 @@ class _$_ChatFormState implements _ChatFormState {
   @override
   final Message message;
   @override
-  final Post post;
+  final PostPrimitive postPrimitive;
   @override
   final bool showErrorMessages;
   @override
@@ -795,7 +832,7 @@ class _$_ChatFormState implements _ChatFormState {
 
   @override
   String toString() {
-    return 'ChatFormState(message: $message, post: $post, showErrorMessages: $showErrorMessages, isEditing: $isEditing, isSending: $isSending, sendFailureOrSuccessOption: $sendFailureOrSuccessOption)';
+    return 'ChatFormState(message: $message, postPrimitive: $postPrimitive, showErrorMessages: $showErrorMessages, isEditing: $isEditing, isSending: $isSending, sendFailureOrSuccessOption: $sendFailureOrSuccessOption)';
   }
 
   @override
@@ -805,8 +842,9 @@ class _$_ChatFormState implements _ChatFormState {
             (identical(other.message, message) ||
                 const DeepCollectionEquality()
                     .equals(other.message, message)) &&
-            (identical(other.post, post) ||
-                const DeepCollectionEquality().equals(other.post, post)) &&
+            (identical(other.postPrimitive, postPrimitive) ||
+                const DeepCollectionEquality()
+                    .equals(other.postPrimitive, postPrimitive)) &&
             (identical(other.showErrorMessages, showErrorMessages) ||
                 const DeepCollectionEquality()
                     .equals(other.showErrorMessages, showErrorMessages)) &&
@@ -827,7 +865,7 @@ class _$_ChatFormState implements _ChatFormState {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(message) ^
-      const DeepCollectionEquality().hash(post) ^
+      const DeepCollectionEquality().hash(postPrimitive) ^
       const DeepCollectionEquality().hash(showErrorMessages) ^
       const DeepCollectionEquality().hash(isEditing) ^
       const DeepCollectionEquality().hash(isSending) ^
@@ -843,7 +881,7 @@ abstract class _ChatFormState implements ChatFormState {
       {@required
           Message message,
       @required
-          Post post,
+          PostPrimitive postPrimitive,
       @required
           bool showErrorMessages,
       @required
@@ -857,7 +895,7 @@ abstract class _ChatFormState implements ChatFormState {
   @override
   Message get message;
   @override
-  Post get post;
+  PostPrimitive get postPrimitive;
   @override
   bool get showErrorMessages;
   @override

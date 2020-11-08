@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phonesed/application/chats/conversations_watcher/conversations_watcher_bloc.dart';
-import 'package:phonesed/domain/entities/conversation.dart';
 import 'package:phonesed/presentation/chats/conversations_page/conversations_watcher_body.dart';
 
 import '../../../injection.dart';

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phonesed/application/auth/auth_bloc/auth_bloc.dart';
 import 'package:phonesed/application/core/bottom_navigation/bottom_navigation_bloc.dart';
+import 'package:phonesed/application/core/user_profile/user_profile_bloc.dart';
 import 'package:phonesed/constants.dart';
 import 'package:phonesed/injection.dart';
 import 'package:phonesed/presentation/core/widgets/bottom_navigation_bar_widget.dart';
@@ -22,6 +23,9 @@ class MainPage extends StatelessWidget {
             create: (context) =>
                 getIt<AuthBloc>()..add(const AuthEvent.authCheckRequested()),
           ),
+          BlocProvider<UserProfileBloc>(
+              create: (context) => getIt<UserProfileBloc>()
+                ..add(const UserProfileEvent.initialized())),
         ],
         child: MultiBlocListener(
             listeners: [

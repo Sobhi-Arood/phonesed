@@ -10,6 +10,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import '../../domain/entities/post.dart';
+import '../../infrastructure/posts/post_primitive_presentation.dart';
 import '../auth/sign_in_page.dart';
 import '../auth/sign_up_page.dart';
 import '../auth/welcome_page.dart';
@@ -102,7 +103,7 @@ class Router extends RouterBase {
       return MaterialPageRoute<dynamic>(
         builder: (context) => ChatPage(
           key: args.key,
-          post: args.post,
+          postPrimitive: args.postPrimitive,
         ),
         settings: data,
         fullscreenDialog: true,
@@ -144,11 +145,11 @@ extension RouterExtendedNavigatorStateX on ExtendedNavigatorState {
 
   Future<dynamic> pushChatPage({
     Key key,
-    @required Post post,
+    @required PostPrimitive postPrimitive,
   }) =>
       push<dynamic>(
         Routes.chatPage,
-        arguments: ChatPageArguments(key: key, post: post),
+        arguments: ChatPageArguments(key: key, postPrimitive: postPrimitive),
       );
 }
 
@@ -173,6 +174,6 @@ class PostDetailPageArguments {
 /// ChatPage arguments holder class
 class ChatPageArguments {
   final Key key;
-  final Post post;
-  ChatPageArguments({this.key, @required this.post});
+  final PostPrimitive postPrimitive;
+  ChatPageArguments({this.key, @required this.postPrimitive});
 }

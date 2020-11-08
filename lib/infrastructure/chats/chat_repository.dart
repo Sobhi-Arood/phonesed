@@ -2,9 +2,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kt_dart/kt.dart';
+import 'package:phonesed/domain/core/errors.dart';
 import 'package:phonesed/domain/entities/conversation.dart';
 import 'package:phonesed/infrastructure/auth/user_dtos.dart';
 import 'package:phonesed/infrastructure/chats/conversation_dtos.dart';
+import 'package:phonesed/infrastructure/posts/post_primitive_presentation.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:phonesed/domain/chats/i_chat_repository.dart';
 import 'package:phonesed/domain/core/unique_id.dart';
@@ -23,41 +25,55 @@ class ChatRepository implements IChatRepository {
   @override
   Stream<Either<MessageFailure, KtList<Conversation>>>
       watchAllConversations() async* {
-    final user = await _firestore.userDocument();
+    try {
+      final user = await _firestore.userDocument();
 
-    yield* user
-        .collection('Conversations')
-        .orderBy('serverTimeStamp', descending: true)
-        .snapshots()
-        .map(
-          (snapshot) => right<MessageFailure, KtList<Conversation>>(
-            snapshot.docs
-                .map((e) => ConversationDto.fromJson(e.data()).toDomain())
-                .toImmutableList(),
-          ),
-        )
-        .onErrorReturnWith((error) {
-      print(error.toString());
-      if (error is FirebaseException &&
-          error.message.contains('permission-denied')) {
-        return left(const MessageFailure.insufficientPermission());
-      } else {
-        return left(const MessageFailure.unexpected());
+      yield* user
+          .collection('Conversations')
+          .orderBy('serverTimeStamp', descending: true)
+          .snapshots()
+          .map(
+            (snapshot) => right<MessageFailure, KtList<Conversation>>(
+              snapshot.docs.map((e) {
+                // print(e.data());
+                // ConversationDto.fromJson(e.data()).toDomain();
+                return ConversationDto.fromJson(e.data()).toDomain();
+              }).toImmutableList(),
+            ),
+          )
+          .onErrorReturnWith((error) {
+        print(error.toString());
+        if (error is FirebaseException &&
+            error.message.contains('permission-denied')) {
+          return left(const MessageFailure.insufficientPermission());
+        } else {
+          return left(const MessageFailure.unexpected());
+        }
+      });
+    } catch (e) {
+      if (e is NotAuthenticatedError) {
+        yield left(const MessageFailure.notLoggedIn());
       }
-    });
+    }
   }
 
   @override
-  Stream<Either<MessageFailure, KtList<Message>>> watchAllMessages() async* {
+  Stream<Either<MessageFailure, KtList<Message>>> watchAllMessages(
+      String conversationId) async* {
     final user = await _firestore.userDocument();
-    final userData = await user.get();
-    final conversation = userData['conversation'] as List<dynamic>;
+    // final userData = await user.get();
+    // final conversation = userData['conversation'] as List<dynamic>;
 
     // conversation.forEach((element) async* {
     // await conversation.map((e) async* {
+    if (conversationId.isEmpty) {
+      yield left(const MessageFailure.unexpected());
+    }
+
     yield* user
         .collection('Conversations')
-        .doc('conversationId')
+        // .doc()
+        .doc(conversationId)
         .collection('messages')
         .orderBy('date', descending: true)
         .snapshots()
@@ -82,11 +98,11 @@ class ChatRepository implements IChatRepository {
   }
 
   @override
-  Future<Either<MessageFailure, Unit>> create(
-      Message message, Post post) async {
+  Future<Either<MessageFailure, Unit>> create(Message message,
+      PostPrimitive postPrimitive, String recId, String conversationId) async {
     try {
       final user = await _firestore.userDocument();
-      final conversationId = UniqueId();
+      // final conversationId = UniqueId();
       // final messageDto = MessageDto.fromDomain(message);
 
       await _firestore.runTransaction((transaction) async {
@@ -96,21 +112,23 @@ class ChatRepository implements IChatRepository {
             .then((us) async {
           final messageDto = MessageDto(
             senderId: us.id,
-            recevierId: post.userId.getOrCrash(),
+            // recevierId: postPrimitive.postUserId,
+            recevierId: recId,
             content: message.content.getOrCrash(),
             date: DateTime.now(),
           );
 
-          if (user.id == post.userId.getOrCrash()) {
-            return left(const MessageFailure.unableToSend());
-          }
+          // if (user.id == postPrimitive.postUserId) {
+          //   return left(const MessageFailure.unableToSend());
+          // }
 
           transaction.set(
               _firestore
                   .collection('Users')
-                  .doc(post.userId.getOrCrash())
+                  // .doc(postPrimitive.postUserId)
+                  .doc(recId)
                   .collection('Conversations')
-                  .doc('conversationId')
+                  .doc(conversationId)
                   .collection('messages')
                   .doc(messageDto.id),
               messageDto.toJson());
@@ -120,41 +138,47 @@ class ChatRepository implements IChatRepository {
                   .collection('Users')
                   .doc(us.id)
                   .collection('Conversations')
-                  .doc('conversationId')
+                  .doc(conversationId)
                   .collection('messages')
                   .doc(messageDto.id),
               messageDto.toJson());
 
           final conversationDto = ConversationDto(
-            id: 'conversationId',
+            id: conversationId,
             serverTimeStamp: FieldValue.serverTimestamp(),
-            postId: post.id.getOrCrash(),
-            postTitle: post.title.getOrCrash(),
-            postImageUrl: post.images.getOrCrash()[0],
-            postPublishedDate: post.publishedDate.getOrCrash(),
-            postPrice: post.price.getOrCrash(),
+            postId: postPrimitive.postId.getOrCrash(),
+            postTitle: postPrimitive.postTitle,
+            postImageUrl: postPrimitive.postImageUrl,
+            postPublishedDate: postPrimitive.postPublishedDate,
+            postPrice: postPrimitive.postPrice,
+            postUserId: postPrimitive.postUserId,
+            postUsername: postPrimitive.postUsername,
+            postCity: postPrimitive.postCity,
             recentMessageContent: message.content.getOrCrash(),
             recentMessageDate: message.date.getOrCrash(),
             displayUserName: '',
           );
 
           transaction.set(
-              _firestore
-                  .collection('Users')
-                  .doc(post.userId.getOrCrash())
-                  .collection('Conversations')
-                  .doc('conversationId'),
-              conversationDto.copyWith(displayUserName: us.name).toJson());
+            _firestore
+                .collection('Users')
+                // .doc(postPrimitive.postUserId)
+                .doc(recId)
+                .collection('Conversations')
+                .doc(conversationId),
+            conversationDto.copyWith(displayUserName: us.name).toJson(),
+          );
 
           transaction.set(
-              _firestore
-                  .collection('Users')
-                  .doc(us.id)
-                  .collection('Conversations')
-                  .doc('conversationId'),
-              conversationDto
-                  .copyWith(displayUserName: post.userName.getOrCrash())
-                  .toJson());
+            _firestore
+                .collection('Users')
+                .doc(us.id)
+                .collection('Conversations')
+                .doc(conversationId),
+            conversationDto
+                .copyWith(displayUserName: postPrimitive.postUsername)
+                .toJson(),
+          );
         });
       });
 

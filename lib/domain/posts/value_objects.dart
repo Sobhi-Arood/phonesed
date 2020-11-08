@@ -20,6 +20,18 @@ class PostTitle extends ValueObject<String> {
   const PostTitle._(this.value);
 }
 
+class PostImageUrl extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  factory PostImageUrl(String input) {
+    assert(input != null);
+    return PostImageUrl._(validateStringNotEmpty(input));
+  }
+
+  const PostImageUrl._(this.value);
+}
+
 class PostDescription extends ValueObject<String> {
   @override
   final Either<ValueFailure<String>, String> value;
@@ -87,10 +99,34 @@ class PostCity extends ValueObject<String> {
 
   factory PostCity(String input) {
     assert(input != null);
-    return PostCity._(right(input));
+    return PostCity._(validateStringNotEmpty(input));
   }
 
   const PostCity._(this.value);
+}
+
+class PostArea extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  factory PostArea(String input) {
+    assert(input != null);
+    return PostArea._(validateStringNotEmpty(input));
+  }
+
+  const PostArea._(this.value);
+}
+
+class PostDevice extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  factory PostDevice(String input) {
+    assert(input != null);
+    return PostDevice._(validateStringNotEmpty(input));
+  }
+
+  const PostDevice._(this.value);
 }
 
 class PostMoreAccessories extends ValueObject<String> {

@@ -27,6 +27,11 @@ class _$PostFailureTearOff {
   _UnableToUpdate unableToUpdate() {
     return const _UnableToUpdate();
   }
+
+// ignore: unused_element
+  _NotLoggedIn notLoggedIn() {
+    return const _NotLoggedIn();
+  }
 }
 
 /// @nodoc
@@ -40,12 +45,14 @@ mixin _$PostFailure {
     @required Result unexpected(),
     @required Result insufficientPermission(),
     @required Result unableToUpdate(),
+    @required Result notLoggedIn(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result unexpected(),
     Result insufficientPermission(),
     Result unableToUpdate(),
+    Result notLoggedIn(),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -53,12 +60,14 @@ mixin _$PostFailure {
     @required Result unexpected(_Unexpected value),
     @required Result insufficientPermission(_InsufficientPermission value),
     @required Result unableToUpdate(_UnableToUpdate value),
+    @required Result notLoggedIn(_NotLoggedIn value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result unexpected(_Unexpected value),
     Result insufficientPermission(_InsufficientPermission value),
     Result unableToUpdate(_UnableToUpdate value),
+    Result notLoggedIn(_NotLoggedIn value),
     @required Result orElse(),
   });
 }
@@ -120,10 +129,12 @@ class _$_Unexpected implements _Unexpected {
     @required Result unexpected(),
     @required Result insufficientPermission(),
     @required Result unableToUpdate(),
+    @required Result notLoggedIn(),
   }) {
     assert(unexpected != null);
     assert(insufficientPermission != null);
     assert(unableToUpdate != null);
+    assert(notLoggedIn != null);
     return unexpected();
   }
 
@@ -133,6 +144,7 @@ class _$_Unexpected implements _Unexpected {
     Result unexpected(),
     Result insufficientPermission(),
     Result unableToUpdate(),
+    Result notLoggedIn(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -148,10 +160,12 @@ class _$_Unexpected implements _Unexpected {
     @required Result unexpected(_Unexpected value),
     @required Result insufficientPermission(_InsufficientPermission value),
     @required Result unableToUpdate(_UnableToUpdate value),
+    @required Result notLoggedIn(_NotLoggedIn value),
   }) {
     assert(unexpected != null);
     assert(insufficientPermission != null);
     assert(unableToUpdate != null);
+    assert(notLoggedIn != null);
     return unexpected(this);
   }
 
@@ -161,6 +175,7 @@ class _$_Unexpected implements _Unexpected {
     Result unexpected(_Unexpected value),
     Result insufficientPermission(_InsufficientPermission value),
     Result unableToUpdate(_UnableToUpdate value),
+    Result notLoggedIn(_NotLoggedIn value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -217,10 +232,12 @@ class _$_InsufficientPermission implements _InsufficientPermission {
     @required Result unexpected(),
     @required Result insufficientPermission(),
     @required Result unableToUpdate(),
+    @required Result notLoggedIn(),
   }) {
     assert(unexpected != null);
     assert(insufficientPermission != null);
     assert(unableToUpdate != null);
+    assert(notLoggedIn != null);
     return insufficientPermission();
   }
 
@@ -230,6 +247,7 @@ class _$_InsufficientPermission implements _InsufficientPermission {
     Result unexpected(),
     Result insufficientPermission(),
     Result unableToUpdate(),
+    Result notLoggedIn(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -245,10 +263,12 @@ class _$_InsufficientPermission implements _InsufficientPermission {
     @required Result unexpected(_Unexpected value),
     @required Result insufficientPermission(_InsufficientPermission value),
     @required Result unableToUpdate(_UnableToUpdate value),
+    @required Result notLoggedIn(_NotLoggedIn value),
   }) {
     assert(unexpected != null);
     assert(insufficientPermission != null);
     assert(unableToUpdate != null);
+    assert(notLoggedIn != null);
     return insufficientPermission(this);
   }
 
@@ -258,6 +278,7 @@ class _$_InsufficientPermission implements _InsufficientPermission {
     Result unexpected(_Unexpected value),
     Result insufficientPermission(_InsufficientPermission value),
     Result unableToUpdate(_UnableToUpdate value),
+    Result notLoggedIn(_NotLoggedIn value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -314,10 +335,12 @@ class _$_UnableToUpdate implements _UnableToUpdate {
     @required Result unexpected(),
     @required Result insufficientPermission(),
     @required Result unableToUpdate(),
+    @required Result notLoggedIn(),
   }) {
     assert(unexpected != null);
     assert(insufficientPermission != null);
     assert(unableToUpdate != null);
+    assert(notLoggedIn != null);
     return unableToUpdate();
   }
 
@@ -327,6 +350,7 @@ class _$_UnableToUpdate implements _UnableToUpdate {
     Result unexpected(),
     Result insufficientPermission(),
     Result unableToUpdate(),
+    Result notLoggedIn(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -342,10 +366,12 @@ class _$_UnableToUpdate implements _UnableToUpdate {
     @required Result unexpected(_Unexpected value),
     @required Result insufficientPermission(_InsufficientPermission value),
     @required Result unableToUpdate(_UnableToUpdate value),
+    @required Result notLoggedIn(_NotLoggedIn value),
   }) {
     assert(unexpected != null);
     assert(insufficientPermission != null);
     assert(unableToUpdate != null);
+    assert(notLoggedIn != null);
     return unableToUpdate(this);
   }
 
@@ -355,6 +381,7 @@ class _$_UnableToUpdate implements _UnableToUpdate {
     Result unexpected(_Unexpected value),
     Result insufficientPermission(_InsufficientPermission value),
     Result unableToUpdate(_UnableToUpdate value),
+    Result notLoggedIn(_NotLoggedIn value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -367,4 +394,106 @@ class _$_UnableToUpdate implements _UnableToUpdate {
 
 abstract class _UnableToUpdate implements PostFailure {
   const factory _UnableToUpdate() = _$_UnableToUpdate;
+}
+
+/// @nodoc
+abstract class _$NotLoggedInCopyWith<$Res> {
+  factory _$NotLoggedInCopyWith(
+          _NotLoggedIn value, $Res Function(_NotLoggedIn) then) =
+      __$NotLoggedInCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$NotLoggedInCopyWithImpl<$Res> extends _$PostFailureCopyWithImpl<$Res>
+    implements _$NotLoggedInCopyWith<$Res> {
+  __$NotLoggedInCopyWithImpl(
+      _NotLoggedIn _value, $Res Function(_NotLoggedIn) _then)
+      : super(_value, (v) => _then(v as _NotLoggedIn));
+
+  @override
+  _NotLoggedIn get _value => super._value as _NotLoggedIn;
+}
+
+/// @nodoc
+class _$_NotLoggedIn implements _NotLoggedIn {
+  const _$_NotLoggedIn();
+
+  @override
+  String toString() {
+    return 'PostFailure.notLoggedIn()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _NotLoggedIn);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result unexpected(),
+    @required Result insufficientPermission(),
+    @required Result unableToUpdate(),
+    @required Result notLoggedIn(),
+  }) {
+    assert(unexpected != null);
+    assert(insufficientPermission != null);
+    assert(unableToUpdate != null);
+    assert(notLoggedIn != null);
+    return notLoggedIn();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result unexpected(),
+    Result insufficientPermission(),
+    Result unableToUpdate(),
+    Result notLoggedIn(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (notLoggedIn != null) {
+      return notLoggedIn();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result unexpected(_Unexpected value),
+    @required Result insufficientPermission(_InsufficientPermission value),
+    @required Result unableToUpdate(_UnableToUpdate value),
+    @required Result notLoggedIn(_NotLoggedIn value),
+  }) {
+    assert(unexpected != null);
+    assert(insufficientPermission != null);
+    assert(unableToUpdate != null);
+    assert(notLoggedIn != null);
+    return notLoggedIn(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result unexpected(_Unexpected value),
+    Result insufficientPermission(_InsufficientPermission value),
+    Result unableToUpdate(_UnableToUpdate value),
+    Result notLoggedIn(_NotLoggedIn value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (notLoggedIn != null) {
+      return notLoggedIn(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NotLoggedIn implements PostFailure {
+  const factory _NotLoggedIn() = _$_NotLoggedIn;
 }

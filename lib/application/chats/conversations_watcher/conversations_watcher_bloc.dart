@@ -44,7 +44,7 @@ class ConversationsWatcherBloc
 
   @override
   Future<void> close() async {
-    await _conversationStreamSubscription.cancel();
+    await _conversationStreamSubscription?.cancel();
     return super.close();
   }
 }

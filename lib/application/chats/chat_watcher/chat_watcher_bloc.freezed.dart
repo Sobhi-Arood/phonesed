@@ -14,8 +14,10 @@ class _$ChatWatcherEventTearOff {
   const _$ChatWatcherEventTearOff();
 
 // ignore: unused_element
-  _WatchAllStarted watchAllStarted() {
-    return const _WatchAllStarted();
+  _WatchAllStarted watchAllStarted(String conversationId) {
+    return _WatchAllStarted(
+      conversationId,
+    );
   }
 
 // ignore: unused_element
@@ -35,14 +37,14 @@ const $ChatWatcherEvent = _$ChatWatcherEventTearOff();
 mixin _$ChatWatcherEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result watchAllStarted(),
+    @required Result watchAllStarted(String conversationId),
     @required
         Result messagesReceived(
             Either<MessageFailure, KtList<Message>> failureOrMessages),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result watchAllStarted(),
+    Result watchAllStarted(String conversationId),
     Result messagesReceived(
         Either<MessageFailure, KtList<Message>> failureOrMessages),
     @required Result orElse(),
@@ -82,6 +84,7 @@ abstract class _$WatchAllStartedCopyWith<$Res> {
   factory _$WatchAllStartedCopyWith(
           _WatchAllStarted value, $Res Function(_WatchAllStarted) then) =
       __$WatchAllStartedCopyWithImpl<$Res>;
+  $Res call({String conversationId});
 }
 
 /// @nodoc
@@ -94,49 +97,74 @@ class __$WatchAllStartedCopyWithImpl<$Res>
 
   @override
   _WatchAllStarted get _value => super._value as _WatchAllStarted;
+
+  @override
+  $Res call({
+    Object conversationId = freezed,
+  }) {
+    return _then(_WatchAllStarted(
+      conversationId == freezed
+          ? _value.conversationId
+          : conversationId as String,
+    ));
+  }
 }
 
 /// @nodoc
 class _$_WatchAllStarted implements _WatchAllStarted {
-  const _$_WatchAllStarted();
+  const _$_WatchAllStarted(this.conversationId)
+      : assert(conversationId != null);
+
+  @override
+  final String conversationId;
 
   @override
   String toString() {
-    return 'ChatWatcherEvent.watchAllStarted()';
+    return 'ChatWatcherEvent.watchAllStarted(conversationId: $conversationId)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _WatchAllStarted);
+    return identical(this, other) ||
+        (other is _WatchAllStarted &&
+            (identical(other.conversationId, conversationId) ||
+                const DeepCollectionEquality()
+                    .equals(other.conversationId, conversationId)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(conversationId);
+
+  @override
+  _$WatchAllStartedCopyWith<_WatchAllStarted> get copyWith =>
+      __$WatchAllStartedCopyWithImpl<_WatchAllStarted>(this, _$identity);
 
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result watchAllStarted(),
+    @required Result watchAllStarted(String conversationId),
     @required
         Result messagesReceived(
             Either<MessageFailure, KtList<Message>> failureOrMessages),
   }) {
     assert(watchAllStarted != null);
     assert(messagesReceived != null);
-    return watchAllStarted();
+    return watchAllStarted(conversationId);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result watchAllStarted(),
+    Result watchAllStarted(String conversationId),
     Result messagesReceived(
         Either<MessageFailure, KtList<Message>> failureOrMessages),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (watchAllStarted != null) {
-      return watchAllStarted();
+      return watchAllStarted(conversationId);
     }
     return orElse();
   }
@@ -168,7 +196,10 @@ class _$_WatchAllStarted implements _WatchAllStarted {
 }
 
 abstract class _WatchAllStarted implements ChatWatcherEvent {
-  const factory _WatchAllStarted() = _$_WatchAllStarted;
+  const factory _WatchAllStarted(String conversationId) = _$_WatchAllStarted;
+
+  String get conversationId;
+  _$WatchAllStartedCopyWith<_WatchAllStarted> get copyWith;
 }
 
 /// @nodoc
@@ -236,7 +267,7 @@ class _$_MessagesReceived implements _MessagesReceived {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result watchAllStarted(),
+    @required Result watchAllStarted(String conversationId),
     @required
         Result messagesReceived(
             Either<MessageFailure, KtList<Message>> failureOrMessages),
@@ -249,7 +280,7 @@ class _$_MessagesReceived implements _MessagesReceived {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result watchAllStarted(),
+    Result watchAllStarted(String conversationId),
     Result messagesReceived(
         Either<MessageFailure, KtList<Message>> failureOrMessages),
     @required Result orElse(),

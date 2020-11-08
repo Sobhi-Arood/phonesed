@@ -2,7 +2,6 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:phonesed/domain/auth/value_objects.dart';
-import 'package:phonesed/domain/core/failures.dart';
 import 'package:phonesed/domain/core/unique_id.dart';
 
 part 'user.freezed.dart';
@@ -19,6 +18,7 @@ abstract class User implements _$User {
     @required DateTime joinDate,
     @required int numOfPublishedPosts,
     @required bool verified,
+    @required Option<ListFavorites<UniqueId>> favorites,
   }) = _User;
 
   // factory User.empty() => User(

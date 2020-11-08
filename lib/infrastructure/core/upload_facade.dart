@@ -69,8 +69,11 @@ class UploadFacade implements IUploadFacade {
   @override
   Future<Either<UploadFailure, Unit>> deleteImages(String postId) async {
     try {
-      final StorageReference storageReference =
-          _firebaseStorage.ref().child('posts-images/$postId');
+      // final StorageReference storageReference = _firebaseStorage.ref().child('posts-images/$postId');
+      final StorageReference storageReference = _firebaseStorage
+          .ref()
+          .child('posts-images/7Bxo1ZTsM4WWpYXKIHwmfdjISMY2/');
+
       print(postId);
       await storageReference.delete();
       return right(unit);

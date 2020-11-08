@@ -81,7 +81,7 @@ class UserProfileBloc extends Bloc<UserProfileEvent, UserProfileState> {
       avatarChanged: (e) async* {
         yield const UserProfileState.loadInProgress();
         final user = await _userRepository.read();
-        user.fold((l) => print('sldkfjoijf ${l}'), (r) async {
+        user.fold((l) => null, (r) async {
           final u = r.copyWith(
             avatarUrl: e.avatarImgUrl,
           );
@@ -98,5 +98,11 @@ class UserProfileBloc extends Bloc<UserProfileEvent, UserProfileState> {
         );
       },
     );
+  }
+
+  @override
+  Future<void> close() async {
+    await _streamSubscription?.cancel();
+    return super.close();
   }
 }

@@ -5,7 +5,6 @@ import 'package:phonesed/domain/chats/value_objects.dart';
 import 'package:phonesed/domain/core/unique_id.dart';
 import 'package:phonesed/domain/entities/conversation.dart';
 import 'package:phonesed/domain/posts/value_objects.dart';
-import 'package:phonesed/infrastructure/chats/message_dtos.dart';
 import 'package:phonesed/infrastructure/core/json_converters.dart';
 
 part 'conversation_dtos.freezed.dart';
@@ -22,6 +21,9 @@ abstract class ConversationDto implements _$ConversationDto {
     @required String postImageUrl,
     @required DateTime postPublishedDate,
     @required int postPrice,
+    @required String postUserId,
+    @required String postUsername,
+    @required String postCity,
     // @required MessageDto messageDto,
     @required String recentMessageContent,
     @required DateTime recentMessageDate,
@@ -43,12 +45,14 @@ abstract class ConversationDto implements _$ConversationDto {
   Conversation toDomain() {
     return Conversation(
       id: UniqueId.fromUniqueString(id),
-      // id: 'sd',
       postId: UniqueId.fromUniqueString(postId),
       postTitle: PostTitle(postTitle),
-      postImage: postImageUrl,
+      postImage: PostImageUrl(postImageUrl),
       publishedDate: PostPublishedDate(postPublishedDate),
       postPrice: PostPrice(postPrice),
+      postUserId: UniqueId.fromUniqueString(postUserId),
+      postUsername: UserName(postUsername),
+      postCity: PostCity(postCity),
       recentMessageContent: MessageContent(recentMessageContent),
       recentMessageDate: PostPublishedDate(recentMessageDate),
       displayUserName: UserName(displayUserName),

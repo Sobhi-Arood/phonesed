@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:phonesed/application/posts/post_form/post_form_areas/post_form_areas_bloc.dart';
 import 'package:phonesed/application/posts/post_form/post_form_bloc.dart';
+import 'package:phonesed/application/posts/post_form/post_form_load_data/post_form_load_data_bloc.dart';
 
 import '../../../../constants.dart';
 
@@ -10,13 +12,9 @@ class AreaDropdown extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final brandValue = useState(List.empty());
+    final areaValue = useState('');
     return BlocConsumer<PostFormBloc, PostFormState>(
-      listener: (context, state) {
-        // brandValue.value.add()
-        brandValue.value.addAll(state.cities[1]);
-        print(brandValue.value);
-      },
+      listener: (context, state) {},
       buildWhen: (p, c) => p.post.area != c.post.area,
       builder: (context, state) {
         return Column(
@@ -34,34 +32,54 @@ class AreaDropdown extends HookWidget {
             Container(
               decoration: const BoxDecoration(color: kPrimaryLightColor),
               padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: DropdownButtonHideUnderline(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: DropdownButton<String>(
-                    value: state.post.area,
-                    elevation: 0,
-                    isExpanded: true,
-                    style: TextStyle(
-                      color: kPrimaryDarkColor,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 18,
-                    ),
-                    onChanged: (v) {
-                      context
-                          .bloc<PostFormBloc>()
-                          .add(PostFormEvent.cityChanged(v));
-                    },
-                    items:
-                        brandValue.value.map<DropdownMenuItem<String>>((value) {
-                      return DropdownMenuItem<String>(
-                        value: value[0].toString(),
-                        child: Text(value[0].toString()),
-                      );
-                    }).toList(),
-                  ),
-                ),
+              child: BlocConsumer<PostFormAreasBloc, PostFormAreasState>(
+                listener: (context, state) {
+                  areaValue.value = state.map(
+                      initial: (_) => '',
+                      loadInProgress: (_) => '',
+                      loadAreasSuccess: (s) => s.data[0],
+                      loadAreasFailure: (_) => 'error');
+                },
+                builder: (context, dataState) {
+                  return dataState.maybeMap(
+                      initial: (_) => Container(),
+                      loadInProgress: (_) => const Text('Loading...'),
+                      loadAreasSuccess: (data) {
+                        return DropdownButtonHideUnderline(
+                            child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: DropdownButton<String>(
+                            // value: state.post.area,
+                            value: areaValue.value,
+                            elevation: 0,
+                            isExpanded: true,
+                            style: const TextStyle(
+                              color: kPrimaryDarkColor,
+                              fontWeight: FontWeight.w700,
+                              fontSize: 18,
+                            ),
+                            onChanged: (v) {
+                              areaValue.value = v;
+                              context
+                                  .bloc<PostFormBloc>()
+                                  .add(PostFormEvent.cityChanged(v));
+                            },
+                            items: data.data
+                                .asList()
+                                .map<DropdownMenuItem<String>>((value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                          ),
+                        ));
+                      },
+                      loadAreasFailure: (_) => const Text('Error'),
+                      orElse: () => Container());
+                },
               ),
-            )
+            ),
           ],
         );
       },

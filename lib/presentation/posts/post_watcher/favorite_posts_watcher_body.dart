@@ -31,10 +31,14 @@ class FavortiePostsWatcherBody extends StatelessWidget {
               );
             },
             loadFailure: (f) => Center(
-                  child: Text(f.postFailure.map(
+                  child: Text(
+                    f.postFailure.map(
                       unexpected: (_) => '',
                       insufficientPermission: (_) => 'Error',
-                      unableToUpdate: (_) => '')),
+                      unableToUpdate: (_) => '',
+                      notLoggedIn: (_) => '',
+                    ),
+                  ),
                 ));
       },
     );

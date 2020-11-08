@@ -66,7 +66,7 @@ class DetailTopWidget extends StatelessWidget {
                 size: 20,
               ),
               Text(
-                post.area,
+                post.area.getOrCrash(),
                 style: const TextStyle(fontWeight: FontWeight.w500),
               ),
             ],

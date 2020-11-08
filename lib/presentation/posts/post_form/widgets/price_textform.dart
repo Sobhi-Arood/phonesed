@@ -59,7 +59,7 @@ class PriceTextForm extends HookWidget {
                   .value
                   .fold(
                       (f) => f.maybeMap(
-                          negitaveOrLessAmount: (_) => 'Cannot be negative',
+                          negitaveOrLessAmount: (_) => 'Cannot be empty',
                           empty: (_) => 'Cannot be empty',
                           orElse: () => 'Wrong format'),
                       (_) => null),

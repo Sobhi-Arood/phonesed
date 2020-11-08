@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart' hide User;
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
+import 'package:kt_dart/kt.dart';
 import 'package:phonesed/domain/auth/auth_failure.dart';
 import 'package:dartz/dartz.dart';
 import 'package:phonesed/domain/auth/i_auth_facade.dart';
@@ -33,14 +34,16 @@ class FirebaseAuthFacade implements IAuthFacade {
 
       _userRepository.create(
         User(
-            id: UniqueId.fromUniqueString(createdUser.user.uid),
-            name: UserName(userNameStr),
-            email: EmailAddress(emailAddressStr),
-            phoneNumber: '',
-            avatarUrl: '',
-            joinDate: DateTime.now(),
-            numOfPublishedPosts: 0,
-            verified: false),
+          id: UniqueId.fromUniqueString(createdUser.user.uid),
+          name: UserName(userNameStr),
+          email: EmailAddress(emailAddressStr),
+          phoneNumber: '',
+          avatarUrl: '',
+          joinDate: DateTime.now(),
+          numOfPublishedPosts: 0,
+          verified: false,
+          favorites: optionOf(ListFavorites(emptyList())),
+        ),
       );
       return right(unit);
     } on FirebaseAuthException catch (e) {
@@ -90,14 +93,16 @@ class FirebaseAuthFacade implements IAuthFacade {
           await _firebaseAuth.signInWithCredential(authCredential);
       _userRepository.create(
         User(
-            id: UniqueId.fromUniqueString(createdUser.user.uid),
-            name: UserName(createdUser.user.displayName),
-            email: EmailAddress(createdUser.user.email),
-            phoneNumber: '',
-            avatarUrl: createdUser.user.photoURL ?? '',
-            joinDate: DateTime.now(),
-            numOfPublishedPosts: 0,
-            verified: false),
+          id: UniqueId.fromUniqueString(createdUser.user.uid),
+          name: UserName(createdUser.user.displayName),
+          email: EmailAddress(createdUser.user.email),
+          phoneNumber: '',
+          avatarUrl: createdUser.user.photoURL ?? '',
+          joinDate: DateTime.now(),
+          numOfPublishedPosts: 0,
+          verified: false,
+          favorites: optionOf(ListFavorites(emptyList())),
+        ),
       );
       return right(unit);
     } on FirebaseAuthException catch (_) {

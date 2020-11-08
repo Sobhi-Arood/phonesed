@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:phonesed/application/posts/post_form/post_form_bloc.dart';
+import 'package:phonesed/application/posts/post_form/post_form_devices/post_form_devices_bloc.dart';
 import 'package:phonesed/domain/posts/value_objects.dart';
 
 import '../../../../constants.dart';
 
-class DeviceDropdown extends StatelessWidget {
+class DeviceDropdown extends HookWidget {
   const DeviceDropdown({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // final brandValue = useState('Apple');
+    final deviceValue = useState('');
     return BlocBuilder<PostFormBloc, PostFormState>(
       buildWhen: (p, c) => p.post.device != c.post.device,
       builder: (context, state) {
@@ -30,32 +32,55 @@ class DeviceDropdown extends StatelessWidget {
             Container(
               decoration: const BoxDecoration(color: kPrimaryLightColor),
               padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: DropdownButtonHideUnderline(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: DropdownButton<String>(
-                    value: state.post.brand.getOrCrash(),
-                    elevation: 0,
-                    isExpanded: true,
-                    style: TextStyle(
-                      color: kPrimaryDarkColor,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 18,
-                    ),
-                    onChanged: (v) {
-                      context
-                          .bloc<PostFormBloc>()
-                          .add(PostFormEvent.deviceChanged(v));
-                    },
-                    items:
-                        PostBrand.brands.map<DropdownMenuItem<String>>((value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
-                  ),
-                ),
+              child: BlocConsumer<PostFormDevicesBloc, PostFormDevicesState>(
+                listener: (context, state) {
+                  deviceValue.value = state.map(
+                      initial: (_) => '',
+                      loadInProgress: (_) => '',
+                      loadCitiesSuccess: (s) => s.data[0],
+                      loadCitiesFailure: (_) => '');
+                },
+                builder: (context, dataState) {
+                  return dataState.map(
+                      initial: (_) => Container(),
+                      loadInProgress: (_) => Container(
+                            child: const Text('Loading...'),
+                          ),
+                      loadCitiesSuccess: (data) {
+                        return DropdownButtonHideUnderline(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: DropdownButton<String>(
+                              value: deviceValue.value,
+                              elevation: 0,
+                              isExpanded: true,
+                              style: TextStyle(
+                                color: kPrimaryDarkColor,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 18,
+                              ),
+                              onChanged: (v) {
+                                deviceValue.value = v;
+                                context
+                                    .bloc<PostFormBloc>()
+                                    .add(PostFormEvent.deviceChanged(v));
+                              },
+                              items: data.data
+                                  .asList()
+                                  .map<DropdownMenuItem<String>>((value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(value),
+                                );
+                              }).toList(),
+                            ),
+                          ),
+                        );
+                      },
+                      loadCitiesFailure: (_) => Container(
+                            child: const Text('Error'),
+                          ));
+                },
               ),
             )
           ],

@@ -4,7 +4,7 @@ part of 'chat_form_bloc.dart';
 abstract class ChatFormState with _$ChatFormState {
   const factory ChatFormState({
     @required Message message,
-    @required Post post,
+    @required PostPrimitive postPrimitive,
     @required bool showErrorMessages,
     @required bool isEditing,
     @required bool isSending,
@@ -12,10 +12,11 @@ abstract class ChatFormState with _$ChatFormState {
   }) = _ChatFormState;
 
   factory ChatFormState.initial() => ChatFormState(
-      message: Message.empty(),
-      post: Post.empty(),
-      showErrorMessages: false,
-      isEditing: false,
-      isSending: false,
-      sendFailureOrSuccessOption: none());
+        message: Message.empty(),
+        postPrimitive: PostPrimitive.empty(),
+        showErrorMessages: false,
+        isEditing: false,
+        isSending: false,
+        sendFailureOrSuccessOption: none(),
+      );
 }

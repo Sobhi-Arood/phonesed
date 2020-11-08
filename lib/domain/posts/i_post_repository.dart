@@ -15,6 +15,4 @@ abstract class IPostRepository {
   Future<Either<PostFailure, Unit>> delete(Post post);
   Future<Either<PostFailure, Unit>> like(String postId);
   Future<Either<PostFailure, Unit>> unlike(String postId);
-
-  Future<Either<PostFailure, KtList<List<dynamic>>>> getArea(String city);
 }

@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:phonesed/application/posts/post_form/post_form_bloc.dart';
+import 'package:phonesed/application/posts/post_form/post_form_brands/post_form_brands_bloc.dart';
+import 'package:phonesed/application/posts/post_form/post_form_devices/post_form_devices_bloc.dart';
 import 'package:phonesed/constants.dart';
 import 'package:phonesed/domain/posts/value_objects.dart';
 
-class BrandDropdown extends StatelessWidget {
+class BrandDropdown extends HookWidget {
   const BrandDropdown({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // final brandValue = useState('Apple');
+    final brandValue = useState('');
     return BlocBuilder<PostFormBloc, PostFormState>(
       buildWhen: (p, c) => p.post.brand != c.post.brand,
       builder: (context, state) {
@@ -29,32 +32,61 @@ class BrandDropdown extends StatelessWidget {
             Container(
               decoration: const BoxDecoration(color: kPrimaryLightColor),
               padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: DropdownButtonHideUnderline(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: DropdownButton<String>(
-                    value: state.post.brand.getOrCrash(),
-                    elevation: 0,
-                    isExpanded: true,
-                    style: TextStyle(
-                      color: kPrimaryDarkColor,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 18,
-                    ),
-                    onChanged: (v) {
-                      context
-                          .bloc<PostFormBloc>()
-                          .add(PostFormEvent.brandChanged(v));
-                    },
-                    items:
-                        PostBrand.brands.map<DropdownMenuItem<String>>((value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
-                  ),
-                ),
+              child: BlocConsumer<PostFormBrandsBloc, PostFormBrandsState>(
+                listener: (context, state) {
+                  state.map(
+                      initial: (_) => {},
+                      loadInProgress: (_) => {},
+                      loadBrandsSuccess: (s) {
+                        brandValue.value = s.data[0];
+                        context.bloc<PostFormDevicesBloc>().add(
+                              PostFormDevicesEvent.getDevicesStarted(s.data[0]),
+                            );
+                      },
+                      loadBrandsFailure: (_) => {});
+                },
+                builder: (context, dataState) {
+                  return dataState.map(
+                      initial: (_) => Container(),
+                      loadInProgress: (_) => Container(
+                            child: const Text('Loading ...'),
+                          ),
+                      loadBrandsSuccess: (data) {
+                        return DropdownButtonHideUnderline(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: DropdownButton<String>(
+                              value: brandValue.value,
+                              elevation: 0,
+                              isExpanded: true,
+                              style: const TextStyle(
+                                color: kPrimaryDarkColor,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 18,
+                              ),
+                              onChanged: (v) {
+                                brandValue.value = v;
+                                context
+                                    .bloc<PostFormBloc>()
+                                    .add(PostFormEvent.brandChanged(v));
+                                context.bloc<PostFormDevicesBloc>().add(
+                                    PostFormDevicesEvent.getDevicesStarted(v));
+                              },
+                              items: data.data
+                                  .asList()
+                                  .map<DropdownMenuItem<String>>((value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(value),
+                                );
+                              }).toList(),
+                            ),
+                          ),
+                        );
+                      },
+                      loadBrandsFailure: (_) =>
+                          Container(child: const Text('Error')));
+                },
               ),
             )
           ],

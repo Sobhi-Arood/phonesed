@@ -22,14 +22,21 @@ import 'application/chats/chat_watcher/chat_watcher_bloc.dart';
 import 'application/chats/conversations_watcher/conversations_watcher_bloc.dart';
 import 'infrastructure/auth/firebase_auth_facade.dart';
 import 'infrastructure/core/firebase_injectable_module.dart';
+import 'infrastructure/posts/form_repository.dart';
 import 'domain/auth/i_auth_facade.dart';
 import 'domain/core/avatar/i_avatar_picker.dart';
 import 'domain/chats/i_chat_repository.dart';
+import 'domain/posts/i_form_repository.dart';
 import 'domain/posts/i_post_repository.dart';
 import 'domain/core/upload/i_upload_facade.dart';
 import 'domain/auth/i_user_repository.dart';
 import 'application/posts/post_actor/post_actor_bloc.dart';
+import 'application/posts/post_form/post_form_areas/post_form_areas_bloc.dart';
 import 'application/posts/post_form/post_form_bloc.dart';
+import 'application/posts/post_form/post_form_brands/post_form_brands_bloc.dart';
+import 'application/posts/post_form/post_form_cities/post_form_cities_bloc.dart';
+import 'application/posts/post_form/post_form_devices/post_form_devices_bloc.dart';
+import 'application/posts/post_form/post_form_load_data/post_form_load_data_bloc.dart';
 import 'application/posts/post_form/post_picker_image/post_picker_image_bloc.dart';
 import 'infrastructure/posts/post_repository.dart';
 import 'application/posts/post_watcher/post_watcher_bloc.dart';
@@ -57,10 +64,22 @@ GetIt $initGetIt(
   gh.lazySingleton<GoogleSignIn>(() => firebaseInjectableModule.googleSignIn);
   gh.lazySingleton<IChatRepository>(
       () => ChatRepository(get<FirebaseFirestore>()));
+  gh.lazySingleton<IFormRepository>(
+      () => FormRepository(get<FirebaseFirestore>()));
   gh.lazySingleton<IUploadFacade>(() => UploadFacade(get<FirebaseStorage>()));
   gh.lazySingleton<IUserRepository>(
       () => UserRepository(get<FirebaseFirestore>()));
   gh.lazySingleton<ImagePicker>(() => firebaseInjectableModule.imagePicker);
+  gh.factory<PostFormAreasBloc>(
+      () => PostFormAreasBloc(get<IFormRepository>()));
+  gh.factory<PostFormBrandsBloc>(
+      () => PostFormBrandsBloc(get<IFormRepository>()));
+  gh.factory<PostFormCitiesBloc>(
+      () => PostFormCitiesBloc(get<IFormRepository>()));
+  gh.factory<PostFormDevicesBloc>(
+      () => PostFormDevicesBloc(get<IFormRepository>()));
+  gh.factory<PostFormLoadDataBloc>(
+      () => PostFormLoadDataBloc(get<IFormRepository>()));
   gh.factory<UserProfileBloc>(() => UserProfileBloc(get<IUserRepository>()));
   gh.factory<ChatFormBloc>(() => ChatFormBloc(get<IChatRepository>()));
   gh.factory<ChatWatcherBloc>(() => ChatWatcherBloc(get<IChatRepository>()));
@@ -76,7 +95,8 @@ GetIt $initGetIt(
   gh.lazySingleton<IPostRepository>(
       () => PostRepository(get<FirebaseFirestore>(), get<IUploadFacade>()));
   gh.factory<PostActorBloc>(() => PostActorBloc(get<IPostRepository>()));
-  gh.factory<PostFormBloc>(() => PostFormBloc(get<IPostRepository>()));
+  gh.factory<PostFormBloc>(
+      () => PostFormBloc(get<IPostRepository>(), get<IFormRepository>()));
   gh.factory<PostPickerImageBloc>(
       () => PostPickerImageBloc(get<IAvatarPickerFacade>()));
   gh.factory<PostWatcherBloc>(() => PostWatcherBloc(get<IPostRepository>()));

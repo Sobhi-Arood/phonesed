@@ -18,9 +18,12 @@ class _$ConversationTearOff {
       {@required UniqueId id,
       @required UniqueId postId,
       @required PostTitle postTitle,
-      @required String postImage,
+      @required PostImageUrl postImage,
       @required PostPublishedDate publishedDate,
       @required PostPrice postPrice,
+      @required UniqueId postUserId,
+      @required UserName postUsername,
+      @required PostCity postCity,
       @required MessageContent recentMessageContent,
       @required PostPublishedDate recentMessageDate,
       @required UserName displayUserName}) {
@@ -31,6 +34,9 @@ class _$ConversationTearOff {
       postImage: postImage,
       publishedDate: publishedDate,
       postPrice: postPrice,
+      postUserId: postUserId,
+      postUsername: postUsername,
+      postCity: postCity,
       recentMessageContent: recentMessageContent,
       recentMessageDate: recentMessageDate,
       displayUserName: displayUserName,
@@ -47,9 +53,12 @@ mixin _$Conversation {
   UniqueId get id;
   UniqueId get postId;
   PostTitle get postTitle;
-  String get postImage;
+  PostImageUrl get postImage;
   PostPublishedDate get publishedDate;
   PostPrice get postPrice;
+  UniqueId get postUserId;
+  UserName get postUsername;
+  PostCity get postCity;
   MessageContent get recentMessageContent;
   PostPublishedDate get recentMessageDate;
   UserName get displayUserName;
@@ -66,9 +75,12 @@ abstract class $ConversationCopyWith<$Res> {
       {UniqueId id,
       UniqueId postId,
       PostTitle postTitle,
-      String postImage,
+      PostImageUrl postImage,
       PostPublishedDate publishedDate,
       PostPrice postPrice,
+      UniqueId postUserId,
+      UserName postUsername,
+      PostCity postCity,
       MessageContent recentMessageContent,
       PostPublishedDate recentMessageDate,
       UserName displayUserName});
@@ -90,6 +102,9 @@ class _$ConversationCopyWithImpl<$Res> implements $ConversationCopyWith<$Res> {
     Object postImage = freezed,
     Object publishedDate = freezed,
     Object postPrice = freezed,
+    Object postUserId = freezed,
+    Object postUsername = freezed,
+    Object postCity = freezed,
     Object recentMessageContent = freezed,
     Object recentMessageDate = freezed,
     Object displayUserName = freezed,
@@ -99,12 +114,19 @@ class _$ConversationCopyWithImpl<$Res> implements $ConversationCopyWith<$Res> {
       postId: postId == freezed ? _value.postId : postId as UniqueId,
       postTitle:
           postTitle == freezed ? _value.postTitle : postTitle as PostTitle,
-      postImage: postImage == freezed ? _value.postImage : postImage as String,
+      postImage:
+          postImage == freezed ? _value.postImage : postImage as PostImageUrl,
       publishedDate: publishedDate == freezed
           ? _value.publishedDate
           : publishedDate as PostPublishedDate,
       postPrice:
           postPrice == freezed ? _value.postPrice : postPrice as PostPrice,
+      postUserId:
+          postUserId == freezed ? _value.postUserId : postUserId as UniqueId,
+      postUsername: postUsername == freezed
+          ? _value.postUsername
+          : postUsername as UserName,
+      postCity: postCity == freezed ? _value.postCity : postCity as PostCity,
       recentMessageContent: recentMessageContent == freezed
           ? _value.recentMessageContent
           : recentMessageContent as MessageContent,
@@ -129,9 +151,12 @@ abstract class _$ConversationCopyWith<$Res>
       {UniqueId id,
       UniqueId postId,
       PostTitle postTitle,
-      String postImage,
+      PostImageUrl postImage,
       PostPublishedDate publishedDate,
       PostPrice postPrice,
+      UniqueId postUserId,
+      UserName postUsername,
+      PostCity postCity,
       MessageContent recentMessageContent,
       PostPublishedDate recentMessageDate,
       UserName displayUserName});
@@ -155,6 +180,9 @@ class __$ConversationCopyWithImpl<$Res> extends _$ConversationCopyWithImpl<$Res>
     Object postImage = freezed,
     Object publishedDate = freezed,
     Object postPrice = freezed,
+    Object postUserId = freezed,
+    Object postUsername = freezed,
+    Object postCity = freezed,
     Object recentMessageContent = freezed,
     Object recentMessageDate = freezed,
     Object displayUserName = freezed,
@@ -164,12 +192,19 @@ class __$ConversationCopyWithImpl<$Res> extends _$ConversationCopyWithImpl<$Res>
       postId: postId == freezed ? _value.postId : postId as UniqueId,
       postTitle:
           postTitle == freezed ? _value.postTitle : postTitle as PostTitle,
-      postImage: postImage == freezed ? _value.postImage : postImage as String,
+      postImage:
+          postImage == freezed ? _value.postImage : postImage as PostImageUrl,
       publishedDate: publishedDate == freezed
           ? _value.publishedDate
           : publishedDate as PostPublishedDate,
       postPrice:
           postPrice == freezed ? _value.postPrice : postPrice as PostPrice,
+      postUserId:
+          postUserId == freezed ? _value.postUserId : postUserId as UniqueId,
+      postUsername: postUsername == freezed
+          ? _value.postUsername
+          : postUsername as UserName,
+      postCity: postCity == freezed ? _value.postCity : postCity as PostCity,
       recentMessageContent: recentMessageContent == freezed
           ? _value.recentMessageContent
           : recentMessageContent as MessageContent,
@@ -192,6 +227,9 @@ class _$_Conversation extends _Conversation {
       @required this.postImage,
       @required this.publishedDate,
       @required this.postPrice,
+      @required this.postUserId,
+      @required this.postUsername,
+      @required this.postCity,
       @required this.recentMessageContent,
       @required this.recentMessageDate,
       @required this.displayUserName})
@@ -201,6 +239,9 @@ class _$_Conversation extends _Conversation {
         assert(postImage != null),
         assert(publishedDate != null),
         assert(postPrice != null),
+        assert(postUserId != null),
+        assert(postUsername != null),
+        assert(postCity != null),
         assert(recentMessageContent != null),
         assert(recentMessageDate != null),
         assert(displayUserName != null),
@@ -213,11 +254,17 @@ class _$_Conversation extends _Conversation {
   @override
   final PostTitle postTitle;
   @override
-  final String postImage;
+  final PostImageUrl postImage;
   @override
   final PostPublishedDate publishedDate;
   @override
   final PostPrice postPrice;
+  @override
+  final UniqueId postUserId;
+  @override
+  final UserName postUsername;
+  @override
+  final PostCity postCity;
   @override
   final MessageContent recentMessageContent;
   @override
@@ -227,7 +274,7 @@ class _$_Conversation extends _Conversation {
 
   @override
   String toString() {
-    return 'Conversation(id: $id, postId: $postId, postTitle: $postTitle, postImage: $postImage, publishedDate: $publishedDate, postPrice: $postPrice, recentMessageContent: $recentMessageContent, recentMessageDate: $recentMessageDate, displayUserName: $displayUserName)';
+    return 'Conversation(id: $id, postId: $postId, postTitle: $postTitle, postImage: $postImage, publishedDate: $publishedDate, postPrice: $postPrice, postUserId: $postUserId, postUsername: $postUsername, postCity: $postCity, recentMessageContent: $recentMessageContent, recentMessageDate: $recentMessageDate, displayUserName: $displayUserName)';
   }
 
   @override
@@ -250,6 +297,15 @@ class _$_Conversation extends _Conversation {
             (identical(other.postPrice, postPrice) ||
                 const DeepCollectionEquality()
                     .equals(other.postPrice, postPrice)) &&
+            (identical(other.postUserId, postUserId) ||
+                const DeepCollectionEquality()
+                    .equals(other.postUserId, postUserId)) &&
+            (identical(other.postUsername, postUsername) ||
+                const DeepCollectionEquality()
+                    .equals(other.postUsername, postUsername)) &&
+            (identical(other.postCity, postCity) ||
+                const DeepCollectionEquality()
+                    .equals(other.postCity, postCity)) &&
             (identical(other.recentMessageContent, recentMessageContent) ||
                 const DeepCollectionEquality().equals(
                     other.recentMessageContent, recentMessageContent)) &&
@@ -270,6 +326,9 @@ class _$_Conversation extends _Conversation {
       const DeepCollectionEquality().hash(postImage) ^
       const DeepCollectionEquality().hash(publishedDate) ^
       const DeepCollectionEquality().hash(postPrice) ^
+      const DeepCollectionEquality().hash(postUserId) ^
+      const DeepCollectionEquality().hash(postUsername) ^
+      const DeepCollectionEquality().hash(postCity) ^
       const DeepCollectionEquality().hash(recentMessageContent) ^
       const DeepCollectionEquality().hash(recentMessageDate) ^
       const DeepCollectionEquality().hash(displayUserName);
@@ -285,9 +344,12 @@ abstract class _Conversation extends Conversation {
       {@required UniqueId id,
       @required UniqueId postId,
       @required PostTitle postTitle,
-      @required String postImage,
+      @required PostImageUrl postImage,
       @required PostPublishedDate publishedDate,
       @required PostPrice postPrice,
+      @required UniqueId postUserId,
+      @required UserName postUsername,
+      @required PostCity postCity,
       @required MessageContent recentMessageContent,
       @required PostPublishedDate recentMessageDate,
       @required UserName displayUserName}) = _$_Conversation;
@@ -299,11 +361,17 @@ abstract class _Conversation extends Conversation {
   @override
   PostTitle get postTitle;
   @override
-  String get postImage;
+  PostImageUrl get postImage;
   @override
   PostPublishedDate get publishedDate;
   @override
   PostPrice get postPrice;
+  @override
+  UniqueId get postUserId;
+  @override
+  UserName get postUsername;
+  @override
+  PostCity get postCity;
   @override
   MessageContent get recentMessageContent;
   @override

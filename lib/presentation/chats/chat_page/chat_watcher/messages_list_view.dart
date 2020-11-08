@@ -15,6 +15,7 @@ class MessagesListView extends StatelessWidget {
             loadInProgress: (_) =>
                 const Center(child: CircularProgressIndicator()),
             loadSuccess: (messages) {
+              // print(messages.messages);
               return BlocBuilder<AuthBloc, AuthState>(
                   builder: (context, state) {
                 return state.maybeMap(
@@ -22,17 +23,30 @@ class MessagesListView extends StatelessWidget {
                       return Container(
                         padding: const EdgeInsets.symmetric(horizontal: 18),
                         child: ListView.builder(
-                            reverse: true,
-                            itemCount: messages.messages.size,
-                            itemBuilder: (context, index) {
-                              final message = messages.messages[index];
-                              final isMe =
-                                  message.senderId.getOrCrash() == u.userId;
+                          reverse: true,
+                          itemCount: messages.messages.size,
+                          itemBuilder: (context, index) {
+                            final message = messages.messages[index];
+                            final isMe =
+                                message.senderId.getOrCrash() == u.userId;
+                            if (message.failureOption.isSome()) {
+                              return Container(
+                                color: Colors.red,
+                                child: Text(
+                                  message.failureOption.fold(
+                                    () => '',
+                                    (a) => a.toString(),
+                                  ),
+                                ),
+                              );
+                            } else {
                               return ChatBubble(
                                 message: message,
                                 isMe: isMe,
                               );
-                            }),
+                            }
+                          },
+                        ),
                       );
                     },
                     orElse: () => Container());

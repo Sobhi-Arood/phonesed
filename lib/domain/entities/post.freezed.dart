@@ -22,7 +22,7 @@ class _$PostTearOff {
       @required PostImagesList<String> images,
       @required PostPublishedDate publishedDate,
       @required PostCity city,
-      @required String area,
+      @required PostArea area,
       @required String country,
       @required PostMoreAccessories moreAccessories,
       @required bool avaliable,
@@ -31,7 +31,7 @@ class _$PostTearOff {
       @required bool headphones,
       @required bool charger,
       @required PostBrand brand,
-      @required String device,
+      @required PostDevice device,
       @required PostAge age,
       @required PostCondition condition,
       UniqueId userId,
@@ -77,7 +77,7 @@ mixin _$Post {
   PostImagesList<String> get images;
   PostPublishedDate get publishedDate;
   PostCity get city;
-  String get area;
+  PostArea get area;
   String get country;
   PostMoreAccessories get moreAccessories;
   bool get avaliable;
@@ -86,7 +86,7 @@ mixin _$Post {
   bool get headphones;
   bool get charger;
   PostBrand get brand;
-  String get device;
+  PostDevice get device;
   PostAge get age;
   PostCondition get condition;
   UniqueId get userId;
@@ -108,7 +108,7 @@ abstract class $PostCopyWith<$Res> {
       PostImagesList<String> images,
       PostPublishedDate publishedDate,
       PostCity city,
-      String area,
+      PostArea area,
       String country,
       PostMoreAccessories moreAccessories,
       bool avaliable,
@@ -117,7 +117,7 @@ abstract class $PostCopyWith<$Res> {
       bool headphones,
       bool charger,
       PostBrand brand,
-      String device,
+      PostDevice device,
       PostAge age,
       PostCondition condition,
       UniqueId userId,
@@ -171,7 +171,7 @@ class _$PostCopyWithImpl<$Res> implements $PostCopyWith<$Res> {
           ? _value.publishedDate
           : publishedDate as PostPublishedDate,
       city: city == freezed ? _value.city : city as PostCity,
-      area: area == freezed ? _value.area : area as String,
+      area: area == freezed ? _value.area : area as PostArea,
       country: country == freezed ? _value.country : country as String,
       moreAccessories: moreAccessories == freezed
           ? _value.moreAccessories
@@ -185,7 +185,7 @@ class _$PostCopyWithImpl<$Res> implements $PostCopyWith<$Res> {
           headphones == freezed ? _value.headphones : headphones as bool,
       charger: charger == freezed ? _value.charger : charger as bool,
       brand: brand == freezed ? _value.brand : brand as PostBrand,
-      device: device == freezed ? _value.device : device as String,
+      device: device == freezed ? _value.device : device as PostDevice,
       age: age == freezed ? _value.age : age as PostAge,
       condition:
           condition == freezed ? _value.condition : condition as PostCondition,
@@ -210,7 +210,7 @@ abstract class _$PostCopyWith<$Res> implements $PostCopyWith<$Res> {
       PostImagesList<String> images,
       PostPublishedDate publishedDate,
       PostCity city,
-      String area,
+      PostArea area,
       String country,
       PostMoreAccessories moreAccessories,
       bool avaliable,
@@ -219,7 +219,7 @@ abstract class _$PostCopyWith<$Res> implements $PostCopyWith<$Res> {
       bool headphones,
       bool charger,
       PostBrand brand,
-      String device,
+      PostDevice device,
       PostAge age,
       PostCondition condition,
       UniqueId userId,
@@ -274,7 +274,7 @@ class __$PostCopyWithImpl<$Res> extends _$PostCopyWithImpl<$Res>
           ? _value.publishedDate
           : publishedDate as PostPublishedDate,
       city: city == freezed ? _value.city : city as PostCity,
-      area: area == freezed ? _value.area : area as String,
+      area: area == freezed ? _value.area : area as PostArea,
       country: country == freezed ? _value.country : country as String,
       moreAccessories: moreAccessories == freezed
           ? _value.moreAccessories
@@ -288,7 +288,7 @@ class __$PostCopyWithImpl<$Res> extends _$PostCopyWithImpl<$Res>
           headphones == freezed ? _value.headphones : headphones as bool,
       charger: charger == freezed ? _value.charger : charger as bool,
       brand: brand == freezed ? _value.brand : brand as PostBrand,
-      device: device == freezed ? _value.device : device as String,
+      device: device == freezed ? _value.device : device as PostDevice,
       age: age == freezed ? _value.age : age as PostAge,
       condition:
           condition == freezed ? _value.condition : condition as PostCondition,
@@ -361,7 +361,7 @@ class _$_Post extends _Post {
   @override
   final PostCity city;
   @override
-  final String area;
+  final PostArea area;
   @override
   final String country;
   @override
@@ -379,7 +379,7 @@ class _$_Post extends _Post {
   @override
   final PostBrand brand;
   @override
-  final String device;
+  final PostDevice device;
   @override
   final PostAge age;
   @override
@@ -499,7 +499,7 @@ abstract class _Post extends Post {
       @required PostImagesList<String> images,
       @required PostPublishedDate publishedDate,
       @required PostCity city,
-      @required String area,
+      @required PostArea area,
       @required String country,
       @required PostMoreAccessories moreAccessories,
       @required bool avaliable,
@@ -508,7 +508,7 @@ abstract class _Post extends Post {
       @required bool headphones,
       @required bool charger,
       @required PostBrand brand,
-      @required String device,
+      @required PostDevice device,
       @required PostAge age,
       @required PostCondition condition,
       UniqueId userId,
@@ -530,7 +530,7 @@ abstract class _Post extends Post {
   @override
   PostCity get city;
   @override
-  String get area;
+  PostArea get area;
   @override
   String get country;
   @override
@@ -548,7 +548,7 @@ abstract class _Post extends Post {
   @override
   PostBrand get brand;
   @override
-  String get device;
+  PostDevice get device;
   @override
   PostAge get age;
   @override

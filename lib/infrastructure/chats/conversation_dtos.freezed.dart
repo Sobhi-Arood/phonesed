@@ -25,6 +25,9 @@ class _$ConversationDtoTearOff {
       @required String postImageUrl,
       @required DateTime postPublishedDate,
       @required int postPrice,
+      @required String postUserId,
+      @required String postUsername,
+      @required String postCity,
       @required String recentMessageContent,
       @required DateTime recentMessageDate,
       @required String displayUserName}) {
@@ -36,6 +39,9 @@ class _$ConversationDtoTearOff {
       postImageUrl: postImageUrl,
       postPublishedDate: postPublishedDate,
       postPrice: postPrice,
+      postUserId: postUserId,
+      postUsername: postUsername,
+      postCity: postCity,
       recentMessageContent: recentMessageContent,
       recentMessageDate: recentMessageDate,
       displayUserName: displayUserName,
@@ -61,7 +67,10 @@ mixin _$ConversationDto {
   String get postTitle;
   String get postImageUrl;
   DateTime get postPublishedDate;
-  int get postPrice; // @required MessageDto messageDto,
+  int get postPrice;
+  String get postUserId;
+  String get postUsername;
+  String get postCity; // @required MessageDto messageDto,
   String get recentMessageContent;
   DateTime get recentMessageDate;
   String get displayUserName;
@@ -83,6 +92,9 @@ abstract class $ConversationDtoCopyWith<$Res> {
       String postImageUrl,
       DateTime postPublishedDate,
       int postPrice,
+      String postUserId,
+      String postUsername,
+      String postCity,
       String recentMessageContent,
       DateTime recentMessageDate,
       String displayUserName});
@@ -106,6 +118,9 @@ class _$ConversationDtoCopyWithImpl<$Res>
     Object postImageUrl = freezed,
     Object postPublishedDate = freezed,
     Object postPrice = freezed,
+    Object postUserId = freezed,
+    Object postUsername = freezed,
+    Object postCity = freezed,
     Object recentMessageContent = freezed,
     Object recentMessageDate = freezed,
     Object displayUserName = freezed,
@@ -124,6 +139,12 @@ class _$ConversationDtoCopyWithImpl<$Res>
           ? _value.postPublishedDate
           : postPublishedDate as DateTime,
       postPrice: postPrice == freezed ? _value.postPrice : postPrice as int,
+      postUserId:
+          postUserId == freezed ? _value.postUserId : postUserId as String,
+      postUsername: postUsername == freezed
+          ? _value.postUsername
+          : postUsername as String,
+      postCity: postCity == freezed ? _value.postCity : postCity as String,
       recentMessageContent: recentMessageContent == freezed
           ? _value.recentMessageContent
           : recentMessageContent as String,
@@ -152,6 +173,9 @@ abstract class _$ConversationDtoCopyWith<$Res>
       String postImageUrl,
       DateTime postPublishedDate,
       int postPrice,
+      String postUserId,
+      String postUsername,
+      String postCity,
       String recentMessageContent,
       DateTime recentMessageDate,
       String displayUserName});
@@ -177,6 +201,9 @@ class __$ConversationDtoCopyWithImpl<$Res>
     Object postImageUrl = freezed,
     Object postPublishedDate = freezed,
     Object postPrice = freezed,
+    Object postUserId = freezed,
+    Object postUsername = freezed,
+    Object postCity = freezed,
     Object recentMessageContent = freezed,
     Object recentMessageDate = freezed,
     Object displayUserName = freezed,
@@ -195,6 +222,12 @@ class __$ConversationDtoCopyWithImpl<$Res>
           ? _value.postPublishedDate
           : postPublishedDate as DateTime,
       postPrice: postPrice == freezed ? _value.postPrice : postPrice as int,
+      postUserId:
+          postUserId == freezed ? _value.postUserId : postUserId as String,
+      postUsername: postUsername == freezed
+          ? _value.postUsername
+          : postUsername as String,
+      postCity: postCity == freezed ? _value.postCity : postCity as String,
       recentMessageContent: recentMessageContent == freezed
           ? _value.recentMessageContent
           : recentMessageContent as String,
@@ -220,6 +253,9 @@ class _$_ConversationDto extends _ConversationDto {
       @required this.postImageUrl,
       @required this.postPublishedDate,
       @required this.postPrice,
+      @required this.postUserId,
+      @required this.postUsername,
+      @required this.postCity,
       @required this.recentMessageContent,
       @required this.recentMessageDate,
       @required this.displayUserName})
@@ -230,6 +266,9 @@ class _$_ConversationDto extends _ConversationDto {
         assert(postImageUrl != null),
         assert(postPublishedDate != null),
         assert(postPrice != null),
+        assert(postUserId != null),
+        assert(postUsername != null),
+        assert(postCity != null),
         assert(recentMessageContent != null),
         assert(recentMessageDate != null),
         assert(displayUserName != null),
@@ -253,6 +292,12 @@ class _$_ConversationDto extends _ConversationDto {
   final DateTime postPublishedDate;
   @override
   final int postPrice;
+  @override
+  final String postUserId;
+  @override
+  final String postUsername;
+  @override
+  final String postCity;
   @override // @required MessageDto messageDto,
   final String recentMessageContent;
   @override
@@ -262,7 +307,7 @@ class _$_ConversationDto extends _ConversationDto {
 
   @override
   String toString() {
-    return 'ConversationDto(id: $id, serverTimeStamp: $serverTimeStamp, postId: $postId, postTitle: $postTitle, postImageUrl: $postImageUrl, postPublishedDate: $postPublishedDate, postPrice: $postPrice, recentMessageContent: $recentMessageContent, recentMessageDate: $recentMessageDate, displayUserName: $displayUserName)';
+    return 'ConversationDto(id: $id, serverTimeStamp: $serverTimeStamp, postId: $postId, postTitle: $postTitle, postImageUrl: $postImageUrl, postPublishedDate: $postPublishedDate, postPrice: $postPrice, postUserId: $postUserId, postUsername: $postUsername, postCity: $postCity, recentMessageContent: $recentMessageContent, recentMessageDate: $recentMessageDate, displayUserName: $displayUserName)';
   }
 
   @override
@@ -288,6 +333,15 @@ class _$_ConversationDto extends _ConversationDto {
             (identical(other.postPrice, postPrice) ||
                 const DeepCollectionEquality()
                     .equals(other.postPrice, postPrice)) &&
+            (identical(other.postUserId, postUserId) ||
+                const DeepCollectionEquality()
+                    .equals(other.postUserId, postUserId)) &&
+            (identical(other.postUsername, postUsername) ||
+                const DeepCollectionEquality()
+                    .equals(other.postUsername, postUsername)) &&
+            (identical(other.postCity, postCity) ||
+                const DeepCollectionEquality()
+                    .equals(other.postCity, postCity)) &&
             (identical(other.recentMessageContent, recentMessageContent) ||
                 const DeepCollectionEquality().equals(
                     other.recentMessageContent, recentMessageContent)) &&
@@ -309,6 +363,9 @@ class _$_ConversationDto extends _ConversationDto {
       const DeepCollectionEquality().hash(postImageUrl) ^
       const DeepCollectionEquality().hash(postPublishedDate) ^
       const DeepCollectionEquality().hash(postPrice) ^
+      const DeepCollectionEquality().hash(postUserId) ^
+      const DeepCollectionEquality().hash(postUsername) ^
+      const DeepCollectionEquality().hash(postCity) ^
       const DeepCollectionEquality().hash(recentMessageContent) ^
       const DeepCollectionEquality().hash(recentMessageDate) ^
       const DeepCollectionEquality().hash(displayUserName);
@@ -333,6 +390,9 @@ abstract class _ConversationDto extends ConversationDto {
       @required String postImageUrl,
       @required DateTime postPublishedDate,
       @required int postPrice,
+      @required String postUserId,
+      @required String postUsername,
+      @required String postCity,
       @required String recentMessageContent,
       @required DateTime recentMessageDate,
       @required String displayUserName}) = _$_ConversationDto;
@@ -355,6 +415,12 @@ abstract class _ConversationDto extends ConversationDto {
   DateTime get postPublishedDate;
   @override
   int get postPrice;
+  @override
+  String get postUserId;
+  @override
+  String get postUsername;
+  @override
+  String get postCity;
   @override // @required MessageDto messageDto,
   String get recentMessageContent;
   @override

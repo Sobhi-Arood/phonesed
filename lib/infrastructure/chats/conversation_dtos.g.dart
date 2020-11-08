@@ -18,6 +18,9 @@ _$_ConversationDto _$_$_ConversationDtoFromJson(Map<String, dynamic> json) {
         ? null
         : DateTime.parse(json['postPublishedDate'] as String),
     postPrice: json['postPrice'] as int,
+    postUserId: json['postUserId'] as String,
+    postUsername: json['postUsername'] as String,
+    postCity: json['postCity'] as String,
     recentMessageContent: json['recentMessageContent'] as String,
     recentMessageDate: json['recentMessageDate'] == null
         ? null
@@ -36,6 +39,9 @@ Map<String, dynamic> _$_$_ConversationDtoToJson(_$_ConversationDto instance) =>
       'postImageUrl': instance.postImageUrl,
       'postPublishedDate': instance.postPublishedDate?.toIso8601String(),
       'postPrice': instance.postPrice,
+      'postUserId': instance.postUserId,
+      'postUsername': instance.postUsername,
+      'postCity': instance.postCity,
       'recentMessageContent': instance.recentMessageContent,
       'recentMessageDate': instance.recentMessageDate?.toIso8601String(),
       'displayUserName': instance.displayUserName,

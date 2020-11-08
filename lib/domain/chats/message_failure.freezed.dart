@@ -27,6 +27,11 @@ class _$MessageFailureTearOff {
   _InsufficientPermission insufficientPermission() {
     return const _InsufficientPermission();
   }
+
+// ignore: unused_element
+  _NotLoggedIn notLoggedIn() {
+    return const _NotLoggedIn();
+  }
 }
 
 /// @nodoc
@@ -40,12 +45,14 @@ mixin _$MessageFailure {
     @required Result unableToSend(),
     @required Result unexpected(),
     @required Result insufficientPermission(),
+    @required Result notLoggedIn(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result unableToSend(),
     Result unexpected(),
     Result insufficientPermission(),
+    Result notLoggedIn(),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -53,12 +60,14 @@ mixin _$MessageFailure {
     @required Result unableToSend(_UnableToSend value),
     @required Result unexpected(_Unexpected value),
     @required Result insufficientPermission(_InsufficientPermission value),
+    @required Result notLoggedIn(_NotLoggedIn value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result unableToSend(_UnableToSend value),
     Result unexpected(_Unexpected value),
     Result insufficientPermission(_InsufficientPermission value),
+    Result notLoggedIn(_NotLoggedIn value),
     @required Result orElse(),
   });
 }
@@ -122,10 +131,12 @@ class _$_UnableToSend implements _UnableToSend {
     @required Result unableToSend(),
     @required Result unexpected(),
     @required Result insufficientPermission(),
+    @required Result notLoggedIn(),
   }) {
     assert(unableToSend != null);
     assert(unexpected != null);
     assert(insufficientPermission != null);
+    assert(notLoggedIn != null);
     return unableToSend();
   }
 
@@ -135,6 +146,7 @@ class _$_UnableToSend implements _UnableToSend {
     Result unableToSend(),
     Result unexpected(),
     Result insufficientPermission(),
+    Result notLoggedIn(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -150,10 +162,12 @@ class _$_UnableToSend implements _UnableToSend {
     @required Result unableToSend(_UnableToSend value),
     @required Result unexpected(_Unexpected value),
     @required Result insufficientPermission(_InsufficientPermission value),
+    @required Result notLoggedIn(_NotLoggedIn value),
   }) {
     assert(unableToSend != null);
     assert(unexpected != null);
     assert(insufficientPermission != null);
+    assert(notLoggedIn != null);
     return unableToSend(this);
   }
 
@@ -163,6 +177,7 @@ class _$_UnableToSend implements _UnableToSend {
     Result unableToSend(_UnableToSend value),
     Result unexpected(_Unexpected value),
     Result insufficientPermission(_InsufficientPermission value),
+    Result notLoggedIn(_NotLoggedIn value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -218,10 +233,12 @@ class _$_Unexpected implements _Unexpected {
     @required Result unableToSend(),
     @required Result unexpected(),
     @required Result insufficientPermission(),
+    @required Result notLoggedIn(),
   }) {
     assert(unableToSend != null);
     assert(unexpected != null);
     assert(insufficientPermission != null);
+    assert(notLoggedIn != null);
     return unexpected();
   }
 
@@ -231,6 +248,7 @@ class _$_Unexpected implements _Unexpected {
     Result unableToSend(),
     Result unexpected(),
     Result insufficientPermission(),
+    Result notLoggedIn(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -246,10 +264,12 @@ class _$_Unexpected implements _Unexpected {
     @required Result unableToSend(_UnableToSend value),
     @required Result unexpected(_Unexpected value),
     @required Result insufficientPermission(_InsufficientPermission value),
+    @required Result notLoggedIn(_NotLoggedIn value),
   }) {
     assert(unableToSend != null);
     assert(unexpected != null);
     assert(insufficientPermission != null);
+    assert(notLoggedIn != null);
     return unexpected(this);
   }
 
@@ -259,6 +279,7 @@ class _$_Unexpected implements _Unexpected {
     Result unableToSend(_UnableToSend value),
     Result unexpected(_Unexpected value),
     Result insufficientPermission(_InsufficientPermission value),
+    Result notLoggedIn(_NotLoggedIn value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -315,10 +336,12 @@ class _$_InsufficientPermission implements _InsufficientPermission {
     @required Result unableToSend(),
     @required Result unexpected(),
     @required Result insufficientPermission(),
+    @required Result notLoggedIn(),
   }) {
     assert(unableToSend != null);
     assert(unexpected != null);
     assert(insufficientPermission != null);
+    assert(notLoggedIn != null);
     return insufficientPermission();
   }
 
@@ -328,6 +351,7 @@ class _$_InsufficientPermission implements _InsufficientPermission {
     Result unableToSend(),
     Result unexpected(),
     Result insufficientPermission(),
+    Result notLoggedIn(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -343,10 +367,12 @@ class _$_InsufficientPermission implements _InsufficientPermission {
     @required Result unableToSend(_UnableToSend value),
     @required Result unexpected(_Unexpected value),
     @required Result insufficientPermission(_InsufficientPermission value),
+    @required Result notLoggedIn(_NotLoggedIn value),
   }) {
     assert(unableToSend != null);
     assert(unexpected != null);
     assert(insufficientPermission != null);
+    assert(notLoggedIn != null);
     return insufficientPermission(this);
   }
 
@@ -356,6 +382,7 @@ class _$_InsufficientPermission implements _InsufficientPermission {
     Result unableToSend(_UnableToSend value),
     Result unexpected(_Unexpected value),
     Result insufficientPermission(_InsufficientPermission value),
+    Result notLoggedIn(_NotLoggedIn value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -368,4 +395,107 @@ class _$_InsufficientPermission implements _InsufficientPermission {
 
 abstract class _InsufficientPermission implements MessageFailure {
   const factory _InsufficientPermission() = _$_InsufficientPermission;
+}
+
+/// @nodoc
+abstract class _$NotLoggedInCopyWith<$Res> {
+  factory _$NotLoggedInCopyWith(
+          _NotLoggedIn value, $Res Function(_NotLoggedIn) then) =
+      __$NotLoggedInCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$NotLoggedInCopyWithImpl<$Res>
+    extends _$MessageFailureCopyWithImpl<$Res>
+    implements _$NotLoggedInCopyWith<$Res> {
+  __$NotLoggedInCopyWithImpl(
+      _NotLoggedIn _value, $Res Function(_NotLoggedIn) _then)
+      : super(_value, (v) => _then(v as _NotLoggedIn));
+
+  @override
+  _NotLoggedIn get _value => super._value as _NotLoggedIn;
+}
+
+/// @nodoc
+class _$_NotLoggedIn implements _NotLoggedIn {
+  const _$_NotLoggedIn();
+
+  @override
+  String toString() {
+    return 'MessageFailure.notLoggedIn()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _NotLoggedIn);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result unableToSend(),
+    @required Result unexpected(),
+    @required Result insufficientPermission(),
+    @required Result notLoggedIn(),
+  }) {
+    assert(unableToSend != null);
+    assert(unexpected != null);
+    assert(insufficientPermission != null);
+    assert(notLoggedIn != null);
+    return notLoggedIn();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result unableToSend(),
+    Result unexpected(),
+    Result insufficientPermission(),
+    Result notLoggedIn(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (notLoggedIn != null) {
+      return notLoggedIn();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result unableToSend(_UnableToSend value),
+    @required Result unexpected(_Unexpected value),
+    @required Result insufficientPermission(_InsufficientPermission value),
+    @required Result notLoggedIn(_NotLoggedIn value),
+  }) {
+    assert(unableToSend != null);
+    assert(unexpected != null);
+    assert(insufficientPermission != null);
+    assert(notLoggedIn != null);
+    return notLoggedIn(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result unableToSend(_UnableToSend value),
+    Result unexpected(_Unexpected value),
+    Result insufficientPermission(_InsufficientPermission value),
+    Result notLoggedIn(_NotLoggedIn value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (notLoggedIn != null) {
+      return notLoggedIn(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NotLoggedIn implements MessageFailure {
+  const factory _NotLoggedIn() = _$_NotLoggedIn;
 }

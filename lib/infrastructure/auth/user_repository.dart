@@ -19,18 +19,25 @@ class UserRepository implements IUserRepository {
 
   @override
   Stream<Either<PostFailure, User>> watch() async* {
-    final userDoc = await _firestore.userDocument();
-    yield* userDoc
-        .snapshots()
-        .map((event) =>
-            right<PostFailure, User>(UserDto.fromJson(event.data()).toDomain()))
-        .onErrorReturnWith((e) {
-      if (e is FirebaseException && e.message.contains('permission-denied')) {
-        return left(const PostFailure.insufficientPermission());
-      } else {
-        return left(const PostFailure.unexpected());
+    try {
+      final userDoc = await _firestore.userDocument();
+      yield* userDoc
+          .snapshots()
+          .map((event) =>
+              right<PostFailure, User>(UserDto.fromFirestore(event).toDomain()))
+          .onErrorReturnWith((e) {
+        print(e.toString());
+        if (e is FirebaseException && e.message.contains('permission-denied')) {
+          return left(const PostFailure.insufficientPermission());
+        } else {
+          return left(const PostFailure.unexpected());
+        }
+      });
+    } catch (e) {
+      if (e is NotAuthenticatedError) {
+        yield left(const PostFailure.notLoggedIn());
       }
-    });
+    }
     // yield* userDoc.snapshots().map((event) => right<PostFailure, User>(
     // event.data().map((key, value) => print(value));
     // UserDto.fromFirestore(event.data()).toDomain(),
@@ -46,6 +53,7 @@ class UserRepository implements IUserRepository {
       final user = UserDto.fromJson(userDoc.data()).toDomain();
       return right(user);
     } on FirebaseException catch (e) {
+      print(e.message);
       if (e is FirebaseException && e.message.contains('permission-denied')) {
         return left(const PostFailure.insufficientPermission());
       } else {
