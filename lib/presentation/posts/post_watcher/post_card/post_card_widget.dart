@@ -32,6 +32,7 @@ class PostCard extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Stack(
                       children: [
@@ -41,81 +42,54 @@ class PostCard extends StatelessWidget {
                           height: 200,
                         ),
                         Positioned(
-                            top: 9,
-                            right: 9,
-                            child: Container(
-                              width: 60,
-                              height: 40,
-                              decoration: BoxDecoration(
-                                  color: const Color(0x50000000),
-                                  borderRadius: BorderRadius.circular(8)),
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 3, vertical: 0),
-                              // color: const Color(0x50000000),
-                              child: state.maybeMap(
-                                  loadSuccess: (u) {
-                                    return IconButton(
-                                        onPressed: () => u.user.favorites.fold(
-                                              () => null,
-                                              (favs) {
-                                                if (favs
-                                                    .getOrCrash()
-                                                    .contains(post.id)) {
-                                                  context
-                                                      .bloc<PostActorBloc>()
-                                                      .add(
-                                                        PostActorEvent.unLiked(
-                                                            post),
-                                                      );
-                                                } else {
-                                                  context
-                                                      .bloc<PostActorBloc>()
-                                                      .add(
-                                                        PostActorEvent.liked(
-                                                            post),
-                                                      );
-                                                }
-                                              },
-                                            )
-                                        // if (u.user.favorites
-                                        //     .getOrCrash()
-                                        //     .contains(post.id)) {
-                                        //   context.bloc<PostActorBloc>().add(
-                                        //         PostActorEvent.unLiked(post),
-                                        //       );
-                                        // } else {
-                                        //   context.bloc<PostActorBloc>().add(
-                                        //         PostActorEvent.liked(post),
-                                        //       );
-                                        // }
-                                        ,
-                                        iconSize: 20,
-                                        icon: u.user.favorites.fold(
-                                          () => const Icon(
-                                            Icons.favorite_outline,
-                                            color: Colors.white,
-                                          ),
-                                          (favs) => Icon(
-                                            favs.getOrCrash().contains(post.id)
-                                                ? Icons.favorite
-                                                : Icons.favorite_outline,
-                                            color: Colors.white,
-                                          ),
-                                        )
-                                        // Icon(
-                                        //   u.user.favorites.fold(
-                                        //       () => Icons.favorite_outline,
-                                        //       (favs) => favs
-                                        //               .getOrCrash()
-                                        //               .contains(post.id)
-                                        //           ? Icons.favorite
-                                        //           : Icons.favorite_outline),
-                                        //   color: Colors.white,
-                                        // ),
-                                        );
-                                  },
-                                  orElse: () => Container()),
-                            ))
+                          top: 9,
+                          right: 9,
+                          child: Container(
+                            width: 60,
+                            height: 40,
+                            decoration: BoxDecoration(
+                              color: const Color(0x50000000),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 3, vertical: 0),
+                            child: state.maybeMap(
+                                loadSuccess: (u) {
+                                  return IconButton(
+                                    onPressed: () => u.user.favorites.fold(
+                                      () => null,
+                                      (favs) {
+                                        if (favs
+                                            .getOrCrash()
+                                            .contains(post.id)) {
+                                          context.bloc<PostActorBloc>().add(
+                                                PostActorEvent.unLiked(post),
+                                              );
+                                        } else {
+                                          context.bloc<PostActorBloc>().add(
+                                                PostActorEvent.liked(post),
+                                              );
+                                        }
+                                      },
+                                    ),
+                                    iconSize: 20,
+                                    icon: u.user.favorites.fold(
+                                      () => const Icon(
+                                        Icons.favorite_outline,
+                                        color: Colors.white,
+                                      ),
+                                      (favs) => Icon(
+                                        favs.getOrCrash().contains(post.id)
+                                            ? Icons.favorite
+                                            : Icons.favorite_outline,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  );
+                                },
+                                orElse: () => Container()),
+                          ),
+                        )
                       ],
                     ),
                     const SizedBox(height: 8),
@@ -143,33 +117,58 @@ class PostCard extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 16),
+                    const SizedBox(height: 8),
+                    Text(
+                      post.brand.getOrCrash(),
+                      textAlign: TextAlign.left,
+                      style: const TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.grey,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
                     IntrinsicHeight(
                       child: Align(
                         alignment: Alignment.topLeft,
                         child: Wrap(
                           spacing: 15,
                           children: [
-                            Text(timeago
-                                .format(post.publishedDate.getOrCrash())),
+                            Text(
+                              timeago.format(post.publishedDate.getOrCrash()),
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w500,
+                                color: Colors.grey,
+                              ),
+                            ),
                             Container(
                               height: 15,
                               child: const VerticalDivider(
-                                color: Colors.black,
-                                thickness: 1,
+                                color: Colors.grey,
+                                thickness: 1.5,
                                 width: 10,
                               ),
                             ),
-                            Text(post.age.getOrCrash()),
+                            Text(post.age.getOrCrash(),
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.grey,
+                                )),
                             Container(
                               height: 15,
                               child: const VerticalDivider(
-                                color: Colors.black,
-                                thickness: 1,
+                                color: Colors.grey,
+                                thickness: 1.5,
                                 width: 10,
                               ),
                             ),
-                            Text(post.condition.getOrCrash()),
+                            Text(
+                              post.condition.getOrCrash(),
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w500,
+                                color: Colors.grey,
+                              ),
+                            ),
                             // const Text('55 min ago'),
                           ],
                         ),

@@ -13,7 +13,7 @@ class MoreAccessoriesTextForm extends HookWidget {
   Widget build(BuildContext context) {
     final textEditingController = useTextEditingController();
     return BlocListener<PostFormBloc, PostFormState>(
-      listenWhen: (p, c) => p.post.moreAccessories != c.post.moreAccessories,
+      listenWhen: (p, c) => p.isEditing != c.isEditing,
       listener: (context, state) {
         textEditingController.text = state.post.moreAccessories.getOrCrash();
       },
@@ -36,6 +36,7 @@ class MoreAccessoriesTextForm extends HookWidget {
               borderRadius: BorderRadius.circular(8),
             ),
             child: TextFormField(
+              controller: textEditingController,
               autocorrect: false,
               decoration: const InputDecoration(
                 counterText: '',

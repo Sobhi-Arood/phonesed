@@ -4,7 +4,6 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:phonesed/application/posts/post_form/post_form_areas/post_form_areas_bloc.dart';
 import 'package:phonesed/application/posts/post_form/post_form_bloc.dart';
 import 'package:phonesed/application/posts/post_form/post_form_cities/post_form_cities_bloc.dart';
-import 'package:phonesed/application/posts/post_form/post_form_load_data/post_form_load_data_bloc.dart';
 
 import '../../../../constants.dart';
 
@@ -15,9 +14,12 @@ class CityDropdown extends HookWidget {
   Widget build(BuildContext context) {
     // final brandValue = useState('Apple');
     final cityValue = useState('');
-    return BlocBuilder<PostFormBloc, PostFormState>(
+    return BlocConsumer<PostFormBloc, PostFormState>(
+      listener: (context, state) {
+        cityValue.value = state.post.city.value.fold((l) => '', (r) => r);
+      },
       buildWhen: (p, c) => p.post.city != c.post.city,
-      builder: (context, state) {
+      builder: (context, formState) {
         // print(state.cities);
         return Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -40,10 +42,15 @@ class CityDropdown extends HookWidget {
                       initial: (_) => {},
                       loadInProgress: (_) => {},
                       loadCitiesSuccess: (s) {
+                        // if (formState.post.city.getOrCrash().isEmpty) {
                         cityValue.value = s.data[0];
+                        context
+                            .bloc<PostFormBloc>()
+                            .add(PostFormEvent.cityChanged(cityValue.value));
                         context
                             .bloc<PostFormAreasBloc>()
                             .add(PostFormAreasEvent.getAreasStarted(s.data[0]));
+                        // }
                       },
                       loadCitiesFailure: (_) => {});
                   // cityValue.value = state.map(

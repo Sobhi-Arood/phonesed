@@ -13,7 +13,7 @@ class PriceTextForm extends HookWidget {
   Widget build(BuildContext context) {
     final textEditingController = useTextEditingController();
     return BlocListener<PostFormBloc, PostFormState>(
-      listenWhen: (p, c) => p.post.price != c.post.price,
+      listenWhen: (p, c) => p.isEditing != c.isEditing,
       listener: (context, state) {
         textEditingController.text = state.post.price.getOrCrash().toString();
       },
@@ -36,6 +36,7 @@ class PriceTextForm extends HookWidget {
               borderRadius: BorderRadius.circular(8),
             ),
             child: TextFormField(
+              controller: textEditingController,
               autocorrect: false,
               keyboardType: TextInputType.number,
               decoration: const InputDecoration(

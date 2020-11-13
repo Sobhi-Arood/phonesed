@@ -25,24 +25,27 @@ class PostFormPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
         providers: [
-          BlocProvider(create: (context) => getIt<PostPickerImageBloc>()),
-          BlocProvider(
+          BlocProvider<PostPickerImageBloc>(
+              create: (context) => getIt<PostPickerImageBloc>()),
+          BlocProvider<PostFormBloc>(
               create: (context) => getIt<PostFormBloc>()
                 ..add(PostFormEvent.initialized(optionOf(editedPost)))),
-          BlocProvider(
+          BlocProvider<PostFormCitiesBloc>(
             create: (context) => getIt<PostFormCitiesBloc>()
               ..add(
                 const PostFormCitiesEvent.getCitiesStarted(),
               ),
           ),
-          BlocProvider(create: (context) => getIt<PostFormAreasBloc>()),
-          BlocProvider(
+          BlocProvider<PostFormAreasBloc>(
+              create: (context) => getIt<PostFormAreasBloc>()),
+          BlocProvider<PostFormBrandsBloc>(
             create: (context) => getIt<PostFormBrandsBloc>()
               ..add(
                 const PostFormBrandsEvent.getBrandsStarted(),
               ),
           ),
-          BlocProvider(create: (context) => getIt<PostFormDevicesBloc>()),
+          BlocProvider<PostFormDevicesBloc>(
+              create: (context) => getIt<PostFormDevicesBloc>()),
         ],
         child: BlocConsumer<PostFormBloc, PostFormState>(
           listenWhen: (p, c) =>

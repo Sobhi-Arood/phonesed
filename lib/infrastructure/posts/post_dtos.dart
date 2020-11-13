@@ -36,6 +36,8 @@ abstract class PostDto implements _$PostDto {
     @required String condition,
     @required String userAvatar,
     @required String userName,
+    @required List<String> searchParams,
+    @required List<dynamic> filterParams,
   }) = _PostDto;
 
   // factory PostDto.fromDomain(

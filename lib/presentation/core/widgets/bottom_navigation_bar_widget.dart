@@ -16,7 +16,7 @@ class BottomNavigationBarWidget extends StatelessWidget {
               children: [
                 BottomNavBarItem(
                   iconData: Icons.home_outlined,
-                  activeIconData: Icons.home,
+                  activeIconData: Icons.home_outlined,
                   isActive: state.currentIndex == 0,
                   onPressed: () {
                     context
@@ -25,8 +25,8 @@ class BottomNavigationBarWidget extends StatelessWidget {
                   },
                 ),
                 BottomNavBarItem(
-                  iconData: Icons.favorite_border_outlined,
-                  activeIconData: Icons.favorite,
+                  iconData: Icons.search_outlined,
+                  activeIconData: Icons.search,
                   isActive: state.currentIndex == 1,
                   onPressed: () {
                     context
@@ -35,8 +35,8 @@ class BottomNavigationBarWidget extends StatelessWidget {
                   },
                 ),
                 BottomNavBarItem(
-                  iconData: Icons.chat_outlined,
-                  activeIconData: Icons.chat,
+                  iconData: Icons.favorite_border_outlined,
+                  activeIconData: Icons.favorite_border_outlined,
                   isActive: state.currentIndex == 2,
                   onPressed: () {
                     context
@@ -45,13 +45,23 @@ class BottomNavigationBarWidget extends StatelessWidget {
                   },
                 ),
                 BottomNavBarItem(
-                  iconData: Icons.person_outlined,
-                  activeIconData: Icons.person,
+                  iconData: Icons.chat_outlined,
+                  activeIconData: Icons.chat_outlined,
                   isActive: state.currentIndex == 3,
                   onPressed: () {
                     context
                         .bloc<BottomNavigationBloc>()
                         .add(const BottomNavigationEvent.pageChanged(3));
+                  },
+                ),
+                BottomNavBarItem(
+                  iconData: Icons.person_outlined,
+                  activeIconData: Icons.person_outlined,
+                  isActive: state.currentIndex == 4,
+                  onPressed: () {
+                    context
+                        .bloc<BottomNavigationBloc>()
+                        .add(const BottomNavigationEvent.pageChanged(4));
                   },
                 ),
               ],

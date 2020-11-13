@@ -10,6 +10,9 @@ import 'package:phonesed/presentation/posts/post_form/misc/post_img_presentation
 import 'package:provider/provider.dart';
 import 'package:phonesed/presentation/posts/post_form/misc/build_context_x.dart';
 import 'package:kt_dart/kt.dart';
+import 'package:network_to_file_image/network_to_file_image.dart';
+import 'package:path/path.dart' as p;
+import 'package:path_provider/path_provider.dart';
 
 class ImagesList extends StatelessWidget {
   const ImagesList({Key key}) : super(key: key);
@@ -53,6 +56,7 @@ class ImageTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final img = context.postImages.getOrElse(index, (_) => null);
+    print(img.path);
     return Stack(
       children: [
         Padding(
@@ -61,7 +65,8 @@ class ImageTile extends StatelessWidget {
             width: MediaQuery.of(context).size.width / 3,
             height: 150,
             fit: BoxFit.cover,
-            image: FileImage(img),
+            // image: FileImage(img),
+            image: NetworkToFileImage(file: img, url: img.path),
           ),
         ),
         Positioned(

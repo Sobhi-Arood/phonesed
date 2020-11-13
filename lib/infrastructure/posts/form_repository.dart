@@ -5,6 +5,7 @@ import 'package:kt_dart/kt.dart';
 import 'package:dartz/dartz.dart';
 import 'package:phonesed/domain/posts/i_form_repository.dart';
 import 'package:phonesed/domain/posts/post_failure.dart';
+import 'package:phonesed/infrastructure/posts/post_form_primitives.dart';
 
 @LazySingleton(as: IFormRepository)
 class FormRepository implements IFormRepository {
@@ -13,14 +14,25 @@ class FormRepository implements IFormRepository {
   FormRepository(this._firestore);
 
   @override
-  Future<Either<PostFailure, KtList<String>>> getBrands() async {
+  Future<Either<PostFailure, KtList<BrandPrimitive>>> getBrands() async {
     try {
       final brandsDoc =
-          await _firestore.collection('Post-Form').doc('Brands').get();
-
+          // await _firestore.collection('Post-Form').doc('Brands').get();
+          await _firestore.collection('Post-Form').doc('Brand').get();
+      List<BrandPrimitive> list = [];
+      // print(brandsDoc.data());
       final brands = brandsDoc.data();
+      brands.forEach((key, value) {
+        // print(key);
+        final bp =
+            BrandPrimitive(brandName: key, brandImgUrl: value.toString());
+        list.add(bp);
+      });
+      list.sort((a, b) => a.brandName.compareTo(b.brandName));
+      // final brand = BrandPrimitive(brandName: '', brandImgUrl: '');
 
-      return right(brands.keys.toImmutableList());
+      // return right(brands.keys.toImmutableList());
+      return right(list.toImmutableList());
     } catch (e) {
       return left(const PostFailure.unexpected());
     }

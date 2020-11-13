@@ -4,5 +4,6 @@ part of 'post_form_brands_bloc.dart';
 abstract class PostFormBrandsEvent with _$PostFormBrandsEvent {
   const factory PostFormBrandsEvent.getBrandsStarted() = _GetBrandsStarted;
   const factory PostFormBrandsEvent.brandsReceived(
-      Either<PostFailure, KtList<String>> failureOrPosts) = _BrandsReceived;
+          Either<PostFailure, KtList<BrandPrimitive>> failureOrPosts) =
+      _BrandsReceived;
 }

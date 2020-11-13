@@ -12,8 +12,8 @@ abstract class PostFormLoadDataState with _$PostFormLoadDataState {
       _LoadAreasSuccess;
   const factory PostFormLoadDataState.loadAreasFailure(
       PostFailure postFailure) = _LoadAreasFailure;
-  const factory PostFormLoadDataState.loadBrandsSuccess(KtList<String> data) =
-      _LoadBrandsSuccess;
+  const factory PostFormLoadDataState.loadBrandsSuccess(
+      KtList<BrandPrimitive> data) = _LoadBrandsSuccess;
   const factory PostFormLoadDataState.loadBrandsFailure(
       PostFailure postFailure) = _LoadBrandsFailure;
   const factory PostFormLoadDataState.loadDevicesSuccess(KtList<String> data) =

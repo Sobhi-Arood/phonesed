@@ -13,16 +13,19 @@ class DeviceDropdown extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final deviceValue = useState('');
-    return BlocBuilder<PostFormBloc, PostFormState>(
+    return BlocConsumer<PostFormBloc, PostFormState>(
+      listener: (context, state) {
+        deviceValue.value = state.post.device.value.fold((l) => '', (r) => r);
+      },
       buildWhen: (p, c) => p.post.device != c.post.device,
-      builder: (context, state) {
+      builder: (context, formState) {
         // brandValue.value = state.post.brand.getOrCrash();
         return Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
-              'Device',
+              'Model',
               style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w500,
@@ -34,11 +37,16 @@ class DeviceDropdown extends HookWidget {
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: BlocConsumer<PostFormDevicesBloc, PostFormDevicesState>(
                 listener: (context, state) {
+                  // if (formState.post.device.getOrCrash().isEmpty) {
                   deviceValue.value = state.map(
                       initial: (_) => '',
                       loadInProgress: (_) => '',
                       loadCitiesSuccess: (s) => s.data[0],
                       loadCitiesFailure: (_) => '');
+                  context
+                      .bloc<PostFormBloc>()
+                      .add(PostFormEvent.deviceChanged(deviceValue.value));
+                  // }
                 },
                 builder: (context, dataState) {
                   return dataState.map(

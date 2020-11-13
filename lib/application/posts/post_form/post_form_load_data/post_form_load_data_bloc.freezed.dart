@@ -55,7 +55,7 @@ class _$PostFormLoadDataEventTearOff {
 
 // ignore: unused_element
   _BrandsReceived brandsReceived(
-      Either<PostFailure, KtList<String>> failureOrPosts) {
+      Either<PostFailure, KtList<BrandPrimitive>> failureOrPosts) {
     return _BrandsReceived(
       failureOrPosts,
     );
@@ -90,7 +90,7 @@ mixin _$PostFormLoadDataEvent {
             Either<PostFailure, KtList<String>> failureOrPosts),
     @required
         Result brandsReceived(
-            Either<PostFailure, KtList<String>> failureOrPosts),
+            Either<PostFailure, KtList<BrandPrimitive>> failureOrPosts),
     @required
         Result devicesReceived(
             Either<PostFailure, KtList<String>> failureOrPosts),
@@ -103,7 +103,8 @@ mixin _$PostFormLoadDataEvent {
     Result getDevicesStarted(String brand),
     Result citiesReceived(Either<PostFailure, KtList<String>> failureOrPosts),
     Result areasReceived(Either<PostFailure, KtList<String>> failureOrPosts),
-    Result brandsReceived(Either<PostFailure, KtList<String>> failureOrPosts),
+    Result brandsReceived(
+        Either<PostFailure, KtList<BrandPrimitive>> failureOrPosts),
     Result devicesReceived(Either<PostFailure, KtList<String>> failureOrPosts),
     @required Result orElse(),
   });
@@ -200,7 +201,7 @@ class _$_GetCitiesStarted implements _GetCitiesStarted {
             Either<PostFailure, KtList<String>> failureOrPosts),
     @required
         Result brandsReceived(
-            Either<PostFailure, KtList<String>> failureOrPosts),
+            Either<PostFailure, KtList<BrandPrimitive>> failureOrPosts),
     @required
         Result devicesReceived(
             Either<PostFailure, KtList<String>> failureOrPosts),
@@ -225,7 +226,8 @@ class _$_GetCitiesStarted implements _GetCitiesStarted {
     Result getDevicesStarted(String brand),
     Result citiesReceived(Either<PostFailure, KtList<String>> failureOrPosts),
     Result areasReceived(Either<PostFailure, KtList<String>> failureOrPosts),
-    Result brandsReceived(Either<PostFailure, KtList<String>> failureOrPosts),
+    Result brandsReceived(
+        Either<PostFailure, KtList<BrandPrimitive>> failureOrPosts),
     Result devicesReceived(Either<PostFailure, KtList<String>> failureOrPosts),
     @required Result orElse(),
   }) {
@@ -356,7 +358,7 @@ class _$_GetAreasStarted implements _GetAreasStarted {
             Either<PostFailure, KtList<String>> failureOrPosts),
     @required
         Result brandsReceived(
-            Either<PostFailure, KtList<String>> failureOrPosts),
+            Either<PostFailure, KtList<BrandPrimitive>> failureOrPosts),
     @required
         Result devicesReceived(
             Either<PostFailure, KtList<String>> failureOrPosts),
@@ -381,7 +383,8 @@ class _$_GetAreasStarted implements _GetAreasStarted {
     Result getDevicesStarted(String brand),
     Result citiesReceived(Either<PostFailure, KtList<String>> failureOrPosts),
     Result areasReceived(Either<PostFailure, KtList<String>> failureOrPosts),
-    Result brandsReceived(Either<PostFailure, KtList<String>> failureOrPosts),
+    Result brandsReceived(
+        Either<PostFailure, KtList<BrandPrimitive>> failureOrPosts),
     Result devicesReceived(Either<PostFailure, KtList<String>> failureOrPosts),
     @required Result orElse(),
   }) {
@@ -494,7 +497,7 @@ class _$_GetBrandsStarted implements _GetBrandsStarted {
             Either<PostFailure, KtList<String>> failureOrPosts),
     @required
         Result brandsReceived(
-            Either<PostFailure, KtList<String>> failureOrPosts),
+            Either<PostFailure, KtList<BrandPrimitive>> failureOrPosts),
     @required
         Result devicesReceived(
             Either<PostFailure, KtList<String>> failureOrPosts),
@@ -519,7 +522,8 @@ class _$_GetBrandsStarted implements _GetBrandsStarted {
     Result getDevicesStarted(String brand),
     Result citiesReceived(Either<PostFailure, KtList<String>> failureOrPosts),
     Result areasReceived(Either<PostFailure, KtList<String>> failureOrPosts),
-    Result brandsReceived(Either<PostFailure, KtList<String>> failureOrPosts),
+    Result brandsReceived(
+        Either<PostFailure, KtList<BrandPrimitive>> failureOrPosts),
     Result devicesReceived(Either<PostFailure, KtList<String>> failureOrPosts),
     @required Result orElse(),
   }) {
@@ -650,7 +654,7 @@ class _$_GetDevicesStarted implements _GetDevicesStarted {
             Either<PostFailure, KtList<String>> failureOrPosts),
     @required
         Result brandsReceived(
-            Either<PostFailure, KtList<String>> failureOrPosts),
+            Either<PostFailure, KtList<BrandPrimitive>> failureOrPosts),
     @required
         Result devicesReceived(
             Either<PostFailure, KtList<String>> failureOrPosts),
@@ -675,7 +679,8 @@ class _$_GetDevicesStarted implements _GetDevicesStarted {
     Result getDevicesStarted(String brand),
     Result citiesReceived(Either<PostFailure, KtList<String>> failureOrPosts),
     Result areasReceived(Either<PostFailure, KtList<String>> failureOrPosts),
-    Result brandsReceived(Either<PostFailure, KtList<String>> failureOrPosts),
+    Result brandsReceived(
+        Either<PostFailure, KtList<BrandPrimitive>> failureOrPosts),
     Result devicesReceived(Either<PostFailure, KtList<String>> failureOrPosts),
     @required Result orElse(),
   }) {
@@ -813,7 +818,7 @@ class _$_CitiesReceived implements _CitiesReceived {
             Either<PostFailure, KtList<String>> failureOrPosts),
     @required
         Result brandsReceived(
-            Either<PostFailure, KtList<String>> failureOrPosts),
+            Either<PostFailure, KtList<BrandPrimitive>> failureOrPosts),
     @required
         Result devicesReceived(
             Either<PostFailure, KtList<String>> failureOrPosts),
@@ -838,7 +843,8 @@ class _$_CitiesReceived implements _CitiesReceived {
     Result getDevicesStarted(String brand),
     Result citiesReceived(Either<PostFailure, KtList<String>> failureOrPosts),
     Result areasReceived(Either<PostFailure, KtList<String>> failureOrPosts),
-    Result brandsReceived(Either<PostFailure, KtList<String>> failureOrPosts),
+    Result brandsReceived(
+        Either<PostFailure, KtList<BrandPrimitive>> failureOrPosts),
     Result devicesReceived(Either<PostFailure, KtList<String>> failureOrPosts),
     @required Result orElse(),
   }) {
@@ -977,7 +983,7 @@ class _$_AreasReceived implements _AreasReceived {
             Either<PostFailure, KtList<String>> failureOrPosts),
     @required
         Result brandsReceived(
-            Either<PostFailure, KtList<String>> failureOrPosts),
+            Either<PostFailure, KtList<BrandPrimitive>> failureOrPosts),
     @required
         Result devicesReceived(
             Either<PostFailure, KtList<String>> failureOrPosts),
@@ -1002,7 +1008,8 @@ class _$_AreasReceived implements _AreasReceived {
     Result getDevicesStarted(String brand),
     Result citiesReceived(Either<PostFailure, KtList<String>> failureOrPosts),
     Result areasReceived(Either<PostFailure, KtList<String>> failureOrPosts),
-    Result brandsReceived(Either<PostFailure, KtList<String>> failureOrPosts),
+    Result brandsReceived(
+        Either<PostFailure, KtList<BrandPrimitive>> failureOrPosts),
     Result devicesReceived(Either<PostFailure, KtList<String>> failureOrPosts),
     @required Result orElse(),
   }) {
@@ -1070,7 +1077,7 @@ abstract class _$BrandsReceivedCopyWith<$Res> {
   factory _$BrandsReceivedCopyWith(
           _BrandsReceived value, $Res Function(_BrandsReceived) then) =
       __$BrandsReceivedCopyWithImpl<$Res>;
-  $Res call({Either<PostFailure, KtList<String>> failureOrPosts});
+  $Res call({Either<PostFailure, KtList<BrandPrimitive>> failureOrPosts});
 }
 
 /// @nodoc
@@ -1091,7 +1098,7 @@ class __$BrandsReceivedCopyWithImpl<$Res>
     return _then(_BrandsReceived(
       failureOrPosts == freezed
           ? _value.failureOrPosts
-          : failureOrPosts as Either<PostFailure, KtList<String>>,
+          : failureOrPosts as Either<PostFailure, KtList<BrandPrimitive>>,
     ));
   }
 }
@@ -1101,7 +1108,7 @@ class _$_BrandsReceived implements _BrandsReceived {
   const _$_BrandsReceived(this.failureOrPosts) : assert(failureOrPosts != null);
 
   @override
-  final Either<PostFailure, KtList<String>> failureOrPosts;
+  final Either<PostFailure, KtList<BrandPrimitive>> failureOrPosts;
 
   @override
   String toString() {
@@ -1141,7 +1148,7 @@ class _$_BrandsReceived implements _BrandsReceived {
             Either<PostFailure, KtList<String>> failureOrPosts),
     @required
         Result brandsReceived(
-            Either<PostFailure, KtList<String>> failureOrPosts),
+            Either<PostFailure, KtList<BrandPrimitive>> failureOrPosts),
     @required
         Result devicesReceived(
             Either<PostFailure, KtList<String>> failureOrPosts),
@@ -1166,7 +1173,8 @@ class _$_BrandsReceived implements _BrandsReceived {
     Result getDevicesStarted(String brand),
     Result citiesReceived(Either<PostFailure, KtList<String>> failureOrPosts),
     Result areasReceived(Either<PostFailure, KtList<String>> failureOrPosts),
-    Result brandsReceived(Either<PostFailure, KtList<String>> failureOrPosts),
+    Result brandsReceived(
+        Either<PostFailure, KtList<BrandPrimitive>> failureOrPosts),
     Result devicesReceived(Either<PostFailure, KtList<String>> failureOrPosts),
     @required Result orElse(),
   }) {
@@ -1223,9 +1231,10 @@ class _$_BrandsReceived implements _BrandsReceived {
 
 abstract class _BrandsReceived implements PostFormLoadDataEvent {
   const factory _BrandsReceived(
-      Either<PostFailure, KtList<String>> failureOrPosts) = _$_BrandsReceived;
+          Either<PostFailure, KtList<BrandPrimitive>> failureOrPosts) =
+      _$_BrandsReceived;
 
-  Either<PostFailure, KtList<String>> get failureOrPosts;
+  Either<PostFailure, KtList<BrandPrimitive>> get failureOrPosts;
   _$BrandsReceivedCopyWith<_BrandsReceived> get copyWith;
 }
 
@@ -1306,7 +1315,7 @@ class _$_DevicesReceived implements _DevicesReceived {
             Either<PostFailure, KtList<String>> failureOrPosts),
     @required
         Result brandsReceived(
-            Either<PostFailure, KtList<String>> failureOrPosts),
+            Either<PostFailure, KtList<BrandPrimitive>> failureOrPosts),
     @required
         Result devicesReceived(
             Either<PostFailure, KtList<String>> failureOrPosts),
@@ -1331,7 +1340,8 @@ class _$_DevicesReceived implements _DevicesReceived {
     Result getDevicesStarted(String brand),
     Result citiesReceived(Either<PostFailure, KtList<String>> failureOrPosts),
     Result areasReceived(Either<PostFailure, KtList<String>> failureOrPosts),
-    Result brandsReceived(Either<PostFailure, KtList<String>> failureOrPosts),
+    Result brandsReceived(
+        Either<PostFailure, KtList<BrandPrimitive>> failureOrPosts),
     Result devicesReceived(Either<PostFailure, KtList<String>> failureOrPosts),
     @required Result orElse(),
   }) {
@@ -1437,7 +1447,7 @@ class _$PostFormLoadDataStateTearOff {
   }
 
 // ignore: unused_element
-  _LoadBrandsSuccess loadBrandsSuccess(KtList<String> data) {
+  _LoadBrandsSuccess loadBrandsSuccess(KtList<BrandPrimitive> data) {
     return _LoadBrandsSuccess(
       data,
     );
@@ -1479,7 +1489,7 @@ mixin _$PostFormLoadDataState {
     @required Result loadCitiesFailure(PostFailure postFailure),
     @required Result loadAreasSuccess(KtList<String> data),
     @required Result loadAreasFailure(PostFailure postFailure),
-    @required Result loadBrandsSuccess(KtList<String> data),
+    @required Result loadBrandsSuccess(KtList<BrandPrimitive> data),
     @required Result loadBrandsFailure(PostFailure postFailure),
     @required Result loadDevicesSuccess(KtList<String> data),
     @required Result loadDevicesFailure(PostFailure postFailure),
@@ -1492,7 +1502,7 @@ mixin _$PostFormLoadDataState {
     Result loadCitiesFailure(PostFailure postFailure),
     Result loadAreasSuccess(KtList<String> data),
     Result loadAreasFailure(PostFailure postFailure),
-    Result loadBrandsSuccess(KtList<String> data),
+    Result loadBrandsSuccess(KtList<BrandPrimitive> data),
     Result loadBrandsFailure(PostFailure postFailure),
     Result loadDevicesSuccess(KtList<String> data),
     Result loadDevicesFailure(PostFailure postFailure),
@@ -1587,7 +1597,7 @@ class _$_Initial implements _Initial {
     @required Result loadCitiesFailure(PostFailure postFailure),
     @required Result loadAreasSuccess(KtList<String> data),
     @required Result loadAreasFailure(PostFailure postFailure),
-    @required Result loadBrandsSuccess(KtList<String> data),
+    @required Result loadBrandsSuccess(KtList<BrandPrimitive> data),
     @required Result loadBrandsFailure(PostFailure postFailure),
     @required Result loadDevicesSuccess(KtList<String> data),
     @required Result loadDevicesFailure(PostFailure postFailure),
@@ -1614,7 +1624,7 @@ class _$_Initial implements _Initial {
     Result loadCitiesFailure(PostFailure postFailure),
     Result loadAreasSuccess(KtList<String> data),
     Result loadAreasFailure(PostFailure postFailure),
-    Result loadBrandsSuccess(KtList<String> data),
+    Result loadBrandsSuccess(KtList<BrandPrimitive> data),
     Result loadBrandsFailure(PostFailure postFailure),
     Result loadDevicesSuccess(KtList<String> data),
     Result loadDevicesFailure(PostFailure postFailure),
@@ -1726,7 +1736,7 @@ class _$_LoadInProgress implements _LoadInProgress {
     @required Result loadCitiesFailure(PostFailure postFailure),
     @required Result loadAreasSuccess(KtList<String> data),
     @required Result loadAreasFailure(PostFailure postFailure),
-    @required Result loadBrandsSuccess(KtList<String> data),
+    @required Result loadBrandsSuccess(KtList<BrandPrimitive> data),
     @required Result loadBrandsFailure(PostFailure postFailure),
     @required Result loadDevicesSuccess(KtList<String> data),
     @required Result loadDevicesFailure(PostFailure postFailure),
@@ -1753,7 +1763,7 @@ class _$_LoadInProgress implements _LoadInProgress {
     Result loadCitiesFailure(PostFailure postFailure),
     Result loadAreasSuccess(KtList<String> data),
     Result loadAreasFailure(PostFailure postFailure),
-    Result loadBrandsSuccess(KtList<String> data),
+    Result loadBrandsSuccess(KtList<BrandPrimitive> data),
     Result loadBrandsFailure(PostFailure postFailure),
     Result loadDevicesSuccess(KtList<String> data),
     Result loadDevicesFailure(PostFailure postFailure),
@@ -1886,7 +1896,7 @@ class _$_LoadCitiesSuccess implements _LoadCitiesSuccess {
     @required Result loadCitiesFailure(PostFailure postFailure),
     @required Result loadAreasSuccess(KtList<String> data),
     @required Result loadAreasFailure(PostFailure postFailure),
-    @required Result loadBrandsSuccess(KtList<String> data),
+    @required Result loadBrandsSuccess(KtList<BrandPrimitive> data),
     @required Result loadBrandsFailure(PostFailure postFailure),
     @required Result loadDevicesSuccess(KtList<String> data),
     @required Result loadDevicesFailure(PostFailure postFailure),
@@ -1913,7 +1923,7 @@ class _$_LoadCitiesSuccess implements _LoadCitiesSuccess {
     Result loadCitiesFailure(PostFailure postFailure),
     Result loadAreasSuccess(KtList<String> data),
     Result loadAreasFailure(PostFailure postFailure),
-    Result loadBrandsSuccess(KtList<String> data),
+    Result loadBrandsSuccess(KtList<BrandPrimitive> data),
     Result loadBrandsFailure(PostFailure postFailure),
     Result loadDevicesSuccess(KtList<String> data),
     Result loadDevicesFailure(PostFailure postFailure),
@@ -2062,7 +2072,7 @@ class _$_LoadCitiesFailure implements _LoadCitiesFailure {
     @required Result loadCitiesFailure(PostFailure postFailure),
     @required Result loadAreasSuccess(KtList<String> data),
     @required Result loadAreasFailure(PostFailure postFailure),
-    @required Result loadBrandsSuccess(KtList<String> data),
+    @required Result loadBrandsSuccess(KtList<BrandPrimitive> data),
     @required Result loadBrandsFailure(PostFailure postFailure),
     @required Result loadDevicesSuccess(KtList<String> data),
     @required Result loadDevicesFailure(PostFailure postFailure),
@@ -2089,7 +2099,7 @@ class _$_LoadCitiesFailure implements _LoadCitiesFailure {
     Result loadCitiesFailure(PostFailure postFailure),
     Result loadAreasSuccess(KtList<String> data),
     Result loadAreasFailure(PostFailure postFailure),
-    Result loadBrandsSuccess(KtList<String> data),
+    Result loadBrandsSuccess(KtList<BrandPrimitive> data),
     Result loadBrandsFailure(PostFailure postFailure),
     Result loadDevicesSuccess(KtList<String> data),
     Result loadDevicesFailure(PostFailure postFailure),
@@ -2226,7 +2236,7 @@ class _$_LoadAreasSuccess implements _LoadAreasSuccess {
     @required Result loadCitiesFailure(PostFailure postFailure),
     @required Result loadAreasSuccess(KtList<String> data),
     @required Result loadAreasFailure(PostFailure postFailure),
-    @required Result loadBrandsSuccess(KtList<String> data),
+    @required Result loadBrandsSuccess(KtList<BrandPrimitive> data),
     @required Result loadBrandsFailure(PostFailure postFailure),
     @required Result loadDevicesSuccess(KtList<String> data),
     @required Result loadDevicesFailure(PostFailure postFailure),
@@ -2253,7 +2263,7 @@ class _$_LoadAreasSuccess implements _LoadAreasSuccess {
     Result loadCitiesFailure(PostFailure postFailure),
     Result loadAreasSuccess(KtList<String> data),
     Result loadAreasFailure(PostFailure postFailure),
-    Result loadBrandsSuccess(KtList<String> data),
+    Result loadBrandsSuccess(KtList<BrandPrimitive> data),
     Result loadBrandsFailure(PostFailure postFailure),
     Result loadDevicesSuccess(KtList<String> data),
     Result loadDevicesFailure(PostFailure postFailure),
@@ -2402,7 +2412,7 @@ class _$_LoadAreasFailure implements _LoadAreasFailure {
     @required Result loadCitiesFailure(PostFailure postFailure),
     @required Result loadAreasSuccess(KtList<String> data),
     @required Result loadAreasFailure(PostFailure postFailure),
-    @required Result loadBrandsSuccess(KtList<String> data),
+    @required Result loadBrandsSuccess(KtList<BrandPrimitive> data),
     @required Result loadBrandsFailure(PostFailure postFailure),
     @required Result loadDevicesSuccess(KtList<String> data),
     @required Result loadDevicesFailure(PostFailure postFailure),
@@ -2429,7 +2439,7 @@ class _$_LoadAreasFailure implements _LoadAreasFailure {
     Result loadCitiesFailure(PostFailure postFailure),
     Result loadAreasSuccess(KtList<String> data),
     Result loadAreasFailure(PostFailure postFailure),
-    Result loadBrandsSuccess(KtList<String> data),
+    Result loadBrandsSuccess(KtList<BrandPrimitive> data),
     Result loadBrandsFailure(PostFailure postFailure),
     Result loadDevicesSuccess(KtList<String> data),
     Result loadDevicesFailure(PostFailure postFailure),
@@ -2505,7 +2515,7 @@ abstract class _$LoadBrandsSuccessCopyWith<$Res> {
   factory _$LoadBrandsSuccessCopyWith(
           _LoadBrandsSuccess value, $Res Function(_LoadBrandsSuccess) then) =
       __$LoadBrandsSuccessCopyWithImpl<$Res>;
-  $Res call({KtList<String> data});
+  $Res call({KtList<BrandPrimitive> data});
 }
 
 /// @nodoc
@@ -2524,7 +2534,7 @@ class __$LoadBrandsSuccessCopyWithImpl<$Res>
     Object data = freezed,
   }) {
     return _then(_LoadBrandsSuccess(
-      data == freezed ? _value.data : data as KtList<String>,
+      data == freezed ? _value.data : data as KtList<BrandPrimitive>,
     ));
   }
 }
@@ -2534,7 +2544,7 @@ class _$_LoadBrandsSuccess implements _LoadBrandsSuccess {
   const _$_LoadBrandsSuccess(this.data) : assert(data != null);
 
   @override
-  final KtList<String> data;
+  final KtList<BrandPrimitive> data;
 
   @override
   String toString() {
@@ -2566,7 +2576,7 @@ class _$_LoadBrandsSuccess implements _LoadBrandsSuccess {
     @required Result loadCitiesFailure(PostFailure postFailure),
     @required Result loadAreasSuccess(KtList<String> data),
     @required Result loadAreasFailure(PostFailure postFailure),
-    @required Result loadBrandsSuccess(KtList<String> data),
+    @required Result loadBrandsSuccess(KtList<BrandPrimitive> data),
     @required Result loadBrandsFailure(PostFailure postFailure),
     @required Result loadDevicesSuccess(KtList<String> data),
     @required Result loadDevicesFailure(PostFailure postFailure),
@@ -2593,7 +2603,7 @@ class _$_LoadBrandsSuccess implements _LoadBrandsSuccess {
     Result loadCitiesFailure(PostFailure postFailure),
     Result loadAreasSuccess(KtList<String> data),
     Result loadAreasFailure(PostFailure postFailure),
-    Result loadBrandsSuccess(KtList<String> data),
+    Result loadBrandsSuccess(KtList<BrandPrimitive> data),
     Result loadBrandsFailure(PostFailure postFailure),
     Result loadDevicesSuccess(KtList<String> data),
     Result loadDevicesFailure(PostFailure postFailure),
@@ -2657,9 +2667,10 @@ class _$_LoadBrandsSuccess implements _LoadBrandsSuccess {
 }
 
 abstract class _LoadBrandsSuccess implements PostFormLoadDataState {
-  const factory _LoadBrandsSuccess(KtList<String> data) = _$_LoadBrandsSuccess;
+  const factory _LoadBrandsSuccess(KtList<BrandPrimitive> data) =
+      _$_LoadBrandsSuccess;
 
-  KtList<String> get data;
+  KtList<BrandPrimitive> get data;
   _$LoadBrandsSuccessCopyWith<_LoadBrandsSuccess> get copyWith;
 }
 
@@ -2742,7 +2753,7 @@ class _$_LoadBrandsFailure implements _LoadBrandsFailure {
     @required Result loadCitiesFailure(PostFailure postFailure),
     @required Result loadAreasSuccess(KtList<String> data),
     @required Result loadAreasFailure(PostFailure postFailure),
-    @required Result loadBrandsSuccess(KtList<String> data),
+    @required Result loadBrandsSuccess(KtList<BrandPrimitive> data),
     @required Result loadBrandsFailure(PostFailure postFailure),
     @required Result loadDevicesSuccess(KtList<String> data),
     @required Result loadDevicesFailure(PostFailure postFailure),
@@ -2769,7 +2780,7 @@ class _$_LoadBrandsFailure implements _LoadBrandsFailure {
     Result loadCitiesFailure(PostFailure postFailure),
     Result loadAreasSuccess(KtList<String> data),
     Result loadAreasFailure(PostFailure postFailure),
-    Result loadBrandsSuccess(KtList<String> data),
+    Result loadBrandsSuccess(KtList<BrandPrimitive> data),
     Result loadBrandsFailure(PostFailure postFailure),
     Result loadDevicesSuccess(KtList<String> data),
     Result loadDevicesFailure(PostFailure postFailure),
@@ -2906,7 +2917,7 @@ class _$_LoadDevicesSuccess implements _LoadDevicesSuccess {
     @required Result loadCitiesFailure(PostFailure postFailure),
     @required Result loadAreasSuccess(KtList<String> data),
     @required Result loadAreasFailure(PostFailure postFailure),
-    @required Result loadBrandsSuccess(KtList<String> data),
+    @required Result loadBrandsSuccess(KtList<BrandPrimitive> data),
     @required Result loadBrandsFailure(PostFailure postFailure),
     @required Result loadDevicesSuccess(KtList<String> data),
     @required Result loadDevicesFailure(PostFailure postFailure),
@@ -2933,7 +2944,7 @@ class _$_LoadDevicesSuccess implements _LoadDevicesSuccess {
     Result loadCitiesFailure(PostFailure postFailure),
     Result loadAreasSuccess(KtList<String> data),
     Result loadAreasFailure(PostFailure postFailure),
-    Result loadBrandsSuccess(KtList<String> data),
+    Result loadBrandsSuccess(KtList<BrandPrimitive> data),
     Result loadBrandsFailure(PostFailure postFailure),
     Result loadDevicesSuccess(KtList<String> data),
     Result loadDevicesFailure(PostFailure postFailure),
@@ -3083,7 +3094,7 @@ class _$_LoadDevicesFailure implements _LoadDevicesFailure {
     @required Result loadCitiesFailure(PostFailure postFailure),
     @required Result loadAreasSuccess(KtList<String> data),
     @required Result loadAreasFailure(PostFailure postFailure),
-    @required Result loadBrandsSuccess(KtList<String> data),
+    @required Result loadBrandsSuccess(KtList<BrandPrimitive> data),
     @required Result loadBrandsFailure(PostFailure postFailure),
     @required Result loadDevicesSuccess(KtList<String> data),
     @required Result loadDevicesFailure(PostFailure postFailure),
@@ -3110,7 +3121,7 @@ class _$_LoadDevicesFailure implements _LoadDevicesFailure {
     Result loadCitiesFailure(PostFailure postFailure),
     Result loadAreasSuccess(KtList<String> data),
     Result loadAreasFailure(PostFailure postFailure),
-    Result loadBrandsSuccess(KtList<String> data),
+    Result loadBrandsSuccess(KtList<BrandPrimitive> data),
     Result loadBrandsFailure(PostFailure postFailure),
     Result loadDevicesSuccess(KtList<String> data),
     Result loadDevicesFailure(PostFailure postFailure),

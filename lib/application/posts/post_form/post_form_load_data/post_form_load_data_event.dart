@@ -13,7 +13,8 @@ abstract class PostFormLoadDataEvent with _$PostFormLoadDataEvent {
   const factory PostFormLoadDataEvent.areasReceived(
       Either<PostFailure, KtList<String>> failureOrPosts) = _AreasReceived;
   const factory PostFormLoadDataEvent.brandsReceived(
-      Either<PostFailure, KtList<String>> failureOrPosts) = _BrandsReceived;
+          Either<PostFailure, KtList<BrandPrimitive>> failureOrPosts) =
+      _BrandsReceived;
   const factory PostFormLoadDataEvent.devicesReceived(
       Either<PostFailure, KtList<String>> failureOrPosts) = _DevicesReceived;
 }

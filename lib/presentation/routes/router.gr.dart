@@ -11,30 +11,40 @@ import 'package:flutter/material.dart';
 
 import '../../domain/entities/post.dart';
 import '../../infrastructure/posts/post_primitive_presentation.dart';
+import '../auth/email_verification_sent_page.dart';
 import '../auth/sign_in_page.dart';
 import '../auth/sign_up_page.dart';
 import '../auth/welcome_page.dart';
 import '../chats/chat_page/chat_page.dart';
 import '../core/main_page.dart';
+import '../posts/new_post_form/new_post_form_page.dart';
 import '../posts/post_detail/post_detail_page.dart';
 import '../posts/post_form/post_form_page.dart';
+import '../profile/my_posts_watcher/my_posts_watcher_page.dart';
 
 class Routes {
   static const String mainPage = '/';
   static const String welcomePage = '/welcome-page';
+  static const String emailVerificationSentPage =
+      '/email-verification-sent-page';
   static const String signInPage = '/sign-in-page';
   static const String signUpPage = '/sign-up-page';
+  static const String newPostFormPage = '/new-post-form-page';
   static const String postFormPage = '/post-form-page';
   static const String postDetailPage = '/post-detail-page';
   static const String chatPage = '/chat-page';
+  static const String myPostsWatcherPage = '/my-posts-watcher-page';
   static const all = <String>{
     mainPage,
     welcomePage,
+    emailVerificationSentPage,
     signInPage,
     signUpPage,
+    newPostFormPage,
     postFormPage,
     postDetailPage,
     chatPage,
+    myPostsWatcherPage,
   };
 }
 
@@ -44,11 +54,14 @@ class Router extends RouterBase {
   final _routes = <RouteDef>[
     RouteDef(Routes.mainPage, page: MainPage),
     RouteDef(Routes.welcomePage, page: WelcomePage),
+    RouteDef(Routes.emailVerificationSentPage, page: EmailVerificationSentPage),
     RouteDef(Routes.signInPage, page: SignInPage),
     RouteDef(Routes.signUpPage, page: SignUpPage),
+    RouteDef(Routes.newPostFormPage, page: NewPostFormPage),
     RouteDef(Routes.postFormPage, page: PostFormPage),
     RouteDef(Routes.postDetailPage, page: PostDetailPage),
     RouteDef(Routes.chatPage, page: ChatPage),
+    RouteDef(Routes.myPostsWatcherPage, page: MyPostsWatcherPage),
   ];
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
@@ -65,6 +78,12 @@ class Router extends RouterBase {
         settings: data,
       );
     },
+    EmailVerificationSentPage: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => EmailVerificationSentPage(),
+        settings: data,
+      );
+    },
     SignInPage: (data) {
       return MaterialPageRoute<dynamic>(
         builder: (context) => SignInPage(),
@@ -75,6 +94,13 @@ class Router extends RouterBase {
       return MaterialPageRoute<dynamic>(
         builder: (context) => SignUpPage(),
         settings: data,
+      );
+    },
+    NewPostFormPage: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => const NewPostFormPage(),
+        settings: data,
+        fullscreenDialog: true,
       );
     },
     PostFormPage: (data) {
@@ -109,6 +135,12 @@ class Router extends RouterBase {
         fullscreenDialog: true,
       );
     },
+    MyPostsWatcherPage: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => MyPostsWatcherPage(),
+        settings: data,
+      );
+    },
   };
 }
 
@@ -121,9 +153,15 @@ extension RouterExtendedNavigatorStateX on ExtendedNavigatorState {
 
   Future<dynamic> pushWelcomePage() => push<dynamic>(Routes.welcomePage);
 
+  Future<dynamic> pushEmailVerificationSentPage() =>
+      push<dynamic>(Routes.emailVerificationSentPage);
+
   Future<dynamic> pushSignInPage() => push<dynamic>(Routes.signInPage);
 
   Future<dynamic> pushSignUpPage() => push<dynamic>(Routes.signUpPage);
+
+  Future<dynamic> pushNewPostFormPage() =>
+      push<dynamic>(Routes.newPostFormPage);
 
   Future<dynamic> pushPostFormPage({
     Key key,
@@ -151,6 +189,9 @@ extension RouterExtendedNavigatorStateX on ExtendedNavigatorState {
         Routes.chatPage,
         arguments: ChatPageArguments(key: key, postPrimitive: postPrimitive),
       );
+
+  Future<dynamic> pushMyPostsWatcherPage() =>
+      push<dynamic>(Routes.myPostsWatcherPage);
 }
 
 /// ************************************************************************

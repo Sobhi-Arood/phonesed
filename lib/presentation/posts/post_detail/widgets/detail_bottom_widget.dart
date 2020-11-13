@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import '../../../../constants.dart';
 
 class DetailBottomWidget extends StatelessWidget {
+  final String model;
   final String age;
   final String condition;
   final String description;
   const DetailBottomWidget(
       {Key key,
+      @required this.model,
       @required this.age,
       @required this.condition,
       @required this.description})
@@ -37,6 +39,28 @@ class DetailBottomWidget extends StatelessWidget {
               // spacing: 40,
               children: [
                 const Text(
+                  'Model',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Color(0x60000000),
+                  ),
+                ),
+                Text(
+                  model,
+                  style: const TextStyle(
+                      fontSize: 16, fontWeight: FontWeight.w700),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 11),
+          Container(
+            width: MediaQuery.of(context).size.width / 2,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              // spacing: 40,
+              children: [
+                const Text(
                   'Age',
                   style: TextStyle(
                     fontSize: 16,
@@ -51,7 +75,7 @@ class DetailBottomWidget extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: 11),
           Container(
             width: MediaQuery.of(context).size.width / 2,
             child: Row(

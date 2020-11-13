@@ -77,10 +77,14 @@ class CircularUserAvatar extends HookWidget {
                   loadSuccess: (state) {
                     // img.value = state.user.avatarUrl;
                     return CircleAvatar(
-                      radius: 60,
-                      backgroundImage:
-                          CachedNetworkImageProvider(state.user.avatarUrl),
-                      backgroundColor: Colors.amber,
+                      radius: 80,
+                      backgroundColor: Colors.grey[300],
+                      child: CircleAvatar(
+                        radius: 75,
+                        backgroundImage:
+                            CachedNetworkImageProvider(state.user.avatarUrl),
+                        backgroundColor: Colors.grey[100],
+                      ),
                     );
                   },
                   orElse: () => Container());

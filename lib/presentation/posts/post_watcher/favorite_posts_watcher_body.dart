@@ -16,6 +16,25 @@ class FavortiePostsWatcherBody extends StatelessWidget {
             loadInProgress: (_) =>
                 const Center(child: CircularProgressIndicator()),
             loadSuccess: (state) {
+              if (state.posts.isEmpty()) {
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      'assets/images/posts.png',
+                      scale: 3,
+                    ),
+                    const SizedBox(height: 30),
+                    Text(
+                      'No favorites yet ..',
+                      style: TextStyle(
+                          color: Colors.grey[300],
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16),
+                    ),
+                  ],
+                );
+              }
               return ListView.builder(
                 physics: const BouncingScrollPhysics(),
                 shrinkWrap: true,

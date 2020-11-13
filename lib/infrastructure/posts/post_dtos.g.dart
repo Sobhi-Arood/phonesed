@@ -32,6 +32,9 @@ _$_PostDto _$_$_PostDtoFromJson(Map<String, dynamic> json) {
     condition: json['condition'] as String,
     userAvatar: json['userAvatar'] as String,
     userName: json['userName'] as String,
+    searchParams:
+        (json['searchParams'] as List)?.map((e) => e as String)?.toList(),
+    filterParams: json['filterParams'] as List,
   );
 }
 
@@ -59,4 +62,6 @@ Map<String, dynamic> _$_$_PostDtoToJson(_$_PostDto instance) =>
       'condition': instance.condition,
       'userAvatar': instance.userAvatar,
       'userName': instance.userName,
+      'searchParams': instance.searchParams,
+      'filterParams': instance.filterParams,
     };

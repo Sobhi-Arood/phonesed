@@ -42,7 +42,6 @@ class ChatRepository implements IChatRepository {
             ),
           )
           .onErrorReturnWith((error) {
-        print(error.toString());
         if (error is FirebaseException &&
             error.message.contains('permission-denied')) {
           return left(const MessageFailure.insufficientPermission());
@@ -53,6 +52,8 @@ class ChatRepository implements IChatRepository {
     } catch (e) {
       if (e is NotAuthenticatedError) {
         yield left(const MessageFailure.notLoggedIn());
+      } else {
+        yield left(const MessageFailure.unexpected());
       }
     }
   }
@@ -60,41 +61,39 @@ class ChatRepository implements IChatRepository {
   @override
   Stream<Either<MessageFailure, KtList<Message>>> watchAllMessages(
       String conversationId) async* {
-    final user = await _firestore.userDocument();
-    // final userData = await user.get();
-    // final conversation = userData['conversation'] as List<dynamic>;
-
-    // conversation.forEach((element) async* {
-    // await conversation.map((e) async* {
-    if (conversationId.isEmpty) {
-      yield left(const MessageFailure.unexpected());
-    }
-
-    yield* user
-        .collection('Conversations')
-        // .doc()
-        .doc(conversationId)
-        .collection('messages')
-        .orderBy('date', descending: true)
-        .snapshots()
-        .map(
-          (snapshot) => right<MessageFailure, KtList<Message>>(
-            snapshot.docs
-                .map(
-                  (doc) => MessageDto.fromFirestore(doc).toDomain(),
-                )
-                .toImmutableList(),
-          ),
-        )
-        .onErrorReturnWith((error) {
-      print(error.toString());
-      if (error is FirebaseException &&
-          error.message.contains('permission-denied')) {
-        return left(const MessageFailure.insufficientPermission());
-      } else {
-        return left(const MessageFailure.unexpected());
+    try {
+      final user = await _firestore.userDocument();
+      if (conversationId.isEmpty) {
+        yield left(const MessageFailure.unexpected());
       }
-    });
+
+      yield* user
+          .collection('Conversations')
+          // .doc()
+          .doc(conversationId)
+          .collection('messages')
+          .orderBy('date', descending: true)
+          .snapshots()
+          .map(
+            (snapshot) => right<MessageFailure, KtList<Message>>(
+              snapshot.docs
+                  .map(
+                    (doc) => MessageDto.fromFirestore(doc).toDomain(),
+                  )
+                  .toImmutableList(),
+            ),
+          )
+          .onErrorReturnWith((error) {
+        if (error is FirebaseException &&
+            error.message.contains('permission-denied')) {
+          return left(const MessageFailure.insufficientPermission());
+        } else {
+          return left(const MessageFailure.unexpected());
+        }
+      });
+    } catch (e) {
+      yield left(const MessageFailure.notLoggedIn());
+    }
   }
 
   @override

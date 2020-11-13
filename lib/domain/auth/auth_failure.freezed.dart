@@ -37,6 +37,11 @@ class _$AuthFailureTearOff {
   WeakPassword weakPassword() {
     return const WeakPassword();
   }
+
+// ignore: unused_element
+  EmailNotVerified emailNotVerified() {
+    return const EmailNotVerified();
+  }
 }
 
 /// @nodoc
@@ -52,6 +57,7 @@ mixin _$AuthFailure {
     @required Result emailAlreadyInUse(),
     @required Result invalidEmailAndPasswordCombination(),
     @required Result weakPassword(),
+    @required Result emailNotVerified(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
@@ -60,6 +66,7 @@ mixin _$AuthFailure {
     Result emailAlreadyInUse(),
     Result invalidEmailAndPasswordCombination(),
     Result weakPassword(),
+    Result emailNotVerified(),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -71,6 +78,7 @@ mixin _$AuthFailure {
         Result invalidEmailAndPasswordCombination(
             InvalidEmailAndPasswordCombination value),
     @required Result weakPassword(WeakPassword value),
+    @required Result emailNotVerified(EmailNotVerified value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
@@ -80,6 +88,7 @@ mixin _$AuthFailure {
     Result invalidEmailAndPasswordCombination(
         InvalidEmailAndPasswordCombination value),
     Result weakPassword(WeakPassword value),
+    Result emailNotVerified(EmailNotVerified value),
     @required Result orElse(),
   });
 }
@@ -144,12 +153,14 @@ class _$CancelledByUser implements CancelledByUser {
     @required Result emailAlreadyInUse(),
     @required Result invalidEmailAndPasswordCombination(),
     @required Result weakPassword(),
+    @required Result emailNotVerified(),
   }) {
     assert(canelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
     assert(invalidEmailAndPasswordCombination != null);
     assert(weakPassword != null);
+    assert(emailNotVerified != null);
     return canelledByUser();
   }
 
@@ -161,6 +172,7 @@ class _$CancelledByUser implements CancelledByUser {
     Result emailAlreadyInUse(),
     Result invalidEmailAndPasswordCombination(),
     Result weakPassword(),
+    Result emailNotVerified(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -180,12 +192,14 @@ class _$CancelledByUser implements CancelledByUser {
         Result invalidEmailAndPasswordCombination(
             InvalidEmailAndPasswordCombination value),
     @required Result weakPassword(WeakPassword value),
+    @required Result emailNotVerified(EmailNotVerified value),
   }) {
     assert(canelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
     assert(invalidEmailAndPasswordCombination != null);
     assert(weakPassword != null);
+    assert(emailNotVerified != null);
     return canelledByUser(this);
   }
 
@@ -198,6 +212,7 @@ class _$CancelledByUser implements CancelledByUser {
     Result invalidEmailAndPasswordCombination(
         InvalidEmailAndPasswordCombination value),
     Result weakPassword(WeakPassword value),
+    Result emailNotVerified(EmailNotVerified value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -255,12 +270,14 @@ class _$ServerError implements ServerError {
     @required Result emailAlreadyInUse(),
     @required Result invalidEmailAndPasswordCombination(),
     @required Result weakPassword(),
+    @required Result emailNotVerified(),
   }) {
     assert(canelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
     assert(invalidEmailAndPasswordCombination != null);
     assert(weakPassword != null);
+    assert(emailNotVerified != null);
     return serverError();
   }
 
@@ -272,6 +289,7 @@ class _$ServerError implements ServerError {
     Result emailAlreadyInUse(),
     Result invalidEmailAndPasswordCombination(),
     Result weakPassword(),
+    Result emailNotVerified(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -291,12 +309,14 @@ class _$ServerError implements ServerError {
         Result invalidEmailAndPasswordCombination(
             InvalidEmailAndPasswordCombination value),
     @required Result weakPassword(WeakPassword value),
+    @required Result emailNotVerified(EmailNotVerified value),
   }) {
     assert(canelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
     assert(invalidEmailAndPasswordCombination != null);
     assert(weakPassword != null);
+    assert(emailNotVerified != null);
     return serverError(this);
   }
 
@@ -309,6 +329,7 @@ class _$ServerError implements ServerError {
     Result invalidEmailAndPasswordCombination(
         InvalidEmailAndPasswordCombination value),
     Result weakPassword(WeakPassword value),
+    Result emailNotVerified(EmailNotVerified value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -367,12 +388,14 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     @required Result emailAlreadyInUse(),
     @required Result invalidEmailAndPasswordCombination(),
     @required Result weakPassword(),
+    @required Result emailNotVerified(),
   }) {
     assert(canelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
     assert(invalidEmailAndPasswordCombination != null);
     assert(weakPassword != null);
+    assert(emailNotVerified != null);
     return emailAlreadyInUse();
   }
 
@@ -384,6 +407,7 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     Result emailAlreadyInUse(),
     Result invalidEmailAndPasswordCombination(),
     Result weakPassword(),
+    Result emailNotVerified(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -403,12 +427,14 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
         Result invalidEmailAndPasswordCombination(
             InvalidEmailAndPasswordCombination value),
     @required Result weakPassword(WeakPassword value),
+    @required Result emailNotVerified(EmailNotVerified value),
   }) {
     assert(canelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
     assert(invalidEmailAndPasswordCombination != null);
     assert(weakPassword != null);
+    assert(emailNotVerified != null);
     return emailAlreadyInUse(this);
   }
 
@@ -421,6 +447,7 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     Result invalidEmailAndPasswordCombination(
         InvalidEmailAndPasswordCombination value),
     Result weakPassword(WeakPassword value),
+    Result emailNotVerified(EmailNotVerified value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -484,12 +511,14 @@ class _$InvalidEmailAndPasswordCombination
     @required Result emailAlreadyInUse(),
     @required Result invalidEmailAndPasswordCombination(),
     @required Result weakPassword(),
+    @required Result emailNotVerified(),
   }) {
     assert(canelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
     assert(invalidEmailAndPasswordCombination != null);
     assert(weakPassword != null);
+    assert(emailNotVerified != null);
     return invalidEmailAndPasswordCombination();
   }
 
@@ -501,6 +530,7 @@ class _$InvalidEmailAndPasswordCombination
     Result emailAlreadyInUse(),
     Result invalidEmailAndPasswordCombination(),
     Result weakPassword(),
+    Result emailNotVerified(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -520,12 +550,14 @@ class _$InvalidEmailAndPasswordCombination
         Result invalidEmailAndPasswordCombination(
             InvalidEmailAndPasswordCombination value),
     @required Result weakPassword(WeakPassword value),
+    @required Result emailNotVerified(EmailNotVerified value),
   }) {
     assert(canelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
     assert(invalidEmailAndPasswordCombination != null);
     assert(weakPassword != null);
+    assert(emailNotVerified != null);
     return invalidEmailAndPasswordCombination(this);
   }
 
@@ -538,6 +570,7 @@ class _$InvalidEmailAndPasswordCombination
     Result invalidEmailAndPasswordCombination(
         InvalidEmailAndPasswordCombination value),
     Result weakPassword(WeakPassword value),
+    Result emailNotVerified(EmailNotVerified value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -596,12 +629,14 @@ class _$WeakPassword implements WeakPassword {
     @required Result emailAlreadyInUse(),
     @required Result invalidEmailAndPasswordCombination(),
     @required Result weakPassword(),
+    @required Result emailNotVerified(),
   }) {
     assert(canelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
     assert(invalidEmailAndPasswordCombination != null);
     assert(weakPassword != null);
+    assert(emailNotVerified != null);
     return weakPassword();
   }
 
@@ -613,6 +648,7 @@ class _$WeakPassword implements WeakPassword {
     Result emailAlreadyInUse(),
     Result invalidEmailAndPasswordCombination(),
     Result weakPassword(),
+    Result emailNotVerified(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -632,12 +668,14 @@ class _$WeakPassword implements WeakPassword {
         Result invalidEmailAndPasswordCombination(
             InvalidEmailAndPasswordCombination value),
     @required Result weakPassword(WeakPassword value),
+    @required Result emailNotVerified(EmailNotVerified value),
   }) {
     assert(canelledByUser != null);
     assert(serverError != null);
     assert(emailAlreadyInUse != null);
     assert(invalidEmailAndPasswordCombination != null);
     assert(weakPassword != null);
+    assert(emailNotVerified != null);
     return weakPassword(this);
   }
 
@@ -650,6 +688,7 @@ class _$WeakPassword implements WeakPassword {
     Result invalidEmailAndPasswordCombination(
         InvalidEmailAndPasswordCombination value),
     Result weakPassword(WeakPassword value),
+    Result emailNotVerified(EmailNotVerified value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -662,4 +701,122 @@ class _$WeakPassword implements WeakPassword {
 
 abstract class WeakPassword implements AuthFailure {
   const factory WeakPassword() = _$WeakPassword;
+}
+
+/// @nodoc
+abstract class $EmailNotVerifiedCopyWith<$Res> {
+  factory $EmailNotVerifiedCopyWith(
+          EmailNotVerified value, $Res Function(EmailNotVerified) then) =
+      _$EmailNotVerifiedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$EmailNotVerifiedCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res>
+    implements $EmailNotVerifiedCopyWith<$Res> {
+  _$EmailNotVerifiedCopyWithImpl(
+      EmailNotVerified _value, $Res Function(EmailNotVerified) _then)
+      : super(_value, (v) => _then(v as EmailNotVerified));
+
+  @override
+  EmailNotVerified get _value => super._value as EmailNotVerified;
+}
+
+/// @nodoc
+class _$EmailNotVerified implements EmailNotVerified {
+  const _$EmailNotVerified();
+
+  @override
+  String toString() {
+    return 'AuthFailure.emailNotVerified()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is EmailNotVerified);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result canelledByUser(),
+    @required Result serverError(),
+    @required Result emailAlreadyInUse(),
+    @required Result invalidEmailAndPasswordCombination(),
+    @required Result weakPassword(),
+    @required Result emailNotVerified(),
+  }) {
+    assert(canelledByUser != null);
+    assert(serverError != null);
+    assert(emailAlreadyInUse != null);
+    assert(invalidEmailAndPasswordCombination != null);
+    assert(weakPassword != null);
+    assert(emailNotVerified != null);
+    return emailNotVerified();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result canelledByUser(),
+    Result serverError(),
+    Result emailAlreadyInUse(),
+    Result invalidEmailAndPasswordCombination(),
+    Result weakPassword(),
+    Result emailNotVerified(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (emailNotVerified != null) {
+      return emailNotVerified();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result canelledByUser(CancelledByUser value),
+    @required Result serverError(ServerError value),
+    @required Result emailAlreadyInUse(EmailAlreadyInUse value),
+    @required
+        Result invalidEmailAndPasswordCombination(
+            InvalidEmailAndPasswordCombination value),
+    @required Result weakPassword(WeakPassword value),
+    @required Result emailNotVerified(EmailNotVerified value),
+  }) {
+    assert(canelledByUser != null);
+    assert(serverError != null);
+    assert(emailAlreadyInUse != null);
+    assert(invalidEmailAndPasswordCombination != null);
+    assert(weakPassword != null);
+    assert(emailNotVerified != null);
+    return emailNotVerified(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result canelledByUser(CancelledByUser value),
+    Result serverError(ServerError value),
+    Result emailAlreadyInUse(EmailAlreadyInUse value),
+    Result invalidEmailAndPasswordCombination(
+        InvalidEmailAndPasswordCombination value),
+    Result weakPassword(WeakPassword value),
+    Result emailNotVerified(EmailNotVerified value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (emailNotVerified != null) {
+      return emailNotVerified(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class EmailNotVerified implements AuthFailure {
+  const factory EmailNotVerified() = _$EmailNotVerified;
 }

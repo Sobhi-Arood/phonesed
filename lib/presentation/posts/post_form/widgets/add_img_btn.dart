@@ -37,16 +37,23 @@ class AddImageButton extends StatelessWidget {
         child: BlocConsumer<PostFormBloc, PostFormState>(
           listenWhen: (p, c) => p.isEditing != c.isEditing,
           listener: (context, state) {
+            if (state.showErrorMessages) {
+              print('errorororor');
+            }
+
             /// [Todo] map from url to file
-            // context.postImages = state.post.images.value.fold(
-            //     (f) => listOf<File>(),
-            //     (imageList) => imageList.map((_) => emptyList<File>()));
+            context.postImages = state.post.images.value.fold(
+                (f) => listOf<File>(),
+                (imageList) => imageList.map((s) => File(s)));
           },
           buildWhen: (p, c) => p.post.images.isFull != c.post.images.isFull,
           builder: (context, state) {
-            return ListTile(
+            return Column(children: [
+              ListTile(
                 enabled: !state.post.images.isFull,
-                tileColor: kPrimaryColor,
+                tileColor: state.post.images.isFull
+                    ? kSecondaryLightColor
+                    : kPrimaryColor,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
                 ),
@@ -68,10 +75,19 @@ class AddImageButton extends StatelessWidget {
                   ),
                 ),
                 onTap: () {
+                  FocusScope.of(context).unfocus();
                   context
                       .bloc<PostPickerImageBloc>()
                       .add(const PostPickerImageEvent.addClicked());
-                });
+                },
+              ),
+              if (state.showErrorMessages) ...[
+                const Text(
+                  'Cannot be empty',
+                  style: TextStyle(color: Colors.red),
+                )
+              ]
+            ]);
           },
         ));
   }

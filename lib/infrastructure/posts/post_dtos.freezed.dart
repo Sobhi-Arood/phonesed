@@ -39,7 +39,9 @@ class _$PostDtoTearOff {
       @required String age,
       @required String condition,
       @required String userAvatar,
-      @required String userName}) {
+      @required String userName,
+      @required List<String> searchParams,
+      @required List<dynamic> filterParams}) {
     return _PostDto(
       id: id,
       userId: userId,
@@ -63,6 +65,8 @@ class _$PostDtoTearOff {
       condition: condition,
       userAvatar: userAvatar,
       userName: userName,
+      searchParams: searchParams,
+      filterParams: filterParams,
     );
   }
 
@@ -101,6 +105,8 @@ mixin _$PostDto {
   String get condition;
   String get userAvatar;
   String get userName;
+  List<String> get searchParams;
+  List<dynamic> get filterParams;
 
   Map<String, dynamic> toJson();
   $PostDtoCopyWith<PostDto> get copyWith;
@@ -132,7 +138,9 @@ abstract class $PostDtoCopyWith<$Res> {
       String age,
       String condition,
       String userAvatar,
-      String userName});
+      String userName,
+      List<String> searchParams,
+      List<dynamic> filterParams});
 }
 
 /// @nodoc
@@ -167,6 +175,8 @@ class _$PostDtoCopyWithImpl<$Res> implements $PostDtoCopyWith<$Res> {
     Object condition = freezed,
     Object userAvatar = freezed,
     Object userName = freezed,
+    Object searchParams = freezed,
+    Object filterParams = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as String,
@@ -200,6 +210,12 @@ class _$PostDtoCopyWithImpl<$Res> implements $PostDtoCopyWith<$Res> {
       userAvatar:
           userAvatar == freezed ? _value.userAvatar : userAvatar as String,
       userName: userName == freezed ? _value.userName : userName as String,
+      searchParams: searchParams == freezed
+          ? _value.searchParams
+          : searchParams as List<String>,
+      filterParams: filterParams == freezed
+          ? _value.filterParams
+          : filterParams as List<dynamic>,
     ));
   }
 }
@@ -231,7 +247,9 @@ abstract class _$PostDtoCopyWith<$Res> implements $PostDtoCopyWith<$Res> {
       String age,
       String condition,
       String userAvatar,
-      String userName});
+      String userName,
+      List<String> searchParams,
+      List<dynamic> filterParams});
 }
 
 /// @nodoc
@@ -267,6 +285,8 @@ class __$PostDtoCopyWithImpl<$Res> extends _$PostDtoCopyWithImpl<$Res>
     Object condition = freezed,
     Object userAvatar = freezed,
     Object userName = freezed,
+    Object searchParams = freezed,
+    Object filterParams = freezed,
   }) {
     return _then(_PostDto(
       id: id == freezed ? _value.id : id as String,
@@ -300,6 +320,12 @@ class __$PostDtoCopyWithImpl<$Res> extends _$PostDtoCopyWithImpl<$Res>
       userAvatar:
           userAvatar == freezed ? _value.userAvatar : userAvatar as String,
       userName: userName == freezed ? _value.userName : userName as String,
+      searchParams: searchParams == freezed
+          ? _value.searchParams
+          : searchParams as List<String>,
+      filterParams: filterParams == freezed
+          ? _value.filterParams
+          : filterParams as List<dynamic>,
     ));
   }
 }
@@ -330,7 +356,9 @@ class _$_PostDto extends _PostDto {
       @required this.age,
       @required this.condition,
       @required this.userAvatar,
-      @required this.userName})
+      @required this.userName,
+      @required this.searchParams,
+      @required this.filterParams})
       : assert(id != null),
         assert(userId != null),
         assert(title != null),
@@ -353,6 +381,8 @@ class _$_PostDto extends _PostDto {
         assert(condition != null),
         assert(userAvatar != null),
         assert(userName != null),
+        assert(searchParams != null),
+        assert(filterParams != null),
         super._();
 
   factory _$_PostDto.fromJson(Map<String, dynamic> json) =>
@@ -402,10 +432,14 @@ class _$_PostDto extends _PostDto {
   final String userAvatar;
   @override
   final String userName;
+  @override
+  final List<String> searchParams;
+  @override
+  final List<dynamic> filterParams;
 
   @override
   String toString() {
-    return 'PostDto(id: $id, userId: $userId, title: $title, price: $price, description: $description, images: $images, publishedDate: $publishedDate, city: $city, area: $area, country: $country, moreAccessories: $moreAccessories, avaliable: $avaliable, exhangable: $exhangable, negiotable: $negiotable, headphones: $headphones, charger: $charger, brand: $brand, device: $device, age: $age, condition: $condition, userAvatar: $userAvatar, userName: $userName)';
+    return 'PostDto(id: $id, userId: $userId, title: $title, price: $price, description: $description, images: $images, publishedDate: $publishedDate, city: $city, area: $area, country: $country, moreAccessories: $moreAccessories, avaliable: $avaliable, exhangable: $exhangable, negiotable: $negiotable, headphones: $headphones, charger: $charger, brand: $brand, device: $device, age: $age, condition: $condition, userAvatar: $userAvatar, userName: $userName, searchParams: $searchParams, filterParams: $filterParams)';
   }
 
   @override
@@ -467,7 +501,13 @@ class _$_PostDto extends _PostDto {
                     .equals(other.userAvatar, userAvatar)) &&
             (identical(other.userName, userName) ||
                 const DeepCollectionEquality()
-                    .equals(other.userName, userName)));
+                    .equals(other.userName, userName)) &&
+            (identical(other.searchParams, searchParams) ||
+                const DeepCollectionEquality()
+                    .equals(other.searchParams, searchParams)) &&
+            (identical(other.filterParams, filterParams) ||
+                const DeepCollectionEquality()
+                    .equals(other.filterParams, filterParams)));
   }
 
   @override
@@ -494,7 +534,9 @@ class _$_PostDto extends _PostDto {
       const DeepCollectionEquality().hash(age) ^
       const DeepCollectionEquality().hash(condition) ^
       const DeepCollectionEquality().hash(userAvatar) ^
-      const DeepCollectionEquality().hash(userName);
+      const DeepCollectionEquality().hash(userName) ^
+      const DeepCollectionEquality().hash(searchParams) ^
+      const DeepCollectionEquality().hash(filterParams);
 
   @override
   _$PostDtoCopyWith<_PostDto> get copyWith =>
@@ -530,7 +572,9 @@ abstract class _PostDto extends PostDto {
       @required String age,
       @required String condition,
       @required String userAvatar,
-      @required String userName}) = _$_PostDto;
+      @required String userName,
+      @required List<String> searchParams,
+      @required List<dynamic> filterParams}) = _$_PostDto;
 
   factory _PostDto.fromJson(Map<String, dynamic> json) = _$_PostDto.fromJson;
 
@@ -578,6 +622,10 @@ abstract class _PostDto extends PostDto {
   String get userAvatar;
   @override
   String get userName;
+  @override
+  List<String> get searchParams;
+  @override
+  List<dynamic> get filterParams;
   @override
   _$PostDtoCopyWith<_PostDto> get copyWith;
 }

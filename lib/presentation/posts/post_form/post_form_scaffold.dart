@@ -47,99 +47,97 @@ class PostFormPageScaffold extends StatelessWidget {
             create: (_) => PostImage(),
             child: Form(
               autovalidate: state.showErrorMessages,
-              child: SingleChildScrollView(
-                physics: const BouncingScrollPhysics(),
-                // children: [
-                //   const BrandDropdown(),
-                //   const SizedBox(height: 28),
-                //   const DeviceDropdown(),
-                //   const SizedBox(height: 28),
-                //   const AgeDropdown(),
-                //   const SizedBox(height: 28),
-                //   const ConditionDropdown(),
-                //   const SizedBox(height: 28),
-                //   const TitleTextForm(),
-                //   const SizedBox(height: 28),
-                //   const PriceTextForm(),
-                //   const SizedBox(height: 28),
-                //   const DescriptionTextForm(),
-                //   const SizedBox(height: 28),
-                //   const AddImageButton(),
-                //   Container(child: const ImagesList()),
-                // ],
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 16.0, vertical: 20),
-                  child: Column(
-                    children: [
-                      const BrandDropdown(),
-                      const SizedBox(height: 28),
-                      const DeviceDropdown(),
-                      const SizedBox(height: 28),
-                      const AgeDropdown(),
-                      const SizedBox(height: 28),
-                      const ConditionDropdown(),
-                      const SizedBox(height: 28),
-                      const TitleTextForm(),
-                      const SizedBox(height: 28),
-                      const PriceTextForm(),
-                      const SizedBox(height: 28),
-                      const DescriptionTextForm(),
-                      const SizedBox(height: 28),
-                      const AddImageButton(),
-                      const ImagesList(),
-                      const SizedBox(height: 16),
-                      const CityDropdown(),
-                      const SizedBox(height: 28),
-                      const AreaDropdown(),
-                      const SizedBox(height: 28),
-                      Wrap(
-                        children: const [
-                          ExchangableCheckbox(),
-                          NegotiableCheckbox(),
-                          HeadphonesCheckbox(),
-                          ChargerCheckbox(),
-                        ],
-                      ),
-                      const SizedBox(height: 28),
-                      const MoreAccessoriesTextForm(),
-                      const SizedBox(height: 28),
-                      Container(
-                        color: kPrimaryLightColor,
-                        height: 1,
-                      ),
-                      const SizedBox(height: 28),
-                      Container(
-                        width: double.infinity,
-                        child: RaisedButton(
-                          onPressed: () {
-                            context
-                                .bloc<PostFormBloc>()
-                                .add(const PostFormEvent.saved());
-                          },
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          elevation: 0,
-                          highlightElevation: 0,
-                          color: kPrimaryColor,
-                          child: const Padding(
-                            padding: EdgeInsets.symmetric(vertical: 1.0),
+              child: GestureDetector(
+                onTap: () => FocusScope.of(context).unfocus(),
+                child: SingleChildScrollView(
+                  physics: const BouncingScrollPhysics(),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16.0, vertical: 20),
+                    child: Column(
+                      children: [
+                        const BrandDropdown(),
+                        const SizedBox(height: 28),
+                        const DeviceDropdown(),
+                        const SizedBox(height: 28),
+                        const AgeDropdown(),
+                        const SizedBox(height: 28),
+                        const ConditionDropdown(),
+                        const SizedBox(height: 28),
+                        const TitleTextForm(),
+                        const SizedBox(height: 28),
+                        const PriceTextForm(),
+                        const SizedBox(height: 28),
+                        const DescriptionTextForm(),
+                        const SizedBox(height: 28),
+                        const AddImageButton(),
+                        if (state.showErrorMessages) ...[
+                          const Align(
+                            alignment: Alignment.centerLeft,
                             child: Padding(
-                              padding: EdgeInsets.all(16.0),
+                              padding: EdgeInsets.all(8.0),
                               child: Text(
-                                'Save',
-                                style: TextStyle(
-                                  fontSize: 21,
-                                  color: Colors.white,
+                                'Please add at least 1 image',
+                                style: TextStyle(color: Colors.red),
+                              ),
+                            ),
+                          )
+                        ],
+                        const ImagesList(),
+                        const SizedBox(height: 16),
+                        const CityDropdown(),
+                        const SizedBox(height: 28),
+                        const AreaDropdown(),
+                        const SizedBox(height: 28),
+                        Wrap(
+                          children: const [
+                            ExchangableCheckbox(),
+                            NegotiableCheckbox(),
+                            HeadphonesCheckbox(),
+                            ChargerCheckbox(),
+                          ],
+                        ),
+                        const SizedBox(height: 28),
+                        const MoreAccessoriesTextForm(),
+                        const SizedBox(height: 28),
+                        Container(
+                          color: kPrimaryLightColor,
+                          height: 1,
+                        ),
+                        const SizedBox(height: 28),
+                        Container(
+                          width: double.infinity,
+                          child: RaisedButton(
+                            onPressed: () {
+                              // print(state.post.images.getOrCrash());
+                              context
+                                  .bloc<PostFormBloc>()
+                                  .add(const PostFormEvent.saved());
+                            },
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            elevation: 0,
+                            highlightElevation: 0,
+                            color: kPrimaryColor,
+                            child: const Padding(
+                              padding: EdgeInsets.symmetric(vertical: 1.0),
+                              child: Padding(
+                                padding: EdgeInsets.all(16.0),
+                                child: Text(
+                                  'Save',
+                                  style: TextStyle(
+                                    fontSize: 21,
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                      const SizedBox(height: 50),
-                    ],
+                        const SizedBox(height: 50),
+                      ],
+                    ),
                   ),
                 ),
               ),

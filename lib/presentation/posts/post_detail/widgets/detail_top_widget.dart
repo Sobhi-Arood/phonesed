@@ -164,7 +164,22 @@ class DetailTopWidget extends StatelessWidget {
                 ],
               ),
             ],
-          )
+          ),
+          if (post.moreAccessories.getOrCrash().isNotEmpty) ...[
+            const SizedBox(height: 15),
+            Wrap(children: [
+              const Text(
+                'More accessories: ',
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Color(0x60000000),
+                ),
+              ),
+              Text(post.moreAccessories.getOrCrash(),
+                  style: const TextStyle(
+                      fontSize: 16, fontWeight: FontWeight.w500))
+            ])
+          ]
         ],
       ),
     );

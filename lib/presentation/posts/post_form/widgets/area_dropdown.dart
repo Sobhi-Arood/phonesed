@@ -14,9 +14,15 @@ class AreaDropdown extends HookWidget {
   Widget build(BuildContext context) {
     final areaValue = useState('');
     return BlocConsumer<PostFormBloc, PostFormState>(
-      listener: (context, state) {},
-      buildWhen: (p, c) => p.post.area != c.post.area,
-      builder: (context, state) {
+      listener: (context, state) {
+        // print(state.post.area);
+        // areaValue.value = state.post.area.value.fold((l) => '', (r) => r);
+        // context.bloc<PostFormAreasBloc>().add(
+        //                       PostFormAreasEvent.getAreasStarted(state.post.area.value.fold((l) => '', (r) => r)));
+      },
+      // buildWhen: (p, c) => p.post.area != c.post.area,
+      builder: (context, formState) {
+        // print(state.post.area.getOrCrash());
         return Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -34,11 +40,17 @@ class AreaDropdown extends HookWidget {
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: BlocConsumer<PostFormAreasBloc, PostFormAreasState>(
                 listener: (context, state) {
+                  // if (!formState.isEditing) {
                   areaValue.value = state.map(
-                      initial: (_) => '',
-                      loadInProgress: (_) => '',
-                      loadAreasSuccess: (s) => s.data[0],
-                      loadAreasFailure: (_) => 'error');
+                    initial: (_) => '',
+                    loadInProgress: (_) => '',
+                    loadAreasSuccess: (s) => s.data[0],
+                    loadAreasFailure: (_) => 'error',
+                  );
+                  context
+                      .bloc<PostFormBloc>()
+                      .add(PostFormEvent.areaChanged(areaValue.value));
+                  // }
                 },
                 builder: (context, dataState) {
                   return dataState.maybeMap(
@@ -49,7 +61,7 @@ class AreaDropdown extends HookWidget {
                             child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: DropdownButton<String>(
-                            // value: state.post.area,
+                            // value: state.post.area.getOrCrash(),
                             value: areaValue.value,
                             elevation: 0,
                             isExpanded: true,
@@ -62,7 +74,7 @@ class AreaDropdown extends HookWidget {
                               areaValue.value = v;
                               context
                                   .bloc<PostFormBloc>()
-                                  .add(PostFormEvent.cityChanged(v));
+                                  .add(PostFormEvent.areaChanged(v));
                             },
                             items: data.data
                                 .asList()

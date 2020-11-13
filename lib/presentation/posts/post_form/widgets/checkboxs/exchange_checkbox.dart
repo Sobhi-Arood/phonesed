@@ -12,6 +12,9 @@ class ExchangableCheckbox extends StatelessWidget {
       buildWhen: (p, c) => p.post.exhangable != c.post.exhangable,
       builder: (context, state) {
         return Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Checkbox(
                 value: state.post.exhangable,

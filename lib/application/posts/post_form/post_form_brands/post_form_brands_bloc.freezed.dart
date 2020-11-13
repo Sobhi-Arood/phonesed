@@ -20,7 +20,7 @@ class _$PostFormBrandsEventTearOff {
 
 // ignore: unused_element
   _BrandsReceived brandsReceived(
-      Either<PostFailure, KtList<String>> failureOrPosts) {
+      Either<PostFailure, KtList<BrandPrimitive>> failureOrPosts) {
     return _BrandsReceived(
       failureOrPosts,
     );
@@ -38,12 +38,13 @@ mixin _$PostFormBrandsEvent {
     @required Result getBrandsStarted(),
     @required
         Result brandsReceived(
-            Either<PostFailure, KtList<String>> failureOrPosts),
+            Either<PostFailure, KtList<BrandPrimitive>> failureOrPosts),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result getBrandsStarted(),
-    Result brandsReceived(Either<PostFailure, KtList<String>> failureOrPosts),
+    Result brandsReceived(
+        Either<PostFailure, KtList<BrandPrimitive>> failureOrPosts),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -118,7 +119,7 @@ class _$_GetBrandsStarted implements _GetBrandsStarted {
     @required Result getBrandsStarted(),
     @required
         Result brandsReceived(
-            Either<PostFailure, KtList<String>> failureOrPosts),
+            Either<PostFailure, KtList<BrandPrimitive>> failureOrPosts),
   }) {
     assert(getBrandsStarted != null);
     assert(brandsReceived != null);
@@ -129,7 +130,8 @@ class _$_GetBrandsStarted implements _GetBrandsStarted {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result getBrandsStarted(),
-    Result brandsReceived(Either<PostFailure, KtList<String>> failureOrPosts),
+    Result brandsReceived(
+        Either<PostFailure, KtList<BrandPrimitive>> failureOrPosts),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -174,7 +176,7 @@ abstract class _$BrandsReceivedCopyWith<$Res> {
   factory _$BrandsReceivedCopyWith(
           _BrandsReceived value, $Res Function(_BrandsReceived) then) =
       __$BrandsReceivedCopyWithImpl<$Res>;
-  $Res call({Either<PostFailure, KtList<String>> failureOrPosts});
+  $Res call({Either<PostFailure, KtList<BrandPrimitive>> failureOrPosts});
 }
 
 /// @nodoc
@@ -195,7 +197,7 @@ class __$BrandsReceivedCopyWithImpl<$Res>
     return _then(_BrandsReceived(
       failureOrPosts == freezed
           ? _value.failureOrPosts
-          : failureOrPosts as Either<PostFailure, KtList<String>>,
+          : failureOrPosts as Either<PostFailure, KtList<BrandPrimitive>>,
     ));
   }
 }
@@ -205,7 +207,7 @@ class _$_BrandsReceived implements _BrandsReceived {
   const _$_BrandsReceived(this.failureOrPosts) : assert(failureOrPosts != null);
 
   @override
-  final Either<PostFailure, KtList<String>> failureOrPosts;
+  final Either<PostFailure, KtList<BrandPrimitive>> failureOrPosts;
 
   @override
   String toString() {
@@ -236,7 +238,7 @@ class _$_BrandsReceived implements _BrandsReceived {
     @required Result getBrandsStarted(),
     @required
         Result brandsReceived(
-            Either<PostFailure, KtList<String>> failureOrPosts),
+            Either<PostFailure, KtList<BrandPrimitive>> failureOrPosts),
   }) {
     assert(getBrandsStarted != null);
     assert(brandsReceived != null);
@@ -247,7 +249,8 @@ class _$_BrandsReceived implements _BrandsReceived {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result getBrandsStarted(),
-    Result brandsReceived(Either<PostFailure, KtList<String>> failureOrPosts),
+    Result brandsReceived(
+        Either<PostFailure, KtList<BrandPrimitive>> failureOrPosts),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -285,9 +288,10 @@ class _$_BrandsReceived implements _BrandsReceived {
 
 abstract class _BrandsReceived implements PostFormBrandsEvent {
   const factory _BrandsReceived(
-      Either<PostFailure, KtList<String>> failureOrPosts) = _$_BrandsReceived;
+          Either<PostFailure, KtList<BrandPrimitive>> failureOrPosts) =
+      _$_BrandsReceived;
 
-  Either<PostFailure, KtList<String>> get failureOrPosts;
+  Either<PostFailure, KtList<BrandPrimitive>> get failureOrPosts;
   _$BrandsReceivedCopyWith<_BrandsReceived> get copyWith;
 }
 
@@ -306,7 +310,7 @@ class _$PostFormBrandsStateTearOff {
   }
 
 // ignore: unused_element
-  _LoadBrandsSuccess loadBrandsSuccess(KtList<String> data) {
+  _LoadBrandsSuccess loadBrandsSuccess(KtList<BrandPrimitive> data) {
     return _LoadBrandsSuccess(
       data,
     );
@@ -330,14 +334,14 @@ mixin _$PostFormBrandsState {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result loadInProgress(),
-    @required Result loadBrandsSuccess(KtList<String> data),
+    @required Result loadBrandsSuccess(KtList<BrandPrimitive> data),
     @required Result loadBrandsFailure(PostFailure postFailure),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result loadInProgress(),
-    Result loadBrandsSuccess(KtList<String> data),
+    Result loadBrandsSuccess(KtList<BrandPrimitive> data),
     Result loadBrandsFailure(PostFailure postFailure),
     @required Result orElse(),
   });
@@ -414,7 +418,7 @@ class _$_Initial implements _Initial {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result loadInProgress(),
-    @required Result loadBrandsSuccess(KtList<String> data),
+    @required Result loadBrandsSuccess(KtList<BrandPrimitive> data),
     @required Result loadBrandsFailure(PostFailure postFailure),
   }) {
     assert(initial != null);
@@ -429,7 +433,7 @@ class _$_Initial implements _Initial {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result loadInProgress(),
-    Result loadBrandsSuccess(KtList<String> data),
+    Result loadBrandsSuccess(KtList<BrandPrimitive> data),
     Result loadBrandsFailure(PostFailure postFailure),
     @required Result orElse(),
   }) {
@@ -517,7 +521,7 @@ class _$_LoadInProgress implements _LoadInProgress {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result loadInProgress(),
-    @required Result loadBrandsSuccess(KtList<String> data),
+    @required Result loadBrandsSuccess(KtList<BrandPrimitive> data),
     @required Result loadBrandsFailure(PostFailure postFailure),
   }) {
     assert(initial != null);
@@ -532,7 +536,7 @@ class _$_LoadInProgress implements _LoadInProgress {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result loadInProgress(),
-    Result loadBrandsSuccess(KtList<String> data),
+    Result loadBrandsSuccess(KtList<BrandPrimitive> data),
     Result loadBrandsFailure(PostFailure postFailure),
     @required Result orElse(),
   }) {
@@ -584,7 +588,7 @@ abstract class _$LoadBrandsSuccessCopyWith<$Res> {
   factory _$LoadBrandsSuccessCopyWith(
           _LoadBrandsSuccess value, $Res Function(_LoadBrandsSuccess) then) =
       __$LoadBrandsSuccessCopyWithImpl<$Res>;
-  $Res call({KtList<String> data});
+  $Res call({KtList<BrandPrimitive> data});
 }
 
 /// @nodoc
@@ -603,7 +607,7 @@ class __$LoadBrandsSuccessCopyWithImpl<$Res>
     Object data = freezed,
   }) {
     return _then(_LoadBrandsSuccess(
-      data == freezed ? _value.data : data as KtList<String>,
+      data == freezed ? _value.data : data as KtList<BrandPrimitive>,
     ));
   }
 }
@@ -613,7 +617,7 @@ class _$_LoadBrandsSuccess implements _LoadBrandsSuccess {
   const _$_LoadBrandsSuccess(this.data) : assert(data != null);
 
   @override
-  final KtList<String> data;
+  final KtList<BrandPrimitive> data;
 
   @override
   String toString() {
@@ -641,7 +645,7 @@ class _$_LoadBrandsSuccess implements _LoadBrandsSuccess {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result loadInProgress(),
-    @required Result loadBrandsSuccess(KtList<String> data),
+    @required Result loadBrandsSuccess(KtList<BrandPrimitive> data),
     @required Result loadBrandsFailure(PostFailure postFailure),
   }) {
     assert(initial != null);
@@ -656,7 +660,7 @@ class _$_LoadBrandsSuccess implements _LoadBrandsSuccess {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result loadInProgress(),
-    Result loadBrandsSuccess(KtList<String> data),
+    Result loadBrandsSuccess(KtList<BrandPrimitive> data),
     Result loadBrandsFailure(PostFailure postFailure),
     @required Result orElse(),
   }) {
@@ -700,9 +704,10 @@ class _$_LoadBrandsSuccess implements _LoadBrandsSuccess {
 }
 
 abstract class _LoadBrandsSuccess implements PostFormBrandsState {
-  const factory _LoadBrandsSuccess(KtList<String> data) = _$_LoadBrandsSuccess;
+  const factory _LoadBrandsSuccess(KtList<BrandPrimitive> data) =
+      _$_LoadBrandsSuccess;
 
-  KtList<String> get data;
+  KtList<BrandPrimitive> get data;
   _$LoadBrandsSuccessCopyWith<_LoadBrandsSuccess> get copyWith;
 }
 
@@ -781,7 +786,7 @@ class _$_LoadBrandsFailure implements _LoadBrandsFailure {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result loadInProgress(),
-    @required Result loadBrandsSuccess(KtList<String> data),
+    @required Result loadBrandsSuccess(KtList<BrandPrimitive> data),
     @required Result loadBrandsFailure(PostFailure postFailure),
   }) {
     assert(initial != null);
@@ -796,7 +801,7 @@ class _$_LoadBrandsFailure implements _LoadBrandsFailure {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result loadInProgress(),
-    Result loadBrandsSuccess(KtList<String> data),
+    Result loadBrandsSuccess(KtList<BrandPrimitive> data),
     Result loadBrandsFailure(PostFailure postFailure),
     @required Result orElse(),
   }) {

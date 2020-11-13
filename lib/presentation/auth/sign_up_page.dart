@@ -4,6 +4,7 @@ import 'package:phonesed/application/auth/auth_bloc/auth_bloc.dart';
 import 'package:phonesed/application/auth/sign_up_form/sign_up_form_bloc.dart';
 import 'package:phonesed/injection.dart';
 import 'package:phonesed/presentation/auth/widgets/sign_up_form.dart';
+import 'package:phonesed/presentation/core/widgets/saving_overlay.dart';
 
 class SignUpPage extends StatelessWidget {
   @override
@@ -14,11 +15,19 @@ class SignUpPage extends StatelessWidget {
           BlocProvider(create: (context) => getIt<SignUpFormBloc>()),
         ],
         child: Scaffold(
-          backgroundColor: Colors.white,
-          appBar: AppBar(
-            elevation: 0,
-          ),
-          body: SignUpForm(),
-        ));
+            backgroundColor: Colors.white,
+            appBar: AppBar(
+              elevation: 0,
+            ),
+            body: BlocBuilder<SignUpFormBloc, SignUpFormState>(
+              builder: (context, state) {
+                return Stack(
+                  children: [
+                    SignUpForm(),
+                    SavingInProgressOverlay(isSaving: state.isSubmitting),
+                  ],
+                );
+              },
+            )));
   }
 }

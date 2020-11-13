@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide User;
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -10,15 +11,17 @@ import 'package:phonesed/domain/auth/i_user_repository.dart';
 import 'package:phonesed/domain/auth/value_objects.dart';
 import 'package:phonesed/domain/core/unique_id.dart';
 import 'package:phonesed/domain/entities/user.dart';
+import 'package:phonesed/infrastructure/auth/user_dtos.dart';
 
 @LazySingleton(as: IAuthFacade)
 class FirebaseAuthFacade implements IAuthFacade {
   final FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
   final IUserRepository _userRepository;
+  final FirebaseFirestore _firestore;
 
-  FirebaseAuthFacade(
-      this._firebaseAuth, this._googleSignIn, this._userRepository);
+  FirebaseAuthFacade(this._firebaseAuth, this._googleSignIn,
+      this._userRepository, this._firestore);
 
   @override
   Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword(
@@ -31,6 +34,8 @@ class FirebaseAuthFacade implements IAuthFacade {
     try {
       final createdUser = await _firebaseAuth.createUserWithEmailAndPassword(
           email: emailAddressStr, password: passwordStr);
+
+      await createdUser.user.sendEmailVerification();
 
       _userRepository.create(
         User(
@@ -64,15 +69,35 @@ class FirebaseAuthFacade implements IAuthFacade {
     final emailAddressStr = emailAddress.getOrCrash();
     final passwordStr = password.getOrCrash();
     try {
-      await _firebaseAuth.signInWithEmailAndPassword(
+      final user = await _firebaseAuth.signInWithEmailAndPassword(
           email: emailAddressStr, password: passwordStr);
-      return right(unit);
+
+      if (user.user.emailVerified) {
+        //   _userRepository.update(
+        //   User(
+        //     id: UniqueId.fromUniqueString(createdUser.user.uid),
+        //     name: UserName(userNameStr),
+        //     email: EmailAddress(emailAddressStr),
+        //     phoneNumber: '',
+        //     avatarUrl: '',
+        //     joinDate: DateTime.now(),
+        //     numOfPublishedPosts: 0,
+        //     verified: false,
+        //     favorites: optionOf(ListFavorites(emptyList())),
+        //   ),
+        // );
+        return right(unit);
+      } else {
+        return left(const AuthFailure.emailNotVerified());
+      }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'wrong-password' || e.code == 'user-not-found') {
         return left(const AuthFailure.invalidEmailAndPasswordCombination());
       } else {
         return left(const AuthFailure.serverError());
       }
+    } catch (e) {
+      return left(const AuthFailure.serverError());
     }
   }
 
@@ -91,19 +116,46 @@ class FirebaseAuthFacade implements IAuthFacade {
 
       final createdUser =
           await _firebaseAuth.signInWithCredential(authCredential);
-      _userRepository.create(
-        User(
-          id: UniqueId.fromUniqueString(createdUser.user.uid),
-          name: UserName(createdUser.user.displayName),
-          email: EmailAddress(createdUser.user.email),
-          phoneNumber: '',
-          avatarUrl: createdUser.user.photoURL ?? '',
-          joinDate: DateTime.now(),
-          numOfPublishedPosts: 0,
-          verified: false,
-          favorites: optionOf(ListFavorites(emptyList())),
-        ),
-      );
+
+      final readUser = _firestore.collection('Users').doc(createdUser.user.uid);
+
+      await _firestore.runTransaction((transaction) async {
+        return transaction
+            .get(readUser)
+            .then((userData) => UserDto.fromFirestore(userData))
+            .then((u) {
+          _userRepository.update(
+            User(
+              id: UniqueId.fromUniqueString(createdUser.user.uid),
+              name: UserName(createdUser.user.displayName),
+              email: EmailAddress(createdUser.user.email),
+              phoneNumber: u.phoneNumber,
+              avatarUrl: u.avatar,
+              joinDate: u.joinDate,
+              numOfPublishedPosts: u.numberOfPublishedPosts,
+              verified: true,
+              favorites: optionOf(ListFavorites(u.favorites
+                  .map((e) => UniqueId.fromUniqueString(e))
+                  .toImmutableList())),
+            ),
+          );
+        }).catchError((e) {
+          _userRepository.create(
+            User(
+              id: UniqueId.fromUniqueString(createdUser.user.uid),
+              name: UserName(createdUser.user.displayName),
+              email: EmailAddress(createdUser.user.email),
+              phoneNumber: '',
+              avatarUrl: createdUser.user.photoURL ?? '',
+              joinDate: DateTime.now(),
+              numOfPublishedPosts: 0,
+              verified: false,
+              favorites: optionOf(ListFavorites(emptyList())),
+            ),
+          );
+        });
+      });
+
       return right(unit);
     } on FirebaseAuthException catch (_) {
       return left(const AuthFailure.serverError());
@@ -115,12 +167,28 @@ class FirebaseAuthFacade implements IAuthFacade {
       Future.wait([_googleSignIn.signOut(), _firebaseAuth.signOut()]);
 
   @override
-  Future<Option<String>> getSignedInUserUid() async =>
-      optionOf(_firebaseAuth.currentUser?.uid);
+  Future<Option<String>> getSignedInUserUid() async {
+    // final optionalUser = optionOf(_firebaseAuth.currentUser?.emailVerified);
+    final optionalUser = optionOf(_firebaseAuth.currentUser);
+    return optionalUser.fold(() {
+      return none();
+    }, (user) {
+      if (user.emailVerified) {
+        return optionOf(user.uid);
+      } else {
+        return none();
+      }
+    });
+    // if (_firebaseAuth.currentUser.emailVerified) {
 
-  @override
-  Future<Option<User>> getSignedInUser() async {
-    final u = await _userRepository.read();
-    return u.fold((l) => none(), (r) => some(r));
+    // } else {
+
+    // }
   }
+
+  // @override
+  // Future<Option<User>> getSignedInUser() async {
+  //   final u = await _userRepository.read();
+  //   return u.fold((l) => none(), (r) => some(r));
+  // }
 }

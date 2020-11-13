@@ -27,12 +27,11 @@ class PostRepository implements IPostRepository {
         .orderBy('publishedDate', descending: true)
         .snapshots()
         .map((snapshot) => right<PostFailure, KtList<Post>>(
-              snapshot.docs
-                  .map((doc) => PostDto.fromFirestore(doc).toDomain())
-                  .toImmutableList(),
+              snapshot.docs.map((doc) {
+                return PostDto.fromFirestore(doc).toDomain();
+              }).toImmutableList(),
             ))
         .onErrorReturnWith((e) {
-      print(e.toString());
       if (e is FirebaseException && e.message.contains('permission-denied')) {
         return left(const PostFailure.insufficientPermission());
       } else {
@@ -136,6 +135,13 @@ class PostRepository implements IPostRepository {
             publishedDate: DateTime.now(),
             userAvatar: u.avatar,
             userName: u.name,
+            searchParams: setSearchParam(post.title.getOrCrash()),
+            filterParams: [
+              post.city.getOrCrash(),
+              post.brand.getOrCrash(),
+              post.exhangable,
+              post.headphones
+            ],
           );
 
           transaction.set(newPost, postDto.toJson());
@@ -155,6 +161,19 @@ class PostRepository implements IPostRepository {
     }
   }
 
+  List<String> setSearchParam(String caseTitle) {
+    final List<String> caseSearchList = [];
+    String temp = '';
+    final List<String> arr = caseTitle.split(" ");
+    final String firstWord = arr[0];
+    for (int i = 0; i < firstWord.length; i++) {
+      temp = temp + firstWord[i];
+      caseSearchList.add(temp);
+    }
+
+    return caseSearchList;
+  }
+
   @override
   Future<Either<PostFailure, Unit>> delete(Post post) async {
     try {
@@ -164,6 +183,7 @@ class PostRepository implements IPostRepository {
       // await _uploadFacade.deleteImages(postId);
       await _firestore.runTransaction((transaction) {
         return transaction.get(user).then((_) async {
+          await _uploadFacade.deleteImages(postId);
           transaction.delete(_firestore.collection('Posts').doc(postId));
 
           final increment = FieldValue.increment(-1);
@@ -186,9 +206,122 @@ class PostRepository implements IPostRepository {
   }
 
   @override
-  Future<Either<PostFailure, Unit>> update(Post post) {
-    // TODO: implement update
-    throw UnimplementedError();
+  Future<Either<PostFailure, Unit>> update(Post post) async {
+    try {
+      final editedPost =
+          _firestore.collection('Posts').doc(post.id.getOrCrash());
+
+      bool listsEqual = false;
+
+      await _firestore.runTransaction((transaction) async {
+        return transaction
+            .get(editedPost)
+            .then((doc) => PostDto.fromFirestore(doc))
+            .then((p) async {
+          if (post.images
+              .getOrCrash()
+              .containsAll(p.images.toImmutableList())) {
+            // print('lists equal');
+            // listsEqual = true;
+            final newPostDto = PostDto(
+              id: p.id,
+              userId: p.userId,
+              title: post.title.getOrCrash(),
+              price: post.price.getOrCrash(),
+              description: post.description.getOrCrash(),
+              images: p.images,
+              city: post.city.getOrCrash(),
+              area: post.area.getOrCrash(),
+              country: post.country,
+              moreAccessories: post.moreAccessories.getOrCrash(),
+              avaliable: post.avaliable,
+              exhangable: post.exhangable,
+              negiotable: post.negiotable,
+              headphones: post.headphones,
+              charger: post.charger,
+              brand: post.brand.getOrCrash(),
+              device: post.device.getOrCrash(),
+              age: post.age.getOrCrash(),
+              condition: post.condition.getOrCrash(),
+              publishedDate: p.publishedDate,
+              userAvatar: p.userAvatar,
+              userName: p.userName,
+              searchParams: setSearchParam(post.title.getOrCrash()),
+              filterParams: [
+                post.city.getOrCrash(),
+                post.brand.getOrCrash(),
+                post.exhangable,
+                post.headphones
+              ],
+            );
+
+            transaction.update(editedPost, newPostDto.toJson());
+          } else {
+            await _uploadFacade.deleteImages(p.id);
+            // print('list not equal');
+            // listsEqual = false;
+            final List<String> urls = [];
+            final List<String> imgs = [];
+
+            final postImages = post.images.getOrCrash();
+            await Future.forEach(
+                postImages.asList(), (element) => imgs.add(element.toString()));
+            // print(imgs);
+            final uploadOperation = await _uploadFacade.uploadPostImages(
+                imgs, post.id.getOrCrash());
+
+            uploadOperation.fold((l) => null, (r) async {
+              await Future.forEach(
+                  r, (element) => urls.add(element.toString()));
+
+              final newPostDto = PostDto(
+                id: p.id,
+                userId: p.userId,
+                title: post.title.getOrCrash(),
+                price: post.price.getOrCrash(),
+                description: post.description.getOrCrash(),
+                images: urls,
+                city: post.city.getOrCrash(),
+                area: post.area.getOrCrash(),
+                country: post.country,
+                moreAccessories: post.moreAccessories.getOrCrash(),
+                avaliable: post.avaliable,
+                exhangable: post.exhangable,
+                negiotable: post.negiotable,
+                headphones: post.headphones,
+                charger: post.charger,
+                brand: post.brand.getOrCrash(),
+                device: post.device.getOrCrash(),
+                age: post.age.getOrCrash(),
+                condition: post.condition.getOrCrash(),
+                publishedDate: p.publishedDate,
+                userAvatar: p.userAvatar,
+                userName: p.userName,
+                searchParams: setSearchParam(post.title.getOrCrash()),
+                filterParams: [
+                  post.city.getOrCrash(),
+                  post.brand.getOrCrash(),
+                  post.exhangable,
+                  post.headphones
+                ],
+              );
+
+              transaction.update(editedPost, newPostDto.toJson());
+            });
+          }
+        });
+      });
+
+      return right(unit);
+    } on FirebaseException catch (e) {
+      if (e is FirebaseException && e.message.contains('permission-denied')) {
+        return left(const PostFailure.insufficientPermission());
+      } else if (e is FirebaseException && e.message.contains('not-found')) {
+        return left(const PostFailure.unableToUpdate());
+      } else {
+        return left(const PostFailure.unexpected());
+      }
+    }
   }
 
   @override
@@ -246,9 +379,10 @@ class PostRepository implements IPostRepository {
         // print(element);
         final g = await postDoc.doc(element.toString()).get();
         // print(g);
-        final post = PostDto.fromFirestore(g).toDomain();
-
-        posts.add(post);
+        if (g.exists) {
+          final post = PostDto.fromFirestore(g).toDomain();
+          posts.add(post);
+        }
         // print(posts);
       });
 
@@ -261,7 +395,7 @@ class PostRepository implements IPostRepository {
       } else {
         return left(const PostFailure.unexpected());
       }
-    } catch (_) {
+    } catch (e) {
       return left(const PostFailure.unexpected());
     }
   }
@@ -279,7 +413,112 @@ class PostRepository implements IPostRepository {
                   .toImmutableList(),
             ))
         .onErrorReturnWith((e) {
-      print(e.toString());
+      if (e is FirebaseException && e.message.contains('permission-denied')) {
+        return left(const PostFailure.insufficientPermission());
+      } else {
+        return left(const PostFailure.unexpected());
+      }
+    });
+  }
+
+  @override
+  Stream<Either<PostFailure, KtList<Post>>> fetchMyPosts() async* {
+    final userDoc = await _firestore.userDocument();
+    final postDoc = _firestore.collection('Posts');
+
+    if (userDoc.id.isEmpty) {
+      yield left(const PostFailure.notLoggedIn());
+    }
+
+    yield* postDoc
+        .where('userId', isEqualTo: userDoc.id)
+        .orderBy('publishedDate', descending: true)
+        .snapshots()
+        .map((snapshot) => right<PostFailure, KtList<Post>>(
+              snapshot.docs
+                  .map((doc) => PostDto.fromFirestore(doc).toDomain())
+                  .toImmutableList(),
+            ))
+        .onErrorReturnWith((e) {
+      // print(e.toString());
+      if (e is FirebaseException && e.message.contains('permission-denied')) {
+        return left(const PostFailure.insufficientPermission());
+      } else {
+        return left(const PostFailure.unexpected());
+      }
+    });
+  }
+
+  @override
+  Stream<Either<PostFailure, KtList<Post>>> fetchSearchPosts(
+      String query) async* {
+    final postDoc = _firestore.collection('Posts');
+    yield* postDoc
+        .where('searchParams', arrayContains: query)
+        .snapshots()
+        .map((snapshot) => right<PostFailure, KtList<Post>>(
+              snapshot.docs.map((doc) =>
+                  // print(doc.data());
+                  PostDto.fromFirestore(doc).toDomain()).toImmutableList(),
+            ))
+        .onErrorReturnWith((error) {
+      print(error.toString());
+      return left(const PostFailure.unexpected());
+    });
+  }
+
+  @override
+  Stream<Either<PostFailure, KtList<Post>>> fetchFilteredPosts(String city,
+      String brand, bool exchangable, bool headphones, int price) async* {
+    final postDoc = _firestore.collection('Posts');
+    print([city, brand, exchangable, headphones]);
+    yield* postDoc
+        // .orderBy('publishedDate', descending: true)
+        .where('city', isEqualTo: city)
+        .where('brand', isEqualTo: brand)
+        // .where('exhangable', isEqualTo: exchangable)
+        // .where('headphones', isEqualTo: headphones)
+        // .where('city', arrayContainsAny: [city])
+        // .where('brand', arrayContainsAny: [brand])
+        .where('filterParams',
+            arrayContainsAny: [city, brand, exchangable, headphones])
+        // .where('headphones', isLessThanOrEqualTo: headphones)
+        .where('price', isLessThanOrEqualTo: price)
+        .snapshots()
+        .map((snapshot) => right<PostFailure, KtList<Post>>(
+              snapshot.docs.map((doc) {
+                print(doc.data());
+                return PostDto.fromFirestore(doc).toDomain();
+              }).toImmutableList(),
+            ))
+        .onErrorReturnWith((e) {
+          print(e);
+          if (e is FirebaseException &&
+              e.message.contains('permission-denied')) {
+            return left(const PostFailure.insufficientPermission());
+          } else {
+            return left(const PostFailure.unexpected());
+          }
+        });
+  }
+
+  @override
+  Stream<Either<PostFailure, KtList<Post>>> fetchRelatedPosts(
+      String brand, String currentId) async* {
+    final postDoc = _firestore.collection('Posts');
+    yield* postDoc
+        // .orderBy('publishedDate', descending: true)
+        // .where('id', isNotEqualTo: currentId)
+        // .where('id', isGreaterThan: currentId)
+        .where('brand', isEqualTo: brand)
+        .limit(4)
+        .snapshots()
+        .map((snapshot) => right<PostFailure, KtList<Post>>(
+              snapshot.docs.map((doc) {
+                return PostDto.fromFirestore(doc).toDomain();
+              }).toImmutableList(),
+            ))
+        .onErrorReturnWith((e) {
       if (e is FirebaseException && e.message.contains('permission-denied')) {
         return left(const PostFailure.insufficientPermission());
       } else {
@@ -288,44 +527,3 @@ class PostRepository implements IPostRepository {
     });
   }
 }
-
-// final List<String> urls = [];
-// final List<String> imgs = [];
-// final p = post.images.getOrCrash();
-// await Future.forEach(p.asList(), (String element) => imgs.add(element));
-
-// final i = await _uploadFacade.uploadPostImages(imgs, user.id);
-
-// i.fold((l) => null, (r) async {
-//   await Future.forEach(r, (String element) => urls.add(element));
-// });
-
-// final postDto = PostDto(
-//     id: post.id.getOrCrash(),
-//     userId: user.id,
-//     title: post.title.getOrCrash(),
-//     price: post.price.getOrCrash(),
-//     description: post.description.getOrCrash(),
-//     images: urls,
-//     city: post.city.getOrCrash(),
-//     area: post.area,
-//     country: post.country,
-//     moreAccessories: post.moreAccessories.getOrCrash(),
-//     avaliable: post.avaliable,
-//     exhangable: post.exhangable,
-//     negiotable: post.negiotable,
-//     headphones: post.headphones,
-//     charger: post.charger,
-//     brand: post.brand.getOrCrash(),
-//     device: post.device,
-//     age: post.age.getOrCrash(),
-//     condition: post.condition.getOrCrash(),
-//     publishedDate: DateTime.now());
-
-// await _firestore
-//     .collection('Posts')
-//     .doc(postDto.id)
-//     .set(postDto.toJson());
-
-// final increment = FieldValue.increment(1);
-// await user.update({'numberOfPublishedPosts': increment});

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SavingInProgressOverlay extends StatelessWidget {
@@ -22,6 +23,7 @@ class SavingInProgressOverlay extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const CircularProgressIndicator(),
+              // const CupertinoActivityIndicator(),
               const SizedBox(height: 8),
               Text(
                 'Saving ...',

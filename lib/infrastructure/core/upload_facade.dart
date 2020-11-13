@@ -16,10 +16,9 @@ class UploadFacade implements IUploadFacade {
   Future<Either<UploadFailure, String>> uploadAvatar(File avatar) async {
     try {
       final String filePath = 'avatar/${DateTime.now()}.png';
-      final StorageReference storageReference =
-          _firebaseStorage.ref().child(filePath);
-      final StorageUploadTask uploadTask = storageReference.putFile(avatar);
-      await uploadTask.onComplete;
+      final Reference storageReference = _firebaseStorage.ref().child(filePath);
+      final UploadTask uploadTask = storageReference.putFile(avatar);
+      await uploadTask;
       final url = await storageReference.getDownloadURL();
       return right(url.toString());
     } on FirebaseException catch (e) {
@@ -38,13 +37,16 @@ class UploadFacade implements IUploadFacade {
     try {
       await Future.forEach(images, (String img) async {
         final String filePath = 'posts-images/$postName/${DateTime.now()}.png';
-        final StorageReference storageReference =
+        final Reference storageReference =
             _firebaseStorage.ref().child(filePath);
         final fi = File(img);
-        final StorageUploadTask uploadTask = storageReference.putFile(fi);
-        await uploadTask.onComplete;
-        final url = await storageReference.getDownloadURL();
-        urlList.add(url.toString());
+
+        if (await fi.exists()) {
+          final UploadTask uploadTask = storageReference.putFile(fi);
+          await uploadTask;
+          final url = await storageReference.getDownloadURL();
+          urlList.add(url.toString());
+        }
       });
       // images.forEach((file) async {
       // final String filePath = 'posts-images/$postName/${DateTime.now()}.png';
@@ -70,12 +72,12 @@ class UploadFacade implements IUploadFacade {
   Future<Either<UploadFailure, Unit>> deleteImages(String postId) async {
     try {
       // final StorageReference storageReference = _firebaseStorage.ref().child('posts-images/$postId');
-      final StorageReference storageReference = _firebaseStorage
-          .ref()
-          .child('posts-images/7Bxo1ZTsM4WWpYXKIHwmfdjISMY2/');
-
-      print(postId);
-      await storageReference.delete();
+      final Reference storageReference =
+          _firebaseStorage.ref().child('posts-images/$postId');
+      final l = await storageReference.listAll();
+      await Future.forEach(l.items, (Reference item) => item.delete());
+      // print(postId);
+      // await storageReference.delete();
       return right(unit);
     } catch (e) {
       return left(const UploadFailure.unexpected());

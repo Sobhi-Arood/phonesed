@@ -46,6 +46,27 @@ class PostWatcherBloc extends Bloc<PostWatcherEvent, PostWatcherState> {
       //     .fetchAllFavorites(event.toString())
       //     .listen((failureOrPosts) =>
       //         add(PostWatcherEvent.postsReceived(failureOrPosts)));
+    }, watchMyPostsStarted: (e) async* {
+      yield const PostWatcherState.loadInProgress();
+      await _postStreamSubscription?.cancel();
+      _postStreamSubscription = _postRepository.fetchMyPosts().listen(
+          (failureOrPosts) =>
+              add(PostWatcherEvent.postsReceived(failureOrPosts)));
+    }, watchFilteredPostsStarted: (e) async* {
+      yield const PostWatcherState.loadInProgress();
+      await _postStreamSubscription?.cancel();
+      _postStreamSubscription = _postRepository
+          .fetchFilteredPosts(
+              e.city, e.brand, e.exchangable, e.headphones, e.price)
+          .listen((failureOrPosts) =>
+              add(PostWatcherEvent.postsReceived(failureOrPosts)));
+    }, watchRelatedStarted: (e) async* {
+      yield const PostWatcherState.loadInProgress();
+      await _postStreamSubscription?.cancel();
+      _postStreamSubscription = _postRepository
+          .fetchRelatedPosts(e.brand, e.currentId)
+          .listen((failureOrPosts) =>
+              add(PostWatcherEvent.postsReceived(failureOrPosts)));
     }, postsReceived: (e) async* {
       yield e.failureOrPosts.fold((f) => PostWatcherState.loadFailure(f),
           (posts) => PostWatcherState.loadSuccess(posts));
@@ -58,3 +79,12 @@ class PostWatcherBloc extends Bloc<PostWatcherEvent, PostWatcherState> {
     return super.close();
   }
 }
+
+// searchChanged: (e) async* {
+//       yield const PostWatcherState.loadInProgress();
+//       await _postStreamSubscription?.cancel();
+//       _postStreamSubscription = _postRepository
+//           .fetchSearchPosts(e.query)
+//           .listen((failureOrPosts) =>
+//               add(PostWatcherEvent.postsReceived(failureOrPosts)));
+//     },

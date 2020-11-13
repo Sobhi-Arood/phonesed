@@ -23,7 +23,9 @@ class SignInForm extends StatelessWidget {
                               emailAlreadyInUse: (_) => 'Email already in use',
                               invalidEmailAndPasswordCombination: (_) =>
                                   'Invalid email and password',
-                              weakPassword: (_) => 'Weak password'),
+                              weakPassword: (_) => 'Weak password',
+                              emailNotVerified: (_) =>
+                                  'Please verify your email address'),
                         ).show(context),
                       }, (_) {
                 ExtendedNavigator.of(context).replace(Routes.mainPage);
@@ -188,9 +190,6 @@ class SignInForm extends StatelessWidget {
                   ],
                 ),
               ),
-              if (state.isSubmitting) ...[
-                const Center(child: CircularProgressIndicator()),
-              ],
             ],
           ),
         ),

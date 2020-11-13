@@ -12,6 +12,9 @@ class HeadphonesCheckbox extends StatelessWidget {
       buildWhen: (p, c) => p.post.headphones != c.post.headphones,
       builder: (context, state) {
         return Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Checkbox(
                 value: state.post.headphones,

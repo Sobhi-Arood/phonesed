@@ -26,7 +26,6 @@ class UserRepository implements IUserRepository {
           .map((event) =>
               right<PostFailure, User>(UserDto.fromFirestore(event).toDomain()))
           .onErrorReturnWith((e) {
-        print(e.toString());
         if (e is FirebaseException && e.message.contains('permission-denied')) {
           return left(const PostFailure.insufficientPermission());
         } else {
@@ -34,9 +33,13 @@ class UserRepository implements IUserRepository {
         }
       });
     } catch (e) {
+      print(e.toString());
       if (e is NotAuthenticatedError) {
         yield left(const PostFailure.notLoggedIn());
+      } else {
+        yield left(const PostFailure.unexpected());
       }
+      yield left(const PostFailure.unexpected());
     }
     // yield* userDoc.snapshots().map((event) => right<PostFailure, User>(
     // event.data().map((key, value) => print(value));
@@ -53,23 +56,16 @@ class UserRepository implements IUserRepository {
       final user = UserDto.fromJson(userDoc.data()).toDomain();
       return right(user);
     } on FirebaseException catch (e) {
-      print(e.message);
+      print(e.toString());
       if (e is FirebaseException && e.message.contains('permission-denied')) {
         return left(const PostFailure.insufficientPermission());
       } else {
         return left(const PostFailure.unexpected());
       }
+    } catch (e) {
+      print(e.toString());
+      return left(const PostFailure.notLoggedIn());
     }
-    // user.map((doc) {
-    //   return right(UserDto.fromFirestore(doc).toDomain());
-    // }).onErrorReturnWith((error) {
-    //   if (error is FirebaseException &&
-    //       error.message.contains('PERMISSION_DENIED')) {
-    //     return left(const PostFailure.insufficientPermission());
-    //   } else {
-    //     return left(const PostFailure.unexpected());
-    //   }
-    // });
   }
 
   @override

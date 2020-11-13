@@ -24,6 +24,31 @@ class _$PostWatcherEventTearOff {
   }
 
 // ignore: unused_element
+  _WatchMyPostsStarted watchMyPostsStarted() {
+    return const _WatchMyPostsStarted();
+  }
+
+// ignore: unused_element
+  _WatchFilteredPostsStarted watchFilteredPostsStarted(
+      String city, String brand, bool exchangable, bool headphones, int price) {
+    return _WatchFilteredPostsStarted(
+      city,
+      brand,
+      exchangable,
+      headphones,
+      price,
+    );
+  }
+
+// ignore: unused_element
+  _WatchRelatedStarted watchRelatedStarted(String brand, String currentId) {
+    return _WatchRelatedStarted(
+      brand,
+      currentId,
+    );
+  }
+
+// ignore: unused_element
   _PostsReceived postsReceived(
       Either<PostFailure, KtList<Post>> failureOrPosts) {
     return _PostsReceived(
@@ -42,6 +67,11 @@ mixin _$PostWatcherEvent {
   Result when<Result extends Object>({
     @required Result watchAllStarted(),
     @required Result watchAllFavoritesStarted(),
+    @required Result watchMyPostsStarted(),
+    @required
+        Result watchFilteredPostsStarted(String city, String brand,
+            bool exchangable, bool headphones, int price),
+    @required Result watchRelatedStarted(String brand, String currentId),
     @required
         Result postsReceived(Either<PostFailure, KtList<Post>> failureOrPosts),
   });
@@ -49,6 +79,10 @@ mixin _$PostWatcherEvent {
   Result maybeWhen<Result extends Object>({
     Result watchAllStarted(),
     Result watchAllFavoritesStarted(),
+    Result watchMyPostsStarted(),
+    Result watchFilteredPostsStarted(String city, String brand,
+        bool exchangable, bool headphones, int price),
+    Result watchRelatedStarted(String brand, String currentId),
     Result postsReceived(Either<PostFailure, KtList<Post>> failureOrPosts),
     @required Result orElse(),
   });
@@ -56,12 +90,19 @@ mixin _$PostWatcherEvent {
   Result map<Result extends Object>({
     @required Result watchAllStarted(_WatchAllStarted value),
     @required Result watchAllFavoritesStarted(_WatchAllFavoritesStarted value),
+    @required Result watchMyPostsStarted(_WatchMyPostsStarted value),
+    @required
+        Result watchFilteredPostsStarted(_WatchFilteredPostsStarted value),
+    @required Result watchRelatedStarted(_WatchRelatedStarted value),
     @required Result postsReceived(_PostsReceived value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result watchAllStarted(_WatchAllStarted value),
     Result watchAllFavoritesStarted(_WatchAllFavoritesStarted value),
+    Result watchMyPostsStarted(_WatchMyPostsStarted value),
+    Result watchFilteredPostsStarted(_WatchFilteredPostsStarted value),
+    Result watchRelatedStarted(_WatchRelatedStarted value),
     Result postsReceived(_PostsReceived value),
     @required Result orElse(),
   });
@@ -125,11 +166,19 @@ class _$_WatchAllStarted implements _WatchAllStarted {
   Result when<Result extends Object>({
     @required Result watchAllStarted(),
     @required Result watchAllFavoritesStarted(),
+    @required Result watchMyPostsStarted(),
+    @required
+        Result watchFilteredPostsStarted(String city, String brand,
+            bool exchangable, bool headphones, int price),
+    @required Result watchRelatedStarted(String brand, String currentId),
     @required
         Result postsReceived(Either<PostFailure, KtList<Post>> failureOrPosts),
   }) {
     assert(watchAllStarted != null);
     assert(watchAllFavoritesStarted != null);
+    assert(watchMyPostsStarted != null);
+    assert(watchFilteredPostsStarted != null);
+    assert(watchRelatedStarted != null);
     assert(postsReceived != null);
     return watchAllStarted();
   }
@@ -139,6 +188,10 @@ class _$_WatchAllStarted implements _WatchAllStarted {
   Result maybeWhen<Result extends Object>({
     Result watchAllStarted(),
     Result watchAllFavoritesStarted(),
+    Result watchMyPostsStarted(),
+    Result watchFilteredPostsStarted(String city, String brand,
+        bool exchangable, bool headphones, int price),
+    Result watchRelatedStarted(String brand, String currentId),
     Result postsReceived(Either<PostFailure, KtList<Post>> failureOrPosts),
     @required Result orElse(),
   }) {
@@ -154,10 +207,17 @@ class _$_WatchAllStarted implements _WatchAllStarted {
   Result map<Result extends Object>({
     @required Result watchAllStarted(_WatchAllStarted value),
     @required Result watchAllFavoritesStarted(_WatchAllFavoritesStarted value),
+    @required Result watchMyPostsStarted(_WatchMyPostsStarted value),
+    @required
+        Result watchFilteredPostsStarted(_WatchFilteredPostsStarted value),
+    @required Result watchRelatedStarted(_WatchRelatedStarted value),
     @required Result postsReceived(_PostsReceived value),
   }) {
     assert(watchAllStarted != null);
     assert(watchAllFavoritesStarted != null);
+    assert(watchMyPostsStarted != null);
+    assert(watchFilteredPostsStarted != null);
+    assert(watchRelatedStarted != null);
     assert(postsReceived != null);
     return watchAllStarted(this);
   }
@@ -167,6 +227,9 @@ class _$_WatchAllStarted implements _WatchAllStarted {
   Result maybeMap<Result extends Object>({
     Result watchAllStarted(_WatchAllStarted value),
     Result watchAllFavoritesStarted(_WatchAllFavoritesStarted value),
+    Result watchMyPostsStarted(_WatchMyPostsStarted value),
+    Result watchFilteredPostsStarted(_WatchFilteredPostsStarted value),
+    Result watchRelatedStarted(_WatchRelatedStarted value),
     Result postsReceived(_PostsReceived value),
     @required Result orElse(),
   }) {
@@ -224,11 +287,19 @@ class _$_WatchAllFavoritesStarted implements _WatchAllFavoritesStarted {
   Result when<Result extends Object>({
     @required Result watchAllStarted(),
     @required Result watchAllFavoritesStarted(),
+    @required Result watchMyPostsStarted(),
+    @required
+        Result watchFilteredPostsStarted(String city, String brand,
+            bool exchangable, bool headphones, int price),
+    @required Result watchRelatedStarted(String brand, String currentId),
     @required
         Result postsReceived(Either<PostFailure, KtList<Post>> failureOrPosts),
   }) {
     assert(watchAllStarted != null);
     assert(watchAllFavoritesStarted != null);
+    assert(watchMyPostsStarted != null);
+    assert(watchFilteredPostsStarted != null);
+    assert(watchRelatedStarted != null);
     assert(postsReceived != null);
     return watchAllFavoritesStarted();
   }
@@ -238,6 +309,10 @@ class _$_WatchAllFavoritesStarted implements _WatchAllFavoritesStarted {
   Result maybeWhen<Result extends Object>({
     Result watchAllStarted(),
     Result watchAllFavoritesStarted(),
+    Result watchMyPostsStarted(),
+    Result watchFilteredPostsStarted(String city, String brand,
+        bool exchangable, bool headphones, int price),
+    Result watchRelatedStarted(String brand, String currentId),
     Result postsReceived(Either<PostFailure, KtList<Post>> failureOrPosts),
     @required Result orElse(),
   }) {
@@ -253,10 +328,17 @@ class _$_WatchAllFavoritesStarted implements _WatchAllFavoritesStarted {
   Result map<Result extends Object>({
     @required Result watchAllStarted(_WatchAllStarted value),
     @required Result watchAllFavoritesStarted(_WatchAllFavoritesStarted value),
+    @required Result watchMyPostsStarted(_WatchMyPostsStarted value),
+    @required
+        Result watchFilteredPostsStarted(_WatchFilteredPostsStarted value),
+    @required Result watchRelatedStarted(_WatchRelatedStarted value),
     @required Result postsReceived(_PostsReceived value),
   }) {
     assert(watchAllStarted != null);
     assert(watchAllFavoritesStarted != null);
+    assert(watchMyPostsStarted != null);
+    assert(watchFilteredPostsStarted != null);
+    assert(watchRelatedStarted != null);
     assert(postsReceived != null);
     return watchAllFavoritesStarted(this);
   }
@@ -266,6 +348,9 @@ class _$_WatchAllFavoritesStarted implements _WatchAllFavoritesStarted {
   Result maybeMap<Result extends Object>({
     Result watchAllStarted(_WatchAllStarted value),
     Result watchAllFavoritesStarted(_WatchAllFavoritesStarted value),
+    Result watchMyPostsStarted(_WatchMyPostsStarted value),
+    Result watchFilteredPostsStarted(_WatchFilteredPostsStarted value),
+    Result watchRelatedStarted(_WatchRelatedStarted value),
     Result postsReceived(_PostsReceived value),
     @required Result orElse(),
   }) {
@@ -279,6 +364,484 @@ class _$_WatchAllFavoritesStarted implements _WatchAllFavoritesStarted {
 
 abstract class _WatchAllFavoritesStarted implements PostWatcherEvent {
   const factory _WatchAllFavoritesStarted() = _$_WatchAllFavoritesStarted;
+}
+
+/// @nodoc
+abstract class _$WatchMyPostsStartedCopyWith<$Res> {
+  factory _$WatchMyPostsStartedCopyWith(_WatchMyPostsStarted value,
+          $Res Function(_WatchMyPostsStarted) then) =
+      __$WatchMyPostsStartedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$WatchMyPostsStartedCopyWithImpl<$Res>
+    extends _$PostWatcherEventCopyWithImpl<$Res>
+    implements _$WatchMyPostsStartedCopyWith<$Res> {
+  __$WatchMyPostsStartedCopyWithImpl(
+      _WatchMyPostsStarted _value, $Res Function(_WatchMyPostsStarted) _then)
+      : super(_value, (v) => _then(v as _WatchMyPostsStarted));
+
+  @override
+  _WatchMyPostsStarted get _value => super._value as _WatchMyPostsStarted;
+}
+
+/// @nodoc
+class _$_WatchMyPostsStarted implements _WatchMyPostsStarted {
+  const _$_WatchMyPostsStarted();
+
+  @override
+  String toString() {
+    return 'PostWatcherEvent.watchMyPostsStarted()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _WatchMyPostsStarted);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result watchAllStarted(),
+    @required Result watchAllFavoritesStarted(),
+    @required Result watchMyPostsStarted(),
+    @required
+        Result watchFilteredPostsStarted(String city, String brand,
+            bool exchangable, bool headphones, int price),
+    @required Result watchRelatedStarted(String brand, String currentId),
+    @required
+        Result postsReceived(Either<PostFailure, KtList<Post>> failureOrPosts),
+  }) {
+    assert(watchAllStarted != null);
+    assert(watchAllFavoritesStarted != null);
+    assert(watchMyPostsStarted != null);
+    assert(watchFilteredPostsStarted != null);
+    assert(watchRelatedStarted != null);
+    assert(postsReceived != null);
+    return watchMyPostsStarted();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result watchAllStarted(),
+    Result watchAllFavoritesStarted(),
+    Result watchMyPostsStarted(),
+    Result watchFilteredPostsStarted(String city, String brand,
+        bool exchangable, bool headphones, int price),
+    Result watchRelatedStarted(String brand, String currentId),
+    Result postsReceived(Either<PostFailure, KtList<Post>> failureOrPosts),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (watchMyPostsStarted != null) {
+      return watchMyPostsStarted();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result watchAllStarted(_WatchAllStarted value),
+    @required Result watchAllFavoritesStarted(_WatchAllFavoritesStarted value),
+    @required Result watchMyPostsStarted(_WatchMyPostsStarted value),
+    @required
+        Result watchFilteredPostsStarted(_WatchFilteredPostsStarted value),
+    @required Result watchRelatedStarted(_WatchRelatedStarted value),
+    @required Result postsReceived(_PostsReceived value),
+  }) {
+    assert(watchAllStarted != null);
+    assert(watchAllFavoritesStarted != null);
+    assert(watchMyPostsStarted != null);
+    assert(watchFilteredPostsStarted != null);
+    assert(watchRelatedStarted != null);
+    assert(postsReceived != null);
+    return watchMyPostsStarted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result watchAllStarted(_WatchAllStarted value),
+    Result watchAllFavoritesStarted(_WatchAllFavoritesStarted value),
+    Result watchMyPostsStarted(_WatchMyPostsStarted value),
+    Result watchFilteredPostsStarted(_WatchFilteredPostsStarted value),
+    Result watchRelatedStarted(_WatchRelatedStarted value),
+    Result postsReceived(_PostsReceived value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (watchMyPostsStarted != null) {
+      return watchMyPostsStarted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _WatchMyPostsStarted implements PostWatcherEvent {
+  const factory _WatchMyPostsStarted() = _$_WatchMyPostsStarted;
+}
+
+/// @nodoc
+abstract class _$WatchFilteredPostsStartedCopyWith<$Res> {
+  factory _$WatchFilteredPostsStartedCopyWith(_WatchFilteredPostsStarted value,
+          $Res Function(_WatchFilteredPostsStarted) then) =
+      __$WatchFilteredPostsStartedCopyWithImpl<$Res>;
+  $Res call(
+      {String city,
+      String brand,
+      bool exchangable,
+      bool headphones,
+      int price});
+}
+
+/// @nodoc
+class __$WatchFilteredPostsStartedCopyWithImpl<$Res>
+    extends _$PostWatcherEventCopyWithImpl<$Res>
+    implements _$WatchFilteredPostsStartedCopyWith<$Res> {
+  __$WatchFilteredPostsStartedCopyWithImpl(_WatchFilteredPostsStarted _value,
+      $Res Function(_WatchFilteredPostsStarted) _then)
+      : super(_value, (v) => _then(v as _WatchFilteredPostsStarted));
+
+  @override
+  _WatchFilteredPostsStarted get _value =>
+      super._value as _WatchFilteredPostsStarted;
+
+  @override
+  $Res call({
+    Object city = freezed,
+    Object brand = freezed,
+    Object exchangable = freezed,
+    Object headphones = freezed,
+    Object price = freezed,
+  }) {
+    return _then(_WatchFilteredPostsStarted(
+      city == freezed ? _value.city : city as String,
+      brand == freezed ? _value.brand : brand as String,
+      exchangable == freezed ? _value.exchangable : exchangable as bool,
+      headphones == freezed ? _value.headphones : headphones as bool,
+      price == freezed ? _value.price : price as int,
+    ));
+  }
+}
+
+/// @nodoc
+class _$_WatchFilteredPostsStarted implements _WatchFilteredPostsStarted {
+  const _$_WatchFilteredPostsStarted(
+      this.city, this.brand, this.exchangable, this.headphones, this.price)
+      : assert(city != null),
+        assert(brand != null),
+        assert(exchangable != null),
+        assert(headphones != null),
+        assert(price != null);
+
+  @override
+  final String city;
+  @override
+  final String brand;
+  @override
+  final bool exchangable;
+  @override
+  final bool headphones;
+  @override
+  final int price;
+
+  @override
+  String toString() {
+    return 'PostWatcherEvent.watchFilteredPostsStarted(city: $city, brand: $brand, exchangable: $exchangable, headphones: $headphones, price: $price)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _WatchFilteredPostsStarted &&
+            (identical(other.city, city) ||
+                const DeepCollectionEquality().equals(other.city, city)) &&
+            (identical(other.brand, brand) ||
+                const DeepCollectionEquality().equals(other.brand, brand)) &&
+            (identical(other.exchangable, exchangable) ||
+                const DeepCollectionEquality()
+                    .equals(other.exchangable, exchangable)) &&
+            (identical(other.headphones, headphones) ||
+                const DeepCollectionEquality()
+                    .equals(other.headphones, headphones)) &&
+            (identical(other.price, price) ||
+                const DeepCollectionEquality().equals(other.price, price)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(city) ^
+      const DeepCollectionEquality().hash(brand) ^
+      const DeepCollectionEquality().hash(exchangable) ^
+      const DeepCollectionEquality().hash(headphones) ^
+      const DeepCollectionEquality().hash(price);
+
+  @override
+  _$WatchFilteredPostsStartedCopyWith<_WatchFilteredPostsStarted>
+      get copyWith =>
+          __$WatchFilteredPostsStartedCopyWithImpl<_WatchFilteredPostsStarted>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result watchAllStarted(),
+    @required Result watchAllFavoritesStarted(),
+    @required Result watchMyPostsStarted(),
+    @required
+        Result watchFilteredPostsStarted(String city, String brand,
+            bool exchangable, bool headphones, int price),
+    @required Result watchRelatedStarted(String brand, String currentId),
+    @required
+        Result postsReceived(Either<PostFailure, KtList<Post>> failureOrPosts),
+  }) {
+    assert(watchAllStarted != null);
+    assert(watchAllFavoritesStarted != null);
+    assert(watchMyPostsStarted != null);
+    assert(watchFilteredPostsStarted != null);
+    assert(watchRelatedStarted != null);
+    assert(postsReceived != null);
+    return watchFilteredPostsStarted(
+        city, brand, exchangable, headphones, price);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result watchAllStarted(),
+    Result watchAllFavoritesStarted(),
+    Result watchMyPostsStarted(),
+    Result watchFilteredPostsStarted(String city, String brand,
+        bool exchangable, bool headphones, int price),
+    Result watchRelatedStarted(String brand, String currentId),
+    Result postsReceived(Either<PostFailure, KtList<Post>> failureOrPosts),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (watchFilteredPostsStarted != null) {
+      return watchFilteredPostsStarted(
+          city, brand, exchangable, headphones, price);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result watchAllStarted(_WatchAllStarted value),
+    @required Result watchAllFavoritesStarted(_WatchAllFavoritesStarted value),
+    @required Result watchMyPostsStarted(_WatchMyPostsStarted value),
+    @required
+        Result watchFilteredPostsStarted(_WatchFilteredPostsStarted value),
+    @required Result watchRelatedStarted(_WatchRelatedStarted value),
+    @required Result postsReceived(_PostsReceived value),
+  }) {
+    assert(watchAllStarted != null);
+    assert(watchAllFavoritesStarted != null);
+    assert(watchMyPostsStarted != null);
+    assert(watchFilteredPostsStarted != null);
+    assert(watchRelatedStarted != null);
+    assert(postsReceived != null);
+    return watchFilteredPostsStarted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result watchAllStarted(_WatchAllStarted value),
+    Result watchAllFavoritesStarted(_WatchAllFavoritesStarted value),
+    Result watchMyPostsStarted(_WatchMyPostsStarted value),
+    Result watchFilteredPostsStarted(_WatchFilteredPostsStarted value),
+    Result watchRelatedStarted(_WatchRelatedStarted value),
+    Result postsReceived(_PostsReceived value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (watchFilteredPostsStarted != null) {
+      return watchFilteredPostsStarted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _WatchFilteredPostsStarted implements PostWatcherEvent {
+  const factory _WatchFilteredPostsStarted(
+      String city,
+      String brand,
+      bool exchangable,
+      bool headphones,
+      int price) = _$_WatchFilteredPostsStarted;
+
+  String get city;
+  String get brand;
+  bool get exchangable;
+  bool get headphones;
+  int get price;
+  _$WatchFilteredPostsStartedCopyWith<_WatchFilteredPostsStarted> get copyWith;
+}
+
+/// @nodoc
+abstract class _$WatchRelatedStartedCopyWith<$Res> {
+  factory _$WatchRelatedStartedCopyWith(_WatchRelatedStarted value,
+          $Res Function(_WatchRelatedStarted) then) =
+      __$WatchRelatedStartedCopyWithImpl<$Res>;
+  $Res call({String brand, String currentId});
+}
+
+/// @nodoc
+class __$WatchRelatedStartedCopyWithImpl<$Res>
+    extends _$PostWatcherEventCopyWithImpl<$Res>
+    implements _$WatchRelatedStartedCopyWith<$Res> {
+  __$WatchRelatedStartedCopyWithImpl(
+      _WatchRelatedStarted _value, $Res Function(_WatchRelatedStarted) _then)
+      : super(_value, (v) => _then(v as _WatchRelatedStarted));
+
+  @override
+  _WatchRelatedStarted get _value => super._value as _WatchRelatedStarted;
+
+  @override
+  $Res call({
+    Object brand = freezed,
+    Object currentId = freezed,
+  }) {
+    return _then(_WatchRelatedStarted(
+      brand == freezed ? _value.brand : brand as String,
+      currentId == freezed ? _value.currentId : currentId as String,
+    ));
+  }
+}
+
+/// @nodoc
+class _$_WatchRelatedStarted implements _WatchRelatedStarted {
+  const _$_WatchRelatedStarted(this.brand, this.currentId)
+      : assert(brand != null),
+        assert(currentId != null);
+
+  @override
+  final String brand;
+  @override
+  final String currentId;
+
+  @override
+  String toString() {
+    return 'PostWatcherEvent.watchRelatedStarted(brand: $brand, currentId: $currentId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _WatchRelatedStarted &&
+            (identical(other.brand, brand) ||
+                const DeepCollectionEquality().equals(other.brand, brand)) &&
+            (identical(other.currentId, currentId) ||
+                const DeepCollectionEquality()
+                    .equals(other.currentId, currentId)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(brand) ^
+      const DeepCollectionEquality().hash(currentId);
+
+  @override
+  _$WatchRelatedStartedCopyWith<_WatchRelatedStarted> get copyWith =>
+      __$WatchRelatedStartedCopyWithImpl<_WatchRelatedStarted>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result watchAllStarted(),
+    @required Result watchAllFavoritesStarted(),
+    @required Result watchMyPostsStarted(),
+    @required
+        Result watchFilteredPostsStarted(String city, String brand,
+            bool exchangable, bool headphones, int price),
+    @required Result watchRelatedStarted(String brand, String currentId),
+    @required
+        Result postsReceived(Either<PostFailure, KtList<Post>> failureOrPosts),
+  }) {
+    assert(watchAllStarted != null);
+    assert(watchAllFavoritesStarted != null);
+    assert(watchMyPostsStarted != null);
+    assert(watchFilteredPostsStarted != null);
+    assert(watchRelatedStarted != null);
+    assert(postsReceived != null);
+    return watchRelatedStarted(brand, currentId);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result watchAllStarted(),
+    Result watchAllFavoritesStarted(),
+    Result watchMyPostsStarted(),
+    Result watchFilteredPostsStarted(String city, String brand,
+        bool exchangable, bool headphones, int price),
+    Result watchRelatedStarted(String brand, String currentId),
+    Result postsReceived(Either<PostFailure, KtList<Post>> failureOrPosts),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (watchRelatedStarted != null) {
+      return watchRelatedStarted(brand, currentId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result watchAllStarted(_WatchAllStarted value),
+    @required Result watchAllFavoritesStarted(_WatchAllFavoritesStarted value),
+    @required Result watchMyPostsStarted(_WatchMyPostsStarted value),
+    @required
+        Result watchFilteredPostsStarted(_WatchFilteredPostsStarted value),
+    @required Result watchRelatedStarted(_WatchRelatedStarted value),
+    @required Result postsReceived(_PostsReceived value),
+  }) {
+    assert(watchAllStarted != null);
+    assert(watchAllFavoritesStarted != null);
+    assert(watchMyPostsStarted != null);
+    assert(watchFilteredPostsStarted != null);
+    assert(watchRelatedStarted != null);
+    assert(postsReceived != null);
+    return watchRelatedStarted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result watchAllStarted(_WatchAllStarted value),
+    Result watchAllFavoritesStarted(_WatchAllFavoritesStarted value),
+    Result watchMyPostsStarted(_WatchMyPostsStarted value),
+    Result watchFilteredPostsStarted(_WatchFilteredPostsStarted value),
+    Result watchRelatedStarted(_WatchRelatedStarted value),
+    Result postsReceived(_PostsReceived value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (watchRelatedStarted != null) {
+      return watchRelatedStarted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _WatchRelatedStarted implements PostWatcherEvent {
+  const factory _WatchRelatedStarted(String brand, String currentId) =
+      _$_WatchRelatedStarted;
+
+  String get brand;
+  String get currentId;
+  _$WatchRelatedStartedCopyWith<_WatchRelatedStarted> get copyWith;
 }
 
 /// @nodoc
@@ -347,11 +910,19 @@ class _$_PostsReceived implements _PostsReceived {
   Result when<Result extends Object>({
     @required Result watchAllStarted(),
     @required Result watchAllFavoritesStarted(),
+    @required Result watchMyPostsStarted(),
+    @required
+        Result watchFilteredPostsStarted(String city, String brand,
+            bool exchangable, bool headphones, int price),
+    @required Result watchRelatedStarted(String brand, String currentId),
     @required
         Result postsReceived(Either<PostFailure, KtList<Post>> failureOrPosts),
   }) {
     assert(watchAllStarted != null);
     assert(watchAllFavoritesStarted != null);
+    assert(watchMyPostsStarted != null);
+    assert(watchFilteredPostsStarted != null);
+    assert(watchRelatedStarted != null);
     assert(postsReceived != null);
     return postsReceived(failureOrPosts);
   }
@@ -361,6 +932,10 @@ class _$_PostsReceived implements _PostsReceived {
   Result maybeWhen<Result extends Object>({
     Result watchAllStarted(),
     Result watchAllFavoritesStarted(),
+    Result watchMyPostsStarted(),
+    Result watchFilteredPostsStarted(String city, String brand,
+        bool exchangable, bool headphones, int price),
+    Result watchRelatedStarted(String brand, String currentId),
     Result postsReceived(Either<PostFailure, KtList<Post>> failureOrPosts),
     @required Result orElse(),
   }) {
@@ -376,10 +951,17 @@ class _$_PostsReceived implements _PostsReceived {
   Result map<Result extends Object>({
     @required Result watchAllStarted(_WatchAllStarted value),
     @required Result watchAllFavoritesStarted(_WatchAllFavoritesStarted value),
+    @required Result watchMyPostsStarted(_WatchMyPostsStarted value),
+    @required
+        Result watchFilteredPostsStarted(_WatchFilteredPostsStarted value),
+    @required Result watchRelatedStarted(_WatchRelatedStarted value),
     @required Result postsReceived(_PostsReceived value),
   }) {
     assert(watchAllStarted != null);
     assert(watchAllFavoritesStarted != null);
+    assert(watchMyPostsStarted != null);
+    assert(watchFilteredPostsStarted != null);
+    assert(watchRelatedStarted != null);
     assert(postsReceived != null);
     return postsReceived(this);
   }
@@ -389,6 +971,9 @@ class _$_PostsReceived implements _PostsReceived {
   Result maybeMap<Result extends Object>({
     Result watchAllStarted(_WatchAllStarted value),
     Result watchAllFavoritesStarted(_WatchAllFavoritesStarted value),
+    Result watchMyPostsStarted(_WatchMyPostsStarted value),
+    Result watchFilteredPostsStarted(_WatchFilteredPostsStarted value),
+    Result watchRelatedStarted(_WatchRelatedStarted value),
     Result postsReceived(_PostsReceived value),
     @required Result orElse(),
   }) {

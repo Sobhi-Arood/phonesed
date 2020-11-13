@@ -10,4 +10,5 @@ abstract class AuthFailure with _$AuthFailure {
   const factory AuthFailure.invalidEmailAndPasswordCombination() =
       InvalidEmailAndPasswordCombination;
   const factory AuthFailure.weakPassword() = WeakPassword;
+  const factory AuthFailure.emailNotVerified() = EmailNotVerified;
 }

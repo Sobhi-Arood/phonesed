@@ -27,10 +27,12 @@ class SignUpForm extends StatelessWidget {
                                     'Email already in use',
                                 invalidEmailAndPasswordCombination: (_) =>
                                     'Invalid email and password',
-                                weakPassword: (_) => 'Weak password'),
+                                weakPassword: (_) => 'Weak password',
+                                emailNotVerified: (_) => ''),
                           ).show(context),
                         }, (_) {
-                  ExtendedNavigator.of(context).replace(Routes.mainPage);
+                  ExtendedNavigator.of(context)
+                      .replace(Routes.emailVerificationSentPage);
                   context
                       .bloc<AuthBloc>()
                       .add(const AuthEvent.authCheckRequested());
@@ -249,9 +251,6 @@ class SignUpForm extends StatelessWidget {
                     ],
                   ),
                 ),
-                if (state.isSubmitting) ...[
-                  const CircularProgressIndicator(),
-                ],
               ],
             ),
           ),

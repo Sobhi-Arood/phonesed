@@ -13,7 +13,7 @@ class TitleTextForm extends HookWidget {
   Widget build(BuildContext context) {
     final textEditingController = useTextEditingController();
     return BlocListener<PostFormBloc, PostFormState>(
-      listenWhen: (p, c) => p.post.title != c.post.title,
+      listenWhen: (p, c) => p.isEditing != c.isEditing,
       listener: (context, state) {
         textEditingController.text = state.post.title.getOrCrash();
       },
@@ -24,9 +24,10 @@ class TitleTextForm extends HookWidget {
           const Text(
             'Title',
             style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
-                color: kSecondaryLightColor),
+              fontSize: 18,
+              fontWeight: FontWeight.w500,
+              color: kSecondaryLightColor,
+            ),
           ),
           const SizedBox(height: 6),
           Container(
@@ -36,6 +37,7 @@ class TitleTextForm extends HookWidget {
               borderRadius: BorderRadius.circular(8),
             ),
             child: TextFormField(
+              controller: textEditingController,
               autocorrect: false,
               decoration: const InputDecoration(
                 hintText: 'Enter post title ...',

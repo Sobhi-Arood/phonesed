@@ -13,9 +13,12 @@ class BrandDropdown extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final brandValue = useState('');
-    return BlocBuilder<PostFormBloc, PostFormState>(
+    return BlocConsumer<PostFormBloc, PostFormState>(
+      listener: (context, state) {
+        brandValue.value = state.post.brand.value.fold((l) => '', (r) => r);
+      },
       buildWhen: (p, c) => p.post.brand != c.post.brand,
-      builder: (context, state) {
+      builder: (context, formState) {
         // brandValue.value = state.post.brand.getOrCrash();
         return Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -38,10 +41,16 @@ class BrandDropdown extends HookWidget {
                       initial: (_) => {},
                       loadInProgress: (_) => {},
                       loadBrandsSuccess: (s) {
-                        brandValue.value = s.data[0];
+                        // if (formState.post.brand.getOrCrash().isEmpty) {
+                        brandValue.value = s.data[0].brandName;
+                        context
+                            .bloc<PostFormBloc>()
+                            .add(PostFormEvent.brandChanged(brandValue.value));
                         context.bloc<PostFormDevicesBloc>().add(
-                              PostFormDevicesEvent.getDevicesStarted(s.data[0]),
+                              PostFormDevicesEvent.getDevicesStarted(
+                                  s.data[0].brandName),
                             );
+                        // }
                       },
                       loadBrandsFailure: (_) => {});
                 },
@@ -76,8 +85,8 @@ class BrandDropdown extends HookWidget {
                                   .asList()
                                   .map<DropdownMenuItem<String>>((value) {
                                 return DropdownMenuItem<String>(
-                                  value: value,
-                                  child: Text(value),
+                                  value: value.brandName,
+                                  child: Text(value.brandName),
                                 );
                               }).toList(),
                             ),

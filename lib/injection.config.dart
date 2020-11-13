@@ -22,6 +22,7 @@ import 'application/chats/chat_watcher/chat_watcher_bloc.dart';
 import 'application/chats/conversations_watcher/conversations_watcher_bloc.dart';
 import 'infrastructure/auth/firebase_auth_facade.dart';
 import 'infrastructure/core/firebase_injectable_module.dart';
+import 'application/core/form_navigation/form_navigation_bloc.dart';
 import 'infrastructure/posts/form_repository.dart';
 import 'domain/auth/i_auth_facade.dart';
 import 'domain/core/avatar/i_avatar_picker.dart';
@@ -39,7 +40,10 @@ import 'application/posts/post_form/post_form_devices/post_form_devices_bloc.dar
 import 'application/posts/post_form/post_form_load_data/post_form_load_data_bloc.dart';
 import 'application/posts/post_form/post_picker_image/post_picker_image_bloc.dart';
 import 'infrastructure/posts/post_repository.dart';
+import 'application/posts/post_search/post_search_bloc.dart';
 import 'application/posts/post_watcher/post_watcher_bloc.dart';
+import 'application/core/posts_filter/posts_filter_bloc.dart';
+import 'application/core/posts_filter/posts_form_filter/posts_form_filter_bloc.dart';
 import 'application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'application/auth/sign_up_form/sign_up_form_bloc.dart';
 import 'application/auth/social_sign_in/social_sign_in_bloc.dart';
@@ -61,6 +65,7 @@ GetIt $initGetIt(
   gh.lazySingleton<FirebaseAuth>(() => firebaseInjectableModule.firebaseAuth);
   gh.lazySingleton<FirebaseFirestore>(() => firebaseInjectableModule.firestore);
   gh.lazySingleton<FirebaseStorage>(() => firebaseInjectableModule.storage);
+  gh.factory<FormNavigationBloc>(() => FormNavigationBloc());
   gh.lazySingleton<GoogleSignIn>(() => firebaseInjectableModule.googleSignIn);
   gh.lazySingleton<IChatRepository>(
       () => ChatRepository(get<FirebaseFirestore>()));
@@ -80,6 +85,8 @@ GetIt $initGetIt(
       () => PostFormDevicesBloc(get<IFormRepository>()));
   gh.factory<PostFormLoadDataBloc>(
       () => PostFormLoadDataBloc(get<IFormRepository>()));
+  gh.factory<PostsFilterBloc>(() => PostsFilterBloc());
+  gh.factory<PostsFormFilterBloc>(() => PostsFormFilterBloc());
   gh.factory<UserProfileBloc>(() => UserProfileBloc(get<IUserRepository>()));
   gh.factory<ChatFormBloc>(() => ChatFormBloc(get<IChatRepository>()));
   gh.factory<ChatWatcherBloc>(() => ChatWatcherBloc(get<IChatRepository>()));
@@ -89,6 +96,7 @@ GetIt $initGetIt(
         get<FirebaseAuth>(),
         get<GoogleSignIn>(),
         get<IUserRepository>(),
+        get<FirebaseFirestore>(),
       ));
   gh.lazySingleton<IAvatarPickerFacade>(
       () => AvatarPickerFacade(get<ImagePicker>(), get<IUploadFacade>()));
@@ -99,6 +107,7 @@ GetIt $initGetIt(
       () => PostFormBloc(get<IPostRepository>(), get<IFormRepository>()));
   gh.factory<PostPickerImageBloc>(
       () => PostPickerImageBloc(get<IAvatarPickerFacade>()));
+  gh.factory<PostSearchBloc>(() => PostSearchBloc(get<IPostRepository>()));
   gh.factory<PostWatcherBloc>(() => PostWatcherBloc(get<IPostRepository>()));
   gh.factory<SignInFormBloc>(() => SignInFormBloc(get<IAuthFacade>()));
   gh.factory<SignUpFormBloc>(() => SignUpFormBloc(get<IAuthFacade>()));

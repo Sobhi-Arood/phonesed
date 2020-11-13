@@ -13,7 +13,7 @@ class DescriptionTextForm extends HookWidget {
   Widget build(BuildContext context) {
     final textEditingController = useTextEditingController();
     return BlocListener<PostFormBloc, PostFormState>(
-      listenWhen: (p, c) => p.post.description != c.post.description,
+      listenWhen: (p, c) => p.isEditing != c.isEditing,
       listener: (context, state) {
         textEditingController.text = state.post.description.getOrCrash();
       },
@@ -36,6 +36,7 @@ class DescriptionTextForm extends HookWidget {
               borderRadius: BorderRadius.circular(8),
             ),
             child: TextFormField(
+              controller: textEditingController,
               autocorrect: false,
               decoration: const InputDecoration(
                 hintText: 'Enter description ...',
