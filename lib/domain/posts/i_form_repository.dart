@@ -6,7 +6,7 @@ import 'post_failure.dart';
 
 abstract class IFormRepository {
   Future<Either<PostFailure, KtList<BrandPrimitive>>> getBrands();
-  Future<Either<PostFailure, KtList<String>>> getDevices(String brand);
+  Future<Either<PostFailure, KtList<String>>> getDevices(int index);
   Future<Either<PostFailure, KtList<String>>> getCities();
   Future<Either<PostFailure, KtList<String>>> getArea(String city);
 }

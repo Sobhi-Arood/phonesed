@@ -31,9 +31,9 @@ class _$PostFormLoadDataEventTearOff {
   }
 
 // ignore: unused_element
-  _GetDevicesStarted getDevicesStarted(String brand) {
+  _GetDevicesStarted getDevicesStarted(int index) {
     return _GetDevicesStarted(
-      brand,
+      index,
     );
   }
 
@@ -81,7 +81,7 @@ mixin _$PostFormLoadDataEvent {
     @required Result getCitiesStarted(),
     @required Result getAreasStarted(String city),
     @required Result getBrandsStarted(),
-    @required Result getDevicesStarted(String brand),
+    @required Result getDevicesStarted(int index),
     @required
         Result citiesReceived(
             Either<PostFailure, KtList<String>> failureOrPosts),
@@ -100,7 +100,7 @@ mixin _$PostFormLoadDataEvent {
     Result getCitiesStarted(),
     Result getAreasStarted(String city),
     Result getBrandsStarted(),
-    Result getDevicesStarted(String brand),
+    Result getDevicesStarted(int index),
     Result citiesReceived(Either<PostFailure, KtList<String>> failureOrPosts),
     Result areasReceived(Either<PostFailure, KtList<String>> failureOrPosts),
     Result brandsReceived(
@@ -192,7 +192,7 @@ class _$_GetCitiesStarted implements _GetCitiesStarted {
     @required Result getCitiesStarted(),
     @required Result getAreasStarted(String city),
     @required Result getBrandsStarted(),
-    @required Result getDevicesStarted(String brand),
+    @required Result getDevicesStarted(int index),
     @required
         Result citiesReceived(
             Either<PostFailure, KtList<String>> failureOrPosts),
@@ -223,7 +223,7 @@ class _$_GetCitiesStarted implements _GetCitiesStarted {
     Result getCitiesStarted(),
     Result getAreasStarted(String city),
     Result getBrandsStarted(),
-    Result getDevicesStarted(String brand),
+    Result getDevicesStarted(int index),
     Result citiesReceived(Either<PostFailure, KtList<String>> failureOrPosts),
     Result areasReceived(Either<PostFailure, KtList<String>> failureOrPosts),
     Result brandsReceived(
@@ -349,7 +349,7 @@ class _$_GetAreasStarted implements _GetAreasStarted {
     @required Result getCitiesStarted(),
     @required Result getAreasStarted(String city),
     @required Result getBrandsStarted(),
-    @required Result getDevicesStarted(String brand),
+    @required Result getDevicesStarted(int index),
     @required
         Result citiesReceived(
             Either<PostFailure, KtList<String>> failureOrPosts),
@@ -380,7 +380,7 @@ class _$_GetAreasStarted implements _GetAreasStarted {
     Result getCitiesStarted(),
     Result getAreasStarted(String city),
     Result getBrandsStarted(),
-    Result getDevicesStarted(String brand),
+    Result getDevicesStarted(int index),
     Result citiesReceived(Either<PostFailure, KtList<String>> failureOrPosts),
     Result areasReceived(Either<PostFailure, KtList<String>> failureOrPosts),
     Result brandsReceived(
@@ -488,7 +488,7 @@ class _$_GetBrandsStarted implements _GetBrandsStarted {
     @required Result getCitiesStarted(),
     @required Result getAreasStarted(String city),
     @required Result getBrandsStarted(),
-    @required Result getDevicesStarted(String brand),
+    @required Result getDevicesStarted(int index),
     @required
         Result citiesReceived(
             Either<PostFailure, KtList<String>> failureOrPosts),
@@ -519,7 +519,7 @@ class _$_GetBrandsStarted implements _GetBrandsStarted {
     Result getCitiesStarted(),
     Result getAreasStarted(String city),
     Result getBrandsStarted(),
-    Result getDevicesStarted(String brand),
+    Result getDevicesStarted(int index),
     Result citiesReceived(Either<PostFailure, KtList<String>> failureOrPosts),
     Result areasReceived(Either<PostFailure, KtList<String>> failureOrPosts),
     Result brandsReceived(
@@ -587,7 +587,7 @@ abstract class _$GetDevicesStartedCopyWith<$Res> {
   factory _$GetDevicesStartedCopyWith(
           _GetDevicesStarted value, $Res Function(_GetDevicesStarted) then) =
       __$GetDevicesStartedCopyWithImpl<$Res>;
-  $Res call({String brand});
+  $Res call({int index});
 }
 
 /// @nodoc
@@ -603,37 +603,37 @@ class __$GetDevicesStartedCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object brand = freezed,
+    Object index = freezed,
   }) {
     return _then(_GetDevicesStarted(
-      brand == freezed ? _value.brand : brand as String,
+      index == freezed ? _value.index : index as int,
     ));
   }
 }
 
 /// @nodoc
 class _$_GetDevicesStarted implements _GetDevicesStarted {
-  const _$_GetDevicesStarted(this.brand) : assert(brand != null);
+  const _$_GetDevicesStarted(this.index) : assert(index != null);
 
   @override
-  final String brand;
+  final int index;
 
   @override
   String toString() {
-    return 'PostFormLoadDataEvent.getDevicesStarted(brand: $brand)';
+    return 'PostFormLoadDataEvent.getDevicesStarted(index: $index)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _GetDevicesStarted &&
-            (identical(other.brand, brand) ||
-                const DeepCollectionEquality().equals(other.brand, brand)));
+            (identical(other.index, index) ||
+                const DeepCollectionEquality().equals(other.index, index)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(brand);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(index);
 
   @override
   _$GetDevicesStartedCopyWith<_GetDevicesStarted> get copyWith =>
@@ -645,7 +645,7 @@ class _$_GetDevicesStarted implements _GetDevicesStarted {
     @required Result getCitiesStarted(),
     @required Result getAreasStarted(String city),
     @required Result getBrandsStarted(),
-    @required Result getDevicesStarted(String brand),
+    @required Result getDevicesStarted(int index),
     @required
         Result citiesReceived(
             Either<PostFailure, KtList<String>> failureOrPosts),
@@ -667,7 +667,7 @@ class _$_GetDevicesStarted implements _GetDevicesStarted {
     assert(areasReceived != null);
     assert(brandsReceived != null);
     assert(devicesReceived != null);
-    return getDevicesStarted(brand);
+    return getDevicesStarted(index);
   }
 
   @override
@@ -676,7 +676,7 @@ class _$_GetDevicesStarted implements _GetDevicesStarted {
     Result getCitiesStarted(),
     Result getAreasStarted(String city),
     Result getBrandsStarted(),
-    Result getDevicesStarted(String brand),
+    Result getDevicesStarted(int index),
     Result citiesReceived(Either<PostFailure, KtList<String>> failureOrPosts),
     Result areasReceived(Either<PostFailure, KtList<String>> failureOrPosts),
     Result brandsReceived(
@@ -686,7 +686,7 @@ class _$_GetDevicesStarted implements _GetDevicesStarted {
   }) {
     assert(orElse != null);
     if (getDevicesStarted != null) {
-      return getDevicesStarted(brand);
+      return getDevicesStarted(index);
     }
     return orElse();
   }
@@ -736,9 +736,9 @@ class _$_GetDevicesStarted implements _GetDevicesStarted {
 }
 
 abstract class _GetDevicesStarted implements PostFormLoadDataEvent {
-  const factory _GetDevicesStarted(String brand) = _$_GetDevicesStarted;
+  const factory _GetDevicesStarted(int index) = _$_GetDevicesStarted;
 
-  String get brand;
+  int get index;
   _$GetDevicesStartedCopyWith<_GetDevicesStarted> get copyWith;
 }
 
@@ -809,7 +809,7 @@ class _$_CitiesReceived implements _CitiesReceived {
     @required Result getCitiesStarted(),
     @required Result getAreasStarted(String city),
     @required Result getBrandsStarted(),
-    @required Result getDevicesStarted(String brand),
+    @required Result getDevicesStarted(int index),
     @required
         Result citiesReceived(
             Either<PostFailure, KtList<String>> failureOrPosts),
@@ -840,7 +840,7 @@ class _$_CitiesReceived implements _CitiesReceived {
     Result getCitiesStarted(),
     Result getAreasStarted(String city),
     Result getBrandsStarted(),
-    Result getDevicesStarted(String brand),
+    Result getDevicesStarted(int index),
     Result citiesReceived(Either<PostFailure, KtList<String>> failureOrPosts),
     Result areasReceived(Either<PostFailure, KtList<String>> failureOrPosts),
     Result brandsReceived(
@@ -974,7 +974,7 @@ class _$_AreasReceived implements _AreasReceived {
     @required Result getCitiesStarted(),
     @required Result getAreasStarted(String city),
     @required Result getBrandsStarted(),
-    @required Result getDevicesStarted(String brand),
+    @required Result getDevicesStarted(int index),
     @required
         Result citiesReceived(
             Either<PostFailure, KtList<String>> failureOrPosts),
@@ -1005,7 +1005,7 @@ class _$_AreasReceived implements _AreasReceived {
     Result getCitiesStarted(),
     Result getAreasStarted(String city),
     Result getBrandsStarted(),
-    Result getDevicesStarted(String brand),
+    Result getDevicesStarted(int index),
     Result citiesReceived(Either<PostFailure, KtList<String>> failureOrPosts),
     Result areasReceived(Either<PostFailure, KtList<String>> failureOrPosts),
     Result brandsReceived(
@@ -1139,7 +1139,7 @@ class _$_BrandsReceived implements _BrandsReceived {
     @required Result getCitiesStarted(),
     @required Result getAreasStarted(String city),
     @required Result getBrandsStarted(),
-    @required Result getDevicesStarted(String brand),
+    @required Result getDevicesStarted(int index),
     @required
         Result citiesReceived(
             Either<PostFailure, KtList<String>> failureOrPosts),
@@ -1170,7 +1170,7 @@ class _$_BrandsReceived implements _BrandsReceived {
     Result getCitiesStarted(),
     Result getAreasStarted(String city),
     Result getBrandsStarted(),
-    Result getDevicesStarted(String brand),
+    Result getDevicesStarted(int index),
     Result citiesReceived(Either<PostFailure, KtList<String>> failureOrPosts),
     Result areasReceived(Either<PostFailure, KtList<String>> failureOrPosts),
     Result brandsReceived(
@@ -1306,7 +1306,7 @@ class _$_DevicesReceived implements _DevicesReceived {
     @required Result getCitiesStarted(),
     @required Result getAreasStarted(String city),
     @required Result getBrandsStarted(),
-    @required Result getDevicesStarted(String brand),
+    @required Result getDevicesStarted(int index),
     @required
         Result citiesReceived(
             Either<PostFailure, KtList<String>> failureOrPosts),
@@ -1337,7 +1337,7 @@ class _$_DevicesReceived implements _DevicesReceived {
     Result getCitiesStarted(),
     Result getAreasStarted(String city),
     Result getBrandsStarted(),
-    Result getDevicesStarted(String brand),
+    Result getDevicesStarted(int index),
     Result citiesReceived(Either<PostFailure, KtList<String>> failureOrPosts),
     Result areasReceived(Either<PostFailure, KtList<String>> failureOrPosts),
     Result brandsReceived(

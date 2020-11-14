@@ -14,9 +14,9 @@ class _$PostFormDevicesEventTearOff {
   const _$PostFormDevicesEventTearOff();
 
 // ignore: unused_element
-  _GetDevicesStarted getDevicesStarted(String brand) {
+  _GetDevicesStarted getDevicesStarted(int index) {
     return _GetDevicesStarted(
-      brand,
+      index,
     );
   }
 
@@ -37,14 +37,14 @@ const $PostFormDevicesEvent = _$PostFormDevicesEventTearOff();
 mixin _$PostFormDevicesEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result getDevicesStarted(String brand),
+    @required Result getDevicesStarted(int index),
     @required
         Result devicesReceived(
             Either<PostFailure, KtList<String>> failureOrPosts),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result getDevicesStarted(String brand),
+    Result getDevicesStarted(int index),
     Result devicesReceived(Either<PostFailure, KtList<String>> failureOrPosts),
     @required Result orElse(),
   });
@@ -83,7 +83,7 @@ abstract class _$GetDevicesStartedCopyWith<$Res> {
   factory _$GetDevicesStartedCopyWith(
           _GetDevicesStarted value, $Res Function(_GetDevicesStarted) then) =
       __$GetDevicesStartedCopyWithImpl<$Res>;
-  $Res call({String brand});
+  $Res call({int index});
 }
 
 /// @nodoc
@@ -99,37 +99,37 @@ class __$GetDevicesStartedCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object brand = freezed,
+    Object index = freezed,
   }) {
     return _then(_GetDevicesStarted(
-      brand == freezed ? _value.brand : brand as String,
+      index == freezed ? _value.index : index as int,
     ));
   }
 }
 
 /// @nodoc
 class _$_GetDevicesStarted implements _GetDevicesStarted {
-  const _$_GetDevicesStarted(this.brand) : assert(brand != null);
+  const _$_GetDevicesStarted(this.index) : assert(index != null);
 
   @override
-  final String brand;
+  final int index;
 
   @override
   String toString() {
-    return 'PostFormDevicesEvent.getDevicesStarted(brand: $brand)';
+    return 'PostFormDevicesEvent.getDevicesStarted(index: $index)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _GetDevicesStarted &&
-            (identical(other.brand, brand) ||
-                const DeepCollectionEquality().equals(other.brand, brand)));
+            (identical(other.index, index) ||
+                const DeepCollectionEquality().equals(other.index, index)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(brand);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(index);
 
   @override
   _$GetDevicesStartedCopyWith<_GetDevicesStarted> get copyWith =>
@@ -138,26 +138,26 @@ class _$_GetDevicesStarted implements _GetDevicesStarted {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result getDevicesStarted(String brand),
+    @required Result getDevicesStarted(int index),
     @required
         Result devicesReceived(
             Either<PostFailure, KtList<String>> failureOrPosts),
   }) {
     assert(getDevicesStarted != null);
     assert(devicesReceived != null);
-    return getDevicesStarted(brand);
+    return getDevicesStarted(index);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result getDevicesStarted(String brand),
+    Result getDevicesStarted(int index),
     Result devicesReceived(Either<PostFailure, KtList<String>> failureOrPosts),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (getDevicesStarted != null) {
-      return getDevicesStarted(brand);
+      return getDevicesStarted(index);
     }
     return orElse();
   }
@@ -189,9 +189,9 @@ class _$_GetDevicesStarted implements _GetDevicesStarted {
 }
 
 abstract class _GetDevicesStarted implements PostFormDevicesEvent {
-  const factory _GetDevicesStarted(String brand) = _$_GetDevicesStarted;
+  const factory _GetDevicesStarted(int index) = _$_GetDevicesStarted;
 
-  String get brand;
+  int get index;
   _$GetDevicesStartedCopyWith<_GetDevicesStarted> get copyWith;
 }
 
@@ -260,7 +260,7 @@ class _$_DevicesReceived implements _DevicesReceived {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result getDevicesStarted(String brand),
+    @required Result getDevicesStarted(int index),
     @required
         Result devicesReceived(
             Either<PostFailure, KtList<String>> failureOrPosts),
@@ -273,7 +273,7 @@ class _$_DevicesReceived implements _DevicesReceived {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result getDevicesStarted(String brand),
+    Result getDevicesStarted(int index),
     Result devicesReceived(Either<PostFailure, KtList<String>> failureOrPosts),
     @required Result orElse(),
   }) {

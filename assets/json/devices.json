@@ -1,0 +1,78 @@
+[
+  {
+    "brand": "Apple",
+    "logo": "assets/images/brands/apple.svg",
+    "devices": [
+      "iPhone 4",
+      "iPhone 4s",
+      "iPhone 5",
+      "iPhone 5c",
+      "iPhone 5s",
+      "iPhone 6",
+      "iPhone 6s",
+      "iPhone 6 Plus",
+      "iPhone 6s Plus",
+      "iPhone SE",
+      "iPhone 7",
+      "iPhone 7 Plus",
+      "iPhone 8",
+      "iPhone 8 Plus",
+      "iPhone X",
+      "iPhone XS",
+      "iPhone XS Max",
+      "iPhone XR",
+      "iPhone 11",
+      "iPhone 11 Pro",
+      "iPhone 11 Pro Max",
+      "iPhone SE (2020)",
+      "iPhone 12",
+      "iPhone 12 mini",
+      "iPhone 12 Pro",
+      "iPhone 12 Pro Max"
+    ]
+  },
+  {
+    "brand": "Samsung",
+    "logo": "assets/images/brands/samsung.svg",
+    "devices": [
+      "Galaxy Note 10+",
+      "Galaxy Note 10",
+      "Galaxy A10s",
+      "Galaxy A30s",
+      "Galaxy A50s",
+      "Galaxy A2 Core",
+      "Galaxy A60"
+    ]
+  },
+  {
+    "brand": "Huawei",
+    "logo": "assets/images/brands/huawei.svg",
+    "devices": [
+      "Nova 8 SE High",
+      "Nova 8 SE",
+      "Mate 30E Pro",
+      "Mate 40 Pro+",
+      "Mate 40 Pro",
+      "P20",
+      "P20 Pro"
+    ]
+  },
+  {
+    "brand": "Google",
+    "logo": "assets/images/brands/google.svg",
+    "devices": [
+      "Pixel 4a 5G",
+      "Pixel 5",
+      "Pixel 4a",
+      "Pixel 4 XL",
+      "Pixel 4",
+      "Pixel 3a XL",
+      "Pixel 3 XL",
+      "Pixel 3",
+      "Pixel 2 XL",
+      "Pixel 2",
+      "Pixel XL",
+      "Pixel"
+    ]
+  }
+]

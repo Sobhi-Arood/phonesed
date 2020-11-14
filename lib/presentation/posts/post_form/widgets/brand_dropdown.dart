@@ -8,6 +8,7 @@ import 'package:phonesed/constants.dart';
 import 'package:phonesed/domain/posts/value_objects.dart';
 
 class BrandDropdown extends HookWidget {
+  // final List<String> modelsList;
   const BrandDropdown({Key key}) : super(key: key);
 
   @override
@@ -42,13 +43,13 @@ class BrandDropdown extends HookWidget {
                       loadInProgress: (_) => {},
                       loadBrandsSuccess: (s) {
                         // if (formState.post.brand.getOrCrash().isEmpty) {
-                        brandValue.value = s.data[0].brandName;
+                        brandValue.value = s.data[0].brand;
                         context
                             .bloc<PostFormBloc>()
                             .add(PostFormEvent.brandChanged(brandValue.value));
                         context.bloc<PostFormDevicesBloc>().add(
                               PostFormDevicesEvent.getDevicesStarted(
-                                  s.data[0].brandName),
+                                  s.data[0].brand),
                             );
                         // }
                       },
@@ -85,8 +86,8 @@ class BrandDropdown extends HookWidget {
                                   .asList()
                                   .map<DropdownMenuItem<String>>((value) {
                                 return DropdownMenuItem<String>(
-                                  value: value.brandName,
-                                  child: Text(value.brandName),
+                                  value: value.brand,
+                                  child: Text(value.brand),
                                 );
                               }).toList(),
                             ),

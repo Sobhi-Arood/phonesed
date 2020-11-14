@@ -39,20 +39,25 @@ class CityDropdown extends HookWidget {
               child: BlocConsumer<PostFormCitiesBloc, PostFormCitiesState>(
                 listener: (context, state) {
                   state.map(
-                      initial: (_) => {},
-                      loadInProgress: (_) => {},
-                      loadCitiesSuccess: (s) {
-                        // if (formState.post.city.getOrCrash().isEmpty) {
-                        cityValue.value = s.data[0];
-                        context
-                            .bloc<PostFormBloc>()
-                            .add(PostFormEvent.cityChanged(cityValue.value));
-                        context
-                            .bloc<PostFormAreasBloc>()
-                            .add(PostFormAreasEvent.getAreasStarted(s.data[0]));
-                        // }
-                      },
-                      loadCitiesFailure: (_) => {});
+                    initial: (_) => Container(),
+                    loadInProgress: (_) => Container(
+                      child: const Text('Loading...'),
+                    ),
+                    loadCitiesSuccess: (s) {
+                      // if (formState.post.city.getOrCrash().isEmpty) {
+                      cityValue.value = s.data[0];
+                      context
+                          .bloc<PostFormBloc>()
+                          .add(PostFormEvent.cityChanged(cityValue.value));
+                      context
+                          .bloc<PostFormAreasBloc>()
+                          .add(PostFormAreasEvent.getAreasStarted(s.data[0]));
+                      // }
+                    },
+                    loadCitiesFailure: (_) => Container(
+                      child: const Text('Error'),
+                    ),
+                  );
                   // cityValue.value = state.map(
                   //     initial: (_) => '',
                   //     loadInProgress: (_) => '',

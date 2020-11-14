@@ -74,14 +74,23 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/locations.json
+    - assets/json/locations.json
+    - assets/json/devices.json
     - assets/images/google_PNG19635.png
     - assets/images/Group10.png
     - assets/images/no_messages.png
     - assets/images/no_favorites.png
     - assets/images/search.png
     - assets/images/posts.png
-
+    - assets/images/brands/apple.svg
+    - assets/images/brands/samsung.svg
+    - assets/images/brands/huawei.svg
+    - assets/images/brands/google.svg
+    - assets/images/brands/lenovo.svg
+    - assets/images/brands/lg.svg
+    - assets/images/brands/nokia.svg
+    - assets/images/brands/oneplus.svg
+    - assets/images/brands/xiaomi.svg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

@@ -6,7 +6,9 @@ abstract class PostFormLoadDataEvent with _$PostFormLoadDataEvent {
   const factory PostFormLoadDataEvent.getAreasStarted(String city) =
       _GetAreasStarted;
   const factory PostFormLoadDataEvent.getBrandsStarted() = _GetBrandsStarted;
-  const factory PostFormLoadDataEvent.getDevicesStarted(String brand) =
+  // const factory PostFormLoadDataEvent.getDevicesStarted(String brand) =
+  //     _GetDevicesStarted;
+  const factory PostFormLoadDataEvent.getDevicesStarted(int index) =
       _GetDevicesStarted;
   const factory PostFormLoadDataEvent.citiesReceived(
       Either<PostFailure, KtList<String>> failureOrPosts) = _CitiesReceived;

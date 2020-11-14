@@ -43,8 +43,7 @@ class FilterBrandDropdown extends HookWidget {
                         // if (formState.post.brand.getOrCrash().isEmpty) {
                         // brandValue.value = s.data[0];
                         context.bloc<PostsFormFilterBloc>().add(
-                            PostsFormFilterEvent.brandChanged(
-                                s.data[0].brandName));
+                            PostsFormFilterEvent.brandChanged(s.data[0].brand));
                         // context
                         //     .bloc<PostFormBloc>()
                         //     .add(PostFormEvent.brandChanged(brandValue.value));
@@ -87,8 +86,8 @@ class FilterBrandDropdown extends HookWidget {
                                   .asList()
                                   .map<DropdownMenuItem<String>>((value) {
                                 return DropdownMenuItem<String>(
-                                  value: value.brandName,
-                                  child: Text(value.brandName),
+                                  value: value.brand,
+                                  child: Text(value.brand),
                                 );
                               }).toList(),
                             ),

@@ -70,12 +70,13 @@ class BrandPostFormWidget extends StatelessWidget {
                           // print(brand.brandImgUrl);
                           return GestureDetector(
                             onTap: () {
-                              context.bloc<PostFormBloc>().add(
-                                  PostFormEvent.brandChanged(brand.brandName));
+                              context
+                                  .bloc<PostFormBloc>()
+                                  .add(PostFormEvent.brandChanged(brand.brand));
 
-                              context.bloc<PostFormDevicesBloc>().add(
-                                  PostFormDevicesEvent.getDevicesStarted(
-                                      brand.brandName));
+                              // context.bloc<PostFormDevicesBloc>().add(
+                              //     PostFormDevicesEvent.getDevicesStarted(
+                              //         brand.brand));
 
                               context.bloc<FormNavigationBloc>().add(
                                   const FormNavigationEvent.pageChanged(1));
@@ -89,13 +90,14 @@ class BrandPostFormWidget extends StatelessWidget {
                                     MainAxisAlignment.spaceAround,
                                 children: [
                                   // Image.network(brand.brandImgUrl),
-                                  SvgPicture.network(
-                                    brand.brandImgUrl,
-                                    width: 45,
-                                    height: 45,
+                                  SvgPicture.asset(
+                                    // brand.brandImgUrl,
+                                    brand.logo,
+                                    width: 55,
+                                    height: 55,
                                   ),
                                   Text(
-                                    brand.brandName,
+                                    brand.brand,
                                     textAlign: TextAlign.center,
                                     style: const TextStyle(
                                         color: kPrimaryDarkColor,

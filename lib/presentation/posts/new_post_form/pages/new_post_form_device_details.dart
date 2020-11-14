@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phonesed/application/core/form_navigation/form_navigation_bloc.dart';
 import 'package:phonesed/application/posts/post_form/post_form_bloc.dart';
+import 'package:phonesed/presentation/posts/new_post_form/widgets/dropdowns/models_dropdown.dart';
 import 'package:phonesed/presentation/posts/post_form/widgets/age_dropown.dart';
 import 'package:phonesed/presentation/posts/post_form/widgets/area_dropdown.dart';
 import 'package:phonesed/presentation/posts/post_form/widgets/checkboxs/charger_checkbox.dart';
@@ -39,7 +40,8 @@ class DeviceFormDetailsWidget extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const DeviceDropdown(),
+                        // const DeviceDropdown(),
+                        // ModelsDropdown(modelsList: ),
                         const SizedBox(height: 28),
                         const AgeDropdown(),
                         const SizedBox(height: 28),

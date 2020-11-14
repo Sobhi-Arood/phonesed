@@ -25,7 +25,7 @@ class PostFormDevicesBloc
   ) async* {
     yield* event.map(getDevicesStarted: (e) async* {
       yield const PostFormDevicesState.loadInProgress();
-      final devices = await _formRepository.getDevices(e.brand);
+      final devices = await _formRepository.getDevices(e.index);
       add(PostFormDevicesEvent.devicesReceived(devices));
     }, devicesReceived: (e) async* {
       yield e.failureOrPosts.fold(

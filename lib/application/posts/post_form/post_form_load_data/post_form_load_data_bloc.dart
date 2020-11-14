@@ -38,7 +38,7 @@ class PostFormLoadDataBloc
       add(PostFormLoadDataEvent.brandsReceived(brands));
     }, getDevicesStarted: (e) async* {
       yield const PostFormLoadDataState.loadInProgress();
-      final devices = await _formRepository.getDevices(e.brand);
+      final devices = await _formRepository.getDevices(e.index);
       add(PostFormLoadDataEvent.devicesReceived(devices));
     }, citiesReceived: (e) async* {
       yield e.failureOrPosts.fold(
