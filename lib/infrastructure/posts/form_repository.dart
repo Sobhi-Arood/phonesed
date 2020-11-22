@@ -33,7 +33,7 @@ class FormRepository implements IFormRepository {
       //   print(value);
       // });
 
-      print(listt);
+      // print(listt);
       // List<BrandPrimitive> list = [];
 
       // final brands = brandsDoc.data();
@@ -70,7 +70,7 @@ class FormRepository implements IFormRepository {
       final List<BrandPrimitive> list = parsed
           .map((e) => BrandPrimitive.fromJson(e as Map<String, dynamic>))
           .toList();
-
+      // print(list[index].devices);
       return right(list[index].devices.toImmutableList());
     } catch (e) {
       return left(const PostFailure.unexpected());

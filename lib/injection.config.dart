@@ -44,6 +44,8 @@ import 'application/posts/post_search/post_search_bloc.dart';
 import 'application/posts/post_watcher/post_watcher_bloc.dart';
 import 'application/core/posts_filter/posts_filter_bloc.dart';
 import 'application/core/posts_filter/posts_form_filter/posts_form_filter_bloc.dart';
+import 'application/core/posts_sort/posts_form_sort/posts_form_sort_bloc.dart';
+import 'application/core/posts_sort/posts_sort_bloc.dart';
 import 'application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'application/auth/sign_up_form/sign_up_form_bloc.dart';
 import 'application/auth/social_sign_in/social_sign_in_bloc.dart';
@@ -87,6 +89,8 @@ GetIt $initGetIt(
       () => PostFormLoadDataBloc(get<IFormRepository>()));
   gh.factory<PostsFilterBloc>(() => PostsFilterBloc());
   gh.factory<PostsFormFilterBloc>(() => PostsFormFilterBloc());
+  gh.factory<PostsFormSortBloc>(() => PostsFormSortBloc());
+  gh.factory<PostsSortBloc>(() => PostsSortBloc());
   gh.factory<UserProfileBloc>(() => UserProfileBloc(get<IUserRepository>()));
   gh.factory<ChatFormBloc>(() => ChatFormBloc(get<IChatRepository>()));
   gh.factory<ChatWatcherBloc>(() => ChatWatcherBloc(get<IChatRepository>()));

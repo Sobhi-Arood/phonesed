@@ -16,7 +16,7 @@ class BottomNavigationBarWidget extends StatelessWidget {
               children: [
                 BottomNavBarItem(
                   iconData: Icons.home_outlined,
-                  activeIconData: Icons.home_outlined,
+                  activeIconData: Icons.home,
                   isActive: state.currentIndex == 0,
                   onPressed: () {
                     context
@@ -36,7 +36,7 @@ class BottomNavigationBarWidget extends StatelessWidget {
                 ),
                 BottomNavBarItem(
                   iconData: Icons.favorite_border_outlined,
-                  activeIconData: Icons.favorite_border_outlined,
+                  activeIconData: Icons.favorite_outlined,
                   isActive: state.currentIndex == 2,
                   onPressed: () {
                     context
@@ -46,7 +46,7 @@ class BottomNavigationBarWidget extends StatelessWidget {
                 ),
                 BottomNavBarItem(
                   iconData: Icons.chat_outlined,
-                  activeIconData: Icons.chat_outlined,
+                  activeIconData: Icons.chat,
                   isActive: state.currentIndex == 3,
                   onPressed: () {
                     context
@@ -56,7 +56,7 @@ class BottomNavigationBarWidget extends StatelessWidget {
                 ),
                 BottomNavBarItem(
                   iconData: Icons.person_outlined,
-                  activeIconData: Icons.person_outlined,
+                  activeIconData: Icons.person,
                   isActive: state.currentIndex == 4,
                   onPressed: () {
                     context

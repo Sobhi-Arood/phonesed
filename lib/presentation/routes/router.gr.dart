@@ -18,6 +18,7 @@ import '../auth/welcome_page.dart';
 import '../chats/chat_page/chat_page.dart';
 import '../core/main_page.dart';
 import '../posts/new_post_form/new_post_form_page.dart';
+import '../posts/new_post_form/pages/success_post_page.dart';
 import '../posts/post_detail/post_detail_page.dart';
 import '../posts/post_form/post_form_page.dart';
 import '../profile/my_posts_watcher/my_posts_watcher_page.dart';
@@ -34,6 +35,7 @@ class Routes {
   static const String postDetailPage = '/post-detail-page';
   static const String chatPage = '/chat-page';
   static const String myPostsWatcherPage = '/my-posts-watcher-page';
+  static const String successPostPage = '/success-post-page';
   static const all = <String>{
     mainPage,
     welcomePage,
@@ -45,6 +47,7 @@ class Routes {
     postDetailPage,
     chatPage,
     myPostsWatcherPage,
+    successPostPage,
   };
 }
 
@@ -62,6 +65,7 @@ class Router extends RouterBase {
     RouteDef(Routes.postDetailPage, page: PostDetailPage),
     RouteDef(Routes.chatPage, page: ChatPage),
     RouteDef(Routes.myPostsWatcherPage, page: MyPostsWatcherPage),
+    RouteDef(Routes.successPostPage, page: SuccessPostPage),
   ];
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
@@ -97,8 +101,12 @@ class Router extends RouterBase {
       );
     },
     NewPostFormPage: (data) {
+      final args = data.getArgs<NewPostFormPageArguments>(nullOk: false);
       return MaterialPageRoute<dynamic>(
-        builder: (context) => const NewPostFormPage(),
+        builder: (context) => NewPostFormPage(
+          key: args.key,
+          post: args.post,
+        ),
         settings: data,
         fullscreenDialog: true,
       );
@@ -141,6 +149,13 @@ class Router extends RouterBase {
         settings: data,
       );
     },
+    SuccessPostPage: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => SuccessPostPage(),
+        settings: data,
+        fullscreenDialog: true,
+      );
+    },
   };
 }
 
@@ -160,8 +175,14 @@ extension RouterExtendedNavigatorStateX on ExtendedNavigatorState {
 
   Future<dynamic> pushSignUpPage() => push<dynamic>(Routes.signUpPage);
 
-  Future<dynamic> pushNewPostFormPage() =>
-      push<dynamic>(Routes.newPostFormPage);
+  Future<dynamic> pushNewPostFormPage({
+    Key key,
+    @required Post post,
+  }) =>
+      push<dynamic>(
+        Routes.newPostFormPage,
+        arguments: NewPostFormPageArguments(key: key, post: post),
+      );
 
   Future<dynamic> pushPostFormPage({
     Key key,
@@ -192,11 +213,21 @@ extension RouterExtendedNavigatorStateX on ExtendedNavigatorState {
 
   Future<dynamic> pushMyPostsWatcherPage() =>
       push<dynamic>(Routes.myPostsWatcherPage);
+
+  Future<dynamic> pushSuccessPostPage() =>
+      push<dynamic>(Routes.successPostPage);
 }
 
 /// ************************************************************************
 /// Arguments holder classes
 /// *************************************************************************
+
+/// NewPostFormPage arguments holder class
+class NewPostFormPageArguments {
+  final Key key;
+  final Post post;
+  NewPostFormPageArguments({this.key, @required this.post});
+}
 
 /// PostFormPage arguments holder class
 class PostFormPageArguments {

@@ -10,7 +10,7 @@ abstract class PostsFormFilterState with _$PostsFormFilterState {
     @required int maxPrice,
   }) = _PostsFormFilterState;
 
-  factory PostsFormFilterState.initial() => PostsFormFilterState(
+  factory PostsFormFilterState.initial() => const PostsFormFilterState(
         city: '',
         brand: '',
         exchangable: false,

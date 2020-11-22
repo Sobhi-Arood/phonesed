@@ -27,6 +27,7 @@ class PostFormAreasBloc extends Bloc<PostFormAreasEvent, PostFormAreasState> {
       final areas = await _formRepository.getArea(e.city);
       add(PostFormAreasEvent.areasReceived(areas));
     }, areasReceived: (e) async* {
+      print(e);
       yield e.failureOrPosts.fold((f) => PostFormAreasState.loadAreasFailure(f),
           (data) => PostFormAreasState.loadAreasSuccess(data));
     });

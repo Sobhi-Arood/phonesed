@@ -26,9 +26,9 @@ class RelatedPostCard extends StatelessWidget {
           onTap: () =>
               ExtendedNavigator.of(context).pushPostDetailPage(post: post),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
+            // mainAxisAlignment: MainAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.center,
+            // crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               CachedNetworkImage(
                 imageUrl: post.images.getOrCrash()[0],
@@ -36,15 +36,18 @@ class RelatedPostCard extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
               const SizedBox(height: 16),
-              Text(
-                post.title.getOrCrash(),
-                overflow: TextOverflow.ellipsis,
-                maxLines: 3,
-                textScaleFactor: 1,
-                style: const TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.w600,
-                    color: kPrimaryDarkColor),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: Text(
+                  post.title.getOrCrash(),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
+                  textScaleFactor: 0.9,
+                  style: const TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.w600,
+                      color: kPrimaryDarkColor),
+                ),
               ),
               const SizedBox(height: 8),
               Text(

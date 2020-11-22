@@ -29,8 +29,8 @@ class PostFormDevicesBloc
       add(PostFormDevicesEvent.devicesReceived(devices));
     }, devicesReceived: (e) async* {
       yield e.failureOrPosts.fold(
-          (f) => PostFormDevicesState.loadCitiesFailure(f),
-          (data) => PostFormDevicesState.loadCitiesSuccess(data));
+          (f) => PostFormDevicesState.loadDevicesFailure(f),
+          (data) => PostFormDevicesState.loadDevicesSuccess(data));
     });
   }
 }

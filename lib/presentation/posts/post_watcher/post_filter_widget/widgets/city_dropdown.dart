@@ -65,7 +65,7 @@ class FilterCityDropdown extends HookWidget {
                     initial: (_) => Container(),
                     loadInProgress: (_) => const Text('Loading...'),
                     loadCitiesSuccess: (data) {
-                      print(data.data);
+                      // print(data.data);
                       return DropdownButtonHideUnderline(
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),

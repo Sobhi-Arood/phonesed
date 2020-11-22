@@ -20,6 +20,7 @@ class CityDropdown extends HookWidget {
       },
       buildWhen: (p, c) => p.post.city != c.post.city,
       builder: (context, formState) {
+        // cityValue.value = formState.post.city.value.fold((l) => '', (r) => r);
         // print(state.cities);
         return Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -44,15 +45,20 @@ class CityDropdown extends HookWidget {
                       child: const Text('Loading...'),
                     ),
                     loadCitiesSuccess: (s) {
-                      // if (formState.post.city.getOrCrash().isEmpty) {
-                      cityValue.value = s.data[0];
+                      cityValue.value = formState.post.city.value
+                          .fold((l) => s.data[0], (r) => r);
                       context
                           .bloc<PostFormBloc>()
                           .add(PostFormEvent.cityChanged(cityValue.value));
-                      context
-                          .bloc<PostFormAreasBloc>()
-                          .add(PostFormAreasEvent.getAreasStarted(s.data[0]));
-                      // }
+                      // context.bloc<PostFormAreasBloc>().add(
+                      //       PostFormAreasEvent.getAreasStarted(
+                      //           cityValue.value.isEmpty
+                      //               ? s.data[0]
+                      //               : cityValue.value),
+                      //     );
+                      context.bloc<PostFormAreasBloc>().add(
+                            PostFormAreasEvent.getAreasStarted(cityValue.value),
+                          );
                     },
                     loadCitiesFailure: (_) => Container(
                       child: const Text('Error'),
@@ -69,14 +75,18 @@ class CityDropdown extends HookWidget {
                     initial: (_) => Container(),
                     loadInProgress: (_) => const Text('Loading...'),
                     loadCitiesSuccess: (data) {
+                      // cityValue.value = data.data[0];
                       // print(data.data);
                       return DropdownButtonHideUnderline(
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: DropdownButton<String>(
-                            // value: state.post.city.getOrCrash(),
+                            value: formState.post.city.getOrCrash(),
                             // value: data.data[0],
-                            value: cityValue.value,
+                            // value: cityValue.value.isEmpty
+                            //     ? data.data[0]
+                            //     : cityValue.value,
+                            // value: cityValue.value,
                             elevation: 0,
                             isExpanded: true,
                             style: const TextStyle(
@@ -86,7 +96,7 @@ class CityDropdown extends HookWidget {
                             ),
                             onChanged: (v) {
                               // print(v);
-                              cityValue.value = v;
+                              // cityValue.value = v;
                               context
                                   .bloc<PostFormBloc>()
                                   .add(PostFormEvent.cityChanged(v));
@@ -115,6 +125,41 @@ class CityDropdown extends HookWidget {
           ],
         );
       },
+    );
+  }
+}
+
+class CityValueWidget extends StatelessWidget {
+  const CityValueWidget({Key key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<PostFormBloc, PostFormState>(
+      builder: (context, state) => Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          const Text(
+            'City',
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w500,
+              color: kSecondaryLightColor,
+            ),
+          ),
+          const SizedBox(height: 6),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: Text(
+              state.post.city.value.fold((l) => 'Error', (r) => r),
+              style: const TextStyle(
+                color: kPrimaryDarkColor,
+                fontWeight: FontWeight.w700,
+                fontSize: 18,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

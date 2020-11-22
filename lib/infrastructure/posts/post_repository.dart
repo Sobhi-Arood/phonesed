@@ -221,7 +221,7 @@ class PostRepository implements IPostRepository {
           if (post.images
               .getOrCrash()
               .containsAll(p.images.toImmutableList())) {
-            // print('lists equal');
+            print('lists equal');
             // listsEqual = true;
             final newPostDto = PostDto(
               id: p.id,
@@ -258,7 +258,7 @@ class PostRepository implements IPostRepository {
             transaction.update(editedPost, newPostDto.toJson());
           } else {
             await _uploadFacade.deleteImages(p.id);
-            // print('list not equal');
+            print('list not equal');
             // listsEqual = false;
             final List<String> urls = [];
             final List<String> imgs = [];
@@ -270,50 +270,77 @@ class PostRepository implements IPostRepository {
             final uploadOperation = await _uploadFacade.uploadPostImages(
                 imgs, post.id.getOrCrash());
 
-            uploadOperation.fold((l) => null, (r) async {
+            uploadOperation.fold(
+                (l) => left(const PostFailure.unableToUpdate()), (r) async {
               await Future.forEach(
                   r, (element) => urls.add(element.toString()));
-
-              final newPostDto = PostDto(
-                id: p.id,
-                userId: p.userId,
-                title: post.title.getOrCrash(),
-                price: post.price.getOrCrash(),
-                description: post.description.getOrCrash(),
-                images: urls,
-                city: post.city.getOrCrash(),
-                area: post.area.getOrCrash(),
-                country: post.country,
-                moreAccessories: post.moreAccessories.getOrCrash(),
-                avaliable: post.avaliable,
-                exhangable: post.exhangable,
-                negiotable: post.negiotable,
-                headphones: post.headphones,
-                charger: post.charger,
-                brand: post.brand.getOrCrash(),
-                device: post.device.getOrCrash(),
-                age: post.age.getOrCrash(),
-                condition: post.condition.getOrCrash(),
-                publishedDate: p.publishedDate,
-                userAvatar: p.userAvatar,
-                userName: p.userName,
-                searchParams: setSearchParam(post.title.getOrCrash()),
-                filterParams: [
-                  post.city.getOrCrash(),
-                  post.brand.getOrCrash(),
-                  post.exhangable,
-                  post.headphones
-                ],
-              );
-
-              transaction.update(editedPost, newPostDto.toJson());
             });
+            // print(urls);
+            transaction.update(editedPost, {
+              'images': FieldValue.arrayRemove(urls),
+            });
+
+            final npd = p.copyWith(
+              title: post.title.getOrCrash(),
+              price: post.price.getOrCrash(),
+              description: post.description.getOrCrash(),
+              moreAccessories: post.moreAccessories.getOrCrash(),
+              age: post.age.getOrCrash(),
+              condition: post.condition.getOrCrash(),
+              images: urls,
+              exhangable: post.exhangable,
+              negiotable: post.negiotable,
+              headphones: post.headphones,
+              charger: post.charger,
+              searchParams: setSearchParam(post.title.getOrCrash()),
+              filterParams: [
+                post.city.getOrCrash(),
+                post.brand.getOrCrash(),
+                post.exhangable,
+                post.headphones
+              ],
+            );
+
+            // final newPostDto = PostDto(
+            //   id: p.id,
+            //   userId: p.userId,
+            //   title: post.title.getOrCrash(),
+            //   price: post.price.getOrCrash(),
+            //   description: post.description.getOrCrash(),
+            //   images: urls,
+            //   city: post.city.getOrCrash(),
+            //   area: post.area.getOrCrash(),
+            //   country: post.country,
+            //   moreAccessories: post.moreAccessories.getOrCrash(),
+            //   avaliable: post.avaliable,
+            // exhangable: post.exhangable,
+            // negiotable: post.negiotable,
+            // headphones: post.headphones,
+            // charger: post.charger,
+            //   brand: post.brand.getOrCrash(),
+            //   device: post.device.getOrCrash(),
+            //   age: post.age.getOrCrash(),
+            //   condition: post.condition.getOrCrash(),
+            //   publishedDate: p.publishedDate,
+            //   userAvatar: p.userAvatar,
+            //   userName: p.userName,
+            //   searchParams: setSearchParam(post.title.getOrCrash()),
+            //   filterParams: [
+            //     post.city.getOrCrash(),
+            //     post.brand.getOrCrash(),
+            //     post.exhangable,
+            //     post.headphones
+            //   ],
+            // );
+
+            transaction.update(editedPost, npd.toJson());
           }
         });
       });
-
+      // print('UPDATE UPDATE UPDATE ??!!::');
       return right(unit);
     } on FirebaseException catch (e) {
+      print(e);
       if (e is FirebaseException && e.message.contains('permission-denied')) {
         return left(const PostFailure.insufficientPermission());
       } else if (e is FirebaseException && e.message.contains('not-found')) {
@@ -321,6 +348,9 @@ class PostRepository implements IPostRepository {
       } else {
         return left(const PostFailure.unexpected());
       }
+    } catch (e) {
+      // print(e);
+      return left(const PostFailure.unableToUpdate());
     }
   }
 
@@ -470,36 +500,44 @@ class PostRepository implements IPostRepository {
   @override
   Stream<Either<PostFailure, KtList<Post>>> fetchFilteredPosts(String city,
       String brand, bool exchangable, bool headphones, int price) async* {
-    final postDoc = _firestore.collection('Posts');
-    print([city, brand, exchangable, headphones]);
-    yield* postDoc
+    var postDoc = _firestore.collection('Posts');
+    var query = postDoc.where('price', isLessThanOrEqualTo: price);
+    if (city.isNotEmpty) {
+      query = query.where('city', isEqualTo: city);
+    }
+    if (brand.isNotEmpty) {
+      query = query.where('brand', isEqualTo: brand);
+    }
+    query = query.where('filterParams',
+        arrayContainsAny: [city, brand, exchangable, headphones]);
+    // print([city, brand, exchangable, headphones]);
+    yield* query
         // .orderBy('publishedDate', descending: true)
-        .where('city', isEqualTo: city)
-        .where('brand', isEqualTo: brand)
+        // .where('city', isEqualTo: city)
+        // .where('brand', isEqualTo: brand)
         // .where('exhangable', isEqualTo: exchangable)
         // .where('headphones', isEqualTo: headphones)
         // .where('city', arrayContainsAny: [city])
         // .where('brand', arrayContainsAny: [brand])
-        .where('filterParams',
-            arrayContainsAny: [city, brand, exchangable, headphones])
+        // .where('filterParams',
+        //     arrayContainsAny: [city, brand, exchangable, headphones])
         // .where('headphones', isLessThanOrEqualTo: headphones)
-        .where('price', isLessThanOrEqualTo: price)
+        // .where('price', isLessThanOrEqualTo: price)
         .snapshots()
         .map((snapshot) => right<PostFailure, KtList<Post>>(
               snapshot.docs.map((doc) {
-                print(doc.data());
+                // print(doc.data());
                 return PostDto.fromFirestore(doc).toDomain();
               }).toImmutableList(),
             ))
         .onErrorReturnWith((e) {
-          print(e);
-          if (e is FirebaseException &&
-              e.message.contains('permission-denied')) {
-            return left(const PostFailure.insufficientPermission());
-          } else {
-            return left(const PostFailure.unexpected());
-          }
-        });
+      print(e);
+      if (e is FirebaseException && e.message.contains('permission-denied')) {
+        return left(const PostFailure.insufficientPermission());
+      } else {
+        return left(const PostFailure.unexpected());
+      }
+    });
   }
 
   @override

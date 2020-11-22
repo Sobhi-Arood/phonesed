@@ -333,15 +333,15 @@ class _$PostFormDevicesStateTearOff {
   }
 
 // ignore: unused_element
-  _LoadCitiesSuccess loadCitiesSuccess(KtList<String> data) {
-    return _LoadCitiesSuccess(
+  _LoadDevicesSuccess loadDevicesSuccess(KtList<String> data) {
+    return _LoadDevicesSuccess(
       data,
     );
   }
 
 // ignore: unused_element
-  _LoadCitiesFailure loadCitiesFailure(PostFailure postFailure) {
-    return _LoadCitiesFailure(
+  _LoadDevicesFailure loadDevicesFailure(PostFailure postFailure) {
+    return _LoadDevicesFailure(
       postFailure,
     );
   }
@@ -357,30 +357,30 @@ mixin _$PostFormDevicesState {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result loadInProgress(),
-    @required Result loadCitiesSuccess(KtList<String> data),
-    @required Result loadCitiesFailure(PostFailure postFailure),
+    @required Result loadDevicesSuccess(KtList<String> data),
+    @required Result loadDevicesFailure(PostFailure postFailure),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result loadInProgress(),
-    Result loadCitiesSuccess(KtList<String> data),
-    Result loadCitiesFailure(PostFailure postFailure),
+    Result loadDevicesSuccess(KtList<String> data),
+    Result loadDevicesFailure(PostFailure postFailure),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result initial(_Initial value),
     @required Result loadInProgress(_LoadInProgress value),
-    @required Result loadCitiesSuccess(_LoadCitiesSuccess value),
-    @required Result loadCitiesFailure(_LoadCitiesFailure value),
+    @required Result loadDevicesSuccess(_LoadDevicesSuccess value),
+    @required Result loadDevicesFailure(_LoadDevicesFailure value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initial(_Initial value),
     Result loadInProgress(_LoadInProgress value),
-    Result loadCitiesSuccess(_LoadCitiesSuccess value),
-    Result loadCitiesFailure(_LoadCitiesFailure value),
+    Result loadDevicesSuccess(_LoadDevicesSuccess value),
+    Result loadDevicesFailure(_LoadDevicesFailure value),
     @required Result orElse(),
   });
 }
@@ -441,13 +441,13 @@ class _$_Initial implements _Initial {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result loadInProgress(),
-    @required Result loadCitiesSuccess(KtList<String> data),
-    @required Result loadCitiesFailure(PostFailure postFailure),
+    @required Result loadDevicesSuccess(KtList<String> data),
+    @required Result loadDevicesFailure(PostFailure postFailure),
   }) {
     assert(initial != null);
     assert(loadInProgress != null);
-    assert(loadCitiesSuccess != null);
-    assert(loadCitiesFailure != null);
+    assert(loadDevicesSuccess != null);
+    assert(loadDevicesFailure != null);
     return initial();
   }
 
@@ -456,8 +456,8 @@ class _$_Initial implements _Initial {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result loadInProgress(),
-    Result loadCitiesSuccess(KtList<String> data),
-    Result loadCitiesFailure(PostFailure postFailure),
+    Result loadDevicesSuccess(KtList<String> data),
+    Result loadDevicesFailure(PostFailure postFailure),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -472,13 +472,13 @@ class _$_Initial implements _Initial {
   Result map<Result extends Object>({
     @required Result initial(_Initial value),
     @required Result loadInProgress(_LoadInProgress value),
-    @required Result loadCitiesSuccess(_LoadCitiesSuccess value),
-    @required Result loadCitiesFailure(_LoadCitiesFailure value),
+    @required Result loadDevicesSuccess(_LoadDevicesSuccess value),
+    @required Result loadDevicesFailure(_LoadDevicesFailure value),
   }) {
     assert(initial != null);
     assert(loadInProgress != null);
-    assert(loadCitiesSuccess != null);
-    assert(loadCitiesFailure != null);
+    assert(loadDevicesSuccess != null);
+    assert(loadDevicesFailure != null);
     return initial(this);
   }
 
@@ -487,8 +487,8 @@ class _$_Initial implements _Initial {
   Result maybeMap<Result extends Object>({
     Result initial(_Initial value),
     Result loadInProgress(_LoadInProgress value),
-    Result loadCitiesSuccess(_LoadCitiesSuccess value),
-    Result loadCitiesFailure(_LoadCitiesFailure value),
+    Result loadDevicesSuccess(_LoadDevicesSuccess value),
+    Result loadDevicesFailure(_LoadDevicesFailure value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -544,13 +544,13 @@ class _$_LoadInProgress implements _LoadInProgress {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result loadInProgress(),
-    @required Result loadCitiesSuccess(KtList<String> data),
-    @required Result loadCitiesFailure(PostFailure postFailure),
+    @required Result loadDevicesSuccess(KtList<String> data),
+    @required Result loadDevicesFailure(PostFailure postFailure),
   }) {
     assert(initial != null);
     assert(loadInProgress != null);
-    assert(loadCitiesSuccess != null);
-    assert(loadCitiesFailure != null);
+    assert(loadDevicesSuccess != null);
+    assert(loadDevicesFailure != null);
     return loadInProgress();
   }
 
@@ -559,8 +559,8 @@ class _$_LoadInProgress implements _LoadInProgress {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result loadInProgress(),
-    Result loadCitiesSuccess(KtList<String> data),
-    Result loadCitiesFailure(PostFailure postFailure),
+    Result loadDevicesSuccess(KtList<String> data),
+    Result loadDevicesFailure(PostFailure postFailure),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -575,13 +575,13 @@ class _$_LoadInProgress implements _LoadInProgress {
   Result map<Result extends Object>({
     @required Result initial(_Initial value),
     @required Result loadInProgress(_LoadInProgress value),
-    @required Result loadCitiesSuccess(_LoadCitiesSuccess value),
-    @required Result loadCitiesFailure(_LoadCitiesFailure value),
+    @required Result loadDevicesSuccess(_LoadDevicesSuccess value),
+    @required Result loadDevicesFailure(_LoadDevicesFailure value),
   }) {
     assert(initial != null);
     assert(loadInProgress != null);
-    assert(loadCitiesSuccess != null);
-    assert(loadCitiesFailure != null);
+    assert(loadDevicesSuccess != null);
+    assert(loadDevicesFailure != null);
     return loadInProgress(this);
   }
 
@@ -590,8 +590,8 @@ class _$_LoadInProgress implements _LoadInProgress {
   Result maybeMap<Result extends Object>({
     Result initial(_Initial value),
     Result loadInProgress(_LoadInProgress value),
-    Result loadCitiesSuccess(_LoadCitiesSuccess value),
-    Result loadCitiesFailure(_LoadCitiesFailure value),
+    Result loadDevicesSuccess(_LoadDevicesSuccess value),
+    Result loadDevicesFailure(_LoadDevicesFailure value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -607,50 +607,50 @@ abstract class _LoadInProgress implements PostFormDevicesState {
 }
 
 /// @nodoc
-abstract class _$LoadCitiesSuccessCopyWith<$Res> {
-  factory _$LoadCitiesSuccessCopyWith(
-          _LoadCitiesSuccess value, $Res Function(_LoadCitiesSuccess) then) =
-      __$LoadCitiesSuccessCopyWithImpl<$Res>;
+abstract class _$LoadDevicesSuccessCopyWith<$Res> {
+  factory _$LoadDevicesSuccessCopyWith(
+          _LoadDevicesSuccess value, $Res Function(_LoadDevicesSuccess) then) =
+      __$LoadDevicesSuccessCopyWithImpl<$Res>;
   $Res call({KtList<String> data});
 }
 
 /// @nodoc
-class __$LoadCitiesSuccessCopyWithImpl<$Res>
+class __$LoadDevicesSuccessCopyWithImpl<$Res>
     extends _$PostFormDevicesStateCopyWithImpl<$Res>
-    implements _$LoadCitiesSuccessCopyWith<$Res> {
-  __$LoadCitiesSuccessCopyWithImpl(
-      _LoadCitiesSuccess _value, $Res Function(_LoadCitiesSuccess) _then)
-      : super(_value, (v) => _then(v as _LoadCitiesSuccess));
+    implements _$LoadDevicesSuccessCopyWith<$Res> {
+  __$LoadDevicesSuccessCopyWithImpl(
+      _LoadDevicesSuccess _value, $Res Function(_LoadDevicesSuccess) _then)
+      : super(_value, (v) => _then(v as _LoadDevicesSuccess));
 
   @override
-  _LoadCitiesSuccess get _value => super._value as _LoadCitiesSuccess;
+  _LoadDevicesSuccess get _value => super._value as _LoadDevicesSuccess;
 
   @override
   $Res call({
     Object data = freezed,
   }) {
-    return _then(_LoadCitiesSuccess(
+    return _then(_LoadDevicesSuccess(
       data == freezed ? _value.data : data as KtList<String>,
     ));
   }
 }
 
 /// @nodoc
-class _$_LoadCitiesSuccess implements _LoadCitiesSuccess {
-  const _$_LoadCitiesSuccess(this.data) : assert(data != null);
+class _$_LoadDevicesSuccess implements _LoadDevicesSuccess {
+  const _$_LoadDevicesSuccess(this.data) : assert(data != null);
 
   @override
   final KtList<String> data;
 
   @override
   String toString() {
-    return 'PostFormDevicesState.loadCitiesSuccess(data: $data)';
+    return 'PostFormDevicesState.loadDevicesSuccess(data: $data)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _LoadCitiesSuccess &&
+        (other is _LoadDevicesSuccess &&
             (identical(other.data, data) ||
                 const DeepCollectionEquality().equals(other.data, data)));
   }
@@ -660,22 +660,22 @@ class _$_LoadCitiesSuccess implements _LoadCitiesSuccess {
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(data);
 
   @override
-  _$LoadCitiesSuccessCopyWith<_LoadCitiesSuccess> get copyWith =>
-      __$LoadCitiesSuccessCopyWithImpl<_LoadCitiesSuccess>(this, _$identity);
+  _$LoadDevicesSuccessCopyWith<_LoadDevicesSuccess> get copyWith =>
+      __$LoadDevicesSuccessCopyWithImpl<_LoadDevicesSuccess>(this, _$identity);
 
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result loadInProgress(),
-    @required Result loadCitiesSuccess(KtList<String> data),
-    @required Result loadCitiesFailure(PostFailure postFailure),
+    @required Result loadDevicesSuccess(KtList<String> data),
+    @required Result loadDevicesFailure(PostFailure postFailure),
   }) {
     assert(initial != null);
     assert(loadInProgress != null);
-    assert(loadCitiesSuccess != null);
-    assert(loadCitiesFailure != null);
-    return loadCitiesSuccess(data);
+    assert(loadDevicesSuccess != null);
+    assert(loadDevicesFailure != null);
+    return loadDevicesSuccess(data);
   }
 
   @override
@@ -683,13 +683,13 @@ class _$_LoadCitiesSuccess implements _LoadCitiesSuccess {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result loadInProgress(),
-    Result loadCitiesSuccess(KtList<String> data),
-    Result loadCitiesFailure(PostFailure postFailure),
+    Result loadDevicesSuccess(KtList<String> data),
+    Result loadDevicesFailure(PostFailure postFailure),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (loadCitiesSuccess != null) {
-      return loadCitiesSuccess(data);
+    if (loadDevicesSuccess != null) {
+      return loadDevicesSuccess(data);
     }
     return orElse();
   }
@@ -699,14 +699,14 @@ class _$_LoadCitiesSuccess implements _LoadCitiesSuccess {
   Result map<Result extends Object>({
     @required Result initial(_Initial value),
     @required Result loadInProgress(_LoadInProgress value),
-    @required Result loadCitiesSuccess(_LoadCitiesSuccess value),
-    @required Result loadCitiesFailure(_LoadCitiesFailure value),
+    @required Result loadDevicesSuccess(_LoadDevicesSuccess value),
+    @required Result loadDevicesFailure(_LoadDevicesFailure value),
   }) {
     assert(initial != null);
     assert(loadInProgress != null);
-    assert(loadCitiesSuccess != null);
-    assert(loadCitiesFailure != null);
-    return loadCitiesSuccess(this);
+    assert(loadDevicesSuccess != null);
+    assert(loadDevicesFailure != null);
+    return loadDevicesSuccess(this);
   }
 
   @override
@@ -714,51 +714,52 @@ class _$_LoadCitiesSuccess implements _LoadCitiesSuccess {
   Result maybeMap<Result extends Object>({
     Result initial(_Initial value),
     Result loadInProgress(_LoadInProgress value),
-    Result loadCitiesSuccess(_LoadCitiesSuccess value),
-    Result loadCitiesFailure(_LoadCitiesFailure value),
+    Result loadDevicesSuccess(_LoadDevicesSuccess value),
+    Result loadDevicesFailure(_LoadDevicesFailure value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (loadCitiesSuccess != null) {
-      return loadCitiesSuccess(this);
+    if (loadDevicesSuccess != null) {
+      return loadDevicesSuccess(this);
     }
     return orElse();
   }
 }
 
-abstract class _LoadCitiesSuccess implements PostFormDevicesState {
-  const factory _LoadCitiesSuccess(KtList<String> data) = _$_LoadCitiesSuccess;
+abstract class _LoadDevicesSuccess implements PostFormDevicesState {
+  const factory _LoadDevicesSuccess(KtList<String> data) =
+      _$_LoadDevicesSuccess;
 
   KtList<String> get data;
-  _$LoadCitiesSuccessCopyWith<_LoadCitiesSuccess> get copyWith;
+  _$LoadDevicesSuccessCopyWith<_LoadDevicesSuccess> get copyWith;
 }
 
 /// @nodoc
-abstract class _$LoadCitiesFailureCopyWith<$Res> {
-  factory _$LoadCitiesFailureCopyWith(
-          _LoadCitiesFailure value, $Res Function(_LoadCitiesFailure) then) =
-      __$LoadCitiesFailureCopyWithImpl<$Res>;
+abstract class _$LoadDevicesFailureCopyWith<$Res> {
+  factory _$LoadDevicesFailureCopyWith(
+          _LoadDevicesFailure value, $Res Function(_LoadDevicesFailure) then) =
+      __$LoadDevicesFailureCopyWithImpl<$Res>;
   $Res call({PostFailure postFailure});
 
   $PostFailureCopyWith<$Res> get postFailure;
 }
 
 /// @nodoc
-class __$LoadCitiesFailureCopyWithImpl<$Res>
+class __$LoadDevicesFailureCopyWithImpl<$Res>
     extends _$PostFormDevicesStateCopyWithImpl<$Res>
-    implements _$LoadCitiesFailureCopyWith<$Res> {
-  __$LoadCitiesFailureCopyWithImpl(
-      _LoadCitiesFailure _value, $Res Function(_LoadCitiesFailure) _then)
-      : super(_value, (v) => _then(v as _LoadCitiesFailure));
+    implements _$LoadDevicesFailureCopyWith<$Res> {
+  __$LoadDevicesFailureCopyWithImpl(
+      _LoadDevicesFailure _value, $Res Function(_LoadDevicesFailure) _then)
+      : super(_value, (v) => _then(v as _LoadDevicesFailure));
 
   @override
-  _LoadCitiesFailure get _value => super._value as _LoadCitiesFailure;
+  _LoadDevicesFailure get _value => super._value as _LoadDevicesFailure;
 
   @override
   $Res call({
     Object postFailure = freezed,
   }) {
-    return _then(_LoadCitiesFailure(
+    return _then(_LoadDevicesFailure(
       postFailure == freezed ? _value.postFailure : postFailure as PostFailure,
     ));
   }
@@ -775,21 +776,21 @@ class __$LoadCitiesFailureCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$_LoadCitiesFailure implements _LoadCitiesFailure {
-  const _$_LoadCitiesFailure(this.postFailure) : assert(postFailure != null);
+class _$_LoadDevicesFailure implements _LoadDevicesFailure {
+  const _$_LoadDevicesFailure(this.postFailure) : assert(postFailure != null);
 
   @override
   final PostFailure postFailure;
 
   @override
   String toString() {
-    return 'PostFormDevicesState.loadCitiesFailure(postFailure: $postFailure)';
+    return 'PostFormDevicesState.loadDevicesFailure(postFailure: $postFailure)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _LoadCitiesFailure &&
+        (other is _LoadDevicesFailure &&
             (identical(other.postFailure, postFailure) ||
                 const DeepCollectionEquality()
                     .equals(other.postFailure, postFailure)));
@@ -800,22 +801,22 @@ class _$_LoadCitiesFailure implements _LoadCitiesFailure {
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(postFailure);
 
   @override
-  _$LoadCitiesFailureCopyWith<_LoadCitiesFailure> get copyWith =>
-      __$LoadCitiesFailureCopyWithImpl<_LoadCitiesFailure>(this, _$identity);
+  _$LoadDevicesFailureCopyWith<_LoadDevicesFailure> get copyWith =>
+      __$LoadDevicesFailureCopyWithImpl<_LoadDevicesFailure>(this, _$identity);
 
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result loadInProgress(),
-    @required Result loadCitiesSuccess(KtList<String> data),
-    @required Result loadCitiesFailure(PostFailure postFailure),
+    @required Result loadDevicesSuccess(KtList<String> data),
+    @required Result loadDevicesFailure(PostFailure postFailure),
   }) {
     assert(initial != null);
     assert(loadInProgress != null);
-    assert(loadCitiesSuccess != null);
-    assert(loadCitiesFailure != null);
-    return loadCitiesFailure(postFailure);
+    assert(loadDevicesSuccess != null);
+    assert(loadDevicesFailure != null);
+    return loadDevicesFailure(postFailure);
   }
 
   @override
@@ -823,13 +824,13 @@ class _$_LoadCitiesFailure implements _LoadCitiesFailure {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result loadInProgress(),
-    Result loadCitiesSuccess(KtList<String> data),
-    Result loadCitiesFailure(PostFailure postFailure),
+    Result loadDevicesSuccess(KtList<String> data),
+    Result loadDevicesFailure(PostFailure postFailure),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (loadCitiesFailure != null) {
-      return loadCitiesFailure(postFailure);
+    if (loadDevicesFailure != null) {
+      return loadDevicesFailure(postFailure);
     }
     return orElse();
   }
@@ -839,14 +840,14 @@ class _$_LoadCitiesFailure implements _LoadCitiesFailure {
   Result map<Result extends Object>({
     @required Result initial(_Initial value),
     @required Result loadInProgress(_LoadInProgress value),
-    @required Result loadCitiesSuccess(_LoadCitiesSuccess value),
-    @required Result loadCitiesFailure(_LoadCitiesFailure value),
+    @required Result loadDevicesSuccess(_LoadDevicesSuccess value),
+    @required Result loadDevicesFailure(_LoadDevicesFailure value),
   }) {
     assert(initial != null);
     assert(loadInProgress != null);
-    assert(loadCitiesSuccess != null);
-    assert(loadCitiesFailure != null);
-    return loadCitiesFailure(this);
+    assert(loadDevicesSuccess != null);
+    assert(loadDevicesFailure != null);
+    return loadDevicesFailure(this);
   }
 
   @override
@@ -854,22 +855,22 @@ class _$_LoadCitiesFailure implements _LoadCitiesFailure {
   Result maybeMap<Result extends Object>({
     Result initial(_Initial value),
     Result loadInProgress(_LoadInProgress value),
-    Result loadCitiesSuccess(_LoadCitiesSuccess value),
-    Result loadCitiesFailure(_LoadCitiesFailure value),
+    Result loadDevicesSuccess(_LoadDevicesSuccess value),
+    Result loadDevicesFailure(_LoadDevicesFailure value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (loadCitiesFailure != null) {
-      return loadCitiesFailure(this);
+    if (loadDevicesFailure != null) {
+      return loadDevicesFailure(this);
     }
     return orElse();
   }
 }
 
-abstract class _LoadCitiesFailure implements PostFormDevicesState {
-  const factory _LoadCitiesFailure(PostFailure postFailure) =
-      _$_LoadCitiesFailure;
+abstract class _LoadDevicesFailure implements PostFormDevicesState {
+  const factory _LoadDevicesFailure(PostFailure postFailure) =
+      _$_LoadDevicesFailure;
 
   PostFailure get postFailure;
-  _$LoadCitiesFailureCopyWith<_LoadCitiesFailure> get copyWith;
+  _$LoadDevicesFailureCopyWith<_LoadDevicesFailure> get copyWith;
 }

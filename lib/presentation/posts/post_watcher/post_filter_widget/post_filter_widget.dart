@@ -16,71 +16,99 @@ class PostFilterWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<PostsFilterBloc, PostsFilterState>(
       builder: (context, state) {
-        return Container(
-          padding: const EdgeInsets.all(18),
-          color: Colors.white,
-          height: state.map(
-              initial: (_) => 0,
-              widgetOpen: (_) => MediaQuery.of(context).size.height * 0.6,
-              widgetClose: (_) => 0),
-          child: BlocConsumer<PostsFormFilterBloc, PostsFormFilterState>(
-            listener: (context, state) {
-              // print(state);
-            },
-            builder: (context, state) {
-              return Form(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    const FilterCityDropdown(),
-                    // const SizedBox(
-                    //   height: 24,
-                    // ),
-                    const FilterBrandDropdown(),
-                    // const SizedBox(
-                    //   height: 24,
-                    // ),
-                    Wrap(
-                      children: const [
-                        FilterExchangableCheckbox(),
-                        FilterHeadphonesCheckbox(),
-                      ],
-                    ),
-                    PriceSlider(),
-                    RaisedButton(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(4),
+        return state.map(
+            initial: (_) => Container(),
+            widgetOpen: (_) {
+              return Container(
+                padding: const EdgeInsets.all(18),
+                color: Colors.white,
+                child: BlocBuilder<PostsFormFilterBloc, PostsFormFilterState>(
+                  builder: (context, state) {
+                    return Form(
+                      child: SingleChildScrollView(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            const FilterCityDropdown(),
+                            const SizedBox(
+                              height: 24,
+                            ),
+                            const FilterBrandDropdown(),
+                            const SizedBox(
+                              height: 24,
+                            ),
+                            Wrap(
+                              children: const [
+                                FilterExchangableCheckbox(),
+                                FilterHeadphonesCheckbox(),
+                              ],
+                            ),
+                            PriceSlider(),
+                            const SizedBox(
+                              height: 16,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                RaisedButton(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(4),
+                                    side: const BorderSide(
+                                        width: 3, color: kPrimaryColor),
+                                  ),
+                                  color: Colors.white,
+                                  elevation: 0,
+                                  onPressed: () {},
+                                  child: const Padding(
+                                    padding: EdgeInsets.all(16.0),
+                                    child: Text(
+                                      'Reset',
+                                      style: TextStyle(
+                                          color: kPrimaryColor, fontSize: 17),
+                                    ),
+                                  ),
+                                ),
+                                RaisedButton(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(4),
+                                    ),
+                                    elevation: 0,
+                                    color: kPrimaryColor,
+                                    onPressed: () {
+                                      context
+                                          .read<PostsFilterBloc>()
+                                          .add(const PostsFilterEvent.closed());
+                                      context.bloc<PostWatcherBloc>().add(
+                                            PostWatcherEvent
+                                                .watchFilteredPostsStarted(
+                                                    state.city,
+                                                    state.brand,
+                                                    state.exchangable,
+                                                    state.headphones,
+                                                    state.maxPrice),
+                                          );
+                                    },
+                                    child: const Padding(
+                                      padding: EdgeInsets.all(14.0),
+                                      child: Text(
+                                        'Filter',
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 20),
+                                      ),
+                                    )),
+                              ],
+                            )
+                          ],
                         ),
-                        elevation: 0,
-                        color: kPrimaryColor,
-                        onPressed: () {
-                          context
-                              .bloc<PostsFilterBloc>()
-                              .add(const PostsFilterEvent.closed());
-                          context.bloc<PostWatcherBloc>().add(
-                                PostWatcherEvent.watchFilteredPostsStarted(
-                                    state.city,
-                                    state.brand,
-                                    state.exchangable,
-                                    state.headphones,
-                                    state.maxPrice),
-                              );
-                        },
-                        child: const Padding(
-                          padding: EdgeInsets.all(14.0),
-                          child: Text(
-                            'Filter',
-                            style: TextStyle(color: Colors.white, fontSize: 20),
-                          ),
-                        ))
-                  ],
+                      ),
+                    );
+                  },
                 ),
               );
             },
-          ),
-        );
+            widgetClose: (_) => Container());
       },
     );
   }

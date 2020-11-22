@@ -74,9 +74,9 @@ class BrandPostFormWidget extends StatelessWidget {
                                   .bloc<PostFormBloc>()
                                   .add(PostFormEvent.brandChanged(brand.brand));
 
-                              // context.bloc<PostFormDevicesBloc>().add(
-                              //     PostFormDevicesEvent.getDevicesStarted(
-                              //         brand.brand));
+                              context.bloc<PostFormDevicesBloc>().add(
+                                  PostFormDevicesEvent.getDevicesStarted(
+                                      index));
 
                               context.bloc<FormNavigationBloc>().add(
                                   const FormNavigationEvent.pageChanged(1));

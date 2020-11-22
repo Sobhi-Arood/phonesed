@@ -47,10 +47,13 @@ class BrandDropdown extends HookWidget {
                         context
                             .bloc<PostFormBloc>()
                             .add(PostFormEvent.brandChanged(brandValue.value));
-                        context.bloc<PostFormDevicesBloc>().add(
-                              PostFormDevicesEvent.getDevicesStarted(
-                                  s.data[0].brand),
-                            );
+                        // context.bloc<PostFormDevicesBloc>().add(
+                        //       PostFormDevicesEvent.getDevicesStarted(
+                        //           s.data[0].brand),
+                        //     );
+                        // context.bloc<PostFormDevicesBloc>().add(
+                        //       const PostFormDevicesEvent.getDevicesStarted(0),
+                        //     );
                         // }
                       },
                       loadBrandsFailure: (_) => {});
@@ -80,7 +83,8 @@ class BrandDropdown extends HookWidget {
                                     .bloc<PostFormBloc>()
                                     .add(PostFormEvent.brandChanged(v));
                                 context.bloc<PostFormDevicesBloc>().add(
-                                    PostFormDevicesEvent.getDevicesStarted(v));
+                                    const PostFormDevicesEvent
+                                        .getDevicesStarted(0));
                               },
                               items: data.data
                                   .asList()
@@ -102,6 +106,41 @@ class BrandDropdown extends HookWidget {
           ],
         );
       },
+    );
+  }
+}
+
+class BrandValueWidget extends StatelessWidget {
+  const BrandValueWidget({Key key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<PostFormBloc, PostFormState>(
+      builder: (context, state) => Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          const Text(
+            'Brand',
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w500,
+              color: kSecondaryLightColor,
+            ),
+          ),
+          const SizedBox(height: 6),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: Text(
+              state.post.brand.value.fold((l) => 'Error', (r) => r),
+              style: const TextStyle(
+                color: kPrimaryDarkColor,
+                fontWeight: FontWeight.w700,
+                fontSize: 18,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

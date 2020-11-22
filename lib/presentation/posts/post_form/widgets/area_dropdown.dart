@@ -40,7 +40,6 @@ class AreaDropdown extends HookWidget {
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: BlocConsumer<PostFormAreasBloc, PostFormAreasState>(
                 listener: (context, state) {
-                  // if (!formState.isEditing) {
                   areaValue.value = state.map(
                     initial: (_) => '',
                     loadInProgress: (_) => '',
@@ -50,19 +49,23 @@ class AreaDropdown extends HookWidget {
                   context
                       .bloc<PostFormBloc>()
                       .add(PostFormEvent.areaChanged(areaValue.value));
-                  // }
                 },
                 builder: (context, dataState) {
                   return dataState.maybeMap(
                       initial: (_) => Container(),
                       loadInProgress: (_) => const Text('Loading...'),
                       loadAreasSuccess: (data) {
+                        // areaValue.value = data.data[0];
                         return DropdownButtonHideUnderline(
                             child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: DropdownButton<String>(
-                            // value: state.post.area.getOrCrash(),
-                            value: areaValue.value,
+                            // value: formState.post.area.getOrCrash(),
+                            value: areaValue.value.isEmpty
+                                ? data.data[0]
+                                : areaValue.value,
+                            // value: data.data[0],
+                            // value: areaValue.value,
                             elevation: 0,
                             isExpanded: true,
                             style: const TextStyle(
@@ -95,6 +98,41 @@ class AreaDropdown extends HookWidget {
           ],
         );
       },
+    );
+  }
+}
+
+class AreaValueWidget extends StatelessWidget {
+  const AreaValueWidget({Key key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<PostFormBloc, PostFormState>(
+      builder: (context, state) => Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          const Text(
+            'Area',
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w500,
+              color: kSecondaryLightColor,
+            ),
+          ),
+          const SizedBox(height: 6),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: Text(
+              state.post.area.value.fold((l) => 'Error', (r) => r),
+              style: const TextStyle(
+                color: kPrimaryDarkColor,
+                fontWeight: FontWeight.w700,
+                fontSize: 18,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

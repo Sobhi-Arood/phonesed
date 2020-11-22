@@ -43,6 +43,7 @@ class CardImagesCarousel extends HookWidget {
   Widget build(BuildContext context) {
     final _currentIndex = useState(0);
     return Stack(
+      alignment: Alignment.bottomCenter,
       children: [
         CarouselSlider.builder(
           itemCount: images.size,
@@ -80,26 +81,35 @@ class CardImagesCarousel extends HookWidget {
         ),
         if (images.size > 1)
           Positioned(
-            bottom: 0.0,
-            left: 0.0,
-            right: 0.0,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: images.map((url) {
-                final int index = images.indexOf(url);
+            // textDirection: TextDirection.ltr,
+            bottom: 5.0,
+            // left: images.size * 80.0,
+            // right: images.size * 80.0,
+            width: images.size * 28.0,
+            child: Container(
+              // width: 5.0,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(6),
+                color: const Color(0x50000000),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: images.map((url) {
+                  final int index = images.indexOf(url);
 
-                return Container(
-                  width: 8.0,
-                  height: 8.0,
-                  margin: const EdgeInsets.symmetric(
-                      vertical: 10.0, horizontal: 2.0),
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: _currentIndex.value == index
-                          ? const Color.fromRGBO(255, 255, 255, 1)
-                          : const Color.fromRGBO(255, 255, 255, 0.4)),
-                );
-              }).asList(),
+                  return Container(
+                    width: 6.0,
+                    height: 6.0,
+                    margin: const EdgeInsets.symmetric(
+                        vertical: 8.0, horizontal: 3.0),
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: _currentIndex.value == index
+                            ? const Color.fromRGBO(255, 255, 255, 1)
+                            : const Color.fromRGBO(255, 255, 255, 0.4)),
+                  );
+                }).asList(),
+              ),
             ),
           )
       ],

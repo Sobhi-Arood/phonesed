@@ -38,8 +38,8 @@ class RelatedPostsWidget extends HookWidget {
                 ),
             loadSuccess: (state) => Container(
                   padding: const EdgeInsets.all(16),
-                  // height: state.posts.size > 0 ? 370 : 0,
-                  height: height.value,
+                  height: state.posts.size > 1 ? 370 : 0,
+                  // height: height.value,
                   // color: Colors.white,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,

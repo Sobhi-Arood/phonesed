@@ -37,9 +37,9 @@ class AddImageButton extends StatelessWidget {
         child: BlocConsumer<PostFormBloc, PostFormState>(
           listenWhen: (p, c) => p.isEditing != c.isEditing,
           listener: (context, state) {
-            if (state.showErrorMessages) {
-              print('errorororor');
-            }
+            // if (state.showErrorMessages) {
+            //   print('errorororor');
+            // }
 
             /// [Todo] map from url to file
             context.postImages = state.post.images.value.fold(
@@ -49,38 +49,57 @@ class AddImageButton extends StatelessWidget {
           buildWhen: (p, c) => p.post.images.isFull != c.post.images.isFull,
           builder: (context, state) {
             return Column(children: [
-              ListTile(
-                enabled: !state.post.images.isFull,
-                tileColor: state.post.images.isFull
-                    ? kSecondaryLightColor
-                    : kPrimaryColor,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
+                  color: state.post.images.isFull ? Colors.grey : kPrimaryColor,
                 ),
-                // elevation: 0,
-                // highlightElevation: 0,
-                // color: kPrimaryColor,
-                title: const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 1.0),
-                  child: Padding(
-                    padding: EdgeInsets.all(16.0),
-                    child: Text(
-                      'Add image +',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 21,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
+                child: IconButton(
+                  icon: const Icon(Icons.add),
+                  iconSize: 40,
+                  color: Colors.white,
+                  onPressed: state.post.images.isFull
+                      ? null
+                      : () {
+                          FocusScope.of(context).unfocus();
+                          context
+                              .bloc<PostPickerImageBloc>()
+                              .add(const PostPickerImageEvent.addClicked());
+                        },
                 ),
-                onTap: () {
-                  FocusScope.of(context).unfocus();
-                  context
-                      .bloc<PostPickerImageBloc>()
-                      .add(const PostPickerImageEvent.addClicked());
-                },
               ),
+              // ListTile(
+              //   enabled: !state.post.images.isFull,
+              //   tileColor: state.post.images.isFull
+              //       ? kSecondaryLightColor
+              //       : kPrimaryColor,
+              //   shape: RoundedRectangleBorder(
+              //     borderRadius: BorderRadius.circular(8),
+              //   ),
+              //   // elevation: 0,
+              //   // highlightElevation: 0,
+              //   // color: kPrimaryColor,
+              //   title: const Padding(
+              //     padding: EdgeInsets.symmetric(vertical: 1.0),
+              //     child: Padding(
+              //       padding: EdgeInsets.all(16.0),
+              //       child: Text(
+              //         '+',
+              //         textAlign: TextAlign.center,
+              //         style: TextStyle(
+              //           fontSize: 25,
+              //           color: Colors.white,
+              //         ),
+              //       ),
+              //     ),
+              //   ),
+              //   onTap: () {
+              //     FocusScope.of(context).unfocus();
+              //     context
+              //         .bloc<PostPickerImageBloc>()
+              //         .add(const PostPickerImageEvent.addClicked());
+              //   },
+              // ),
               if (state.showErrorMessages) ...[
                 const Text(
                   'Cannot be empty',

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "715890883450",
+    "firebase_url": "https://mobile-devices-deals.firebaseio.com",
+    "project_id": "mobile-devices-deals",
+    "storage_bucket": "mobile-devices-deals.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:715890883450:android:ed488278e4dda397eb74c3",
+        "android_client_info": {
+          "package_name": "com.sobhi.phonesed"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "715890883450-1cec07c94eq7ulp1i33drddd3afblogj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sobhi.phonesed",
+            "certificate_hash": "0c05316d2e3072d451b1378d29c8f96fb97b9902"
+          }
+        },
+        {
+          "client_id": "715890883450-g51cridsc9lod1jercrl3sqje6fgj19l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBt4SEYdbVLWlti3dvtrnNy-OHeyesVnuU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "715890883450-g51cridsc9lod1jercrl3sqje6fgj19l.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "715890883450-121nvi3jk6mcuag7u5fr08633ritn2j3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.sobhi.phonesed"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -7,6 +7,7 @@ import 'package:phonesed/application/posts/post_form/post_form_brands/post_form_
 import 'package:phonesed/application/posts/post_form/post_form_devices/post_form_devices_bloc.dart';
 import 'package:phonesed/constants.dart';
 import 'package:phonesed/domain/posts/value_objects.dart';
+import 'package:kt_dart/collection.dart';
 
 class FilterBrandDropdown extends HookWidget {
   const FilterBrandDropdown({Key key}) : super(key: key);

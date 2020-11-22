@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phonesed/application/core/form_navigation/form_navigation_bloc.dart';
 import 'package:phonesed/application/posts/post_form/post_form_bloc.dart';
 import 'package:phonesed/presentation/posts/new_post_form/widgets/dropdowns/models_dropdown.dart';
+import 'package:phonesed/presentation/posts/post_form/misc/post_img_presentation.dart';
 import 'package:phonesed/presentation/posts/post_form/widgets/age_dropown.dart';
 import 'package:phonesed/presentation/posts/post_form/widgets/area_dropdown.dart';
 import 'package:phonesed/presentation/posts/post_form/widgets/checkboxs/charger_checkbox.dart';
@@ -13,9 +14,12 @@ import 'package:phonesed/presentation/posts/post_form/widgets/city_dropdown.dart
 import 'package:phonesed/presentation/posts/post_form/widgets/condition_dropdown.dart';
 import 'package:phonesed/presentation/posts/post_form/widgets/description_textform.dart';
 import 'package:phonesed/presentation/posts/post_form/widgets/device_dropdown.dart';
+import 'package:phonesed/presentation/posts/post_form/widgets/img_list_widget.dart';
 import 'package:phonesed/presentation/posts/post_form/widgets/moreAcc_textform.dart';
 import 'package:phonesed/presentation/posts/post_form/widgets/price_textform.dart';
 import 'package:phonesed/presentation/posts/post_form/widgets/title_textform.dart';
+import 'package:phonesed/presentation/posts/post_form/misc/build_context_x.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../constants.dart';
 
@@ -40,9 +44,107 @@ class DeviceFormDetailsWidget extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // const DeviceDropdown(),
-                        // ModelsDropdown(modelsList: ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              'Brand',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
+                                color: kSecondaryLightColor,
+                              ),
+                            ),
+                            const SizedBox(height: 6),
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 16, vertical: 8),
+                              child: Text(
+                                state.post.brand.getOrCrash(),
+                                style: const TextStyle(
+                                  color: kPrimaryDarkColor,
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 18,
+                                ),
+                                // maxLength: PostTitle.maxLength,
+                                // minLines: 1,
+                              ),
+                            )
+                          ],
+                        ),
                         const SizedBox(height: 28),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              'Model',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
+                                color: kSecondaryLightColor,
+                              ),
+                            ),
+                            const SizedBox(height: 6),
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 16, vertical: 8),
+                              child: Text(
+                                state.post.device.getOrCrash(),
+                                style: const TextStyle(
+                                  color: kPrimaryDarkColor,
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 18,
+                                ),
+                                // maxLength: PostTitle.maxLength,
+                                // minLines: 1,
+                              ),
+                            )
+                          ],
+                        ),
+                        const SizedBox(height: 28),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              'Images',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
+                                color: kSecondaryLightColor,
+                              ),
+                            ),
+                            const SizedBox(height: 6),
+                            Consumer<PostImage>(
+                              builder: (context, postImages, index) {
+                                return Container(
+                                  height: 200,
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 16, vertical: 8),
+                                  child: ListView.builder(
+                                    scrollDirection: Axis.horizontal,
+                                    shrinkWrap: true,
+                                    itemCount: postImages.value.size,
+                                    itemBuilder: (context, index) {
+                                      return ShowImageTile(
+                                        index: index,
+                                        key: ValueKey(
+                                            context.postImages[index].path),
+                                      );
+                                    },
+                                  ),
+                                );
+                              },
+                            )
+                          ],
+                        ),
+                        const SizedBox(height: 28),
+                        const Divider(),
+                        // const DeviceDropdown(),
+                        // ModelsDropdown(modelsList: state.post.device.getOrCrash()),
+                        const SizedBox(height: 16),
                         const AgeDropdown(),
                         const SizedBox(height: 28),
                         const ConditionDropdown(),
@@ -94,7 +196,7 @@ class DeviceFormDetailsWidget extends StatelessWidget {
                               //           }));
                               // },
 
-                              // print(state.post.images.getOrCrash());
+                              // print(state.post);
                               context
                                   .bloc<PostFormBloc>()
                                   .add(const PostFormEvent.saved());

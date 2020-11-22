@@ -62,11 +62,11 @@ class PostCard extends StatelessWidget {
                                         if (favs
                                             .getOrCrash()
                                             .contains(post.id)) {
-                                          context.bloc<PostActorBloc>().add(
+                                          context.read<PostActorBloc>().add(
                                                 PostActorEvent.unLiked(post),
                                               );
                                         } else {
-                                          context.bloc<PostActorBloc>().add(
+                                          context.read<PostActorBloc>().add(
                                                 PostActorEvent.liked(post),
                                               );
                                         }
@@ -118,14 +118,50 @@ class PostCard extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(height: 8),
-                    Text(
-                      post.brand.getOrCrash(),
-                      textAlign: TextAlign.left,
-                      style: const TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.grey,
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          post.brand.getOrCrash(),
+                          textAlign: TextAlign.left,
+                          style: const TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.grey,
+                          ),
+                        ),
+                        Wrap(
+                          spacing: 2,
+                          alignment: WrapAlignment.center,
+                          crossAxisAlignment: WrapCrossAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.location_on,
+                              size: 14,
+                              color: Colors.grey[700],
+                            ),
+                            Text(
+                              post.city.getOrCrash(),
+                              style: TextStyle(
+                                fontWeight: FontWeight.w400,
+                                color: Colors.grey[700],
+                              ),
+                            ),
+                            Icon(
+                              Icons.chevron_right,
+                              size: 16,
+                              color: Colors.grey[700],
+                            ),
+                            Text(
+                              post.area.getOrCrash(),
+                              style: TextStyle(
+                                fontWeight: FontWeight.w400,
+                                color: Colors.grey[700],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                     const SizedBox(height: 8),
                     IntrinsicHeight(

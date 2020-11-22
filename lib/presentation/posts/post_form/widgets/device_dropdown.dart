@@ -12,14 +12,13 @@ class DeviceDropdown extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final deviceValue = useState('');
+    // final deviceValue = useState('');
     return BlocConsumer<PostFormBloc, PostFormState>(
       listener: (context, state) {
-        deviceValue.value = state.post.device.value.fold((l) => '', (r) => r);
+        print(state.post.device.value.fold((l) => '', (r) => r));
       },
       buildWhen: (p, c) => p.post.device != c.post.device,
       builder: (context, formState) {
-        // brandValue.value = state.post.brand.getOrCrash();
         return Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,63 +36,114 @@ class DeviceDropdown extends HookWidget {
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: BlocConsumer<PostFormDevicesBloc, PostFormDevicesState>(
                 listener: (context, state) {
+                  // print('hahahahhahahahaha');
                   // if (formState.post.device.getOrCrash().isEmpty) {
-                  deviceValue.value = state.map(
-                      initial: (_) => '',
-                      loadInProgress: (_) => '',
-                      loadCitiesSuccess: (s) => s.data[0],
-                      loadCitiesFailure: (_) => '');
-                  context
-                      .bloc<PostFormBloc>()
-                      .add(PostFormEvent.deviceChanged(deviceValue.value));
+
+                  state.map(
+                    initial: (_) => Container(),
+                    loadInProgress: (_) => Container(
+                      child: const Text('Loading...'),
+                    ),
+                    loadDevicesSuccess: (s) {
+                      // print('LAODOO SUCCESSOOOO ${s.data}');
+                      // deviceValue.value = formState.post.device.value
+                      //     .fold((l) => s.data[0], (r) => r);
+
+                      // context
+                      //     .bloc<PostFormBloc>()
+                      //     .add(PostFormEvent.deviceChanged(deviceValue.value));
+                    },
+                    loadDevicesFailure: (_) => Container(
+                      child: const Text('Error'),
+                    ),
+                  );
+
                   // }
                 },
                 builder: (context, dataState) {
                   return dataState.map(
-                      initial: (_) => Container(),
-                      loadInProgress: (_) => Container(
-                            child: const Text('Loading...'),
-                          ),
-                      loadCitiesSuccess: (data) {
-                        return DropdownButtonHideUnderline(
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: DropdownButton<String>(
-                              value: deviceValue.value,
-                              elevation: 0,
-                              isExpanded: true,
-                              style: TextStyle(
-                                color: kPrimaryDarkColor,
-                                fontWeight: FontWeight.w700,
-                                fontSize: 18,
-                              ),
-                              onChanged: (v) {
-                                deviceValue.value = v;
-                                context
-                                    .bloc<PostFormBloc>()
-                                    .add(PostFormEvent.deviceChanged(v));
-                              },
-                              items: data.data
-                                  .asList()
-                                  .map<DropdownMenuItem<String>>((value) {
-                                return DropdownMenuItem<String>(
-                                  value: value,
-                                  child: Text(value),
-                                );
-                              }).toList(),
+                    initial: (_) => Container(),
+                    loadInProgress: (_) => Container(
+                      child: const Text('Loading...'),
+                    ),
+                    loadDevicesSuccess: (data) {
+                      return DropdownButtonHideUnderline(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: DropdownButton<String>(
+                            value: formState.post.device.getOrCrash(),
+                            // value: 'iPhone 4',
+                            elevation: 0,
+                            isExpanded: true,
+                            style: TextStyle(
+                              color: kPrimaryDarkColor,
+                              fontWeight: FontWeight.w700,
+                              fontSize: 18,
                             ),
+                            onChanged: (v) {
+                              context
+                                  .bloc<PostFormBloc>()
+                                  .add(PostFormEvent.deviceChanged(v));
+                            },
+                            items: data.data
+                                .asList()
+                                .map<DropdownMenuItem<String>>((value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
                           ),
-                        );
-                      },
-                      loadCitiesFailure: (_) => Container(
-                            child: const Text('Error'),
-                          ));
+                        ),
+                      );
+                    },
+                    loadDevicesFailure: (_) => Container(
+                      child: const Text('Error'),
+                    ),
+                  );
                 },
               ),
             )
           ],
         );
       },
+    );
+  }
+}
+
+class DeviceValueWidget extends StatelessWidget {
+  const DeviceValueWidget({Key key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<PostFormBloc, PostFormState>(
+      buildWhen: (previous, current) =>
+          previous.post.device != current.post.device,
+      builder: (context, state) => Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          const Text(
+            'Model',
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w500,
+              color: kSecondaryLightColor,
+            ),
+          ),
+          const SizedBox(height: 6),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: Text(
+              state.post.device.value.fold((l) => 'Error', (r) => r),
+              style: const TextStyle(
+                color: kPrimaryDarkColor,
+                fontWeight: FontWeight.w700,
+                fontSize: 18,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

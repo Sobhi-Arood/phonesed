@@ -27,9 +27,9 @@ class WelcomePage extends StatelessWidget {
                     ),
                   ).show(context),
                 },
-                (_) => ExtendedNavigator.of(context)
-                    .replace(Routes.emailVerificationSentPage),
-                // (_) => ExtendedNavigator.of(context).replace(Routes.mainPage),
+                // (_) => ExtendedNavigator.of(context)
+                // .replace(Routes.emailVerificationSentPage),
+                (_) => ExtendedNavigator.of(context).replace(Routes.mainPage),
               ),
             );
           },
@@ -104,7 +104,7 @@ class WelcomePage extends StatelessWidget {
                                   height: 31,
                                 ),
                                 // Icon(Icons.smoke_free),
-                                SizedBox(width: 20),
+                                const SizedBox(width: 20),
                                 Padding(
                                   padding: EdgeInsets.all(16.0),
                                   child: Text(
@@ -168,9 +168,12 @@ class WelcomePage extends StatelessWidget {
                             padding: const EdgeInsets.symmetric(vertical: 6.0),
                             child: Row(
                               children: [
-                                const Icon(
-                                  Icons.email,
-                                  color: kPrimaryColor,
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 7.0),
+                                  child: const Icon(
+                                    Icons.email,
+                                    color: kPrimaryColor,
+                                  ),
                                 ),
                                 const SizedBox(width: 20),
                                 Padding(

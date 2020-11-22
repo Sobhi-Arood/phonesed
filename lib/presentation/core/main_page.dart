@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phonesed/application/auth/auth_bloc/auth_bloc.dart';
 import 'package:phonesed/application/core/bottom_navigation/bottom_navigation_bloc.dart';
 import 'package:phonesed/application/core/posts_filter/posts_filter_bloc.dart';
+import 'package:phonesed/application/core/posts_sort/posts_sort_bloc.dart';
 import 'package:phonesed/application/core/user_profile/user_profile_bloc.dart';
 import 'package:phonesed/constants.dart';
 import 'package:phonesed/injection.dart';
@@ -30,6 +31,9 @@ class MainPage extends StatelessWidget {
         BlocProvider<PostsFilterBloc>(
             create: (context) =>
                 getIt<PostsFilterBloc>()..add(const PostsFilterEvent.closed())),
+        BlocProvider<PostsSortBloc>(
+            create: (context) =>
+                getIt<PostsSortBloc>()..add(const PostsSortEvent.closed())),
       ],
       child: MultiBlocListener(
         listeners: [
@@ -39,6 +43,7 @@ class MainPage extends StatelessWidget {
         child: BlocBuilder<BottomNavigationBloc, BottomNavigationState>(
           builder: (context, state) {
             return Scaffold(
+              resizeToAvoidBottomInset: false,
               appBar: AppBar(
                 title: Text(
                   state.map(index: (i) {
@@ -67,7 +72,8 @@ class MainPage extends StatelessWidget {
                           // color: kPrimaryDarkColor,
                         ),
                         onPressed: () {
-                          ExtendedNavigator.of(context).pushNewPostFormPage();
+                          ExtendedNavigator.of(context)
+                              .pushNewPostFormPage(post: null);
                           // ExtendedNavigator.of(context)
                           //     .pushPostFormPage(editedPost: null);
                         },
@@ -89,21 +95,70 @@ class MainPage extends StatelessWidget {
                 actions: [
                   state.map(index: (i) {
                     if (i.currentIndex == 0) {
-                      return BlocBuilder<PostsFilterBloc, PostsFilterState>(
-                        builder: (context, state) {
-                          return IconButton(
-                              icon: const Icon(Icons.filter_list, size: 28),
-                              onPressed: () {
-                                state.map(
-                                    initial: (_) => null,
-                                    widgetOpen: (_) => context
-                                        .bloc<PostsFilterBloc>()
-                                        .add(const PostsFilterEvent.closed()),
-                                    widgetClose: (_) => context
-                                        .bloc<PostsFilterBloc>()
-                                        .add(const PostsFilterEvent.opened()));
-                              });
-                        },
+                      return Row(
+                        children: [
+                          BlocBuilder<PostsSortBloc, PostsSortState>(
+                            builder: (context, state) {
+                              return IconButton(
+                                icon: state.map(
+                                  widgetClose: (_) => const Icon(
+                                    Icons.swap_vert,
+                                    size: 28,
+                                  ),
+                                  widgetOpen: (_) => const Icon(
+                                    Icons.swap_vert,
+                                    size: 28,
+                                    color: kPrimaryColor,
+                                  ),
+                                ),
+                                onPressed: () {
+                                  state.map(
+                                      widgetClose: (_) {
+                                        context.read<PostsFilterBloc>().add(
+                                            const PostsFilterEvent.closed());
+                                        context
+                                            .read<PostsSortBloc>()
+                                            .add(const PostsSortEvent.opened());
+                                      },
+                                      widgetOpen: (_) => context
+                                          .read<PostsSortBloc>()
+                                          .add(const PostsSortEvent.closed()));
+                                },
+                              );
+                            },
+                          ),
+                          BlocBuilder<PostsFilterBloc, PostsFilterState>(
+                            builder: (context, state) {
+                              return IconButton(
+                                  icon: state.map(
+                                      initial: (_) => const Icon(
+                                          Icons.filter_alt,
+                                          size: 28),
+                                      widgetOpen: (_) => const Icon(
+                                            Icons.filter_alt,
+                                            size: 28,
+                                            color: kPrimaryColor,
+                                          ),
+                                      widgetClose: (_) => const Icon(
+                                          Icons.filter_alt_outlined,
+                                          size: 28)),
+                                  onPressed: () {
+                                    state.map(
+                                        initial: (_) => null,
+                                        widgetOpen: (_) => context
+                                            .read<PostsFilterBloc>()
+                                            .add(const PostsFilterEvent
+                                                .closed()),
+                                        widgetClose: (_) {
+                                          context.read<PostsSortBloc>().add(
+                                              const PostsSortEvent.closed());
+                                          context.read<PostsFilterBloc>().add(
+                                              const PostsFilterEvent.opened());
+                                        });
+                                  });
+                            },
+                          ),
+                        ],
                       );
                     } else {
                       return Container();

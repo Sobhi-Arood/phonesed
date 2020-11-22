@@ -16,7 +16,7 @@ class PostDetailPage extends StatelessWidget {
   const PostDetailPage({Key key, @required this.post}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    print(post.title);
+    // print(post.title);
     return MultiBlocProvider(
         providers: [
           BlocProvider(

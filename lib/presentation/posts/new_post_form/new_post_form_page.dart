@@ -17,7 +17,8 @@ import 'package:phonesed/presentation/posts/new_post_form/new_post_form_scaffold
 import 'package:phonesed/presentation/routes/router.gr.dart';
 
 class NewPostFormPage extends StatelessWidget {
-  const NewPostFormPage({Key key}) : super(key: key);
+  final Post post;
+  const NewPostFormPage({Key key, @required this.post}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -28,7 +29,7 @@ class NewPostFormPage extends StatelessWidget {
             create: (context) => getIt<PostPickerImageBloc>()),
         BlocProvider<PostFormBloc>(
             create: (context) => getIt<PostFormBloc>()
-              ..add(PostFormEvent.initialized(optionOf(null)))),
+              ..add(PostFormEvent.initialized(optionOf(post)))),
         BlocProvider<PostFormBrandsBloc>(
           create: (context) => getIt<PostFormBrandsBloc>()
             ..add(
@@ -62,8 +63,10 @@ class NewPostFormPage extends StatelessWidget {
                               notLoggedIn: (_) => ''),
                         ).show(context);
                       },
-                      (_) => ExtendedNavigator.of(context).popUntil(
-                          (route) => route.settings.name == Routes.mainPage),
+                      (_) =>
+                          ExtendedNavigator.of(context).pushSuccessPostPage(),
+                      // ExtendedNavigator.of(context).popUntil(
+                      // (route) => route.settings.name == Routes.mainPage),
                     )
                   });
         },

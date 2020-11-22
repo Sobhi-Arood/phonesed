@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:auto_route/auto_route.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,6 +16,7 @@ import 'package:phonesed/presentation/posts/post_detail/widgets/detail_top_widge
 import 'package:phonesed/presentation/posts/post_detail/widgets/related_posts_widget.dart';
 import 'package:phonesed/presentation/posts/post_watcher/post_card/images_card.dart';
 import 'package:phonesed/presentation/routes/router.gr.dart';
+import 'package:share/share.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 import '../../../constants.dart';
@@ -29,10 +33,28 @@ class PostDetailBody extends HookWidget {
       // backgroundColor: kPrimaryLightColor,
       appBar: AppBar(
         title: Text(
-          post.device.getOrCrash(),
+          post.title.getOrCrash(),
+          overflow: TextOverflow.ellipsis,
           style: const TextStyle(color: kPrimaryDarkColor),
         ),
-        actions: [IconButton(icon: const Icon(Icons.share), onPressed: () {})],
+        actions: [
+          IconButton(
+              icon: const Icon(Icons.share),
+              onPressed: () {
+                // final RenderObject box = context.findRenderObject();
+                // Share.share(text)
+                try {
+                  // Share.share('text');
+                  final f = File(post.images.getOrCrash()[0]);
+                  Share.shareFiles([f.path],
+                      text:
+                          '${post.images.getOrCrash()[0]} Checkout this device : ${post.device.getOrCrash()} | AED${post.price.getOrCrash()}',
+                      subject: 'sdfsdf');
+                } catch (e) {
+                  print(e);
+                }
+              })
+        ],
       ),
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
@@ -134,7 +156,11 @@ class PostDetailBody extends HookWidget {
                         radius: 45,
                         backgroundColor: kSecondaryLightColor,
                         foregroundColor: kSecondaryLightColor,
-                        backgroundImage: NetworkImage(post.userAvatar),
+                        backgroundImage:
+                            CachedNetworkImageProvider(post.userAvatar),
+                        onBackgroundImageError: (exception, stackTrace) {
+                          // print('opps!! :: $exception');
+                        },
                       ),
                       const SizedBox(
                         width: 12,
@@ -267,7 +293,7 @@ class PostDetailBody extends HookWidget {
                             // width: double.infinity,
                             child: RaisedButton(
                               onPressed: () => context
-                                  .bloc<PostActorBloc>()
+                                  .read<PostActorBloc>()
                                   .add(PostActorEvent.delete(post)),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8),

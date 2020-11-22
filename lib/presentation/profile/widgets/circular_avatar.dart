@@ -84,6 +84,7 @@ class CircularUserAvatar extends HookWidget {
                         backgroundImage:
                             CachedNetworkImageProvider(state.user.avatarUrl),
                         backgroundColor: Colors.grey[100],
+                        onBackgroundImageError: (exception, stackTrace) {},
                       ),
                     );
                   },
