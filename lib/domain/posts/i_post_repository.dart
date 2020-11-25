@@ -11,10 +11,11 @@ abstract class IPostRepository {
   Stream<Either<PostFailure, KtList<Post>>> fetchMyPosts();
   Stream<Either<PostFailure, KtList<Post>>> fetchSearchPosts(String query);
   Stream<Either<PostFailure, KtList<Post>>> fetchFilteredPosts(
-      String city, String brand, bool exchangable, bool headphones, int price);
+      String city, String brand, String price);
   Stream<Either<PostFailure, KtList<Post>>> fetchRelatedPosts(
       String brand, String currentId);
 
+  Future<Either<PostFailure, Post>> getPostById(String postId);
   Future<Either<PostFailure, Unit>> create(Post post);
   Future<Either<PostFailure, Unit>> update(Post post);
   Future<Either<PostFailure, Unit>> delete(Post post);

@@ -20,7 +20,7 @@ class FavoritePostCard extends StatelessWidget {
       // height: 280,
       child: Card(
         margin: const EdgeInsets.all(0),
-        elevation: 0,
+        elevation: 0.1,
         color: Colors.white,
         child: InkWell(
           onTap: () =>
@@ -28,6 +28,7 @@ class FavoritePostCard extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Stack(
                   children: [
@@ -53,9 +54,9 @@ class FavoritePostCard extends StatelessWidget {
                           child: IconButton(
                             onPressed: () {
                               context
-                                  .bloc<PostActorBloc>()
+                                  .read<PostActorBloc>()
                                   .add(PostActorEvent.unLiked(post));
-                              context.bloc<PostWatcherBloc>().add(
+                              context.read<PostWatcherBloc>().add(
                                   const PostWatcherEvent
                                       .watchAllFavoritesStarted());
                             },
@@ -69,18 +70,26 @@ class FavoritePostCard extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 8),
+                Text(
+                  post.title.getOrCrash(),
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(
+                    color: kPrimaryDarkColor,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 8),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Expanded(
-                      child: Text(
-                        post.title.getOrCrash(),
-                        overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(
-                          color: kPrimaryDarkColor,
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                        ),
+                    Text(
+                      post.brand.getOrCrash(),
+                      textAlign: TextAlign.left,
+                      style: const TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.grey,
                       ),
                     ),
                     Text(
@@ -92,6 +101,9 @@ class FavoritePostCard extends StatelessWidget {
                       ),
                     ),
                   ],
+                ),
+                const SizedBox(
+                  height: 8,
                 ),
               ],
             ),

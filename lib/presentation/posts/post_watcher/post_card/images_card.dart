@@ -2,7 +2,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:kt_dart/collection.dart';
+
+import '../../../../constants.dart';
 
 // class CardImagesList extends StatelessWidget {
 //   final KtList<String> images;
@@ -58,8 +61,11 @@ class CardImagesCarousel extends HookWidget {
                 fit: BoxFit.cover,
                 height: height,
                 width: MediaQuery.of(context).size.width,
-                placeholder: (context, url) =>
-                    const Center(child: CircularProgressIndicator()),
+                placeholder: (context, url) => const Center(
+                  child: SpinKitPulse(
+                    color: kPrimaryColor,
+                  ),
+                ),
                 errorWidget: (context, url, error) => const Icon(Icons.error),
               ),
             );

@@ -88,7 +88,7 @@ class UserProfilePageContent extends StatelessWidget {
                   style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18),
                 ),
                 onTap: () =>
-                    context.bloc<AuthBloc>().add(const AuthEvent.signedOut()),
+                    context.read<AuthBloc>().add(const AuthEvent.signedOut()),
               ),
             ],
           ),

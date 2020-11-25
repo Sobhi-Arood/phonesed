@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:injectable/injectable.dart';
+import 'package:phonesed/constants.dart';
 import 'package:phonesed/domain/core/upload/i_upload_facade.dart';
 import 'package:phonesed/domain/entities/post.dart';
 import 'package:kt_dart/kt.dart';
@@ -498,31 +499,50 @@ class PostRepository implements IPostRepository {
   }
 
   @override
-  Stream<Either<PostFailure, KtList<Post>>> fetchFilteredPosts(String city,
-      String brand, bool exchangable, bool headphones, int price) async* {
-    var postDoc = _firestore.collection('Posts');
-    var query = postDoc.where('price', isLessThanOrEqualTo: price);
-    if (city.isNotEmpty) {
+  Stream<Either<PostFailure, KtList<Post>>> fetchFilteredPosts(
+      String city, String brand, String price) async* {
+    final postDoc = _firestore.collection('Posts');
+    Query query = postDoc.orderBy('publishedDate', descending: true);
+    if (price != kFilterPrices[0]) {
+      if (price == kFilterPrices[1]) {
+        query = postDoc.where('price', isLessThanOrEqualTo: 500);
+      }
+      if (price == kFilterPrices[2]) {
+        query = postDoc
+            .where('price', isLessThanOrEqualTo: 1000)
+            .where('price', isGreaterThanOrEqualTo: 500);
+      }
+      if (price == kFilterPrices[3]) {
+        query = postDoc
+            .where('price', isLessThanOrEqualTo: 2000)
+            .where('price', isGreaterThanOrEqualTo: 1000);
+      }
+      if (price == kFilterPrices[4]) {
+        query = postDoc
+            .where('price', isLessThanOrEqualTo: 3000)
+            .where('price', isGreaterThanOrEqualTo: 2000);
+      }
+      if (price == kFilterPrices[5]) {
+        query = postDoc
+            .where('price', isLessThanOrEqualTo: 4000)
+            .where('price', isGreaterThanOrEqualTo: 3000);
+      }
+      if (price == kFilterPrices[6]) {
+        query = postDoc
+            .where('price', isLessThanOrEqualTo: 3000)
+            .where('price', isGreaterThanOrEqualTo: 2000);
+      }
+    }
+    if (city != kFilterCities[0]) {
       query = query.where('city', isEqualTo: city);
     }
-    if (brand.isNotEmpty) {
+    if (brand != kFilterBrands[0]) {
       query = query.where('brand', isEqualTo: brand);
     }
-    query = query.where('filterParams',
-        arrayContainsAny: [city, brand, exchangable, headphones]);
-    // print([city, brand, exchangable, headphones]);
+    // query = query.where('filterParams',
+    //     arrayContainsAny: [city, brand, exchangable, headphones]);
+
     yield* query
-        // .orderBy('publishedDate', descending: true)
-        // .where('city', isEqualTo: city)
-        // .where('brand', isEqualTo: brand)
-        // .where('exhangable', isEqualTo: exchangable)
-        // .where('headphones', isEqualTo: headphones)
-        // .where('city', arrayContainsAny: [city])
-        // .where('brand', arrayContainsAny: [brand])
-        // .where('filterParams',
-        //     arrayContainsAny: [city, brand, exchangable, headphones])
-        // .where('headphones', isLessThanOrEqualTo: headphones)
-        // .where('price', isLessThanOrEqualTo: price)
         .snapshots()
         .map((snapshot) => right<PostFailure, KtList<Post>>(
               snapshot.docs.map((doc) {
@@ -563,5 +583,17 @@ class PostRepository implements IPostRepository {
         return left(const PostFailure.unexpected());
       }
     });
+  }
+
+  @override
+  Future<Either<PostFailure, Post>> getPostById(String postId) async {
+    try {
+      final postDoc = await _firestore.collection('Posts').doc(postId).get();
+      final post = PostDto.fromFirestore(postDoc).toDomain();
+
+      return right(post);
+    } catch (e) {
+      return left(const PostFailure.unexpected());
+    }
   }
 }

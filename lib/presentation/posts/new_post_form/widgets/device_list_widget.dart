@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:phonesed/application/core/form_navigation/form_navigation_bloc.dart';
 import 'package:phonesed/application/posts/post_form/post_form_bloc.dart';
 import 'package:phonesed/application/posts/post_form/post_form_devices/post_form_devices_bloc.dart';
+
+import '../../../../constants.dart';
 
 class DeviceListWidget extends StatelessWidget {
   @override
@@ -11,9 +14,9 @@ class DeviceListWidget extends StatelessWidget {
       builder: (context, state) {
         return state.map(
             initial: (_) => Container(),
-            loadInProgress: (_) => Container(
-                  child: const Center(
-                    child: CircularProgressIndicator(),
+            loadInProgress: (_) => const Center(
+                  child: SpinKitFadingFour(
+                    color: kPrimaryColor,
                   ),
                 ),
             loadDevicesSuccess: (data) {

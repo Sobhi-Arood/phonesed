@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:phonesed/application/posts/post_watcher/post_watcher_bloc.dart';
 import 'package:phonesed/constants.dart';
 import 'package:phonesed/presentation/profile/my_posts_watcher/widgets/my_posts_card_widget.dart';
@@ -16,8 +17,11 @@ class MyPostsWatcherBody extends StatelessWidget {
       builder: (context, state) {
         return state.map(
           initial: (_) => Container(),
-          loadInProgress: (_) =>
-              const Center(child: CircularProgressIndicator()),
+          loadInProgress: (_) => const Center(
+            child: SpinKitFadingFour(
+              color: kPrimaryColor,
+            ),
+          ),
           loadSuccess: (state) {
             if (state.posts.isEmpty()) {
               return Container(

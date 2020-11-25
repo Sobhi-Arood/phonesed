@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:phonesed/constants.dart';
 
 part 'posts_form_filter_event.dart';
 part 'posts_form_filter_state.dart';
@@ -20,11 +21,11 @@ class PostsFormFilterBloc
     yield* event.map(
         initialized: (e) async* {
           yield state.copyWith(
-            city: '',
-            brand: '',
+            city: kFilterCities[0],
+            brand: kFilterBrands[0],
             exchangable: false,
             headphones: false,
-            maxPrice: 0,
+            price: kFilterPrices[0],
           );
         },
         cityChanged: (e) async* {
@@ -47,11 +48,25 @@ class PostsFormFilterBloc
             headphones: e.headphonesBool,
           );
         },
-        maxPriceChanged: (e) async* {
+        priceChanged: (e) async* {
           yield state.copyWith(
-            maxPrice: e.maxPriceInt,
+            price: e.priceInt,
           );
         },
+        reseted: (e) async* {
+          yield state.copyWith(
+            city: kFilterCities[0],
+            brand: kFilterBrands[0],
+            exchangable: false,
+            headphones: false,
+            price: kFilterPrices[0],
+          );
+        },
+        // maxPriceChanged: (e) async* {
+        //   yield state.copyWith(
+        //     maxPrice: e.maxPriceInt,
+        //   );
+        // },
         submitted: (e) async* {});
   }
 }

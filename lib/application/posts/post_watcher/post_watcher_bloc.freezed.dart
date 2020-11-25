@@ -29,8 +29,8 @@ class _$PostWatcherEventTearOff {
   }
 
 // ignore: unused_element
-  _WatchFilteredPostsStarted watchFilteredPostsStarted(
-      String city, String brand, bool exchangable, bool headphones, int price) {
+  _WatchFilteredPostsStarted watchFilteredPostsStarted(String city,
+      String brand, bool exchangable, bool headphones, String price) {
     return _WatchFilteredPostsStarted(
       city,
       brand,
@@ -70,7 +70,7 @@ mixin _$PostWatcherEvent {
     @required Result watchMyPostsStarted(),
     @required
         Result watchFilteredPostsStarted(String city, String brand,
-            bool exchangable, bool headphones, int price),
+            bool exchangable, bool headphones, String price),
     @required Result watchRelatedStarted(String brand, String currentId),
     @required
         Result postsReceived(Either<PostFailure, KtList<Post>> failureOrPosts),
@@ -81,7 +81,7 @@ mixin _$PostWatcherEvent {
     Result watchAllFavoritesStarted(),
     Result watchMyPostsStarted(),
     Result watchFilteredPostsStarted(String city, String brand,
-        bool exchangable, bool headphones, int price),
+        bool exchangable, bool headphones, String price),
     Result watchRelatedStarted(String brand, String currentId),
     Result postsReceived(Either<PostFailure, KtList<Post>> failureOrPosts),
     @required Result orElse(),
@@ -169,7 +169,7 @@ class _$_WatchAllStarted implements _WatchAllStarted {
     @required Result watchMyPostsStarted(),
     @required
         Result watchFilteredPostsStarted(String city, String brand,
-            bool exchangable, bool headphones, int price),
+            bool exchangable, bool headphones, String price),
     @required Result watchRelatedStarted(String brand, String currentId),
     @required
         Result postsReceived(Either<PostFailure, KtList<Post>> failureOrPosts),
@@ -190,7 +190,7 @@ class _$_WatchAllStarted implements _WatchAllStarted {
     Result watchAllFavoritesStarted(),
     Result watchMyPostsStarted(),
     Result watchFilteredPostsStarted(String city, String brand,
-        bool exchangable, bool headphones, int price),
+        bool exchangable, bool headphones, String price),
     Result watchRelatedStarted(String brand, String currentId),
     Result postsReceived(Either<PostFailure, KtList<Post>> failureOrPosts),
     @required Result orElse(),
@@ -290,7 +290,7 @@ class _$_WatchAllFavoritesStarted implements _WatchAllFavoritesStarted {
     @required Result watchMyPostsStarted(),
     @required
         Result watchFilteredPostsStarted(String city, String brand,
-            bool exchangable, bool headphones, int price),
+            bool exchangable, bool headphones, String price),
     @required Result watchRelatedStarted(String brand, String currentId),
     @required
         Result postsReceived(Either<PostFailure, KtList<Post>> failureOrPosts),
@@ -311,7 +311,7 @@ class _$_WatchAllFavoritesStarted implements _WatchAllFavoritesStarted {
     Result watchAllFavoritesStarted(),
     Result watchMyPostsStarted(),
     Result watchFilteredPostsStarted(String city, String brand,
-        bool exchangable, bool headphones, int price),
+        bool exchangable, bool headphones, String price),
     Result watchRelatedStarted(String brand, String currentId),
     Result postsReceived(Either<PostFailure, KtList<Post>> failureOrPosts),
     @required Result orElse(),
@@ -410,7 +410,7 @@ class _$_WatchMyPostsStarted implements _WatchMyPostsStarted {
     @required Result watchMyPostsStarted(),
     @required
         Result watchFilteredPostsStarted(String city, String brand,
-            bool exchangable, bool headphones, int price),
+            bool exchangable, bool headphones, String price),
     @required Result watchRelatedStarted(String brand, String currentId),
     @required
         Result postsReceived(Either<PostFailure, KtList<Post>> failureOrPosts),
@@ -431,7 +431,7 @@ class _$_WatchMyPostsStarted implements _WatchMyPostsStarted {
     Result watchAllFavoritesStarted(),
     Result watchMyPostsStarted(),
     Result watchFilteredPostsStarted(String city, String brand,
-        bool exchangable, bool headphones, int price),
+        bool exchangable, bool headphones, String price),
     Result watchRelatedStarted(String brand, String currentId),
     Result postsReceived(Either<PostFailure, KtList<Post>> failureOrPosts),
     @required Result orElse(),
@@ -496,7 +496,7 @@ abstract class _$WatchFilteredPostsStartedCopyWith<$Res> {
       String brand,
       bool exchangable,
       bool headphones,
-      int price});
+      String price});
 }
 
 /// @nodoc
@@ -524,7 +524,7 @@ class __$WatchFilteredPostsStartedCopyWithImpl<$Res>
       brand == freezed ? _value.brand : brand as String,
       exchangable == freezed ? _value.exchangable : exchangable as bool,
       headphones == freezed ? _value.headphones : headphones as bool,
-      price == freezed ? _value.price : price as int,
+      price == freezed ? _value.price : price as String,
     ));
   }
 }
@@ -548,7 +548,7 @@ class _$_WatchFilteredPostsStarted implements _WatchFilteredPostsStarted {
   @override
   final bool headphones;
   @override
-  final int price;
+  final String price;
 
   @override
   String toString() {
@@ -596,7 +596,7 @@ class _$_WatchFilteredPostsStarted implements _WatchFilteredPostsStarted {
     @required Result watchMyPostsStarted(),
     @required
         Result watchFilteredPostsStarted(String city, String brand,
-            bool exchangable, bool headphones, int price),
+            bool exchangable, bool headphones, String price),
     @required Result watchRelatedStarted(String brand, String currentId),
     @required
         Result postsReceived(Either<PostFailure, KtList<Post>> failureOrPosts),
@@ -618,7 +618,7 @@ class _$_WatchFilteredPostsStarted implements _WatchFilteredPostsStarted {
     Result watchAllFavoritesStarted(),
     Result watchMyPostsStarted(),
     Result watchFilteredPostsStarted(String city, String brand,
-        bool exchangable, bool headphones, int price),
+        bool exchangable, bool headphones, String price),
     Result watchRelatedStarted(String brand, String currentId),
     Result postsReceived(Either<PostFailure, KtList<Post>> failureOrPosts),
     @required Result orElse(),
@@ -676,13 +676,13 @@ abstract class _WatchFilteredPostsStarted implements PostWatcherEvent {
       String brand,
       bool exchangable,
       bool headphones,
-      int price) = _$_WatchFilteredPostsStarted;
+      String price) = _$_WatchFilteredPostsStarted;
 
   String get city;
   String get brand;
   bool get exchangable;
   bool get headphones;
-  int get price;
+  String get price;
   _$WatchFilteredPostsStartedCopyWith<_WatchFilteredPostsStarted> get copyWith;
 }
 
@@ -763,7 +763,7 @@ class _$_WatchRelatedStarted implements _WatchRelatedStarted {
     @required Result watchMyPostsStarted(),
     @required
         Result watchFilteredPostsStarted(String city, String brand,
-            bool exchangable, bool headphones, int price),
+            bool exchangable, bool headphones, String price),
     @required Result watchRelatedStarted(String brand, String currentId),
     @required
         Result postsReceived(Either<PostFailure, KtList<Post>> failureOrPosts),
@@ -784,7 +784,7 @@ class _$_WatchRelatedStarted implements _WatchRelatedStarted {
     Result watchAllFavoritesStarted(),
     Result watchMyPostsStarted(),
     Result watchFilteredPostsStarted(String city, String brand,
-        bool exchangable, bool headphones, int price),
+        bool exchangable, bool headphones, String price),
     Result watchRelatedStarted(String brand, String currentId),
     Result postsReceived(Either<PostFailure, KtList<Post>> failureOrPosts),
     @required Result orElse(),
@@ -913,7 +913,7 @@ class _$_PostsReceived implements _PostsReceived {
     @required Result watchMyPostsStarted(),
     @required
         Result watchFilteredPostsStarted(String city, String brand,
-            bool exchangable, bool headphones, int price),
+            bool exchangable, bool headphones, String price),
     @required Result watchRelatedStarted(String brand, String currentId),
     @required
         Result postsReceived(Either<PostFailure, KtList<Post>> failureOrPosts),
@@ -934,7 +934,7 @@ class _$_PostsReceived implements _PostsReceived {
     Result watchAllFavoritesStarted(),
     Result watchMyPostsStarted(),
     Result watchFilteredPostsStarted(String city, String brand,
-        bool exchangable, bool headphones, int price),
+        bool exchangable, bool headphones, String price),
     Result watchRelatedStarted(String brand, String currentId),
     Result postsReceived(Either<PostFailure, KtList<Post>> failureOrPosts),
     @required Result orElse(),

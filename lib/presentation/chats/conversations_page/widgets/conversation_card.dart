@@ -35,6 +35,7 @@ class ConversationCard extends StatelessWidget {
             postCity: conversation.postCity.getOrCrash(),
             conversationId: conversation.id.getOrCrash(),
           ),
+          displayUserName: conversation.displayUserName.getOrCrash(),
         ),
         child: Container(
           color: Colors.white,

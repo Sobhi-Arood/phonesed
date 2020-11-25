@@ -21,6 +21,7 @@ import '../posts/new_post_form/new_post_form_page.dart';
 import '../posts/new_post_form/pages/success_post_page.dart';
 import '../posts/post_detail/post_detail_page.dart';
 import '../posts/post_form/post_form_page.dart';
+import '../posts/post_watcher/filter_posts_watcher_page.dart';
 import '../profile/my_posts_watcher/my_posts_watcher_page.dart';
 
 class Routes {
@@ -35,6 +36,7 @@ class Routes {
   static const String postDetailPage = '/post-detail-page';
   static const String chatPage = '/chat-page';
   static const String myPostsWatcherPage = '/my-posts-watcher-page';
+  static const String filterPostsWatchPage = '/filter-posts-watch-page';
   static const String successPostPage = '/success-post-page';
   static const all = <String>{
     mainPage,
@@ -47,6 +49,7 @@ class Routes {
     postDetailPage,
     chatPage,
     myPostsWatcherPage,
+    filterPostsWatchPage,
     successPostPage,
   };
 }
@@ -65,6 +68,7 @@ class Router extends RouterBase {
     RouteDef(Routes.postDetailPage, page: PostDetailPage),
     RouteDef(Routes.chatPage, page: ChatPage),
     RouteDef(Routes.myPostsWatcherPage, page: MyPostsWatcherPage),
+    RouteDef(Routes.filterPostsWatchPage, page: FilterPostsWatchPage),
     RouteDef(Routes.successPostPage, page: SuccessPostPage),
   ];
   @override
@@ -138,6 +142,7 @@ class Router extends RouterBase {
         builder: (context) => ChatPage(
           key: args.key,
           postPrimitive: args.postPrimitive,
+          displayUserName: args.displayUserName,
         ),
         settings: data,
         fullscreenDialog: true,
@@ -146,6 +151,19 @@ class Router extends RouterBase {
     MyPostsWatcherPage: (data) {
       return MaterialPageRoute<dynamic>(
         builder: (context) => MyPostsWatcherPage(),
+        settings: data,
+      );
+    },
+    FilterPostsWatchPage: (data) {
+      final args = data.getArgs<FilterPostsWatchPageArguments>(nullOk: false);
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => FilterPostsWatchPage(
+          filterCity: args.filterCity,
+          filterBrand: args.filterBrand,
+          filterExchangable: args.filterExchangable,
+          filterHeadphones: args.filterHeadphones,
+          filterPrice: args.filterPrice,
+        ),
         settings: data,
       );
     },
@@ -205,14 +223,35 @@ extension RouterExtendedNavigatorStateX on ExtendedNavigatorState {
   Future<dynamic> pushChatPage({
     Key key,
     @required PostPrimitive postPrimitive,
+    @required String displayUserName,
   }) =>
       push<dynamic>(
         Routes.chatPage,
-        arguments: ChatPageArguments(key: key, postPrimitive: postPrimitive),
+        arguments: ChatPageArguments(
+            key: key,
+            postPrimitive: postPrimitive,
+            displayUserName: displayUserName),
       );
 
   Future<dynamic> pushMyPostsWatcherPage() =>
       push<dynamic>(Routes.myPostsWatcherPage);
+
+  Future<dynamic> pushFilterPostsWatchPage({
+    @required String filterCity,
+    @required String filterBrand,
+    @required bool filterExchangable,
+    @required bool filterHeadphones,
+    @required String filterPrice,
+  }) =>
+      push<dynamic>(
+        Routes.filterPostsWatchPage,
+        arguments: FilterPostsWatchPageArguments(
+            filterCity: filterCity,
+            filterBrand: filterBrand,
+            filterExchangable: filterExchangable,
+            filterHeadphones: filterHeadphones,
+            filterPrice: filterPrice),
+      );
 
   Future<dynamic> pushSuccessPostPage() =>
       push<dynamic>(Routes.successPostPage);
@@ -247,5 +286,22 @@ class PostDetailPageArguments {
 class ChatPageArguments {
   final Key key;
   final PostPrimitive postPrimitive;
-  ChatPageArguments({this.key, @required this.postPrimitive});
+  final String displayUserName;
+  ChatPageArguments(
+      {this.key, @required this.postPrimitive, @required this.displayUserName});
+}
+
+/// FilterPostsWatchPage arguments holder class
+class FilterPostsWatchPageArguments {
+  final String filterCity;
+  final String filterBrand;
+  final bool filterExchangable;
+  final bool filterHeadphones;
+  final String filterPrice;
+  FilterPostsWatchPageArguments(
+      {@required this.filterCity,
+      @required this.filterBrand,
+      @required this.filterExchangable,
+      @required this.filterHeadphones,
+      @required this.filterPrice});
 }

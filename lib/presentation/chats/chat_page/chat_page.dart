@@ -13,8 +13,11 @@ import '../../../injection.dart';
 
 class ChatPage extends StatelessWidget {
   final PostPrimitive postPrimitive;
+  final String displayUserName;
   // final Conversation conversation;
-  const ChatPage({Key key, @required this.postPrimitive}) : super(key: key);
+  const ChatPage(
+      {Key key, @required this.postPrimitive, @required this.displayUserName})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     // print(postPrimitive.conversationId);
@@ -22,7 +25,8 @@ class ChatPage extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(
-          postPrimitive.postUsername,
+          // postPrimitive.postUsername,
+          displayUserName,
           style: const TextStyle(
             color: kPrimaryDarkColor,
             fontWeight: FontWeight.w700,

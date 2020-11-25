@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:admob_flutter/admob_flutter.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flushbar/flushbar_helper.dart';
@@ -9,6 +10,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:phonesed/application/auth/auth_bloc/auth_bloc.dart';
 import 'package:phonesed/application/core/user_profile/user_profile_bloc.dart';
 import 'package:phonesed/application/posts/post_actor/post_actor_bloc.dart';
+import 'package:phonesed/application/posts/post_share/post_share_bloc/post_share_bloc.dart';
 import 'package:phonesed/domain/entities/post.dart';
 import 'package:phonesed/infrastructure/posts/post_primitive_presentation.dart';
 import 'package:phonesed/presentation/core/widgets/saving_overlay.dart';
@@ -18,6 +20,7 @@ import 'package:phonesed/presentation/posts/post_watcher/post_card/images_card.d
 import 'package:phonesed/presentation/routes/router.gr.dart';
 import 'package:share/share.dart';
 import 'package:timeago/timeago.dart' as timeago;
+import 'package:phonesed/extentions.dart';
 
 import '../../../constants.dart';
 import 'widgets/detail_bottom_widget.dart';
@@ -39,23 +42,31 @@ class PostDetailBody extends HookWidget {
         ),
         actions: [
           IconButton(
-              icon: const Icon(Icons.share),
-              onPressed: () {
-                // final RenderObject box = context.findRenderObject();
-                // Share.share(text)
-                try {
-                  // Share.share('text');
-                  final f = File(post.images.getOrCrash()[0]);
-                  Share.shareFiles([f.path],
-                      text:
-                          '${post.images.getOrCrash()[0]} Checkout this device : ${post.device.getOrCrash()} | AED${post.price.getOrCrash()}',
-                      subject: 'sdfsdf');
-                } catch (e) {
-                  print(e);
-                }
-              })
+            icon: const Icon(Icons.share),
+            onPressed: () {
+              context.read<PostShareBloc>().add(PostShareEvent.sharePostClicked(
+                  post.id.getOrCrash(),
+                  post.title.getOrCrash(),
+                  post.description.value.getOrElse(() => 'Post from Phonesed'),
+                  post.images.getOrCrash()[0].toString()));
+            },
+            // onPressed: () {
+            // final RenderObject box = context.findRenderObject();
+            // Share.share(text)
+            // try {
+            //   // Share.share('text');
+            //   final f = File(post.images.getOrCrash()[0]);
+            //   Share.shareFiles([f.path],
+            //       text:
+            //           '${post.images.getOrCrash()[0]} Checkout this device : ${post.device.getOrCrash()} | AED${post.price.getOrCrash()}',
+            //       subject: 'sdfsdf');
+            // } catch (e) {
+            //   print(e);
+            // }
+            // },
+          )
         ],
-      ),
+      ).withBottomAdmobBanner(context),
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
           state.map(
@@ -113,11 +124,11 @@ class PostDetailBody extends HookWidget {
                                         if (favs
                                             .getOrCrash()
                                             .contains(post.id)) {
-                                          context.bloc<PostActorBloc>().add(
+                                          context.read<PostActorBloc>().add(
                                                 PostActorEvent.unLiked(post),
                                               );
                                         } else {
-                                          context.bloc<PostActorBloc>().add(
+                                          context.read<PostActorBloc>().add(
                                                 PostActorEvent.liked(post),
                                               );
                                         }
@@ -195,6 +206,16 @@ class PostDetailBody extends HookWidget {
                   condition: post.condition.getOrCrash(),
                   description: post.description.getOrCrash(),
                 ),
+                // Ad
+                Column(
+                  children: [
+                    Container(
+                      child: AdmobBanner(
+                          adUnitId: getBannerAdUnitId(),
+                          adSize: AdmobBannerSize.LARGE_BANNER),
+                    ),
+                  ],
+                ),
                 if (post.userId.getOrCrash() != userId.value) ...[
                   Container(
                     color: Colors.white,
@@ -208,6 +229,7 @@ class PostDetailBody extends HookWidget {
                                     .copyWith(
                                         conversationId:
                                             '${post.id.getOrCrash()}+${post.userId.getOrCrash()}+${userId.value}'),
+                                displayUserName: post.userName.getOrCrash(),
                                 // conversation: null,
                               )
                           : null,

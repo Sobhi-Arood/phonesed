@@ -9,14 +9,17 @@ class FilterExchangableCheckbox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<PostsFormFilterBloc, PostsFormFilterState>(
+      buildWhen: (previous, current) =>
+          previous.exchangable != current.exchangable,
       builder: (context, state) {
         return Row(
+          mainAxisSize: MainAxisSize.min,
           children: [
             Checkbox(
                 value: state.exchangable,
                 onChanged: (v) {
                   context
-                      .bloc<PostsFormFilterBloc>()
+                      .read<PostsFormFilterBloc>()
                       .add(PostsFormFilterEvent.exchangableChanged(v));
                 }),
             const Text(

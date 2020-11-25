@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:phonesed/application/auth/social_sign_in/social_sign_in_bloc.dart';
 import 'package:phonesed/constants.dart';
 import 'package:phonesed/presentation/routes/router.gr.dart';
@@ -198,7 +199,11 @@ class WelcomePage extends StatelessWidget {
                           ),
                         ),
                         if (state.isSubmitting) ...[
-                          const Center(child: CircularProgressIndicator()),
+                          const Center(
+                            child: SpinKitFadingFour(
+                              color: kPrimaryColor,
+                            ),
+                          ),
                         ],
                       ],
                     ),

@@ -56,8 +56,7 @@ class PostWatcherBloc extends Bloc<PostWatcherEvent, PostWatcherState> {
       yield const PostWatcherState.loadInProgress();
       await _postStreamSubscription?.cancel();
       _postStreamSubscription = _postRepository
-          .fetchFilteredPosts(
-              e.city, e.brand, e.exchangable, e.headphones, e.price)
+          .fetchFilteredPosts(e.city, e.brand, e.price)
           .listen((failureOrPosts) =>
               add(PostWatcherEvent.postsReceived(failureOrPosts)));
     }, watchRelatedStarted: (e) async* {

@@ -7,11 +7,13 @@ abstract class PostWatcherEvent with _$PostWatcherEvent {
       _WatchAllFavoritesStarted;
   const factory PostWatcherEvent.watchMyPostsStarted() = _WatchMyPostsStarted;
   const factory PostWatcherEvent.watchFilteredPostsStarted(
-      String city,
-      String brand,
-      bool exchangable,
-      bool headphones,
-      int price) = _WatchFilteredPostsStarted;
+    String city,
+    String brand,
+    bool exchangable,
+    bool headphones,
+    String price,
+    // int price,
+  ) = _WatchFilteredPostsStarted;
   // const factory PostWatcherEvent.searchChanged(String query) = _SearchChanged;
   const factory PostWatcherEvent.watchRelatedStarted(
       String brand, String currentId) = _WatchRelatedStarted;

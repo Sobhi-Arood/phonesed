@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phonesed/application/auth/auth_bloc/auth_bloc.dart';
@@ -6,16 +7,20 @@ import 'package:phonesed/application/core/bottom_navigation/bottom_navigation_bl
 import 'package:phonesed/application/core/posts_filter/posts_filter_bloc.dart';
 import 'package:phonesed/application/core/posts_sort/posts_sort_bloc.dart';
 import 'package:phonesed/application/core/user_profile/user_profile_bloc.dart';
+import 'package:phonesed/application/posts/post_share/post_share_bloc/post_share_bloc.dart';
 import 'package:phonesed/constants.dart';
 import 'package:phonesed/injection.dart';
 import 'package:phonesed/presentation/core/widgets/bottom_navigation_bar_widget.dart';
 import 'package:phonesed/presentation/core/widgets/tab_bar_view_widget.dart';
 import 'package:phonesed/presentation/routes/router.gr.dart';
+import 'package:phonesed/extentions.dart';
+// import 'package:admob_flutter/src/admob.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    print('yes yes yesd yes ytd yrd');
     return MultiBlocProvider(
       providers: [
         BlocProvider<BottomNavigationBloc>(
@@ -24,6 +29,10 @@ class MainPage extends StatelessWidget {
         BlocProvider<AuthBloc>(
           create: (context) =>
               getIt<AuthBloc>()..add(const AuthEvent.authCheckRequested()),
+        ),
+        BlocProvider<PostShareBloc>(
+          create: (context) => getIt<PostShareBloc>()
+            ..add(const PostShareEvent.shareLinkRecevied()),
         ),
         BlocProvider<UserProfileBloc>(
             create: (context) => getIt<UserProfileBloc>()
@@ -38,7 +47,25 @@ class MainPage extends StatelessWidget {
       child: MultiBlocListener(
         listeners: [
           BlocListener<BottomNavigationBloc, BottomNavigationState>(
-              listener: (context, state) {})
+              listener: (context, state) {}),
+          BlocListener<PostShareBloc, PostShareState>(
+            listener: (context, state) {
+              state.map(
+                  initial: (_) {},
+                  loadInProgress: (_) {},
+                  receviedShareLink: (id) {
+                    if (id.post != null) {
+                      ExtendedNavigator.of(context)
+                          .pushPostDetailPage(post: id.post);
+                    }
+                  },
+                  receviedError: (_) {
+                    // FlushbarHelper.createError(message: 'ererererere')
+                    //     .show(context);
+                    // print('ALLOO ALLOO ALLOO :: ERROROROR');
+                  });
+            },
+          ),
         ],
         child: BlocBuilder<BottomNavigationBloc, BottomNavigationState>(
           builder: (context, state) {
@@ -106,7 +133,8 @@ class MainPage extends StatelessWidget {
                                     size: 28,
                                   ),
                                   widgetOpen: (_) => const Icon(
-                                    Icons.swap_vert,
+                                    // Icons.swap_vert,
+                                    Icons.close,
                                     size: 28,
                                     color: kPrimaryColor,
                                   ),
@@ -135,7 +163,8 @@ class MainPage extends StatelessWidget {
                                           Icons.filter_alt,
                                           size: 28),
                                       widgetOpen: (_) => const Icon(
-                                            Icons.filter_alt,
+                                            // Icons.filter_alt,
+                                            Icons.close,
                                             size: 28,
                                             color: kPrimaryColor,
                                           ),
@@ -166,6 +195,7 @@ class MainPage extends StatelessWidget {
                   })
                 ],
               ),
+              // ).withBottomAdmobBanner(context),
               body: const TabBarViewWidget(),
               bottomNavigationBar: BottomNavigationBarWidget(),
             );

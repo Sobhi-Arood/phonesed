@@ -5,6 +5,7 @@
 // **************************************************************************
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get_it/get_it.dart';
@@ -20,6 +21,7 @@ import 'application/chats/chat_form/chat_form_bloc.dart';
 import 'infrastructure/chats/chat_repository.dart';
 import 'application/chats/chat_watcher/chat_watcher_bloc.dart';
 import 'application/chats/conversations_watcher/conversations_watcher_bloc.dart';
+import 'infrastructure/posts/share_facade.dart';
 import 'infrastructure/auth/firebase_auth_facade.dart';
 import 'infrastructure/core/firebase_injectable_module.dart';
 import 'application/core/form_navigation/form_navigation_bloc.dart';
@@ -29,6 +31,7 @@ import 'domain/core/avatar/i_avatar_picker.dart';
 import 'domain/chats/i_chat_repository.dart';
 import 'domain/posts/i_form_repository.dart';
 import 'domain/posts/i_post_repository.dart';
+import 'domain/posts/i_share_facade.dart';
 import 'domain/core/upload/i_upload_facade.dart';
 import 'domain/auth/i_user_repository.dart';
 import 'application/posts/post_actor/post_actor_bloc.dart';
@@ -41,11 +44,13 @@ import 'application/posts/post_form/post_form_load_data/post_form_load_data_bloc
 import 'application/posts/post_form/post_picker_image/post_picker_image_bloc.dart';
 import 'infrastructure/posts/post_repository.dart';
 import 'application/posts/post_search/post_search_bloc.dart';
+import 'application/posts/post_share/post_share_bloc/post_share_bloc.dart';
 import 'application/posts/post_watcher/post_watcher_bloc.dart';
 import 'application/core/posts_filter/posts_filter_bloc.dart';
 import 'application/core/posts_filter/posts_form_filter/posts_form_filter_bloc.dart';
 import 'application/core/posts_sort/posts_form_sort/posts_form_sort_bloc.dart';
 import 'application/core/posts_sort/posts_sort_bloc.dart';
+import 'application/core/posts_sort/posts_value_sort/posts_value_sort_bloc.dart';
 import 'application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'application/auth/sign_up_form/sign_up_form_bloc.dart';
 import 'application/auth/social_sign_in/social_sign_in_bloc.dart';
@@ -65,6 +70,8 @@ GetIt $initGetIt(
   final firebaseInjectableModule = _$FirebaseInjectableModule();
   gh.factory<BottomNavigationBloc>(() => BottomNavigationBloc());
   gh.lazySingleton<FirebaseAuth>(() => firebaseInjectableModule.firebaseAuth);
+  gh.lazySingleton<FirebaseDynamicLinks>(
+      () => firebaseInjectableModule.dynamicLinks);
   gh.lazySingleton<FirebaseFirestore>(() => firebaseInjectableModule.firestore);
   gh.lazySingleton<FirebaseStorage>(() => firebaseInjectableModule.storage);
   gh.factory<FormNavigationBloc>(() => FormNavigationBloc());
@@ -73,6 +80,8 @@ GetIt $initGetIt(
       () => ChatRepository(get<FirebaseFirestore>()));
   gh.lazySingleton<IFormRepository>(
       () => FormRepository(get<FirebaseFirestore>()));
+  gh.lazySingleton<IShareFacade>(
+      () => DynamicLinksShareService(get<FirebaseDynamicLinks>()));
   gh.lazySingleton<IUploadFacade>(() => UploadFacade(get<FirebaseStorage>()));
   gh.lazySingleton<IUserRepository>(
       () => UserRepository(get<FirebaseFirestore>()));
@@ -91,6 +100,7 @@ GetIt $initGetIt(
   gh.factory<PostsFormFilterBloc>(() => PostsFormFilterBloc());
   gh.factory<PostsFormSortBloc>(() => PostsFormSortBloc());
   gh.factory<PostsSortBloc>(() => PostsSortBloc());
+  gh.factory<PostsValueSortBloc>(() => PostsValueSortBloc());
   gh.factory<UserProfileBloc>(() => UserProfileBloc(get<IUserRepository>()));
   gh.factory<ChatFormBloc>(() => ChatFormBloc(get<IChatRepository>()));
   gh.factory<ChatWatcherBloc>(() => ChatWatcherBloc(get<IChatRepository>()));
@@ -112,6 +122,8 @@ GetIt $initGetIt(
   gh.factory<PostPickerImageBloc>(
       () => PostPickerImageBloc(get<IAvatarPickerFacade>()));
   gh.factory<PostSearchBloc>(() => PostSearchBloc(get<IPostRepository>()));
+  gh.factory<PostShareBloc>(
+      () => PostShareBloc(get<IShareFacade>(), get<IPostRepository>()));
   gh.factory<PostWatcherBloc>(() => PostWatcherBloc(get<IPostRepository>()));
   gh.factory<SignInFormBloc>(() => SignInFormBloc(get<IAuthFacade>()));
   gh.factory<SignUpFormBloc>(() => SignUpFormBloc(get<IAuthFacade>()));

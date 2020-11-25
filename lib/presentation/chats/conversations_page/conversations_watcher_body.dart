@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:phonesed/application/auth/auth_bloc/auth_bloc.dart';
 import 'package:phonesed/application/chats/conversations_watcher/conversations_watcher_bloc.dart';
 import 'package:phonesed/constants.dart';
@@ -13,7 +14,9 @@ class ConversationsWatcherBody extends StatelessWidget {
         return state.map(
           initial: (_) => Container(),
           loadInProgress: (_) => const Center(
-            child: CircularProgressIndicator(),
+            child: SpinKitFadingFour(
+              color: kPrimaryColor,
+            ),
           ),
           loadSuccess: (cons) {
             if (cons.conversations.isEmpty()) {

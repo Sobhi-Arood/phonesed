@@ -54,6 +54,10 @@ dependencies:
   network_to_file_image: ^2.3.6
   flutter_svg: ^0.19.1
   share: '>=0.6.5+4 <2.0.0'
+  admob_flutter: ^1.0.1
+  # firebase_crashlytics: ^0.2.3
+  firebase_dynamic_links: ^0.6.2
+  flutter_spinkit: ^4.1.2+1
 
 dev_dependencies:
   build_runner:

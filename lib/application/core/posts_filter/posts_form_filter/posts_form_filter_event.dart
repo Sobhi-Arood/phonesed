@@ -10,7 +10,10 @@ abstract class PostsFormFilterEvent with _$PostsFormFilterEvent {
       _ExchangableChanged;
   const factory PostsFormFilterEvent.headphonesChanged(bool headphonesBool) =
       _HeadphonesChanged;
-  const factory PostsFormFilterEvent.maxPriceChanged(int maxPriceInt) =
-      _MaxPriceChanged;
+  // const factory PostsFormFilterEvent.maxPriceChanged(int maxPriceInt) =
+  //     _MaxPriceChanged;
+  const factory PostsFormFilterEvent.priceChanged(String priceInt) =
+      _PriceChanged;
+  const factory PostsFormFilterEvent.reseted() = _Reseted;
   const factory PostsFormFilterEvent.submitted() = _Submitted;
 }

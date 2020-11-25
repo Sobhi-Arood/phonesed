@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:phonesed/application/core/form_navigation/form_navigation_bloc.dart';
 import 'package:phonesed/application/posts/post_form/post_form_bloc.dart';
@@ -18,11 +19,9 @@ class BrandPostFormWidget extends StatelessWidget {
       builder: (context, state) {
         return state.map(
             initial: (_) => Container(),
-            loadInProgress: (_) => Center(
-                  child: Container(
-                    // width: 100,
-                    // height: 100,
-                    child: CircularProgressIndicator(),
+            loadInProgress: (_) => const Center(
+                  child: SpinKitFadingFour(
+                    color: kPrimaryColor,
                   ),
                 ),
             loadBrandsSuccess: (data) {
@@ -78,7 +77,7 @@ class BrandPostFormWidget extends StatelessWidget {
                                   PostFormDevicesEvent.getDevicesStarted(
                                       index));
 
-                              context.bloc<FormNavigationBloc>().add(
+                              context.read<FormNavigationBloc>().add(
                                   const FormNavigationEvent.pageChanged(1));
                             },
                             child: Container(
@@ -93,8 +92,8 @@ class BrandPostFormWidget extends StatelessWidget {
                                   SvgPicture.asset(
                                     // brand.brandImgUrl,
                                     brand.logo,
-                                    width: 55,
-                                    height: 55,
+                                    width: 65,
+                                    height: 65,
                                   ),
                                   Text(
                                     brand.brand,

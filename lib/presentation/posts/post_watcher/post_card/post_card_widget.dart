@@ -24,13 +24,14 @@ class PostCard extends StatelessWidget {
           child: Card(
             key: ValueKey(post.id),
             margin: const EdgeInsets.all(0),
-            elevation: 0,
+            elevation: 0.1,
             color: Colors.white,
             child: InkWell(
               onTap: () =>
                   ExtendedNavigator.of(context).pushPostDetailPage(post: post),
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 8.0, vertical: 12.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

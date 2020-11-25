@@ -7,14 +7,18 @@ abstract class PostsFormFilterState with _$PostsFormFilterState {
     @required String brand,
     @required bool exchangable,
     @required bool headphones,
-    @required int maxPrice,
+    @required String price,
+    // @required int maxPrice,
+    // @required int minPrice,
   }) = _PostsFormFilterState;
 
-  factory PostsFormFilterState.initial() => const PostsFormFilterState(
-        city: '',
-        brand: '',
+  factory PostsFormFilterState.initial() => PostsFormFilterState(
+        city: kFilterCities[0],
+        brand: kFilterBrands[0],
         exchangable: false,
         headphones: false,
-        maxPrice: 0,
+        price: kFilterPrices[0],
+        // maxPrice: 0,
+        // minPrice: 0,
       );
 }

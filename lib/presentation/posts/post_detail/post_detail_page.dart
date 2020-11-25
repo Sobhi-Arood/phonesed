@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phonesed/application/auth/auth_bloc/auth_bloc.dart';
 import 'package:phonesed/application/core/user_profile/user_profile_bloc.dart';
 import 'package:phonesed/application/posts/post_actor/post_actor_bloc.dart';
+import 'package:phonesed/application/posts/post_share/post_share_bloc/post_share_bloc.dart';
 import 'package:phonesed/application/posts/post_watcher/post_watcher_bloc.dart';
 import 'package:phonesed/domain/entities/post.dart';
 import 'package:phonesed/presentation/core/widgets/saving_overlay.dart';
@@ -24,6 +25,9 @@ class PostDetailPage extends StatelessWidget {
                   getIt<AuthBloc>()..add(const AuthEvent.authCheckRequested())),
           BlocProvider(
             create: (context) => getIt<PostActorBloc>(),
+          ),
+          BlocProvider(
+            create: (context) => getIt<PostShareBloc>(),
           ),
           BlocProvider(
             create: (context) => getIt<UserProfileBloc>()

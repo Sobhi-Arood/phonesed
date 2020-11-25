@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+
+import '../../../constants.dart';
 
 class SavingInProgressOverlay extends StatelessWidget {
   final bool isSaving;
@@ -14,7 +17,7 @@ class SavingInProgressOverlay extends StatelessWidget {
       ignoring: !isSaving,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 150),
-        color: isSaving ? Colors.black.withOpacity(0.8) : Colors.transparent,
+        color: isSaving ? Colors.white.withOpacity(0.9) : Colors.transparent,
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: Visibility(
@@ -22,13 +25,16 @@ class SavingInProgressOverlay extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const CircularProgressIndicator(),
+              const SpinKitFadingFour(
+                color: kPrimaryColor,
+              ),
+              // const CircularProgressIndicator(),
               // const CupertinoActivityIndicator(),
               const SizedBox(height: 8),
               Text(
-                'Saving ...',
+                'SAVING',
                 style: Theme.of(context).textTheme.bodyText2.copyWith(
-                      color: Colors.white,
+                      color: kPrimaryColor,
                       fontSize: 16,
                     ),
               )

@@ -17,7 +17,7 @@ class PriceSlider extends HookWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Price: ${state.maxPrice}',
+              'Price: ${state.price}',
               style: TextStyle(
                   color: kSecondaryLightColor,
                   fontWeight: FontWeight.w600,
@@ -25,12 +25,13 @@ class PriceSlider extends HookWidget {
             ),
             Slider(
               // value: maxPrice.value.toDouble(),
-              value: state.maxPrice.toDouble(),
+              // value: state.maxPrice.toDouble(),
+              value: 0,
               onChanged: (v) {
                 // maxPrice.value = v.toInt();
-                context
-                    .bloc<PostsFormFilterBloc>()
-                    .add(PostsFormFilterEvent.maxPriceChanged(v.toInt()));
+                // context
+                //     .bloc<PostsFormFilterBloc>()
+                //     .add(PostsFormFilterEvent.maxPriceChanged(v.toInt()));
               },
               label: '$maxPrice',
               min: 0,

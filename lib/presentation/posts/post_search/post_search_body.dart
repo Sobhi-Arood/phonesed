@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:phonesed/application/posts/post_search/post_search_bloc.dart';
 import 'package:phonesed/presentation/posts/post_search/widgets/post_search_textfield.dart';
 import 'package:phonesed/presentation/posts/post_watcher/post_card/favorite_post_card_widget.dart';
+
+import '../../../constants.dart';
 
 class PostSearchBody extends StatelessWidget {
   @override
@@ -35,7 +38,9 @@ class PostSearchBody extends StatelessWidget {
               height: 16,
             ),
             if (state.isLoading) ...[
-              const CircularProgressIndicator(),
+              const SpinKitFadingFour(
+                color: kPrimaryColor,
+              ),
             ] else ...[
               state.saveFailureOrSuccessOption.fold(
                 (f) => const Center(

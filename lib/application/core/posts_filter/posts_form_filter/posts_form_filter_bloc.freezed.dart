@@ -47,10 +47,15 @@ class _$PostsFormFilterEventTearOff {
   }
 
 // ignore: unused_element
-  _MaxPriceChanged maxPriceChanged(int maxPriceInt) {
-    return _MaxPriceChanged(
-      maxPriceInt,
+  _PriceChanged priceChanged(String priceInt) {
+    return _PriceChanged(
+      priceInt,
     );
+  }
+
+// ignore: unused_element
+  _Reseted reseted() {
+    return const _Reseted();
   }
 
 // ignore: unused_element
@@ -72,7 +77,8 @@ mixin _$PostsFormFilterEvent {
     @required Result brandChanged(String brandStr),
     @required Result exchangableChanged(bool exchangableBool),
     @required Result headphonesChanged(bool headphonesBool),
-    @required Result maxPriceChanged(int maxPriceInt),
+    @required Result priceChanged(String priceInt),
+    @required Result reseted(),
     @required Result submitted(),
   });
   @optionalTypeArgs
@@ -82,7 +88,8 @@ mixin _$PostsFormFilterEvent {
     Result brandChanged(String brandStr),
     Result exchangableChanged(bool exchangableBool),
     Result headphonesChanged(bool headphonesBool),
-    Result maxPriceChanged(int maxPriceInt),
+    Result priceChanged(String priceInt),
+    Result reseted(),
     Result submitted(),
     @required Result orElse(),
   });
@@ -93,7 +100,8 @@ mixin _$PostsFormFilterEvent {
     @required Result brandChanged(_BrandChanged value),
     @required Result exchangableChanged(_ExchangableChanged value),
     @required Result headphonesChanged(_HeadphonesChanged value),
-    @required Result maxPriceChanged(_MaxPriceChanged value),
+    @required Result priceChanged(_PriceChanged value),
+    @required Result reseted(_Reseted value),
     @required Result submitted(_Submitted value),
   });
   @optionalTypeArgs
@@ -103,7 +111,8 @@ mixin _$PostsFormFilterEvent {
     Result brandChanged(_BrandChanged value),
     Result exchangableChanged(_ExchangableChanged value),
     Result headphonesChanged(_HeadphonesChanged value),
-    Result maxPriceChanged(_MaxPriceChanged value),
+    Result priceChanged(_PriceChanged value),
+    Result reseted(_Reseted value),
     Result submitted(_Submitted value),
     @required Result orElse(),
   });
@@ -170,7 +179,8 @@ class _$_Initialized implements _Initialized {
     @required Result brandChanged(String brandStr),
     @required Result exchangableChanged(bool exchangableBool),
     @required Result headphonesChanged(bool headphonesBool),
-    @required Result maxPriceChanged(int maxPriceInt),
+    @required Result priceChanged(String priceInt),
+    @required Result reseted(),
     @required Result submitted(),
   }) {
     assert(initialized != null);
@@ -178,7 +188,8 @@ class _$_Initialized implements _Initialized {
     assert(brandChanged != null);
     assert(exchangableChanged != null);
     assert(headphonesChanged != null);
-    assert(maxPriceChanged != null);
+    assert(priceChanged != null);
+    assert(reseted != null);
     assert(submitted != null);
     return initialized();
   }
@@ -191,7 +202,8 @@ class _$_Initialized implements _Initialized {
     Result brandChanged(String brandStr),
     Result exchangableChanged(bool exchangableBool),
     Result headphonesChanged(bool headphonesBool),
-    Result maxPriceChanged(int maxPriceInt),
+    Result priceChanged(String priceInt),
+    Result reseted(),
     Result submitted(),
     @required Result orElse(),
   }) {
@@ -210,7 +222,8 @@ class _$_Initialized implements _Initialized {
     @required Result brandChanged(_BrandChanged value),
     @required Result exchangableChanged(_ExchangableChanged value),
     @required Result headphonesChanged(_HeadphonesChanged value),
-    @required Result maxPriceChanged(_MaxPriceChanged value),
+    @required Result priceChanged(_PriceChanged value),
+    @required Result reseted(_Reseted value),
     @required Result submitted(_Submitted value),
   }) {
     assert(initialized != null);
@@ -218,7 +231,8 @@ class _$_Initialized implements _Initialized {
     assert(brandChanged != null);
     assert(exchangableChanged != null);
     assert(headphonesChanged != null);
-    assert(maxPriceChanged != null);
+    assert(priceChanged != null);
+    assert(reseted != null);
     assert(submitted != null);
     return initialized(this);
   }
@@ -231,7 +245,8 @@ class _$_Initialized implements _Initialized {
     Result brandChanged(_BrandChanged value),
     Result exchangableChanged(_ExchangableChanged value),
     Result headphonesChanged(_HeadphonesChanged value),
-    Result maxPriceChanged(_MaxPriceChanged value),
+    Result priceChanged(_PriceChanged value),
+    Result reseted(_Reseted value),
     Result submitted(_Submitted value),
     @required Result orElse(),
   }) {
@@ -312,7 +327,8 @@ class _$_CityChanged implements _CityChanged {
     @required Result brandChanged(String brandStr),
     @required Result exchangableChanged(bool exchangableBool),
     @required Result headphonesChanged(bool headphonesBool),
-    @required Result maxPriceChanged(int maxPriceInt),
+    @required Result priceChanged(String priceInt),
+    @required Result reseted(),
     @required Result submitted(),
   }) {
     assert(initialized != null);
@@ -320,7 +336,8 @@ class _$_CityChanged implements _CityChanged {
     assert(brandChanged != null);
     assert(exchangableChanged != null);
     assert(headphonesChanged != null);
-    assert(maxPriceChanged != null);
+    assert(priceChanged != null);
+    assert(reseted != null);
     assert(submitted != null);
     return cityChanged(cityStr);
   }
@@ -333,7 +350,8 @@ class _$_CityChanged implements _CityChanged {
     Result brandChanged(String brandStr),
     Result exchangableChanged(bool exchangableBool),
     Result headphonesChanged(bool headphonesBool),
-    Result maxPriceChanged(int maxPriceInt),
+    Result priceChanged(String priceInt),
+    Result reseted(),
     Result submitted(),
     @required Result orElse(),
   }) {
@@ -352,7 +370,8 @@ class _$_CityChanged implements _CityChanged {
     @required Result brandChanged(_BrandChanged value),
     @required Result exchangableChanged(_ExchangableChanged value),
     @required Result headphonesChanged(_HeadphonesChanged value),
-    @required Result maxPriceChanged(_MaxPriceChanged value),
+    @required Result priceChanged(_PriceChanged value),
+    @required Result reseted(_Reseted value),
     @required Result submitted(_Submitted value),
   }) {
     assert(initialized != null);
@@ -360,7 +379,8 @@ class _$_CityChanged implements _CityChanged {
     assert(brandChanged != null);
     assert(exchangableChanged != null);
     assert(headphonesChanged != null);
-    assert(maxPriceChanged != null);
+    assert(priceChanged != null);
+    assert(reseted != null);
     assert(submitted != null);
     return cityChanged(this);
   }
@@ -373,7 +393,8 @@ class _$_CityChanged implements _CityChanged {
     Result brandChanged(_BrandChanged value),
     Result exchangableChanged(_ExchangableChanged value),
     Result headphonesChanged(_HeadphonesChanged value),
-    Result maxPriceChanged(_MaxPriceChanged value),
+    Result priceChanged(_PriceChanged value),
+    Result reseted(_Reseted value),
     Result submitted(_Submitted value),
     @required Result orElse(),
   }) {
@@ -458,7 +479,8 @@ class _$_BrandChanged implements _BrandChanged {
     @required Result brandChanged(String brandStr),
     @required Result exchangableChanged(bool exchangableBool),
     @required Result headphonesChanged(bool headphonesBool),
-    @required Result maxPriceChanged(int maxPriceInt),
+    @required Result priceChanged(String priceInt),
+    @required Result reseted(),
     @required Result submitted(),
   }) {
     assert(initialized != null);
@@ -466,7 +488,8 @@ class _$_BrandChanged implements _BrandChanged {
     assert(brandChanged != null);
     assert(exchangableChanged != null);
     assert(headphonesChanged != null);
-    assert(maxPriceChanged != null);
+    assert(priceChanged != null);
+    assert(reseted != null);
     assert(submitted != null);
     return brandChanged(brandStr);
   }
@@ -479,7 +502,8 @@ class _$_BrandChanged implements _BrandChanged {
     Result brandChanged(String brandStr),
     Result exchangableChanged(bool exchangableBool),
     Result headphonesChanged(bool headphonesBool),
-    Result maxPriceChanged(int maxPriceInt),
+    Result priceChanged(String priceInt),
+    Result reseted(),
     Result submitted(),
     @required Result orElse(),
   }) {
@@ -498,7 +522,8 @@ class _$_BrandChanged implements _BrandChanged {
     @required Result brandChanged(_BrandChanged value),
     @required Result exchangableChanged(_ExchangableChanged value),
     @required Result headphonesChanged(_HeadphonesChanged value),
-    @required Result maxPriceChanged(_MaxPriceChanged value),
+    @required Result priceChanged(_PriceChanged value),
+    @required Result reseted(_Reseted value),
     @required Result submitted(_Submitted value),
   }) {
     assert(initialized != null);
@@ -506,7 +531,8 @@ class _$_BrandChanged implements _BrandChanged {
     assert(brandChanged != null);
     assert(exchangableChanged != null);
     assert(headphonesChanged != null);
-    assert(maxPriceChanged != null);
+    assert(priceChanged != null);
+    assert(reseted != null);
     assert(submitted != null);
     return brandChanged(this);
   }
@@ -519,7 +545,8 @@ class _$_BrandChanged implements _BrandChanged {
     Result brandChanged(_BrandChanged value),
     Result exchangableChanged(_ExchangableChanged value),
     Result headphonesChanged(_HeadphonesChanged value),
-    Result maxPriceChanged(_MaxPriceChanged value),
+    Result priceChanged(_PriceChanged value),
+    Result reseted(_Reseted value),
     Result submitted(_Submitted value),
     @required Result orElse(),
   }) {
@@ -608,7 +635,8 @@ class _$_ExchangableChanged implements _ExchangableChanged {
     @required Result brandChanged(String brandStr),
     @required Result exchangableChanged(bool exchangableBool),
     @required Result headphonesChanged(bool headphonesBool),
-    @required Result maxPriceChanged(int maxPriceInt),
+    @required Result priceChanged(String priceInt),
+    @required Result reseted(),
     @required Result submitted(),
   }) {
     assert(initialized != null);
@@ -616,7 +644,8 @@ class _$_ExchangableChanged implements _ExchangableChanged {
     assert(brandChanged != null);
     assert(exchangableChanged != null);
     assert(headphonesChanged != null);
-    assert(maxPriceChanged != null);
+    assert(priceChanged != null);
+    assert(reseted != null);
     assert(submitted != null);
     return exchangableChanged(exchangableBool);
   }
@@ -629,7 +658,8 @@ class _$_ExchangableChanged implements _ExchangableChanged {
     Result brandChanged(String brandStr),
     Result exchangableChanged(bool exchangableBool),
     Result headphonesChanged(bool headphonesBool),
-    Result maxPriceChanged(int maxPriceInt),
+    Result priceChanged(String priceInt),
+    Result reseted(),
     Result submitted(),
     @required Result orElse(),
   }) {
@@ -648,7 +678,8 @@ class _$_ExchangableChanged implements _ExchangableChanged {
     @required Result brandChanged(_BrandChanged value),
     @required Result exchangableChanged(_ExchangableChanged value),
     @required Result headphonesChanged(_HeadphonesChanged value),
-    @required Result maxPriceChanged(_MaxPriceChanged value),
+    @required Result priceChanged(_PriceChanged value),
+    @required Result reseted(_Reseted value),
     @required Result submitted(_Submitted value),
   }) {
     assert(initialized != null);
@@ -656,7 +687,8 @@ class _$_ExchangableChanged implements _ExchangableChanged {
     assert(brandChanged != null);
     assert(exchangableChanged != null);
     assert(headphonesChanged != null);
-    assert(maxPriceChanged != null);
+    assert(priceChanged != null);
+    assert(reseted != null);
     assert(submitted != null);
     return exchangableChanged(this);
   }
@@ -669,7 +701,8 @@ class _$_ExchangableChanged implements _ExchangableChanged {
     Result brandChanged(_BrandChanged value),
     Result exchangableChanged(_ExchangableChanged value),
     Result headphonesChanged(_HeadphonesChanged value),
-    Result maxPriceChanged(_MaxPriceChanged value),
+    Result priceChanged(_PriceChanged value),
+    Result reseted(_Reseted value),
     Result submitted(_Submitted value),
     @required Result orElse(),
   }) {
@@ -759,7 +792,8 @@ class _$_HeadphonesChanged implements _HeadphonesChanged {
     @required Result brandChanged(String brandStr),
     @required Result exchangableChanged(bool exchangableBool),
     @required Result headphonesChanged(bool headphonesBool),
-    @required Result maxPriceChanged(int maxPriceInt),
+    @required Result priceChanged(String priceInt),
+    @required Result reseted(),
     @required Result submitted(),
   }) {
     assert(initialized != null);
@@ -767,7 +801,8 @@ class _$_HeadphonesChanged implements _HeadphonesChanged {
     assert(brandChanged != null);
     assert(exchangableChanged != null);
     assert(headphonesChanged != null);
-    assert(maxPriceChanged != null);
+    assert(priceChanged != null);
+    assert(reseted != null);
     assert(submitted != null);
     return headphonesChanged(headphonesBool);
   }
@@ -780,7 +815,8 @@ class _$_HeadphonesChanged implements _HeadphonesChanged {
     Result brandChanged(String brandStr),
     Result exchangableChanged(bool exchangableBool),
     Result headphonesChanged(bool headphonesBool),
-    Result maxPriceChanged(int maxPriceInt),
+    Result priceChanged(String priceInt),
+    Result reseted(),
     Result submitted(),
     @required Result orElse(),
   }) {
@@ -799,7 +835,8 @@ class _$_HeadphonesChanged implements _HeadphonesChanged {
     @required Result brandChanged(_BrandChanged value),
     @required Result exchangableChanged(_ExchangableChanged value),
     @required Result headphonesChanged(_HeadphonesChanged value),
-    @required Result maxPriceChanged(_MaxPriceChanged value),
+    @required Result priceChanged(_PriceChanged value),
+    @required Result reseted(_Reseted value),
     @required Result submitted(_Submitted value),
   }) {
     assert(initialized != null);
@@ -807,7 +844,8 @@ class _$_HeadphonesChanged implements _HeadphonesChanged {
     assert(brandChanged != null);
     assert(exchangableChanged != null);
     assert(headphonesChanged != null);
-    assert(maxPriceChanged != null);
+    assert(priceChanged != null);
+    assert(reseted != null);
     assert(submitted != null);
     return headphonesChanged(this);
   }
@@ -820,7 +858,8 @@ class _$_HeadphonesChanged implements _HeadphonesChanged {
     Result brandChanged(_BrandChanged value),
     Result exchangableChanged(_ExchangableChanged value),
     Result headphonesChanged(_HeadphonesChanged value),
-    Result maxPriceChanged(_MaxPriceChanged value),
+    Result priceChanged(_PriceChanged value),
+    Result reseted(_Reseted value),
     Result submitted(_Submitted value),
     @required Result orElse(),
   }) {
@@ -840,62 +879,62 @@ abstract class _HeadphonesChanged implements PostsFormFilterEvent {
 }
 
 /// @nodoc
-abstract class _$MaxPriceChangedCopyWith<$Res> {
-  factory _$MaxPriceChangedCopyWith(
-          _MaxPriceChanged value, $Res Function(_MaxPriceChanged) then) =
-      __$MaxPriceChangedCopyWithImpl<$Res>;
-  $Res call({int maxPriceInt});
+abstract class _$PriceChangedCopyWith<$Res> {
+  factory _$PriceChangedCopyWith(
+          _PriceChanged value, $Res Function(_PriceChanged) then) =
+      __$PriceChangedCopyWithImpl<$Res>;
+  $Res call({String priceInt});
 }
 
 /// @nodoc
-class __$MaxPriceChangedCopyWithImpl<$Res>
+class __$PriceChangedCopyWithImpl<$Res>
     extends _$PostsFormFilterEventCopyWithImpl<$Res>
-    implements _$MaxPriceChangedCopyWith<$Res> {
-  __$MaxPriceChangedCopyWithImpl(
-      _MaxPriceChanged _value, $Res Function(_MaxPriceChanged) _then)
-      : super(_value, (v) => _then(v as _MaxPriceChanged));
+    implements _$PriceChangedCopyWith<$Res> {
+  __$PriceChangedCopyWithImpl(
+      _PriceChanged _value, $Res Function(_PriceChanged) _then)
+      : super(_value, (v) => _then(v as _PriceChanged));
 
   @override
-  _MaxPriceChanged get _value => super._value as _MaxPriceChanged;
+  _PriceChanged get _value => super._value as _PriceChanged;
 
   @override
   $Res call({
-    Object maxPriceInt = freezed,
+    Object priceInt = freezed,
   }) {
-    return _then(_MaxPriceChanged(
-      maxPriceInt == freezed ? _value.maxPriceInt : maxPriceInt as int,
+    return _then(_PriceChanged(
+      priceInt == freezed ? _value.priceInt : priceInt as String,
     ));
   }
 }
 
 /// @nodoc
-class _$_MaxPriceChanged implements _MaxPriceChanged {
-  const _$_MaxPriceChanged(this.maxPriceInt) : assert(maxPriceInt != null);
+class _$_PriceChanged implements _PriceChanged {
+  const _$_PriceChanged(this.priceInt) : assert(priceInt != null);
 
   @override
-  final int maxPriceInt;
+  final String priceInt;
 
   @override
   String toString() {
-    return 'PostsFormFilterEvent.maxPriceChanged(maxPriceInt: $maxPriceInt)';
+    return 'PostsFormFilterEvent.priceChanged(priceInt: $priceInt)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _MaxPriceChanged &&
-            (identical(other.maxPriceInt, maxPriceInt) ||
+        (other is _PriceChanged &&
+            (identical(other.priceInt, priceInt) ||
                 const DeepCollectionEquality()
-                    .equals(other.maxPriceInt, maxPriceInt)));
+                    .equals(other.priceInt, priceInt)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(maxPriceInt);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(priceInt);
 
   @override
-  _$MaxPriceChangedCopyWith<_MaxPriceChanged> get copyWith =>
-      __$MaxPriceChangedCopyWithImpl<_MaxPriceChanged>(this, _$identity);
+  _$PriceChangedCopyWith<_PriceChanged> get copyWith =>
+      __$PriceChangedCopyWithImpl<_PriceChanged>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -905,7 +944,8 @@ class _$_MaxPriceChanged implements _MaxPriceChanged {
     @required Result brandChanged(String brandStr),
     @required Result exchangableChanged(bool exchangableBool),
     @required Result headphonesChanged(bool headphonesBool),
-    @required Result maxPriceChanged(int maxPriceInt),
+    @required Result priceChanged(String priceInt),
+    @required Result reseted(),
     @required Result submitted(),
   }) {
     assert(initialized != null);
@@ -913,9 +953,10 @@ class _$_MaxPriceChanged implements _MaxPriceChanged {
     assert(brandChanged != null);
     assert(exchangableChanged != null);
     assert(headphonesChanged != null);
-    assert(maxPriceChanged != null);
+    assert(priceChanged != null);
+    assert(reseted != null);
     assert(submitted != null);
-    return maxPriceChanged(maxPriceInt);
+    return priceChanged(priceInt);
   }
 
   @override
@@ -926,13 +967,14 @@ class _$_MaxPriceChanged implements _MaxPriceChanged {
     Result brandChanged(String brandStr),
     Result exchangableChanged(bool exchangableBool),
     Result headphonesChanged(bool headphonesBool),
-    Result maxPriceChanged(int maxPriceInt),
+    Result priceChanged(String priceInt),
+    Result reseted(),
     Result submitted(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (maxPriceChanged != null) {
-      return maxPriceChanged(maxPriceInt);
+    if (priceChanged != null) {
+      return priceChanged(priceInt);
     }
     return orElse();
   }
@@ -945,7 +987,8 @@ class _$_MaxPriceChanged implements _MaxPriceChanged {
     @required Result brandChanged(_BrandChanged value),
     @required Result exchangableChanged(_ExchangableChanged value),
     @required Result headphonesChanged(_HeadphonesChanged value),
-    @required Result maxPriceChanged(_MaxPriceChanged value),
+    @required Result priceChanged(_PriceChanged value),
+    @required Result reseted(_Reseted value),
     @required Result submitted(_Submitted value),
   }) {
     assert(initialized != null);
@@ -953,9 +996,10 @@ class _$_MaxPriceChanged implements _MaxPriceChanged {
     assert(brandChanged != null);
     assert(exchangableChanged != null);
     assert(headphonesChanged != null);
-    assert(maxPriceChanged != null);
+    assert(priceChanged != null);
+    assert(reseted != null);
     assert(submitted != null);
-    return maxPriceChanged(this);
+    return priceChanged(this);
   }
 
   @override
@@ -966,23 +1010,149 @@ class _$_MaxPriceChanged implements _MaxPriceChanged {
     Result brandChanged(_BrandChanged value),
     Result exchangableChanged(_ExchangableChanged value),
     Result headphonesChanged(_HeadphonesChanged value),
-    Result maxPriceChanged(_MaxPriceChanged value),
+    Result priceChanged(_PriceChanged value),
+    Result reseted(_Reseted value),
     Result submitted(_Submitted value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (maxPriceChanged != null) {
-      return maxPriceChanged(this);
+    if (priceChanged != null) {
+      return priceChanged(this);
     }
     return orElse();
   }
 }
 
-abstract class _MaxPriceChanged implements PostsFormFilterEvent {
-  const factory _MaxPriceChanged(int maxPriceInt) = _$_MaxPriceChanged;
+abstract class _PriceChanged implements PostsFormFilterEvent {
+  const factory _PriceChanged(String priceInt) = _$_PriceChanged;
 
-  int get maxPriceInt;
-  _$MaxPriceChangedCopyWith<_MaxPriceChanged> get copyWith;
+  String get priceInt;
+  _$PriceChangedCopyWith<_PriceChanged> get copyWith;
+}
+
+/// @nodoc
+abstract class _$ResetedCopyWith<$Res> {
+  factory _$ResetedCopyWith(_Reseted value, $Res Function(_Reseted) then) =
+      __$ResetedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$ResetedCopyWithImpl<$Res>
+    extends _$PostsFormFilterEventCopyWithImpl<$Res>
+    implements _$ResetedCopyWith<$Res> {
+  __$ResetedCopyWithImpl(_Reseted _value, $Res Function(_Reseted) _then)
+      : super(_value, (v) => _then(v as _Reseted));
+
+  @override
+  _Reseted get _value => super._value as _Reseted;
+}
+
+/// @nodoc
+class _$_Reseted implements _Reseted {
+  const _$_Reseted();
+
+  @override
+  String toString() {
+    return 'PostsFormFilterEvent.reseted()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _Reseted);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initialized(),
+    @required Result cityChanged(String cityStr),
+    @required Result brandChanged(String brandStr),
+    @required Result exchangableChanged(bool exchangableBool),
+    @required Result headphonesChanged(bool headphonesBool),
+    @required Result priceChanged(String priceInt),
+    @required Result reseted(),
+    @required Result submitted(),
+  }) {
+    assert(initialized != null);
+    assert(cityChanged != null);
+    assert(brandChanged != null);
+    assert(exchangableChanged != null);
+    assert(headphonesChanged != null);
+    assert(priceChanged != null);
+    assert(reseted != null);
+    assert(submitted != null);
+    return reseted();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initialized(),
+    Result cityChanged(String cityStr),
+    Result brandChanged(String brandStr),
+    Result exchangableChanged(bool exchangableBool),
+    Result headphonesChanged(bool headphonesBool),
+    Result priceChanged(String priceInt),
+    Result reseted(),
+    Result submitted(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (reseted != null) {
+      return reseted();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initialized(_Initialized value),
+    @required Result cityChanged(_CityChanged value),
+    @required Result brandChanged(_BrandChanged value),
+    @required Result exchangableChanged(_ExchangableChanged value),
+    @required Result headphonesChanged(_HeadphonesChanged value),
+    @required Result priceChanged(_PriceChanged value),
+    @required Result reseted(_Reseted value),
+    @required Result submitted(_Submitted value),
+  }) {
+    assert(initialized != null);
+    assert(cityChanged != null);
+    assert(brandChanged != null);
+    assert(exchangableChanged != null);
+    assert(headphonesChanged != null);
+    assert(priceChanged != null);
+    assert(reseted != null);
+    assert(submitted != null);
+    return reseted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initialized(_Initialized value),
+    Result cityChanged(_CityChanged value),
+    Result brandChanged(_BrandChanged value),
+    Result exchangableChanged(_ExchangableChanged value),
+    Result headphonesChanged(_HeadphonesChanged value),
+    Result priceChanged(_PriceChanged value),
+    Result reseted(_Reseted value),
+    Result submitted(_Submitted value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (reseted != null) {
+      return reseted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Reseted implements PostsFormFilterEvent {
+  const factory _Reseted() = _$_Reseted;
 }
 
 /// @nodoc
@@ -1028,7 +1198,8 @@ class _$_Submitted implements _Submitted {
     @required Result brandChanged(String brandStr),
     @required Result exchangableChanged(bool exchangableBool),
     @required Result headphonesChanged(bool headphonesBool),
-    @required Result maxPriceChanged(int maxPriceInt),
+    @required Result priceChanged(String priceInt),
+    @required Result reseted(),
     @required Result submitted(),
   }) {
     assert(initialized != null);
@@ -1036,7 +1207,8 @@ class _$_Submitted implements _Submitted {
     assert(brandChanged != null);
     assert(exchangableChanged != null);
     assert(headphonesChanged != null);
-    assert(maxPriceChanged != null);
+    assert(priceChanged != null);
+    assert(reseted != null);
     assert(submitted != null);
     return submitted();
   }
@@ -1049,7 +1221,8 @@ class _$_Submitted implements _Submitted {
     Result brandChanged(String brandStr),
     Result exchangableChanged(bool exchangableBool),
     Result headphonesChanged(bool headphonesBool),
-    Result maxPriceChanged(int maxPriceInt),
+    Result priceChanged(String priceInt),
+    Result reseted(),
     Result submitted(),
     @required Result orElse(),
   }) {
@@ -1068,7 +1241,8 @@ class _$_Submitted implements _Submitted {
     @required Result brandChanged(_BrandChanged value),
     @required Result exchangableChanged(_ExchangableChanged value),
     @required Result headphonesChanged(_HeadphonesChanged value),
-    @required Result maxPriceChanged(_MaxPriceChanged value),
+    @required Result priceChanged(_PriceChanged value),
+    @required Result reseted(_Reseted value),
     @required Result submitted(_Submitted value),
   }) {
     assert(initialized != null);
@@ -1076,7 +1250,8 @@ class _$_Submitted implements _Submitted {
     assert(brandChanged != null);
     assert(exchangableChanged != null);
     assert(headphonesChanged != null);
-    assert(maxPriceChanged != null);
+    assert(priceChanged != null);
+    assert(reseted != null);
     assert(submitted != null);
     return submitted(this);
   }
@@ -1089,7 +1264,8 @@ class _$_Submitted implements _Submitted {
     Result brandChanged(_BrandChanged value),
     Result exchangableChanged(_ExchangableChanged value),
     Result headphonesChanged(_HeadphonesChanged value),
-    Result maxPriceChanged(_MaxPriceChanged value),
+    Result priceChanged(_PriceChanged value),
+    Result reseted(_Reseted value),
     Result submitted(_Submitted value),
     @required Result orElse(),
   }) {
@@ -1115,13 +1291,13 @@ class _$PostsFormFilterStateTearOff {
       @required String brand,
       @required bool exchangable,
       @required bool headphones,
-      @required int maxPrice}) {
+      @required String price}) {
     return _PostsFormFilterState(
       city: city,
       brand: brand,
       exchangable: exchangable,
       headphones: headphones,
-      maxPrice: maxPrice,
+      price: price,
     );
   }
 }
@@ -1136,7 +1312,7 @@ mixin _$PostsFormFilterState {
   String get brand;
   bool get exchangable;
   bool get headphones;
-  int get maxPrice;
+  String get price;
 
   $PostsFormFilterStateCopyWith<PostsFormFilterState> get copyWith;
 }
@@ -1151,7 +1327,7 @@ abstract class $PostsFormFilterStateCopyWith<$Res> {
       String brand,
       bool exchangable,
       bool headphones,
-      int maxPrice});
+      String price});
 }
 
 /// @nodoc
@@ -1169,7 +1345,7 @@ class _$PostsFormFilterStateCopyWithImpl<$Res>
     Object brand = freezed,
     Object exchangable = freezed,
     Object headphones = freezed,
-    Object maxPrice = freezed,
+    Object price = freezed,
   }) {
     return _then(_value.copyWith(
       city: city == freezed ? _value.city : city as String,
@@ -1178,7 +1354,7 @@ class _$PostsFormFilterStateCopyWithImpl<$Res>
           exchangable == freezed ? _value.exchangable : exchangable as bool,
       headphones:
           headphones == freezed ? _value.headphones : headphones as bool,
-      maxPrice: maxPrice == freezed ? _value.maxPrice : maxPrice as int,
+      price: price == freezed ? _value.price : price as String,
     ));
   }
 }
@@ -1195,7 +1371,7 @@ abstract class _$PostsFormFilterStateCopyWith<$Res>
       String brand,
       bool exchangable,
       bool headphones,
-      int maxPrice});
+      String price});
 }
 
 /// @nodoc
@@ -1215,7 +1391,7 @@ class __$PostsFormFilterStateCopyWithImpl<$Res>
     Object brand = freezed,
     Object exchangable = freezed,
     Object headphones = freezed,
-    Object maxPrice = freezed,
+    Object price = freezed,
   }) {
     return _then(_PostsFormFilterState(
       city: city == freezed ? _value.city : city as String,
@@ -1224,7 +1400,7 @@ class __$PostsFormFilterStateCopyWithImpl<$Res>
           exchangable == freezed ? _value.exchangable : exchangable as bool,
       headphones:
           headphones == freezed ? _value.headphones : headphones as bool,
-      maxPrice: maxPrice == freezed ? _value.maxPrice : maxPrice as int,
+      price: price == freezed ? _value.price : price as String,
     ));
   }
 }
@@ -1236,12 +1412,12 @@ class _$_PostsFormFilterState implements _PostsFormFilterState {
       @required this.brand,
       @required this.exchangable,
       @required this.headphones,
-      @required this.maxPrice})
+      @required this.price})
       : assert(city != null),
         assert(brand != null),
         assert(exchangable != null),
         assert(headphones != null),
-        assert(maxPrice != null);
+        assert(price != null);
 
   @override
   final String city;
@@ -1252,11 +1428,11 @@ class _$_PostsFormFilterState implements _PostsFormFilterState {
   @override
   final bool headphones;
   @override
-  final int maxPrice;
+  final String price;
 
   @override
   String toString() {
-    return 'PostsFormFilterState(city: $city, brand: $brand, exchangable: $exchangable, headphones: $headphones, maxPrice: $maxPrice)';
+    return 'PostsFormFilterState(city: $city, brand: $brand, exchangable: $exchangable, headphones: $headphones, price: $price)';
   }
 
   @override
@@ -1273,9 +1449,8 @@ class _$_PostsFormFilterState implements _PostsFormFilterState {
             (identical(other.headphones, headphones) ||
                 const DeepCollectionEquality()
                     .equals(other.headphones, headphones)) &&
-            (identical(other.maxPrice, maxPrice) ||
-                const DeepCollectionEquality()
-                    .equals(other.maxPrice, maxPrice)));
+            (identical(other.price, price) ||
+                const DeepCollectionEquality().equals(other.price, price)));
   }
 
   @override
@@ -1285,7 +1460,7 @@ class _$_PostsFormFilterState implements _PostsFormFilterState {
       const DeepCollectionEquality().hash(brand) ^
       const DeepCollectionEquality().hash(exchangable) ^
       const DeepCollectionEquality().hash(headphones) ^
-      const DeepCollectionEquality().hash(maxPrice);
+      const DeepCollectionEquality().hash(price);
 
   @override
   _$PostsFormFilterStateCopyWith<_PostsFormFilterState> get copyWith =>
@@ -1299,7 +1474,7 @@ abstract class _PostsFormFilterState implements PostsFormFilterState {
       @required String brand,
       @required bool exchangable,
       @required bool headphones,
-      @required int maxPrice}) = _$_PostsFormFilterState;
+      @required String price}) = _$_PostsFormFilterState;
 
   @override
   String get city;
@@ -1310,7 +1485,7 @@ abstract class _PostsFormFilterState implements PostsFormFilterState {
   @override
   bool get headphones;
   @override
-  int get maxPrice;
+  String get price;
   @override
   _$PostsFormFilterStateCopyWith<_PostsFormFilterState> get copyWith;
 }

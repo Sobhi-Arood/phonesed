@@ -3,8 +3,11 @@ import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:phonesed/application/core/user_profile/avatar_user/avatar_user_bloc.dart';
 import 'package:phonesed/application/core/user_profile/user_profile_bloc.dart';
+
+import '../../../constants.dart';
 
 class CircularUserAvatar extends HookWidget {
   // final String avatarUrl;
@@ -16,8 +19,11 @@ class CircularUserAvatar extends HookWidget {
       listener: (context, state) {
         state.map(
             initial: (_) => {},
-            actionInProgress: (_) =>
-                const Center(child: CircularProgressIndicator()),
+            actionInProgress: (_) => const Center(
+                  child: SpinKitFadingFour(
+                    color: kPrimaryColor,
+                  ),
+                ),
             pickImgFailure: (f) {
               f.valueFailure.maybeMap(
                   unknownError: (f) {
@@ -50,17 +56,20 @@ class CircularUserAvatar extends HookWidget {
           radius: 60,
           onTap: () {
             context
-                .bloc<AvatarUserBloc>()
+                .read<AvatarUserBloc>()
                 .add(const AvatarUserEvent.avatarClicked());
           },
           child: BlocConsumer<UserProfileBloc, UserProfileState>(
             listener: (context, state) {
               state.maybeMap(
-                  loadInProgress: (_) =>
-                      const Center(child: CircularProgressIndicator()),
+                  loadInProgress: (_) => const Center(
+                        child: SpinKitFadingFour(
+                          color: kPrimaryColor,
+                        ),
+                      ),
                   loadSuccess: (_) => {
                         context
-                            .bloc<UserProfileBloc>()
+                            .read<UserProfileBloc>()
                             .add(const UserProfileEvent.initialized())
                       },
                   orElse: () => {});
@@ -72,8 +81,11 @@ class CircularUserAvatar extends HookWidget {
             },
             builder: (context, state) {
               return state.maybeMap(
-                  loadInProgress: (_) =>
-                      const Center(child: CircularProgressIndicator()),
+                  loadInProgress: (_) => const Center(
+                        child: SpinKitFadingFour(
+                          color: kPrimaryColor,
+                        ),
+                      ),
                   loadSuccess: (state) {
                     // img.value = state.user.avatarUrl;
                     return CircleAvatar(

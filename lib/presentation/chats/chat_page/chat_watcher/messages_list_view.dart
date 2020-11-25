@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:phonesed/application/auth/auth_bloc/auth_bloc.dart';
 import 'package:phonesed/application/chats/chat_watcher/chat_watcher_bloc.dart';
 import 'package:phonesed/presentation/chats/chat_page/chat_watcher/chat_bubble.dart';
+
+import '../../../../constants.dart';
 
 class MessagesListView extends StatelessWidget {
   @override
@@ -12,8 +15,11 @@ class MessagesListView extends StatelessWidget {
       builder: (context, state) {
         return state.map(
             initial: (_) => Container(),
-            loadInProgress: (_) =>
-                const Center(child: CircularProgressIndicator()),
+            loadInProgress: (_) => const Center(
+                  child: SpinKitFadingFour(
+                    color: kPrimaryColor,
+                  ),
+                ),
             loadSuccess: (messages) {
               // print(messages.messages);
               return BlocBuilder<AuthBloc, AuthState>(

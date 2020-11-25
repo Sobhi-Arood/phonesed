@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phonesed/application/core/posts_filter/posts_filter_bloc.dart';
@@ -6,8 +7,11 @@ import 'package:phonesed/application/posts/post_watcher/post_watcher_bloc.dart';
 import 'package:phonesed/constants.dart';
 import 'package:phonesed/presentation/posts/post_watcher/post_filter_widget/widgets/brand_dropdown.dart';
 import 'package:phonesed/presentation/posts/post_watcher/post_filter_widget/widgets/city_dropdown.dart';
+import 'package:phonesed/presentation/posts/post_watcher/post_filter_widget/widgets/city_list_widget.dart';
 import 'package:phonesed/presentation/posts/post_watcher/post_filter_widget/widgets/exchangable_checkbox.dart';
+import 'package:phonesed/presentation/posts/post_watcher/post_filter_widget/widgets/price_list_widget.dart';
 import 'package:phonesed/presentation/posts/post_watcher/post_filter_widget/widgets/price_slider.dart';
+import 'package:phonesed/presentation/routes/router.gr.dart';
 
 import 'widgets/headphones_checkbox.dart';
 
@@ -29,25 +33,31 @@ class PostFilterWidget extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           mainAxisSize: MainAxisSize.min,
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const FilterCityDropdown(),
+                            // const FilterCityDropdown(),
+                            const CityFilterListField(),
                             const SizedBox(
                               height: 24,
                             ),
                             const FilterBrandDropdown(),
+                            // const SizedBox(
+                            //   height: 24,
+                            // ),
+                            // Wrap(
+                            //   spacing: 30,
+                            //   children: const [
+                            //     FilterExchangableCheckbox(),
+                            //     FilterHeadphonesCheckbox(),
+                            //   ],
+                            // ),
                             const SizedBox(
                               height: 24,
                             ),
-                            Wrap(
-                              children: const [
-                                FilterExchangableCheckbox(),
-                                FilterHeadphonesCheckbox(),
-                              ],
-                            ),
-                            PriceSlider(),
+                            // PriceSlider(),
+                            const PriceFilterListField(),
                             const SizedBox(
-                              height: 16,
+                              height: 24,
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -55,39 +65,66 @@ class PostFilterWidget extends StatelessWidget {
                                 RaisedButton(
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(4),
-                                    side: const BorderSide(
-                                        width: 3, color: kPrimaryColor),
+                                    // side: const BorderSide(
+                                    //   width: 3,
+                                    //   color: kPrimaryColor,
+                                    // ),
                                   ),
-                                  color: Colors.white,
+                                  color: kPrimaryLightColor,
                                   elevation: 0,
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    context.read<PostsFormFilterBloc>().add(
+                                        const PostsFormFilterEvent.reseted());
+                                    context
+                                        .read<PostsFilterBloc>()
+                                        .add(const PostsFilterEvent.closed());
+                                    context.read<PostWatcherBloc>().add(
+                                          const PostWatcherEvent
+                                              .watchAllStarted(),
+                                        );
+                                  },
                                   child: const Padding(
                                     padding: EdgeInsets.all(16.0),
                                     child: Text(
                                       'Reset',
                                       style: TextStyle(
-                                          color: kPrimaryColor, fontSize: 17),
+                                          color: kPrimaryDarkColor,
+                                          fontSize: 17),
                                     ),
                                   ),
                                 ),
-                                RaisedButton(
+                                const SizedBox(
+                                  width: 12,
+                                ),
+                                Expanded(
+                                  child: RaisedButton(
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(4),
                                     ),
                                     elevation: 0,
                                     color: kPrimaryColor,
                                     onPressed: () {
+                                      // ExtendedNavigator.of(context)
+                                      //     .pushFilterPostsWatchPage(
+                                      //         filterBrand: state.brand,
+                                      //         filterCity: state.city,
+                                      //         filterExchangable:
+                                      //             state.exchangable,
+                                      //         filterHeadphones:
+                                      //             state.headphones,
+                                      //         filterPrice: state.price);
                                       context
                                           .read<PostsFilterBloc>()
                                           .add(const PostsFilterEvent.closed());
-                                      context.bloc<PostWatcherBloc>().add(
+                                      context.read<PostWatcherBloc>().add(
                                             PostWatcherEvent
                                                 .watchFilteredPostsStarted(
-                                                    state.city,
-                                                    state.brand,
-                                                    state.exchangable,
-                                                    state.headphones,
-                                                    state.maxPrice),
+                                              state.city,
+                                              state.brand,
+                                              state.exchangable,
+                                              state.headphones,
+                                              state.price,
+                                            ),
                                           );
                                     },
                                     child: const Padding(
@@ -95,9 +132,13 @@ class PostFilterWidget extends StatelessWidget {
                                       child: Text(
                                         'Filter',
                                         style: TextStyle(
-                                            color: Colors.white, fontSize: 20),
+                                          color: Colors.white,
+                                          fontSize: 20,
+                                        ),
                                       ),
-                                    )),
+                                    ),
+                                  ),
+                                ),
                               ],
                             )
                           ],

@@ -56,7 +56,7 @@ class NewPostFormScaffold extends StatelessWidget {
                       const Icon(Icons.chevron_left, color: kPrimaryDarkColor),
                   onPressed: () {
                     FocusScope.of(context).unfocus();
-                    context.bloc<FormNavigationBloc>().add(
+                    context.read<FormNavigationBloc>().add(
                         FormNavigationEvent.pageChanged(
                             state.currentIndex - 1));
                   });

@@ -9,8 +9,11 @@ class FilterHeadphonesCheckbox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<PostsFormFilterBloc, PostsFormFilterState>(
+      buildWhen: (previous, current) =>
+          previous.headphones != current.headphones,
       builder: (context, state) {
         return Row(
+          mainAxisSize: MainAxisSize.min,
           children: [
             Checkbox(
                 value: state.headphones,

@@ -1,7 +1,9 @@
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:phonesed/application/posts/post_watcher/post_watcher_bloc.dart';
+import 'package:phonesed/constants.dart';
 import 'package:phonesed/presentation/posts/post_watcher/post_card/favorite_post_card_widget.dart';
 
 class FavortiePostsWatcherBody extends StatelessWidget {
@@ -13,8 +15,11 @@ class FavortiePostsWatcherBody extends StatelessWidget {
       builder: (context, state) {
         return state.map(
             initial: (_) => Container(),
-            loadInProgress: (_) =>
-                const Center(child: CircularProgressIndicator()),
+            loadInProgress: (_) => const Center(
+                  child: SpinKitPumpingHeart(
+                    color: kSecondaryLightColor,
+                  ),
+                ),
             loadSuccess: (state) {
               if (state.posts.isEmpty()) {
                 return Column(
