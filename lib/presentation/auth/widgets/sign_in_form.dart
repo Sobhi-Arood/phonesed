@@ -38,15 +38,16 @@ class SignInForm extends StatelessWidget {
           child: ListView(
             padding: const EdgeInsets.all(16),
             children: [
-              const Text(
-                'Login',
-                style: TextStyle(
-                  color: kPrimaryDarkColor,
-                  fontSize: 58,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 30),
+              // Text(
+              //   'Login',
+              //   style: Theme.of(context).textTheme.headline1,
+              //   // style: TextStyle(
+              //   //   color: kPrimaryDarkColor,
+              //   //   fontSize: 58,
+              //   //   fontWeight: FontWeight.bold,
+              //   // ),
+              // ),
+              // const SizedBox(height: 30),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -78,10 +79,10 @@ class SignInForm extends StatelessWidget {
                       ),
                       autocorrect: false,
                       onChanged: (value) => context
-                          .bloc<SignInFormBloc>()
+                          .read<SignInFormBloc>()
                           .add(SignInFormEvent.emailChanged(value)),
                       validator: (_) => context
-                          .bloc<SignInFormBloc>()
+                          .read<SignInFormBloc>()
                           .state
                           .emailAddress
                           .value
@@ -125,10 +126,10 @@ class SignInForm extends StatelessWidget {
                       ),
                       autocorrect: false,
                       onChanged: (value) => context
-                          .bloc<SignInFormBloc>()
+                          .read<SignInFormBloc>()
                           .add(SignInFormEvent.passwordChanged(value)),
                       validator: (_) => context
-                          .bloc<SignInFormBloc>()
+                          .read<SignInFormBloc>()
                           .state
                           .password
                           .value
@@ -147,7 +148,7 @@ class SignInForm extends StatelessWidget {
               RaisedButton(
                 onPressed: () {
                   context
-                      .bloc<SignInFormBloc>()
+                      .read<SignInFormBloc>()
                       .add(const SignInFormEvent.signInWithEmailAndPassword());
                 },
                 shape: RoundedRectangleBorder(
@@ -156,40 +157,50 @@ class SignInForm extends StatelessWidget {
                 elevation: 0,
                 highlightElevation: 0,
                 color: kPrimaryColor,
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 1.0),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 1.0),
                   child: Padding(
-                    padding: EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(16),
                     child: Text(
                       'Sign in',
-                      style: TextStyle(
-                        fontSize: 21,
-                        color: Colors.white,
-                      ),
+                      style: Theme.of(context).textTheme.button,
+                      // style: TextStyle(
+                      //   fontSize: 21,
+                      //   color: Colors.white,
+                      // ),
                     ),
                   ),
                 ),
               ),
-              const SizedBox(height: 70),
-              Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text('New user ?'),
-                    const SizedBox(width: 10),
-                    InkWell(
-                      onTap: () {
-                        ExtendedNavigator.of(context).pushSignUpPage();
-                      },
-                      child: const Text(
-                        'Sign up',
-                        style: TextStyle(
-                            color: kPrimaryColor, fontWeight: FontWeight.w600),
-                      ),
-                    )
-                  ],
-                ),
-              ),
+              // const SizedBox(height: 70),
+              // Center(
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.center,
+              //     children: [
+              //       Text(
+              //         'New user ?',
+              //         style: Theme.of(context).textTheme.caption,
+              //       ),
+              //       const SizedBox(width: 10),
+              //       InkWell(
+              //         onTap: () {
+              //           ExtendedNavigator.of(context).pushSignUpPage();
+              //         },
+              //         child: Text(
+              //           'Sign up',
+              //           style: Theme.of(context)
+              //               .textTheme
+              //               .headline6
+              //               .copyWith(color: kPrimaryColor),
+              //           // style: TextStyle(
+              //           //   color: kPrimaryColor,
+              //           //   fontWeight: FontWeight.w600,
+              //           // ),
+              //         ),
+              //       )
+              //     ],
+              //   ),
+              // ),
             ],
           ),
         ),

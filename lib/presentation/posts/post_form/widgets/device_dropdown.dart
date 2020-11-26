@@ -50,7 +50,7 @@ class DeviceDropdown extends HookWidget {
                       //     .fold((l) => s.data[0], (r) => r);
 
                       // context
-                      //     .bloc<PostFormBloc>()
+                      //     .read<PostFormBloc>()
                       //     .add(PostFormEvent.deviceChanged(deviceValue.value));
                     },
                     loadDevicesFailure: (_) => Container(
@@ -82,7 +82,7 @@ class DeviceDropdown extends HookWidget {
                             ),
                             onChanged: (v) {
                               context
-                                  .bloc<PostFormBloc>()
+                                  .read<PostFormBloc>()
                                   .add(PostFormEvent.deviceChanged(v));
                             },
                             items: data.data

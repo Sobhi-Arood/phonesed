@@ -3,6 +3,7 @@ import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phonesed/application/auth/auth_bloc/auth_bloc.dart';
+import 'package:phonesed/application/chats/conversations_watcher/conversations_watcher_bloc.dart';
 import 'package:phonesed/application/core/bottom_navigation/bottom_navigation_bloc.dart';
 import 'package:phonesed/application/core/posts_filter/posts_filter_bloc.dart';
 import 'package:phonesed/application/core/posts_sort/posts_sort_bloc.dart';
@@ -20,7 +21,6 @@ class MainPage extends StatelessWidget {
   const MainPage({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    print('yes yes yesd yes ytd yrd');
     return MultiBlocProvider(
       providers: [
         BlocProvider<BottomNavigationBloc>(
@@ -43,6 +43,9 @@ class MainPage extends StatelessWidget {
         BlocProvider<PostsSortBloc>(
             create: (context) =>
                 getIt<PostsSortBloc>()..add(const PostsSortEvent.closed())),
+        BlocProvider<ConversationsWatcherBloc>(
+            create: (context) => getIt<ConversationsWatcherBloc>()
+              ..add(const ConversationsWatcherEvent.watchAllStarted())),
       ],
       child: MultiBlocListener(
         listeners: [
@@ -86,7 +89,8 @@ class MainPage extends StatelessWidget {
                       return 'Profile';
                     }
                   }),
-                  style: const TextStyle(color: kPrimaryDarkColor),
+                  // style: const TextStyle(color: kPrimaryDarkColor),
+                  style: Theme.of(context).appBarTheme.textTheme.headline2,
                 ),
                 leading: BlocBuilder<AuthBloc, AuthState>(
                   builder: (context, state) {

@@ -18,11 +18,12 @@ class DetailTopWidget extends StatelessWidget {
           Text(
             post.title.getOrCrash(),
             textAlign: TextAlign.left,
-            style: const TextStyle(
-              fontSize: 26,
-              color: kPrimaryDarkColor,
-              fontWeight: FontWeight.bold,
-            ),
+            style: Theme.of(context).textTheme.headline4,
+            // style: const TextStyle(
+            //   fontSize: 26,
+            //   color: kPrimaryDarkColor,
+            //   fontWeight: FontWeight.bold,
+            // ),
           ),
           const SizedBox(height: 12),
           Row(
@@ -30,18 +31,21 @@ class DetailTopWidget extends StatelessWidget {
             children: [
               Text(
                 post.brand.getOrCrash(),
-                style: const TextStyle(
-                  fontWeight: FontWeight.w700,
-                  color: kSecondaryLightColor,
-                ),
+                style: Theme.of(context).textTheme.subtitle1.copyWith(
+                    fontWeight: FontWeight.w900, color: kSecondaryLightColor),
+                // style: const TextStyle(
+                //   fontWeight: FontWeight.w700,
+                //   color: kSecondaryLightColor,
+                // ),
               ),
               Text(
                 'AED ${post.price.getOrCrash()}',
-                style: const TextStyle(
-                  color: kPrimaryColor,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                ),
+                style: Theme.of(context).textTheme.headline5,
+                // style: const TextStyle(
+                //   color: kPrimaryColor,
+                //   fontSize: 18,
+                //   fontWeight: FontWeight.w600,
+                // ),
               ),
             ],
           ),
@@ -59,15 +63,18 @@ class DetailTopWidget extends StatelessWidget {
               ),
               Text(
                 post.city.getOrCrash(),
-                style: const TextStyle(fontWeight: FontWeight.w500),
+                style: Theme.of(context).textTheme.caption,
+                // style: const TextStyle(fontWeight: FontWeight.w500),
               ),
               const Icon(
                 Icons.chevron_right,
                 size: 20,
+                color: kPrimaryDarkColor,
               ),
               Text(
                 post.area.getOrCrash(),
-                style: const TextStyle(fontWeight: FontWeight.w500),
+                style: Theme.of(context).textTheme.caption,
+                // style: const TextStyle(fontWeight: FontWeight.w500),
               ),
             ],
           ),
@@ -91,9 +98,10 @@ class DetailTopWidget extends StatelessWidget {
                   const SizedBox(
                     width: 2,
                   ),
-                  const Text(
+                  Text(
                     'Exchangable',
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+                    style: Theme.of(context).textTheme.caption,
+                    // style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
                   )
                 ],
               ),
@@ -113,9 +121,10 @@ class DetailTopWidget extends StatelessWidget {
                   const SizedBox(
                     width: 2,
                   ),
-                  const Text(
+                  Text(
                     'Negotiable',
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+                    style: Theme.of(context).textTheme.caption,
+                    // style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
                   )
                 ],
               ),
@@ -135,9 +144,10 @@ class DetailTopWidget extends StatelessWidget {
                   const SizedBox(
                     width: 2,
                   ),
-                  const Text(
+                  Text(
                     'Headphones',
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+                    style: Theme.of(context).textTheme.caption,
+                    // style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
                   )
                 ],
               ),
@@ -157,9 +167,10 @@ class DetailTopWidget extends StatelessWidget {
                   const SizedBox(
                     width: 2,
                   ),
-                  const Text(
+                  Text(
                     'Charger',
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+                    style: Theme.of(context).textTheme.caption,
+                    // style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
                   )
                 ],
               ),
@@ -175,9 +186,14 @@ class DetailTopWidget extends StatelessWidget {
                   color: Color(0x60000000),
                 ),
               ),
-              Text(post.moreAccessories.getOrCrash(),
-                  style: const TextStyle(
-                      fontSize: 16, fontWeight: FontWeight.w500))
+              Text(
+                post.moreAccessories.getOrCrash(),
+                style: Theme.of(context).textTheme.caption,
+                // style: const TextStyle(
+                //   fontSize: 16,
+                //   fontWeight: FontWeight.w500,
+                // ),
+              )
             ])
           ]
         ],

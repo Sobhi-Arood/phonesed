@@ -30,7 +30,7 @@ class AddImageButton extends StatelessWidget {
                 context.postImages = context.postImages.plusElement(file.img);
 
                 context
-                    .bloc<PostFormBloc>()
+                    .read<PostFormBloc>()
                     .add(PostFormEvent.imagesChanged(context.postImages));
               });
         },
@@ -63,7 +63,7 @@ class AddImageButton extends StatelessWidget {
                       : () {
                           FocusScope.of(context).unfocus();
                           context
-                              .bloc<PostPickerImageBloc>()
+                              .read<PostPickerImageBloc>()
                               .add(const PostPickerImageEvent.addClicked());
                         },
                 ),
@@ -96,7 +96,7 @@ class AddImageButton extends StatelessWidget {
               //   onTap: () {
               //     FocusScope.of(context).unfocus();
               //     context
-              //         .bloc<PostPickerImageBloc>()
+              //         .read<PostPickerImageBloc>()
               //         .add(const PostPickerImageEvent.addClicked());
               //   },
               // ),

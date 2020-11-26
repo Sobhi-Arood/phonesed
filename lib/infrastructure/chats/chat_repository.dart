@@ -30,6 +30,7 @@ class ChatRepository implements IChatRepository {
 
       yield* user
           .collection('Conversations')
+          .orderBy('recentMessageDidRead', descending: false)
           .orderBy('serverTimeStamp', descending: true)
           .snapshots()
           .map(
@@ -42,6 +43,7 @@ class ChatRepository implements IChatRepository {
             ),
           )
           .onErrorReturnWith((error) {
+        print(error);
         if (error is FirebaseException &&
             error.message.contains('permission-denied')) {
           return left(const MessageFailure.insufficientPermission());
@@ -155,6 +157,7 @@ class ChatRepository implements IChatRepository {
             postCity: postPrimitive.postCity,
             recentMessageContent: message.content.getOrCrash(),
             recentMessageDate: message.date.getOrCrash(),
+            recentMessageDidRead: false,
             displayUserName: '',
           );
 
@@ -175,7 +178,9 @@ class ChatRepository implements IChatRepository {
                 .collection('Conversations')
                 .doc(conversationId),
             conversationDto
-                .copyWith(displayUserName: postPrimitive.postUsername)
+                .copyWith(
+                    displayUserName: postPrimitive.postUsername,
+                    recentMessageDidRead: true)
                 .toJson(),
           );
         });
@@ -190,6 +195,44 @@ class ChatRepository implements IChatRepository {
       }
     } catch (_) {
       return left(const MessageFailure.unexpected());
+    }
+  }
+
+  @override
+  Future<Either<MessageFailure, Unit>> didReadRecentMessage(
+      String conversationId) async {
+    try {
+      final user = await _firestore.userDocument();
+      await user
+          .collection('Conversations')
+          .doc(conversationId)
+          .update({'recentMessageDidRead': true});
+      return right(unit);
+    } catch (_) {
+      return left(const MessageFailure.unexpected());
+    }
+  }
+
+  @override
+  Stream<Either<MessageFailure, int>> watchNotReadConversations() async* {
+    try {
+      final user = await _firestore.userDocument();
+      yield* user
+          .collection('Conversations')
+          .where('recentMessageDidRead', isEqualTo: false)
+          .snapshots()
+          .map((event) => right<MessageFailure, int>(event.size))
+          .onErrorReturnWith((error) {
+        print(error);
+        if (error is FirebaseException &&
+            error.message.contains('permission-denied')) {
+          return left(const MessageFailure.insufficientPermission());
+        } else {
+          return left(const MessageFailure.unexpected());
+        }
+      });
+    } catch (e) {
+      yield left(const MessageFailure.unexpected());
     }
   }
 }

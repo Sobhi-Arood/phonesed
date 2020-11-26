@@ -32,15 +32,16 @@ class DeviceListWidget extends StatelessWidget {
                         ListTile(
                           title: Text(
                             it,
-                            style: const TextStyle(fontWeight: FontWeight.w500),
+                            style: Theme.of(context).textTheme.headline6,
+                            // style: const TextStyle(fontWeight: FontWeight.w500),
                           ),
                           trailing: const Icon(Icons.chevron_right),
                           onTap: () {
                             context
-                                .bloc<PostFormBloc>()
+                                .read<PostFormBloc>()
                                 .add(PostFormEvent.deviceChanged(it));
                             context
-                                .bloc<FormNavigationBloc>()
+                                .read<FormNavigationBloc>()
                                 .add(const FormNavigationEvent.pageChanged(2));
                           },
                         ),

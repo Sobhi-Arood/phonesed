@@ -52,10 +52,10 @@ class TitleTextForm extends HookWidget {
               // maxLength: PostTitle.maxLength,
               // minLines: 1,
               onChanged: (value) => context
-                  .bloc<PostFormBloc>()
+                  .read<PostFormBloc>()
                   .add(PostFormEvent.titleChanged(value)),
               validator: (_) => context
-                  .bloc<PostFormBloc>()
+                  .read<PostFormBloc>()
                   .state
                   .post
                   .title

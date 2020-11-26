@@ -56,17 +56,11 @@ class ConversationsWatcherBody extends StatelessWidget {
                     isMe: true,
                   );
                 }
-                // } else {
-                return Center(
-                  child: Image.asset('assets/images/no_messages.png'),
-                );
-                // }
               },
             );
           },
           loadFailure: (f) {
             return Center(
-              // child: Image.asset('assets/images/no_messages.png'),
               child: Text(
                 f.messageFailure.map(
                   unableToSend: (_) => '',

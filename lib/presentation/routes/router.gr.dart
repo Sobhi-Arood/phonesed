@@ -10,6 +10,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import '../../domain/entities/post.dart';
+import '../../domain/entities/user.dart';
 import '../../infrastructure/posts/post_primitive_presentation.dart';
 import '../auth/email_verification_sent_page.dart';
 import '../auth/sign_in_page.dart';
@@ -23,6 +24,7 @@ import '../posts/post_detail/post_detail_page.dart';
 import '../posts/post_form/post_form_page.dart';
 import '../posts/post_watcher/filter_posts_watcher_page.dart';
 import '../profile/my_posts_watcher/my_posts_watcher_page.dart';
+import '../profile/profile_details_page/profile_details_page.dart';
 
 class Routes {
   static const String mainPage = '/';
@@ -36,6 +38,7 @@ class Routes {
   static const String postDetailPage = '/post-detail-page';
   static const String chatPage = '/chat-page';
   static const String myPostsWatcherPage = '/my-posts-watcher-page';
+  static const String profileDetailsPage = '/profile-details-page';
   static const String filterPostsWatchPage = '/filter-posts-watch-page';
   static const String successPostPage = '/success-post-page';
   static const all = <String>{
@@ -49,6 +52,7 @@ class Routes {
     postDetailPage,
     chatPage,
     myPostsWatcherPage,
+    profileDetailsPage,
     filterPostsWatchPage,
     successPostPage,
   };
@@ -68,6 +72,7 @@ class Router extends RouterBase {
     RouteDef(Routes.postDetailPage, page: PostDetailPage),
     RouteDef(Routes.chatPage, page: ChatPage),
     RouteDef(Routes.myPostsWatcherPage, page: MyPostsWatcherPage),
+    RouteDef(Routes.profileDetailsPage, page: ProfileDetailsPage),
     RouteDef(Routes.filterPostsWatchPage, page: FilterPostsWatchPage),
     RouteDef(Routes.successPostPage, page: SuccessPostPage),
   ];
@@ -154,6 +159,16 @@ class Router extends RouterBase {
         settings: data,
       );
     },
+    ProfileDetailsPage: (data) {
+      final args = data.getArgs<ProfileDetailsPageArguments>(nullOk: false);
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => ProfileDetailsPage(
+          key: args.key,
+          user: args.user,
+        ),
+        settings: data,
+      );
+    },
     FilterPostsWatchPage: (data) {
       final args = data.getArgs<FilterPostsWatchPageArguments>(nullOk: false);
       return MaterialPageRoute<dynamic>(
@@ -236,6 +251,15 @@ extension RouterExtendedNavigatorStateX on ExtendedNavigatorState {
   Future<dynamic> pushMyPostsWatcherPage() =>
       push<dynamic>(Routes.myPostsWatcherPage);
 
+  Future<dynamic> pushProfileDetailsPage({
+    Key key,
+    @required User user,
+  }) =>
+      push<dynamic>(
+        Routes.profileDetailsPage,
+        arguments: ProfileDetailsPageArguments(key: key, user: user),
+      );
+
   Future<dynamic> pushFilterPostsWatchPage({
     @required String filterCity,
     @required String filterBrand,
@@ -289,6 +313,13 @@ class ChatPageArguments {
   final String displayUserName;
   ChatPageArguments(
       {this.key, @required this.postPrimitive, @required this.displayUserName});
+}
+
+/// ProfileDetailsPage arguments holder class
+class ProfileDetailsPageArguments {
+  final Key key;
+  final User user;
+  ProfileDetailsPageArguments({this.key, @required this.user});
 }
 
 /// FilterPostsWatchPage arguments holder class

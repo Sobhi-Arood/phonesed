@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:phonesed/application/core/posts_filter/posts_form_filter/posts_form_filter_bloc.dart';
 import 'package:phonesed/application/posts/post_form/post_form_areas/post_form_areas_bloc.dart';
 import 'package:phonesed/application/posts/post_form/post_form_bloc.dart';
@@ -26,12 +27,17 @@ class FilterCityDropdown extends HookWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
+            Text(
               'City',
-              style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
-                  color: kSecondaryLightColor),
+              style: GoogleFonts.lato(
+                fontSize: 18,
+                fontWeight: FontWeight.w500,
+                color: kSecondaryLightColor,
+              ),
+              // style: TextStyle(
+              //     fontSize: 18,
+              //     fontWeight: FontWeight.w500,
+              //     color: kSecondaryLightColor),
             ),
             const SizedBox(height: 6),
             Container(
@@ -46,10 +52,10 @@ class FilterCityDropdown extends HookWidget {
                         // if (formState.post.city.getOrCrash().isEmpty) {
                         // cityValue.value = s.data[0];
                         context
-                            .bloc<PostsFormFilterBloc>()
+                            .read<PostsFormFilterBloc>()
                             .add(PostsFormFilterEvent.cityChanged(s.data[0]));
                         // context
-                        //     .bloc<PostFormAreasBloc>()
+                        //     .read<PostFormAreasBloc>()
                         //     .add(PostFormAreasEvent.getAreasStarted(s.data[0]));
                         // }
                       },
@@ -85,13 +91,13 @@ class FilterCityDropdown extends HookWidget {
                               // print(v);
                               // cityValue.value = v;
                               context
-                                  .bloc<PostsFormFilterBloc>()
+                                  .read<PostsFormFilterBloc>()
                                   .add(PostsFormFilterEvent.cityChanged(v));
                               // context
-                              //     .bloc<PostFormBloc>()
+                              //     .read<PostFormBloc>()
                               //     .add(PostFormEvent.cityChanged(v));
                               // context
-                              //     .bloc<PostFormAreasBloc>()
+                              //     .read<PostFormAreasBloc>()
                               //     .add(PostFormAreasEvent.getAreasStarted(v));
                             },
                             items: data.data

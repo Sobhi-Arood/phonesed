@@ -45,13 +45,13 @@ class BrandDropdown extends HookWidget {
                         // if (formState.post.brand.getOrCrash().isEmpty) {
                         brandValue.value = s.data[0].brand;
                         context
-                            .bloc<PostFormBloc>()
+                            .read<PostFormBloc>()
                             .add(PostFormEvent.brandChanged(brandValue.value));
-                        // context.bloc<PostFormDevicesBloc>().add(
+                        // context.read<PostFormDevicesBloc>().add(
                         //       PostFormDevicesEvent.getDevicesStarted(
                         //           s.data[0].brand),
                         //     );
-                        // context.bloc<PostFormDevicesBloc>().add(
+                        // context.read<PostFormDevicesBloc>().add(
                         //       const PostFormDevicesEvent.getDevicesStarted(0),
                         //     );
                         // }
@@ -80,9 +80,9 @@ class BrandDropdown extends HookWidget {
                               onChanged: (v) {
                                 brandValue.value = v;
                                 context
-                                    .bloc<PostFormBloc>()
+                                    .read<PostFormBloc>()
                                     .add(PostFormEvent.brandChanged(v));
-                                context.bloc<PostFormDevicesBloc>().add(
+                                context.read<PostFormDevicesBloc>().add(
                                     const PostFormDevicesEvent
                                         .getDevicesStarted(0));
                               },

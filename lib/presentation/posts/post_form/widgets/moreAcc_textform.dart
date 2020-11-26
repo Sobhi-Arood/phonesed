@@ -53,10 +53,10 @@ class MoreAccessoriesTextForm extends HookWidget {
               maxLines: null,
               minLines: 5,
               onChanged: (value) => context
-                  .bloc<PostFormBloc>()
+                  .read<PostFormBloc>()
                   .add(PostFormEvent.moreAccContentChanged(value)),
               validator: (_) => context
-                  .bloc<PostFormBloc>()
+                  .read<PostFormBloc>()
                   .state
                   .post
                   .moreAccessories

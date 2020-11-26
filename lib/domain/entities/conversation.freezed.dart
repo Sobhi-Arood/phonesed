@@ -26,6 +26,7 @@ class _$ConversationTearOff {
       @required PostCity postCity,
       @required MessageContent recentMessageContent,
       @required PostPublishedDate recentMessageDate,
+      @required bool recentMessageDidRead,
       @required UserName displayUserName}) {
     return _Conversation(
       id: id,
@@ -39,6 +40,7 @@ class _$ConversationTearOff {
       postCity: postCity,
       recentMessageContent: recentMessageContent,
       recentMessageDate: recentMessageDate,
+      recentMessageDidRead: recentMessageDidRead,
       displayUserName: displayUserName,
     );
   }
@@ -61,6 +63,7 @@ mixin _$Conversation {
   PostCity get postCity;
   MessageContent get recentMessageContent;
   PostPublishedDate get recentMessageDate;
+  bool get recentMessageDidRead;
   UserName get displayUserName;
 
   $ConversationCopyWith<Conversation> get copyWith;
@@ -83,6 +86,7 @@ abstract class $ConversationCopyWith<$Res> {
       PostCity postCity,
       MessageContent recentMessageContent,
       PostPublishedDate recentMessageDate,
+      bool recentMessageDidRead,
       UserName displayUserName});
 }
 
@@ -107,6 +111,7 @@ class _$ConversationCopyWithImpl<$Res> implements $ConversationCopyWith<$Res> {
     Object postCity = freezed,
     Object recentMessageContent = freezed,
     Object recentMessageDate = freezed,
+    Object recentMessageDidRead = freezed,
     Object displayUserName = freezed,
   }) {
     return _then(_value.copyWith(
@@ -133,6 +138,9 @@ class _$ConversationCopyWithImpl<$Res> implements $ConversationCopyWith<$Res> {
       recentMessageDate: recentMessageDate == freezed
           ? _value.recentMessageDate
           : recentMessageDate as PostPublishedDate,
+      recentMessageDidRead: recentMessageDidRead == freezed
+          ? _value.recentMessageDidRead
+          : recentMessageDidRead as bool,
       displayUserName: displayUserName == freezed
           ? _value.displayUserName
           : displayUserName as UserName,
@@ -159,6 +167,7 @@ abstract class _$ConversationCopyWith<$Res>
       PostCity postCity,
       MessageContent recentMessageContent,
       PostPublishedDate recentMessageDate,
+      bool recentMessageDidRead,
       UserName displayUserName});
 }
 
@@ -185,6 +194,7 @@ class __$ConversationCopyWithImpl<$Res> extends _$ConversationCopyWithImpl<$Res>
     Object postCity = freezed,
     Object recentMessageContent = freezed,
     Object recentMessageDate = freezed,
+    Object recentMessageDidRead = freezed,
     Object displayUserName = freezed,
   }) {
     return _then(_Conversation(
@@ -211,6 +221,9 @@ class __$ConversationCopyWithImpl<$Res> extends _$ConversationCopyWithImpl<$Res>
       recentMessageDate: recentMessageDate == freezed
           ? _value.recentMessageDate
           : recentMessageDate as PostPublishedDate,
+      recentMessageDidRead: recentMessageDidRead == freezed
+          ? _value.recentMessageDidRead
+          : recentMessageDidRead as bool,
       displayUserName: displayUserName == freezed
           ? _value.displayUserName
           : displayUserName as UserName,
@@ -232,6 +245,7 @@ class _$_Conversation extends _Conversation {
       @required this.postCity,
       @required this.recentMessageContent,
       @required this.recentMessageDate,
+      @required this.recentMessageDidRead,
       @required this.displayUserName})
       : assert(id != null),
         assert(postId != null),
@@ -244,6 +258,7 @@ class _$_Conversation extends _Conversation {
         assert(postCity != null),
         assert(recentMessageContent != null),
         assert(recentMessageDate != null),
+        assert(recentMessageDidRead != null),
         assert(displayUserName != null),
         super._();
 
@@ -270,11 +285,13 @@ class _$_Conversation extends _Conversation {
   @override
   final PostPublishedDate recentMessageDate;
   @override
+  final bool recentMessageDidRead;
+  @override
   final UserName displayUserName;
 
   @override
   String toString() {
-    return 'Conversation(id: $id, postId: $postId, postTitle: $postTitle, postImage: $postImage, publishedDate: $publishedDate, postPrice: $postPrice, postUserId: $postUserId, postUsername: $postUsername, postCity: $postCity, recentMessageContent: $recentMessageContent, recentMessageDate: $recentMessageDate, displayUserName: $displayUserName)';
+    return 'Conversation(id: $id, postId: $postId, postTitle: $postTitle, postImage: $postImage, publishedDate: $publishedDate, postPrice: $postPrice, postUserId: $postUserId, postUsername: $postUsername, postCity: $postCity, recentMessageContent: $recentMessageContent, recentMessageDate: $recentMessageDate, recentMessageDidRead: $recentMessageDidRead, displayUserName: $displayUserName)';
   }
 
   @override
@@ -312,6 +329,9 @@ class _$_Conversation extends _Conversation {
             (identical(other.recentMessageDate, recentMessageDate) ||
                 const DeepCollectionEquality()
                     .equals(other.recentMessageDate, recentMessageDate)) &&
+            (identical(other.recentMessageDidRead, recentMessageDidRead) ||
+                const DeepCollectionEquality().equals(
+                    other.recentMessageDidRead, recentMessageDidRead)) &&
             (identical(other.displayUserName, displayUserName) ||
                 const DeepCollectionEquality()
                     .equals(other.displayUserName, displayUserName)));
@@ -331,6 +351,7 @@ class _$_Conversation extends _Conversation {
       const DeepCollectionEquality().hash(postCity) ^
       const DeepCollectionEquality().hash(recentMessageContent) ^
       const DeepCollectionEquality().hash(recentMessageDate) ^
+      const DeepCollectionEquality().hash(recentMessageDidRead) ^
       const DeepCollectionEquality().hash(displayUserName);
 
   @override
@@ -352,6 +373,7 @@ abstract class _Conversation extends Conversation {
       @required PostCity postCity,
       @required MessageContent recentMessageContent,
       @required PostPublishedDate recentMessageDate,
+      @required bool recentMessageDidRead,
       @required UserName displayUserName}) = _$_Conversation;
 
   @override
@@ -376,6 +398,8 @@ abstract class _Conversation extends Conversation {
   MessageContent get recentMessageContent;
   @override
   PostPublishedDate get recentMessageDate;
+  @override
+  bool get recentMessageDidRead;
   @override
   UserName get displayUserName;
   @override

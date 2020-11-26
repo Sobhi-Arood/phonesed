@@ -96,7 +96,7 @@ class PostsSortWidget extends HookWidget {
                                   .add(const PostsSortEvent.closed());
 
                               // context.read<PostsFormSortBloc>().add(PostsFormSort)
-                              // context.bloc<PostWatcherBloc>().add(
+                              // context.read<PostWatcherBloc>().add(
                               //       PostWatcherEvent
                               //           .watchFilteredPostsStarted(
                               //               state.city,

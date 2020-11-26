@@ -50,10 +50,10 @@ class PriceTextForm extends HookWidget {
                 fontSize: 18,
               ),
               onChanged: (value) => context
-                  .bloc<PostFormBloc>()
+                  .read<PostFormBloc>()
                   .add(PostFormEvent.priceChanged(int.parse(value))),
               validator: (_) => context
-                  .bloc<PostFormBloc>()
+                  .read<PostFormBloc>()
                   .state
                   .post
                   .price

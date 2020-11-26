@@ -75,7 +75,7 @@ class ImagesPostFormWidget extends StatelessWidget {
                     child: RaisedButton(
                       onPressed: formState.post.images.length > 0
                           ? () {
-                              context.bloc<FormNavigationBloc>().add(
+                              context.read<FormNavigationBloc>().add(
                                   const FormNavigationEvent.pageChanged(3));
                             }
                           : null,

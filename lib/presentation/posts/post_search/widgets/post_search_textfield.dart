@@ -36,10 +36,10 @@ class PostSearchTextField extends HookWidget {
             // textEditingController.text = v;
             // controller.text = v;
             context
-                .bloc<PostSearchBloc>()
+                .read<PostSearchBloc>()
                 .add(PostSearchEvent.searchChanged(v));
             // context
-            //     .bloc<PostWatcherBloc>()
+            //     .read<PostWatcherBloc>()
             //     .add(PostWatcherEvent.searchChanged(v));
           },
         ),
@@ -73,10 +73,10 @@ class PostSearchTextField extends HookWidget {
     //           // textEditingController.text = v;
     //           // controller.text = v;
     //           // context
-    //           //     .bloc<PostSearchBloc>()
+    //           //     .read<PostSearchBloc>()
     //           //     .add(PostSearchEvent.searchChanged(v));
     //           context
-    //               .bloc<PostWatcherBloc>()
+    //               .read<PostWatcherBloc>()
     //               .add(PostWatcherEvent.searchChanged(v));
     //         },
     //       ),

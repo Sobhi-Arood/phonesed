@@ -41,9 +41,9 @@ class ModelsDropdown extends HookWidget {
                 onChanged: (v) {
                   modelValue.value = v;
                   context
-                      .bloc<PostFormBloc>()
+                      .read<PostFormBloc>()
                       .add(PostFormEvent.deviceChanged(v));
-                  // context.bloc<PostFormDevicesBloc>().add(
+                  // context.read<PostFormDevicesBloc>().add(
                   //     PostFormDevicesEvent.getDevicesStarted(v));
                 },
                 items: modelsList.map<DropdownMenuItem<String>>((value) {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:phonesed/application/core/posts_filter/posts_form_filter/posts_form_filter_bloc.dart';
 import 'package:phonesed/constants.dart';
 
@@ -14,9 +15,9 @@ class PriceFilterListField extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
+            Text(
               'Price',
-              style: TextStyle(
+              style: GoogleFonts.lato(
                 fontSize: 18,
                 fontWeight: FontWeight.w500,
                 color: kSecondaryLightColor,
@@ -51,8 +52,11 @@ class PriceFilterListField extends StatelessWidget {
                         child: Center(
                           child: Text(
                             itemPrice,
-                            style: const TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.w500),
+                            style: GoogleFonts.lato(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w900,
+                              color: kPrimaryDarkColor,
+                            ),
                           ),
                         ),
                       ),

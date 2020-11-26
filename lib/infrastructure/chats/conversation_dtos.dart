@@ -27,6 +27,7 @@ abstract class ConversationDto implements _$ConversationDto {
     // @required MessageDto messageDto,
     @required String recentMessageContent,
     @required DateTime recentMessageDate,
+    @required bool recentMessageDidRead,
     @required String displayUserName,
   }) = _ConversationDto;
 
@@ -55,6 +56,7 @@ abstract class ConversationDto implements _$ConversationDto {
       postCity: PostCity(postCity),
       recentMessageContent: MessageContent(recentMessageContent),
       recentMessageDate: PostPublishedDate(recentMessageDate),
+      recentMessageDidRead: recentMessageDidRead,
       displayUserName: UserName(displayUserName),
     );
   }

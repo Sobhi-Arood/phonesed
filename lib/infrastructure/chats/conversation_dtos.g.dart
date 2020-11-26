@@ -25,6 +25,7 @@ _$_ConversationDto _$_$_ConversationDtoFromJson(Map<String, dynamic> json) {
     recentMessageDate: json['recentMessageDate'] == null
         ? null
         : DateTime.parse(json['recentMessageDate'] as String),
+    recentMessageDidRead: json['recentMessageDidRead'] as bool,
     displayUserName: json['displayUserName'] as String,
   );
 }
@@ -44,5 +45,6 @@ Map<String, dynamic> _$_$_ConversationDtoToJson(_$_ConversationDto instance) =>
       'postCity': instance.postCity,
       'recentMessageContent': instance.recentMessageContent,
       'recentMessageDate': instance.recentMessageDate?.toIso8601String(),
+      'recentMessageDidRead': instance.recentMessageDidRead,
       'displayUserName': instance.displayUserName,
     };

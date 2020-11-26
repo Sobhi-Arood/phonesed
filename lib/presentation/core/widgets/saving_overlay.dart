@@ -6,9 +6,11 @@ import '../../../constants.dart';
 
 class SavingInProgressOverlay extends StatelessWidget {
   final bool isSaving;
+  final String title;
   const SavingInProgressOverlay({
     Key key,
     @required this.isSaving,
+    @required this.title,
   }) : super(key: key);
 
   @override
@@ -32,9 +34,9 @@ class SavingInProgressOverlay extends StatelessWidget {
               // const CupertinoActivityIndicator(),
               const SizedBox(height: 8),
               Text(
-                'SAVING',
+                title,
                 style: Theme.of(context).textTheme.bodyText2.copyWith(
-                      color: kPrimaryColor,
+                      color: kPrimaryDarkColor,
                       fontSize: 16,
                     ),
               )

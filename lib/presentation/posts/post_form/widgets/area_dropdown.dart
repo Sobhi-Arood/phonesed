@@ -17,7 +17,7 @@ class AreaDropdown extends HookWidget {
       listener: (context, state) {
         // print(state.post.area);
         // areaValue.value = state.post.area.value.fold((l) => '', (r) => r);
-        // context.bloc<PostFormAreasBloc>().add(
+        // context.read<PostFormAreasBloc>().add(
         //                       PostFormAreasEvent.getAreasStarted(state.post.area.value.fold((l) => '', (r) => r)));
       },
       // buildWhen: (p, c) => p.post.area != c.post.area,
@@ -47,7 +47,7 @@ class AreaDropdown extends HookWidget {
                     loadAreasFailure: (_) => 'error',
                   );
                   context
-                      .bloc<PostFormBloc>()
+                      .read<PostFormBloc>()
                       .add(PostFormEvent.areaChanged(areaValue.value));
                 },
                 builder: (context, dataState) {
@@ -76,7 +76,7 @@ class AreaDropdown extends HookWidget {
                             onChanged: (v) {
                               areaValue.value = v;
                               context
-                                  .bloc<PostFormBloc>()
+                                  .read<PostFormBloc>()
                                   .add(PostFormEvent.areaChanged(v));
                             },
                             items: data.data

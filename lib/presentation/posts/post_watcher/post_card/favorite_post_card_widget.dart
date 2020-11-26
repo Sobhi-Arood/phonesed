@@ -73,11 +73,12 @@ class FavoritePostCard extends StatelessWidget {
                 Text(
                   post.title.getOrCrash(),
                   overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(
-                    color: kPrimaryDarkColor,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: Theme.of(context).textTheme.headline4,
+                  // style: const TextStyle(
+                  //   color: kPrimaryDarkColor,
+                  //   fontSize: 24,
+                  //   fontWeight: FontWeight.bold,
+                  // ),
                 ),
                 const SizedBox(height: 8),
                 Row(
@@ -86,19 +87,21 @@ class FavoritePostCard extends StatelessWidget {
                     Text(
                       post.brand.getOrCrash(),
                       textAlign: TextAlign.left,
-                      style: const TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.grey,
-                      ),
+                      style: Theme.of(context).textTheme.subtitle1,
+                      // style: const TextStyle(
+                      //   fontSize: 15,
+                      //   fontWeight: FontWeight.w600,
+                      //   color: Colors.grey,
+                      // ),
                     ),
                     Text(
                       'AED ${post.price.getOrCrash()}',
-                      style: const TextStyle(
-                        color: kPrimaryColor,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style: Theme.of(context).textTheme.headline5,
+                      // style: const TextStyle(
+                      //   color: kPrimaryColor,
+                      //   fontSize: 20,
+                      //   fontWeight: FontWeight.bold,
+                      // ),
                     ),
                   ],
                 ),

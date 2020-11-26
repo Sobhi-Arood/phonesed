@@ -47,14 +47,18 @@ class MessageComposerWidget extends HookWidget {
                   children: [
                     Expanded(
                       child: TextFormField(
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyText1
+                            .copyWith(decoration: TextDecoration.none),
                         controller: textEditingController,
                         decoration: const InputDecoration(
                             hintText: 'Send a message ...'),
                         onChanged: (value) => context
-                            .bloc<ChatFormBloc>()
+                            .read<ChatFormBloc>()
                             .add(ChatFormEvent.contentChanged(value)),
                         validator: (_) => context
-                            .bloc<ChatFormBloc>()
+                            .read<ChatFormBloc>()
                             .state
                             .message
                             .content
@@ -89,7 +93,7 @@ class MessageComposerWidget extends HookWidget {
                                             .text.isNotEmpty
                                         ? () {
                                             if (s.messages.isEmpty()) {
-                                              context.bloc<ChatFormBloc>().add(
+                                              context.read<ChatFormBloc>().add(
                                                     ChatFormEvent.sended(stateee
                                                         .postPrimitive
                                                         .postUserId),
@@ -99,25 +103,25 @@ class MessageComposerWidget extends HookWidget {
                                                   s.messages[0].recevierId
                                                       .getOrCrash()) {
                                                 context
-                                                    .bloc<ChatFormBloc>()
+                                                    .read<ChatFormBloc>()
                                                     .add(ChatFormEvent.sended(s
                                                         .messages[0].senderId
                                                         .getOrCrash()));
                                               } else {
                                                 context
-                                                    .bloc<ChatFormBloc>()
+                                                    .read<ChatFormBloc>()
                                                     .add(ChatFormEvent.sended(s
                                                         .messages[0].recevierId
                                                         .getOrCrash()));
                                               }
                                             }
                                             // if (recevierId.value.isEmpty) {
-                                            //   context.bloc<ChatFormBloc>().add(
+                                            //   context.read<ChatFormBloc>().add(
                                             //       ChatFormEvent.sended(state
                                             //           .postPrimitive
                                             //           .postUserId));
                                             // } else {
-                                            //   context.bloc<ChatFormBloc>().add(
+                                            //   context.read<ChatFormBloc>().add(
                                             //       ChatFormEvent.sended(
                                             //           recevierId.value));
                                             // }

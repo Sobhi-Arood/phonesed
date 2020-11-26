@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:phonesed/application/chats/conversations_watcher/conversations_watcher_bloc.dart';
 import 'package:phonesed/application/core/bottom_navigation/bottom_navigation_bloc.dart';
 import 'package:phonesed/constants.dart';
+import 'package:kt_dart/collection.dart';
 
 class BottomNavigationBarWidget extends StatelessWidget {
   @override
@@ -20,7 +22,7 @@ class BottomNavigationBarWidget extends StatelessWidget {
                   isActive: state.currentIndex == 0,
                   onPressed: () {
                     context
-                        .bloc<BottomNavigationBloc>()
+                        .read<BottomNavigationBloc>()
                         .add(const BottomNavigationEvent.pageChanged(0));
                   },
                 ),
@@ -30,7 +32,7 @@ class BottomNavigationBarWidget extends StatelessWidget {
                   isActive: state.currentIndex == 1,
                   onPressed: () {
                     context
-                        .bloc<BottomNavigationBloc>()
+                        .read<BottomNavigationBloc>()
                         .add(const BottomNavigationEvent.pageChanged(1));
                   },
                 ),
@@ -40,18 +42,95 @@ class BottomNavigationBarWidget extends StatelessWidget {
                   isActive: state.currentIndex == 2,
                   onPressed: () {
                     context
-                        .bloc<BottomNavigationBloc>()
+                        .read<BottomNavigationBloc>()
                         .add(const BottomNavigationEvent.pageChanged(2));
                   },
                 ),
-                BottomNavBarItem(
-                  iconData: Icons.chat_outlined,
-                  activeIconData: Icons.chat,
-                  isActive: state.currentIndex == 3,
-                  onPressed: () {
-                    context
-                        .bloc<BottomNavigationBloc>()
-                        .add(const BottomNavigationEvent.pageChanged(3));
+                BlocBuilder<ConversationsWatcherBloc,
+                    ConversationsWatcherState>(
+                  builder: (context, conState) {
+                    return conState.map(initial: (_) {
+                      return BottomNavBarItem(
+                        iconData: Icons.chat_outlined,
+                        activeIconData: Icons.chat,
+                        isActive: state.currentIndex == 3,
+                        onPressed: () {
+                          context
+                              .read<BottomNavigationBloc>()
+                              .add(const BottomNavigationEvent.pageChanged(3));
+                        },
+                      );
+                    }, loadInProgress: (_) {
+                      return Container();
+                    }, loadSuccess: (arr) {
+                      if (arr.conversations.isNotEmpty()) {
+                        final a = arr.conversations
+                            .filter((con) => !con.recentMessageDidRead);
+                        if (a.isNotEmpty()) {
+                          return Stack(
+                            children: [
+                              BottomNavBarItem(
+                                iconData: Icons.chat_outlined,
+                                activeIconData: Icons.chat,
+                                isActive: state.currentIndex == 3,
+                                onPressed: () {
+                                  context.read<BottomNavigationBloc>().add(
+                                      const BottomNavigationEvent.pageChanged(
+                                          3));
+                                },
+                              ),
+                              Positioned(
+                                  right: 0.0,
+                                  top: 10.0,
+                                  child: CircleAvatar(
+                                    radius: 6,
+                                    backgroundColor: Colors.redAccent,
+                                  ))
+                            ],
+                          );
+                        }
+                        return BottomNavBarItem(
+                          iconData: Icons.chat_outlined,
+                          activeIconData: Icons.chat,
+                          isActive: state.currentIndex == 3,
+                          onPressed: () {
+                            context.read<BottomNavigationBloc>().add(
+                                const BottomNavigationEvent.pageChanged(3));
+                          },
+                        );
+                      }
+                      return BottomNavBarItem(
+                        iconData: Icons.chat_outlined,
+                        activeIconData: Icons.chat,
+                        isActive: state.currentIndex == 3,
+                        onPressed: () {
+                          context
+                              .read<BottomNavigationBloc>()
+                              .add(const BottomNavigationEvent.pageChanged(3));
+                        },
+                      );
+                    }, loadFailure: (_) {
+                      return BottomNavBarItem(
+                        iconData: Icons.chat_outlined,
+                        activeIconData: Icons.chat,
+                        isActive: state.currentIndex == 3,
+                        onPressed: () {
+                          context
+                              .read<BottomNavigationBloc>()
+                              .add(const BottomNavigationEvent.pageChanged(3));
+                        },
+                      );
+                    });
+                    // return BottomNavBarItem(
+                    //   iconData: Icons.chat_outlined,
+                    //   activeIconData: Icons.chat,
+                    //   isActive: state.currentIndex == 3,
+                    //   onPressed: () {
+                    //     context
+                    //         .read<BottomNavigationBloc>()
+                    //         .add(const BottomNavigationEvent.pageChanged(3));
+                    //   },
+                    // );
                   },
                 ),
                 BottomNavBarItem(
@@ -60,7 +139,7 @@ class BottomNavigationBarWidget extends StatelessWidget {
                   isActive: state.currentIndex == 4,
                   onPressed: () {
                     context
-                        .bloc<BottomNavigationBloc>()
+                        .read<BottomNavigationBloc>()
                         .add(const BottomNavigationEvent.pageChanged(4));
                   },
                 ),
@@ -126,7 +205,7 @@ class BottomNavBarItem extends StatelessWidget {
 //         currentIndex: state.currentIndex,
 //         onTap: (i) {
 //           context
-//               .bloc<BottomNavigationBloc>()
+//               .read<BottomNavigationBloc>()
 //               .add(BottomNavigationEvent.pageChanged(i));
 //         },
 //         items: [

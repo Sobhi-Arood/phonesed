@@ -37,19 +37,26 @@ class BrandPostFormWidget extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
+                        Text(
                           'Add your device to sell',
-                          style: TextStyle(
+                          style: Theme.of(context).textTheme.headline4.copyWith(
                               color: kPrimaryColor,
-                              fontSize: 24,
                               fontWeight: FontWeight.w700),
+                          // style: TextStyle(
+                          //     color: kPrimaryColor,
+                          //     fontSize: 24,
+                          //     fontWeight: FontWeight.w700),
                         ),
-                        const Text(
+                        Text(
                           "Start by choosing the device's brand",
-                          style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 18,
-                              fontWeight: FontWeight.w500),
+                          style: Theme.of(context)
+                              .textTheme
+                              .headline6
+                              .copyWith(color: Colors.grey),
+                          // style: TextStyle(
+                          //     color: Colors.grey,
+                          //     fontSize: 18,
+                          //     fontWeight: FontWeight.w500),
                         ),
                       ],
                     ),
@@ -70,10 +77,10 @@ class BrandPostFormWidget extends StatelessWidget {
                           return GestureDetector(
                             onTap: () {
                               context
-                                  .bloc<PostFormBloc>()
+                                  .read<PostFormBloc>()
                                   .add(PostFormEvent.brandChanged(brand.brand));
 
-                              context.bloc<PostFormDevicesBloc>().add(
+                              context.read<PostFormDevicesBloc>().add(
                                   PostFormDevicesEvent.getDevicesStarted(
                                       index));
 
@@ -88,13 +95,23 @@ class BrandPostFormWidget extends StatelessWidget {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceAround,
                                 children: [
-                                  // Image.network(brand.brandImgUrl),
-                                  SvgPicture.asset(
-                                    // brand.brandImgUrl,
-                                    brand.logo,
-                                    width: 65,
-                                    height: 65,
-                                  ),
+                                  if (brand.brand == 'Oppo') ...[
+                                    Image.asset(brand.logo),
+                                  ] else if (brand.brand == 'Oppo') ...[
+                                    SvgPicture.asset(
+                                      brand.logo,
+                                      width: 35,
+                                      height: 35,
+                                      color: kPrimaryDarkColor,
+                                    ),
+                                  ] else ...[
+                                    SvgPicture.asset(
+                                      brand.logo,
+                                      width: 65,
+                                      height: 65,
+                                      color: kPrimaryDarkColor,
+                                    ),
+                                  ],
                                   Text(
                                     brand.brand,
                                     textAlign: TextAlign.center,

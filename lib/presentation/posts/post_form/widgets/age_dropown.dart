@@ -43,7 +43,7 @@ class AgeDropdown extends StatelessWidget {
                     ),
                     onChanged: (v) {
                       context
-                          .bloc<PostFormBloc>()
+                          .read<PostFormBloc>()
                           .add(PostFormEvent.ageChanged(v));
                     },
                     items: PostAge.ages.map<DropdownMenuItem<String>>((value) {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:phonesed/application/core/posts_filter/posts_form_filter/posts_form_filter_bloc.dart';
 import 'package:phonesed/constants.dart';
 
@@ -16,12 +17,13 @@ class FilterBrandDropdown extends HookWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
+            Text(
               'Brand',
-              style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
-                  color: kSecondaryLightColor),
+              style: GoogleFonts.lato(
+                fontSize: 18,
+                fontWeight: FontWeight.w500,
+                color: kSecondaryLightColor,
+              ),
             ),
             const SizedBox(height: 6),
             Container(
@@ -45,7 +47,7 @@ class FilterBrandDropdown extends HookWidget {
                       context
                           .read<PostsFormFilterBloc>()
                           .add(PostsFormFilterEvent.brandChanged(v));
-                      // context.bloc<PostFormDevicesBloc>().add(
+                      // context.read<PostFormDevicesBloc>().add(
                       //     PostFormDevicesEvent.getDevicesStarted(v));
                     },
                     items: kFilterBrands.map<DropdownMenuItem<String>>((value) {

@@ -10,6 +10,7 @@ import 'package:phonesed/presentation/chats/conversations_page/conversations_pag
 import 'package:phonesed/presentation/posts/post_search/post_search_page.dart';
 import 'package:phonesed/presentation/posts/post_watcher/favorite_posts_watcher_page.dart';
 import 'package:phonesed/presentation/posts/post_watcher/post_watcher_page.dart';
+import 'package:phonesed/presentation/profile/not_sign_in_page/not_sign_in_widget.dart';
 import 'package:phonesed/presentation/profile/profile_page.dart';
 import 'package:phonesed/presentation/routes/router.gr.dart';
 
@@ -37,70 +38,7 @@ class TabBarViewWidget extends HookWidget {
                     color: kPrimaryColor,
                   ),
                   authenticated: (_) => const ProfilePage(),
-                  unauthenticated: (_) => Padding(
-                    padding: const EdgeInsets.all(28),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Text(
-                          'Phonesed',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.blue[400],
-                            fontSize: 58,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        const SizedBox(
-                          height: 12,
-                        ),
-                        const Text(
-                          "You're not logged in, Create an account to start publish your devices or exchange devices",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w200,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 60,
-                        ),
-                        RaisedButton(
-                          onPressed: () {
-                            ExtendedNavigator.of(context).pushWelcomePage();
-                          },
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          elevation: 0,
-                          highlightElevation: 0,
-                          color: kPrimaryColor,
-                          child: const Padding(
-                            padding: EdgeInsets.symmetric(vertical: 1.0),
-                            child: Padding(
-                              padding: EdgeInsets.all(16),
-                              child: Text(
-                                'Sign In',
-                                style: TextStyle(
-                                  fontSize: 21,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        // RaisedButton(
-                        //   onPressed: () =>
-                        //       ExtendedNavigator.of(context).pushWelcomePage(),
-                        //   child: const Text('Sign in'),
-                        // ),
-                      ],
-                    ),
-                  ),
+                  unauthenticated: (_) => const NotSignedInWidget(),
                 );
               },
             ),

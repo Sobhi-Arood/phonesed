@@ -10,6 +10,10 @@ abstract class IChatRepository {
   Stream<Either<MessageFailure, KtList<Conversation>>> watchAllConversations();
   Stream<Either<MessageFailure, KtList<Message>>> watchAllMessages(
       String conversationId);
+  Stream<Either<MessageFailure, int>> watchNotReadConversations();
+
   Future<Either<MessageFailure, Unit>> create(Message message,
       PostPrimitive postPrimitive, String recId, String conversationId);
+  Future<Either<MessageFailure, Unit>> didReadRecentMessage(
+      String conversationId);
 }

@@ -76,7 +76,10 @@ class PostFormPage extends StatelessWidget {
             return Stack(
               children: [
                 const PostFormPageScaffold(),
-                SavingInProgressOverlay(isSaving: state.isSaving),
+                SavingInProgressOverlay(
+                  isSaving: state.isSaving,
+                  title: 'saving',
+                ),
               ],
             );
           },

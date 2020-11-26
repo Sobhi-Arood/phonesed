@@ -29,7 +29,6 @@ class MyPostsWatcherBody extends StatelessWidget {
                 padding: const EdgeInsets.all(32.0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Image.asset(
                       'assets/images/posts.png',
@@ -87,7 +86,7 @@ class MyPostsWatcherBody extends StatelessWidget {
                 ),
               );
             }
-            return ListView.builder(
+            return ListView.separated(
               shrinkWrap: true,
               itemCount: state.posts.size,
               itemBuilder: (context, index) {
@@ -106,6 +105,9 @@ class MyPostsWatcherBody extends StatelessWidget {
                   return MyPostsCardWidget(post: post);
                 }
               },
+              separatorBuilder: (context, index) => const SizedBox(
+                height: 2,
+              ),
             );
           },
           loadFailure: (_) => const Center(

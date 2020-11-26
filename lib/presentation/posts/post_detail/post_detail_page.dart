@@ -45,8 +45,10 @@ class PostDetailPage extends StatelessWidget {
               children: [
                 PostDetailBody(post: post),
                 SavingInProgressOverlay(
-                    isSaving: state.maybeWhen(
-                        actionInProgress: () => true, orElse: () => false)),
+                  isSaving: state.maybeWhen(
+                      actionInProgress: () => true, orElse: () => false),
+                  title: 'saving',
+                ),
               ],
             );
           },

@@ -48,15 +48,15 @@ class CityDropdown extends HookWidget {
                       cityValue.value = formState.post.city.value
                           .fold((l) => s.data[0], (r) => r);
                       context
-                          .bloc<PostFormBloc>()
+                          .read<PostFormBloc>()
                           .add(PostFormEvent.cityChanged(cityValue.value));
-                      // context.bloc<PostFormAreasBloc>().add(
+                      // context.read<PostFormAreasBloc>().add(
                       //       PostFormAreasEvent.getAreasStarted(
                       //           cityValue.value.isEmpty
                       //               ? s.data[0]
                       //               : cityValue.value),
                       //     );
-                      context.bloc<PostFormAreasBloc>().add(
+                      context.read<PostFormAreasBloc>().add(
                             PostFormAreasEvent.getAreasStarted(cityValue.value),
                           );
                     },
@@ -98,10 +98,10 @@ class CityDropdown extends HookWidget {
                               // print(v);
                               // cityValue.value = v;
                               context
-                                  .bloc<PostFormBloc>()
+                                  .read<PostFormBloc>()
                                   .add(PostFormEvent.cityChanged(v));
                               context
-                                  .bloc<PostFormAreasBloc>()
+                                  .read<PostFormAreasBloc>()
                                   .add(PostFormAreasEvent.getAreasStarted(v));
                             },
                             items: data.data

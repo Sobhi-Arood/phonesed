@@ -18,7 +18,6 @@ class PostCard extends StatelessWidget {
     return BlocBuilder<UserProfileBloc, UserProfileState>(
       builder: (context, state) {
         return Container(
-          margin: const EdgeInsets.only(bottom: 16),
           padding: const EdgeInsets.all(8),
           // height: 280,
           child: Card(
@@ -30,8 +29,8 @@ class PostCard extends StatelessWidget {
               onTap: () =>
                   ExtendedNavigator.of(context).pushPostDetailPage(post: post),
               child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 8.0, vertical: 12.0),
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 10.0, vertical: 12.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -55,40 +54,44 @@ class PostCard extends StatelessWidget {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 3, vertical: 0),
                             child: state.maybeMap(
-                                loadSuccess: (u) {
-                                  return IconButton(
-                                    onPressed: () => u.user.favorites.fold(
-                                      () => null,
-                                      (favs) {
-                                        if (favs
-                                            .getOrCrash()
-                                            .contains(post.id)) {
-                                          context.read<PostActorBloc>().add(
-                                                PostActorEvent.unLiked(post),
-                                              );
-                                        } else {
-                                          context.read<PostActorBloc>().add(
-                                                PostActorEvent.liked(post),
-                                              );
-                                        }
-                                      },
+                              loadSuccess: (u) {
+                                return IconButton(
+                                  onPressed: () => u.user.favorites.fold(
+                                    () => null,
+                                    (favs) {
+                                      if (favs.getOrCrash().contains(post.id)) {
+                                        context.read<PostActorBloc>().add(
+                                              PostActorEvent.unLiked(post),
+                                            );
+                                      } else {
+                                        context.read<PostActorBloc>().add(
+                                              PostActorEvent.liked(post),
+                                            );
+                                      }
+                                    },
+                                  ),
+                                  iconSize: 20,
+                                  icon: u.user.favorites.fold(
+                                    () => const Icon(
+                                      Icons.favorite_outline,
+                                      color: Colors.white,
                                     ),
-                                    iconSize: 20,
-                                    icon: u.user.favorites.fold(
-                                      () => const Icon(
-                                        Icons.favorite_outline,
-                                        color: Colors.white,
-                                      ),
-                                      (favs) => Icon(
-                                        favs.getOrCrash().contains(post.id)
-                                            ? Icons.favorite
-                                            : Icons.favorite_outline,
-                                        color: Colors.white,
-                                      ),
+                                    (favs) => Icon(
+                                      favs.getOrCrash().contains(post.id)
+                                          ? Icons.favorite
+                                          : Icons.favorite_outline,
+                                      color: Colors.white,
                                     ),
-                                  );
-                                },
-                                orElse: () => Container()),
+                                  ),
+                                );
+                              },
+                              orElse: () => const IgnorePointer(
+                                child: Icon(
+                                  Icons.favorite_outline,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
                           ),
                         )
                       ],
@@ -101,20 +104,22 @@ class PostCard extends StatelessWidget {
                           child: Text(
                             post.title.getOrCrash(),
                             overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(
-                              color: kPrimaryDarkColor,
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                            ),
+                            style: Theme.of(context).textTheme.headline4,
+                            // style: const TextStyle(
+                            //   color: kPrimaryDarkColor,
+                            //   fontSize: 24,
+                            //   fontWeight: FontWeight.bold,
+                            // ),
                           ),
                         ),
                         Text(
                           'AED ${post.price.getOrCrash()}',
-                          style: const TextStyle(
-                            color: kPrimaryColor,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
+                          style: Theme.of(context).textTheme.headline5,
+                          // style: const TextStyle(
+                          //   color: kPrimaryColor,
+                          //   fontSize: 20,
+                          //   fontWeight: FontWeight.bold,
+                          // ),
                         ),
                       ],
                     ),
@@ -125,11 +130,12 @@ class PostCard extends StatelessWidget {
                         Text(
                           post.brand.getOrCrash(),
                           textAlign: TextAlign.left,
-                          style: const TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.grey,
-                          ),
+                          style: Theme.of(context).textTheme.subtitle1,
+                          // style: const TextStyle(
+                          //   fontSize: 15,
+                          //   fontWeight: FontWeight.w600,
+                          //   color: Colors.grey,
+                          // ),
                         ),
                         Wrap(
                           spacing: 2,
@@ -143,10 +149,14 @@ class PostCard extends StatelessWidget {
                             ),
                             Text(
                               post.city.getOrCrash(),
-                              style: TextStyle(
-                                fontWeight: FontWeight.w400,
-                                color: Colors.grey[700],
-                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .caption
+                                  .copyWith(color: Colors.grey[700]),
+                              // style: TextStyle(
+                              //   fontWeight: FontWeight.w400,
+                              //   color: Colors.grey[700],
+                              // ),
                             ),
                             Icon(
                               Icons.chevron_right,
@@ -155,10 +165,14 @@ class PostCard extends StatelessWidget {
                             ),
                             Text(
                               post.area.getOrCrash(),
-                              style: TextStyle(
-                                fontWeight: FontWeight.w400,
-                                color: Colors.grey[700],
-                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .caption
+                                  .copyWith(color: Colors.grey[700]),
+                              // style: TextStyle(
+                              //   fontWeight: FontWeight.w400,
+                              //   color: Colors.grey[700],
+                              // ),
                             ),
                           ],
                         ),
@@ -173,10 +187,14 @@ class PostCard extends StatelessWidget {
                           children: [
                             Text(
                               timeago.format(post.publishedDate.getOrCrash()),
-                              style: const TextStyle(
-                                fontWeight: FontWeight.w500,
-                                color: Colors.grey,
-                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .subtitle1
+                                  .copyWith(fontSize: 14),
+                              // style: const TextStyle(
+                              //   fontWeight: FontWeight.w500,
+                              //   color: Colors.grey,
+                              // ),
                             ),
                             Container(
                               height: 15,
@@ -186,11 +204,17 @@ class PostCard extends StatelessWidget {
                                 width: 10,
                               ),
                             ),
-                            Text(post.age.getOrCrash(),
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.grey,
-                                )),
+                            Text(
+                              post.age.getOrCrash(),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .subtitle1
+                                  .copyWith(fontSize: 14),
+                              // style: const TextStyle(
+                              //   fontWeight: FontWeight.w500,
+                              //   color: Colors.grey,
+                              // ),
+                            ),
                             Container(
                               height: 15,
                               child: const VerticalDivider(
@@ -201,10 +225,14 @@ class PostCard extends StatelessWidget {
                             ),
                             Text(
                               post.condition.getOrCrash(),
-                              style: const TextStyle(
-                                fontWeight: FontWeight.w500,
-                                color: Colors.grey,
-                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .subtitle1
+                                  .copyWith(fontSize: 14),
+                              // style: const TextStyle(
+                              //   fontWeight: FontWeight.w500,
+                              //   color: Colors.grey,
+                              // ),
                             ),
                             // const Text('55 min ago'),
                           ],

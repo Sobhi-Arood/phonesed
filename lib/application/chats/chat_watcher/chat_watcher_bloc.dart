@@ -29,6 +29,7 @@ class ChatWatcherBloc extends Bloc<ChatWatcherEvent, ChatWatcherState> {
     yield* event.map(watchAllStarted: (e) async* {
       yield const ChatWatcherState.loadInProgress();
       await _chatStreamSubscription?.cancel();
+      await _chatRepository.didReadRecentMessage(e.conversationId);
       _chatStreamSubscription = _chatRepository
           .watchAllMessages(e.conversationId)
           .listen((failureOrMessages) =>

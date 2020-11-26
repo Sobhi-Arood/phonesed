@@ -33,18 +33,12 @@ class UserRepository implements IUserRepository {
         }
       });
     } catch (e) {
-      print(e.toString());
       if (e is NotAuthenticatedError) {
         yield left(const PostFailure.notLoggedIn());
       } else {
         yield left(const PostFailure.unexpected());
       }
-      yield left(const PostFailure.unexpected());
     }
-    // yield* userDoc.snapshots().map((event) => right<PostFailure, User>(
-    // event.data().map((key, value) => print(value));
-    // UserDto.fromFirestore(event.data()).toDomain(),
-    // ));
   }
 
   @override

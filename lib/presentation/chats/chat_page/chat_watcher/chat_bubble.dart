@@ -37,14 +37,19 @@ class ChatBubble extends StatelessWidget {
               child: Text(
                 message.content.getOrCrash(),
                 style: TextStyle(
-                    color: isMe ? Colors.white : kPrimaryDarkColor,
-                    fontSize: 23,
-                    fontWeight: FontWeight.w500),
+                  color: isMe ? Colors.white : kPrimaryDarkColor,
+                  fontSize: 23,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
             ),
             const SizedBox(height: 8),
             Text(
               timeago.format(message.date.getOrCrash()),
+              style: Theme.of(context)
+                  .textTheme
+                  .caption
+                  .copyWith(color: Colors.grey[600], fontSize: 13),
             )
           ],
         ),

@@ -24,7 +24,10 @@ class SignUpPage extends StatelessWidget {
                 return Stack(
                   children: [
                     SignUpForm(),
-                    SavingInProgressOverlay(isSaving: state.isSubmitting),
+                    SavingInProgressOverlay(
+                      isSaving: state.isSubmitting,
+                      title: '',
+                    ),
                   ],
                 );
               },

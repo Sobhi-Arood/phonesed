@@ -20,7 +20,7 @@ class ChargerCheckbox extends StatelessWidget {
                 value: state.post.charger,
                 onChanged: (v) {
                   context
-                      .bloc<PostFormBloc>()
+                      .read<PostFormBloc>()
                       .add(PostFormEvent.chargerChanged(v));
                 }),
             const Text('Charger',

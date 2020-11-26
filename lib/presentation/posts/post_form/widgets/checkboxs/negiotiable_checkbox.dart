@@ -20,7 +20,7 @@ class NegotiableCheckbox extends StatelessWidget {
                 value: state.post.negiotable,
                 onChanged: (v) {
                   context
-                      .bloc<PostFormBloc>()
+                      .read<PostFormBloc>()
                       .add(PostFormEvent.negotiableChanged(v));
                 }),
             const Text('Negotiable',

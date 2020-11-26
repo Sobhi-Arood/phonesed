@@ -33,6 +33,7 @@ class ProfilePage extends StatelessWidget {
             SavingInProgressOverlay(
               isSaving: state.maybeMap(
                   actionInProgress: (_) => true, orElse: () => false),
+              title: 'loading',
             )
           ],
         );
@@ -51,7 +52,10 @@ class UserProfilePageContent extends StatelessWidget {
       builder: (context, state) {
         return state.map(
           initial: (_) => Container(),
-          loadInProgress: (_) => const SavingInProgressOverlay(isSaving: true),
+          loadInProgress: (_) => const SavingInProgressOverlay(
+            isSaving: true,
+            title: 'loading',
+          ),
           loadSuccess: (state) => ListView(
             children: [
               const SizedBox(height: 32),
@@ -60,17 +64,19 @@ class UserProfilePageContent extends StatelessWidget {
               Text(
                 capitalize(state.user.name.getOrCrash()),
                 textAlign: TextAlign.center,
-                style:
-                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                style: Theme.of(context).textTheme.headline4,
+                // style:
+                //     const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
               ),
               const SizedBox(height: 16),
               Text(
                 'Joined ${timeago.format(state.user.joinDate)}',
+                style: Theme.of(context).textTheme.subtitle1,
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 40),
               ButtonsList(
-                numberOfPosts: state.user.numOfPublishedPosts,
+                user: state.user,
               ),
             ],
           ),

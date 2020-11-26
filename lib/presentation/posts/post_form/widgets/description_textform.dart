@@ -52,10 +52,10 @@ class DescriptionTextForm extends HookWidget {
               maxLines: null,
               minLines: 5,
               onChanged: (value) => context
-                  .bloc<PostFormBloc>()
+                  .read<PostFormBloc>()
                   .add(PostFormEvent.descriptionChanged(value)),
               validator: (_) => context
-                  .bloc<PostFormBloc>()
+                  .read<PostFormBloc>()
                   .state
                   .post
                   .description

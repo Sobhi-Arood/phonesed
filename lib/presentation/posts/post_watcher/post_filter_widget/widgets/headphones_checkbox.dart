@@ -19,7 +19,7 @@ class FilterHeadphonesCheckbox extends StatelessWidget {
                 value: state.headphones,
                 onChanged: (v) {
                   context
-                      .bloc<PostsFormFilterBloc>()
+                      .read<PostsFormFilterBloc>()
                       .add(PostsFormFilterEvent.headphonesChanged(v));
                 }),
             const Text(

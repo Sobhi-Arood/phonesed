@@ -67,11 +67,15 @@ class ConversationCard extends StatelessWidget {
                           conversation.postTitle.getOrCrash(),
                           overflow: TextOverflow.ellipsis,
                           textAlign: TextAlign.left,
-                          style: const TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.grey,
-                          ),
+                          style: Theme.of(context)
+                              .textTheme
+                              .subtitle1
+                              .copyWith(fontSize: 14),
+                          // style: const TextStyle(
+                          //   fontSize: 14,
+                          //   fontWeight: FontWeight.w500,
+                          //   color: Colors.grey,
+                          // ),
                         ),
                       ),
                       const SizedBox(height: 3),
@@ -80,11 +84,12 @@ class ConversationCard extends StatelessWidget {
                         child: Text(
                           conversation.displayUserName.getOrCrash(),
                           overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold,
-                            color: kPrimaryDarkColor,
-                          ),
+                          style: Theme.of(context).textTheme.headline4,
+                          // style: const TextStyle(
+                          //   fontSize: 22,
+                          //   fontWeight: FontWeight.bold,
+                          //   color: kPrimaryDarkColor,
+                          // ),
                         ),
                       ),
                       const SizedBox(height: 3),
@@ -95,27 +100,39 @@ class ConversationCard extends StatelessWidget {
                           conversation.recentMessageContent.getOrCrash(),
                           overflow: TextOverflow.ellipsis,
                           textAlign: TextAlign.left,
-                          style: const TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.grey,
-                          ),
+                          style: Theme.of(context)
+                              .textTheme
+                              .subtitle1
+                              .copyWith(fontSize: 14),
+                          // style: const TextStyle(
+                          //   fontSize: 14,
+                          //   fontWeight: FontWeight.w500,
+                          //   color: Colors.grey,
+                          // ),
                         ),
                       )
                     ],
                   ),
                   Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Text(
                         timeago.format(
                             conversation.recentMessageDate.getOrCrash()),
-                        style: const TextStyle(
-                          fontSize: 11,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.grey,
-                        ),
+                        style: Theme.of(context)
+                            .textTheme
+                            .subtitle1
+                            .copyWith(fontSize: 11),
                       ),
+                      if (!conversation.recentMessageDidRead) ...[
+                        const SizedBox(
+                          height: 16,
+                        ),
+                        const CircleAvatar(
+                          backgroundColor: Colors.red,
+                          radius: 7,
+                        )
+                      ]
                     ],
                   ),
                 ],

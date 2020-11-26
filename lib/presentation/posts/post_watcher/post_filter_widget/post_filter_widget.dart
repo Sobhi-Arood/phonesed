@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phonesed/application/core/posts_filter/posts_filter_bloc.dart';
@@ -6,14 +5,8 @@ import 'package:phonesed/application/core/posts_filter/posts_form_filter/posts_f
 import 'package:phonesed/application/posts/post_watcher/post_watcher_bloc.dart';
 import 'package:phonesed/constants.dart';
 import 'package:phonesed/presentation/posts/post_watcher/post_filter_widget/widgets/brand_dropdown.dart';
-import 'package:phonesed/presentation/posts/post_watcher/post_filter_widget/widgets/city_dropdown.dart';
 import 'package:phonesed/presentation/posts/post_watcher/post_filter_widget/widgets/city_list_widget.dart';
-import 'package:phonesed/presentation/posts/post_watcher/post_filter_widget/widgets/exchangable_checkbox.dart';
 import 'package:phonesed/presentation/posts/post_watcher/post_filter_widget/widgets/price_list_widget.dart';
-import 'package:phonesed/presentation/posts/post_watcher/post_filter_widget/widgets/price_slider.dart';
-import 'package:phonesed/presentation/routes/router.gr.dart';
-
-import 'widgets/headphones_checkbox.dart';
 
 class PostFilterWidget extends StatelessWidget {
   @override

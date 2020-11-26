@@ -23,6 +23,7 @@ abstract class Conversation implements _$Conversation {
     @required PostCity postCity,
     @required MessageContent recentMessageContent,
     @required PostPublishedDate recentMessageDate,
+    @required bool recentMessageDidRead,
     @required UserName displayUserName,
   }) = _Conversation;
 
@@ -38,6 +39,7 @@ abstract class Conversation implements _$Conversation {
         postCity: PostCity(''),
         recentMessageContent: MessageContent(''),
         recentMessageDate: PostPublishedDate(DateTime.now()),
+        recentMessageDidRead: false,
         displayUserName: UserName(''),
       );
 

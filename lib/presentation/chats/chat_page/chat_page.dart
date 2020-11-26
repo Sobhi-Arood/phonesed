@@ -27,10 +27,11 @@ class ChatPage extends StatelessWidget {
         title: Text(
           // postPrimitive.postUsername,
           displayUserName,
-          style: const TextStyle(
-            color: kPrimaryDarkColor,
-            fontWeight: FontWeight.w700,
-          ),
+          style: Theme.of(context).appBarTheme.textTheme.headline2,
+          // style: const TextStyle(
+          //   color: kPrimaryDarkColor,
+          //   fontWeight: FontWeight.w700,
+          // ),
         ),
       ),
       body: MultiBlocProvider(
@@ -59,51 +60,62 @@ class ChatPage extends StatelessWidget {
             onTap: () => FocusScope.of(context).unfocus(),
             child: Column(
               children: [
-                Container(
-                  constraints: const BoxConstraints(maxHeight: 140),
-                  // height: MediaQuery.of(context).size.height * 0.12,
-                  padding: const EdgeInsets.all(10),
-                  color: kPrimaryLightColor,
-                  child: ListTile(
-                    // tileColor: Colors.grey,
-                    leading: CircleAvatar(
-                      radius: 50,
-                      backgroundImage: CachedNetworkImageProvider(
-                          postPrimitive.postImageUrl),
-                    ),
-                    title: Container(
-                      constraints: const BoxConstraints(maxHeight: 90),
-                      child: Text(
-                        postPrimitive.postTitle,
-                        textScaleFactor: 0.8,
-                        overflow: TextOverflow.fade,
-                        style: const TextStyle(
-                          color: kPrimaryDarkColor,
-                          fontWeight: FontWeight.w700,
-                          fontSize: 23,
+                if (MediaQuery.of(context).viewInsets.bottom == 0) ...[
+                  Container(
+                    constraints: const BoxConstraints(maxHeight: 140),
+                    // height: MediaQuery.of(context).size.height * 0.12,
+                    padding: const EdgeInsets.all(10),
+                    color: kPrimaryLightColor,
+                    child: ListTile(
+                      // tileColor: Colors.grey,
+                      leading: CircleAvatar(
+                        radius: 50,
+                        backgroundImage: CachedNetworkImageProvider(
+                            postPrimitive.postImageUrl),
+                      ),
+                      title: Container(
+                        constraints: const BoxConstraints(maxHeight: 90),
+                        child: Text(
+                          postPrimitive.postTitle,
+                          textScaleFactor: 0.8,
+                          overflow: TextOverflow.fade,
+                          style: const TextStyle(
+                            color: kPrimaryDarkColor,
+                            fontWeight: FontWeight.w700,
+                            fontSize: 23,
+                          ),
                         ),
                       ),
+                      subtitle:
+                          Text(timeago.format(postPrimitive.postPublishedDate)),
+                      trailing: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'AED ${postPrimitive.postPrice}',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headline5
+                                  .copyWith(fontSize: 16),
+                            ),
+                            const SizedBox(height: 10),
+                            Wrap(
+                              crossAxisAlignment: WrapCrossAlignment.center,
+                              children: [
+                                const Icon(
+                                  Icons.location_on,
+                                  size: 18,
+                                ),
+                                Text(
+                                  postPrimitive.postCity,
+                                  style: Theme.of(context).textTheme.caption,
+                                ),
+                              ],
+                            )
+                          ]),
                     ),
-                    subtitle:
-                        Text(timeago.format(postPrimitive.postPublishedDate)),
-                    trailing: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text('AED ${postPrimitive.postPrice}'),
-                          const SizedBox(height: 10),
-                          Wrap(
-                            crossAxisAlignment: WrapCrossAlignment.center,
-                            children: [
-                              const Icon(
-                                Icons.location_on,
-                                size: 18,
-                              ),
-                              Text(postPrimitive.postCity),
-                            ],
-                          )
-                        ]),
                   ),
-                ),
+                ],
                 Expanded(
                   child: MessagesListView(),
                 ),

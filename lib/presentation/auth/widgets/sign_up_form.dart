@@ -34,7 +34,7 @@ class SignUpForm extends StatelessWidget {
                   ExtendedNavigator.of(context)
                       .replace(Routes.emailVerificationSentPage);
                   context
-                      .bloc<AuthBloc>()
+                      .read<AuthBloc>()
                       .add(const AuthEvent.authCheckRequested());
                 }));
       },
@@ -46,15 +46,11 @@ class SignUpForm extends StatelessWidget {
             child: ListView(
               padding: const EdgeInsets.all(16),
               children: [
-                const Text(
-                  'New account',
-                  style: TextStyle(
-                    color: kPrimaryDarkColor,
-                    fontSize: 48,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 30),
+                // Text(
+                //   'New account',
+                //   style: Theme.of(context).textTheme.headline1,
+                // ),
+                // const SizedBox(height: 30),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -82,10 +78,10 @@ class SignUpForm extends StatelessWidget {
                           hintText: 'Enter your name ...',
                         ),
                         onChanged: (value) => context
-                            .bloc<SignUpFormBloc>()
+                            .read<SignUpFormBloc>()
                             .add(SignUpFormEvent.nameChanged(value)),
                         validator: (_) => context
-                            .bloc<SignUpFormBloc>()
+                            .read<SignUpFormBloc>()
                             .state
                             .name
                             .value
@@ -125,10 +121,10 @@ class SignUpForm extends StatelessWidget {
                           hintText: 'Enter your email ...',
                         ),
                         onChanged: (value) => context
-                            .bloc<SignUpFormBloc>()
+                            .read<SignUpFormBloc>()
                             .add(SignUpFormEvent.emailChanged(value)),
                         validator: (_) => context
-                            .bloc<SignUpFormBloc>()
+                            .read<SignUpFormBloc>()
                             .state
                             .emailAddress
                             .value
@@ -169,10 +165,10 @@ class SignUpForm extends StatelessWidget {
                           hintText: 'Enter your password ...',
                         ),
                         onChanged: (value) => context
-                            .bloc<SignUpFormBloc>()
+                            .read<SignUpFormBloc>()
                             .add(SignUpFormEvent.passwordChanged(value)),
                         validator: (_) => context
-                            .bloc<SignUpFormBloc>()
+                            .read<SignUpFormBloc>()
                             .state
                             .password
                             .value
@@ -189,7 +185,7 @@ class SignUpForm extends StatelessWidget {
                 const SizedBox(height: 50),
                 RaisedButton(
                   onPressed: () {
-                    context.bloc<SignUpFormBloc>().add(
+                    context.read<SignUpFormBloc>().add(
                         const SignUpFormEvent.registerWithEmailAndPassword());
                   },
                   shape: RoundedRectangleBorder(
@@ -198,59 +194,60 @@ class SignUpForm extends StatelessWidget {
                   elevation: 0,
                   highlightElevation: 0,
                   color: kPrimaryColor,
-                  child: const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 1.0),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 1.0),
                     child: Padding(
-                      padding: EdgeInsets.all(16.0),
+                      padding: const EdgeInsets.all(16.0),
                       child: Text(
                         'Sign up',
-                        style: TextStyle(
-                          fontSize: 21,
-                          color: Colors.white,
-                        ),
+                        style: Theme.of(context).textTheme.button,
+                        // style: TextStyle(
+                        //   fontSize: 21,
+                        //   color: Colors.white,
+                        // ),
                       ),
                     ),
                   ),
                 ),
-                const SizedBox(height: 60),
-                Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text('Already have an account ?'),
-                      const SizedBox(width: 10),
-                      InkWell(
-                        onTap: () =>
-                            ExtendedNavigator.of(context).pushSignInPage(),
-                        child: const Text(
-                          'Login',
-                          style: TextStyle(
-                              color: kPrimaryColor,
-                              fontWeight: FontWeight.w600),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 30),
-                IntrinsicHeight(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const InkWell(child: Text('Privacy Policy')),
-                      const SizedBox(width: 20),
-                      const VerticalDivider(
-                        color: Colors.black,
-                        thickness: 1,
-                        width: 10,
-                      ),
-                      const SizedBox(width: 20),
-                      const InkWell(
-                        child: Text('Terms & Conditions', style: TextStyle()),
-                      ),
-                    ],
-                  ),
-                ),
+                // const SizedBox(height: 60),
+                // Center(
+                //   child: Row(
+                //     mainAxisAlignment: MainAxisAlignment.center,
+                //     children: [
+                //       const Text('Already have an account ?'),
+                //       const SizedBox(width: 10),
+                //       InkWell(
+                //         onTap: () =>
+                //             ExtendedNavigator.of(context).pushSignInPage(),
+                //         child: const Text(
+                //           'Login',
+                //           style: TextStyle(
+                //               color: kPrimaryColor,
+                //               fontWeight: FontWeight.w600),
+                //         ),
+                //       )
+                //     ],
+                //   ),
+                // ),
+                // const SizedBox(height: 30),
+                // IntrinsicHeight(
+                //   child: Row(
+                //     mainAxisAlignment: MainAxisAlignment.center,
+                //     children: [
+                //       const InkWell(child: Text('Privacy Policy')),
+                //       const SizedBox(width: 20),
+                //       const VerticalDivider(
+                //         color: Colors.black,
+                //         thickness: 1,
+                //         width: 10,
+                //       ),
+                //       const SizedBox(width: 20),
+                //       const InkWell(
+                //         child: Text('Terms & Conditions', style: TextStyle()),
+                //       ),
+                //     ],
+                //   ),
+                // ),
               ],
             ),
           ),

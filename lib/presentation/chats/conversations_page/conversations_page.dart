@@ -11,7 +11,7 @@ class ConversationsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
+        BlocProvider<ConversationsWatcherBloc>(
             create: (context) => getIt<ConversationsWatcherBloc>()
               ..add(const ConversationsWatcherEvent.watchAllStarted()))
       ],

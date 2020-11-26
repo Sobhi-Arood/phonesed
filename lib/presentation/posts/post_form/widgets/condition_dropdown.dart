@@ -43,7 +43,7 @@ class ConditionDropdown extends StatelessWidget {
                     ),
                     onChanged: (v) {
                       context
-                          .bloc<PostFormBloc>()
+                          .read<PostFormBloc>()
                           .add(PostFormEvent.conditionChanged(v));
                     },
                     items: PostCondition.conditions

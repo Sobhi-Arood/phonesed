@@ -20,7 +20,7 @@ class ExchangableCheckbox extends StatelessWidget {
                 value: state.post.exhangable,
                 onChanged: (v) {
                   context
-                      .bloc<PostFormBloc>()
+                      .read<PostFormBloc>()
                       .add(PostFormEvent.exchangableChanged(v));
                 }),
             const Text('Exchangable',

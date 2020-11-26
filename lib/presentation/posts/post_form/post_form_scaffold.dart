@@ -141,7 +141,7 @@ class PostFormPageScaffold extends StatelessWidget {
                             onPressed: () {
                               // print(state.post.images.getOrCrash());
                               context
-                                  .bloc<PostFormBloc>()
+                                  .read<PostFormBloc>()
                                   .add(const PostFormEvent.saved());
                             },
                             shape: RoundedRectangleBorder(

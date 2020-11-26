@@ -30,6 +30,7 @@ class _$ConversationDtoTearOff {
       @required String postCity,
       @required String recentMessageContent,
       @required DateTime recentMessageDate,
+      @required bool recentMessageDidRead,
       @required String displayUserName}) {
     return _ConversationDto(
       id: id,
@@ -44,6 +45,7 @@ class _$ConversationDtoTearOff {
       postCity: postCity,
       recentMessageContent: recentMessageContent,
       recentMessageDate: recentMessageDate,
+      recentMessageDidRead: recentMessageDidRead,
       displayUserName: displayUserName,
     );
   }
@@ -73,6 +75,7 @@ mixin _$ConversationDto {
   String get postCity; // @required MessageDto messageDto,
   String get recentMessageContent;
   DateTime get recentMessageDate;
+  bool get recentMessageDidRead;
   String get displayUserName;
 
   Map<String, dynamic> toJson();
@@ -97,6 +100,7 @@ abstract class $ConversationDtoCopyWith<$Res> {
       String postCity,
       String recentMessageContent,
       DateTime recentMessageDate,
+      bool recentMessageDidRead,
       String displayUserName});
 }
 
@@ -123,6 +127,7 @@ class _$ConversationDtoCopyWithImpl<$Res>
     Object postCity = freezed,
     Object recentMessageContent = freezed,
     Object recentMessageDate = freezed,
+    Object recentMessageDidRead = freezed,
     Object displayUserName = freezed,
   }) {
     return _then(_value.copyWith(
@@ -151,6 +156,9 @@ class _$ConversationDtoCopyWithImpl<$Res>
       recentMessageDate: recentMessageDate == freezed
           ? _value.recentMessageDate
           : recentMessageDate as DateTime,
+      recentMessageDidRead: recentMessageDidRead == freezed
+          ? _value.recentMessageDidRead
+          : recentMessageDidRead as bool,
       displayUserName: displayUserName == freezed
           ? _value.displayUserName
           : displayUserName as String,
@@ -178,6 +186,7 @@ abstract class _$ConversationDtoCopyWith<$Res>
       String postCity,
       String recentMessageContent,
       DateTime recentMessageDate,
+      bool recentMessageDidRead,
       String displayUserName});
 }
 
@@ -206,6 +215,7 @@ class __$ConversationDtoCopyWithImpl<$Res>
     Object postCity = freezed,
     Object recentMessageContent = freezed,
     Object recentMessageDate = freezed,
+    Object recentMessageDidRead = freezed,
     Object displayUserName = freezed,
   }) {
     return _then(_ConversationDto(
@@ -234,6 +244,9 @@ class __$ConversationDtoCopyWithImpl<$Res>
       recentMessageDate: recentMessageDate == freezed
           ? _value.recentMessageDate
           : recentMessageDate as DateTime,
+      recentMessageDidRead: recentMessageDidRead == freezed
+          ? _value.recentMessageDidRead
+          : recentMessageDidRead as bool,
       displayUserName: displayUserName == freezed
           ? _value.displayUserName
           : displayUserName as String,
@@ -258,6 +271,7 @@ class _$_ConversationDto extends _ConversationDto {
       @required this.postCity,
       @required this.recentMessageContent,
       @required this.recentMessageDate,
+      @required this.recentMessageDidRead,
       @required this.displayUserName})
       : assert(id != null),
         assert(serverTimeStamp != null),
@@ -271,6 +285,7 @@ class _$_ConversationDto extends _ConversationDto {
         assert(postCity != null),
         assert(recentMessageContent != null),
         assert(recentMessageDate != null),
+        assert(recentMessageDidRead != null),
         assert(displayUserName != null),
         super._();
 
@@ -303,11 +318,13 @@ class _$_ConversationDto extends _ConversationDto {
   @override
   final DateTime recentMessageDate;
   @override
+  final bool recentMessageDidRead;
+  @override
   final String displayUserName;
 
   @override
   String toString() {
-    return 'ConversationDto(id: $id, serverTimeStamp: $serverTimeStamp, postId: $postId, postTitle: $postTitle, postImageUrl: $postImageUrl, postPublishedDate: $postPublishedDate, postPrice: $postPrice, postUserId: $postUserId, postUsername: $postUsername, postCity: $postCity, recentMessageContent: $recentMessageContent, recentMessageDate: $recentMessageDate, displayUserName: $displayUserName)';
+    return 'ConversationDto(id: $id, serverTimeStamp: $serverTimeStamp, postId: $postId, postTitle: $postTitle, postImageUrl: $postImageUrl, postPublishedDate: $postPublishedDate, postPrice: $postPrice, postUserId: $postUserId, postUsername: $postUsername, postCity: $postCity, recentMessageContent: $recentMessageContent, recentMessageDate: $recentMessageDate, recentMessageDidRead: $recentMessageDidRead, displayUserName: $displayUserName)';
   }
 
   @override
@@ -348,6 +365,9 @@ class _$_ConversationDto extends _ConversationDto {
             (identical(other.recentMessageDate, recentMessageDate) ||
                 const DeepCollectionEquality()
                     .equals(other.recentMessageDate, recentMessageDate)) &&
+            (identical(other.recentMessageDidRead, recentMessageDidRead) ||
+                const DeepCollectionEquality().equals(
+                    other.recentMessageDidRead, recentMessageDidRead)) &&
             (identical(other.displayUserName, displayUserName) ||
                 const DeepCollectionEquality()
                     .equals(other.displayUserName, displayUserName)));
@@ -368,6 +388,7 @@ class _$_ConversationDto extends _ConversationDto {
       const DeepCollectionEquality().hash(postCity) ^
       const DeepCollectionEquality().hash(recentMessageContent) ^
       const DeepCollectionEquality().hash(recentMessageDate) ^
+      const DeepCollectionEquality().hash(recentMessageDidRead) ^
       const DeepCollectionEquality().hash(displayUserName);
 
   @override
@@ -395,6 +416,7 @@ abstract class _ConversationDto extends ConversationDto {
       @required String postCity,
       @required String recentMessageContent,
       @required DateTime recentMessageDate,
+      @required bool recentMessageDidRead,
       @required String displayUserName}) = _$_ConversationDto;
 
   factory _ConversationDto.fromJson(Map<String, dynamic> json) =
@@ -425,6 +447,8 @@ abstract class _ConversationDto extends ConversationDto {
   String get recentMessageContent;
   @override
   DateTime get recentMessageDate;
+  @override
+  bool get recentMessageDidRead;
   @override
   String get displayUserName;
   @override

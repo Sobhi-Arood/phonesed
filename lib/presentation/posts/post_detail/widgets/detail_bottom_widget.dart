@@ -47,8 +47,12 @@ class DetailBottomWidget extends StatelessWidget {
                 ),
                 Text(
                   model,
-                  style: const TextStyle(
-                      fontSize: 16, fontWeight: FontWeight.w700),
+                  style: Theme.of(context)
+                      .textTheme
+                      .caption
+                      .copyWith(fontWeight: FontWeight.w700),
+                  // style: const TextStyle(
+                  //     fontSize: 16, fontWeight: FontWeight.w700),
                 ),
               ],
             ),
@@ -69,8 +73,12 @@ class DetailBottomWidget extends StatelessWidget {
                 ),
                 Text(
                   age,
-                  style: const TextStyle(
-                      fontSize: 16, fontWeight: FontWeight.w700),
+                  style: Theme.of(context)
+                      .textTheme
+                      .caption
+                      .copyWith(fontWeight: FontWeight.w700),
+                  // style: const TextStyle(
+                  //     fontSize: 16, fontWeight: FontWeight.w700),
                 ),
               ],
             ),
@@ -91,19 +99,27 @@ class DetailBottomWidget extends StatelessWidget {
                 ),
                 Text(
                   condition,
-                  style: const TextStyle(
-                      fontSize: 16, fontWeight: FontWeight.w700),
+                  style: Theme.of(context)
+                      .textTheme
+                      .caption
+                      .copyWith(fontWeight: FontWeight.w700),
+                  // style: const TextStyle(
+                  //     fontSize: 16, fontWeight: FontWeight.w700),
                 ),
               ],
             ),
           ),
           const SizedBox(height: 32),
           Text(
-            description,
-            style: TextStyle(
-                fontSize: 17,
-                fontWeight: FontWeight.w500,
-                color: Colors.grey[800]),
+            description.isEmpty ? 'No description' : description,
+            style: description.isEmpty
+                ? Theme.of(context).textTheme.bodyText1.copyWith(
+                    color: Colors.grey[400], fontStyle: FontStyle.italic)
+                : Theme.of(context).textTheme.bodyText1,
+            // style: TextStyle(
+            //     fontSize: 17,
+            //     fontWeight: FontWeight.w500,
+            //     color: Colors.grey[800]),
           ),
           const SizedBox(height: 32),
           const Divider(),

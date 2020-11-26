@@ -179,11 +179,14 @@ class PostDetailBody extends HookWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            post.userName.getOrCrash(),
-                            style: const TextStyle(
-                                fontSize: 19, fontWeight: FontWeight.w500),
-                          ),
+                          Text(post.userName.getOrCrash(),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headline4
+                                  .copyWith(fontSize: 19)
+                              // style: const TextStyle(
+                              //     fontSize: 19, fontWeight: FontWeight.w500),
+                              ),
                           const SizedBox(
                             height: 4,
                           ),

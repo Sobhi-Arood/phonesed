@@ -30,7 +30,7 @@ class PriceSlider extends HookWidget {
               onChanged: (v) {
                 // maxPrice.value = v.toInt();
                 // context
-                //     .bloc<PostsFormFilterBloc>()
+                //     .read<PostsFormFilterBloc>()
                 //     .add(PostsFormFilterEvent.maxPriceChanged(v.toInt()));
               },
               label: '$maxPrice',

@@ -190,7 +190,7 @@ class DeviceFormDetailsWidget extends StatelessWidget {
                               //       (a) => a.fold((l) {
                               //             print(l.toString());
                               //           }, (r) {
-                              //             context.bloc<FormNavigationBloc>().add(
+                              //             context.read<FormNavigationBloc>().add(
                               //                 const FormNavigationEvent
                               //                     .pageChanged(2));
                               //           }));
@@ -198,7 +198,7 @@ class DeviceFormDetailsWidget extends StatelessWidget {
 
                               // print(state.post);
                               context
-                                  .bloc<PostFormBloc>()
+                                  .read<PostFormBloc>()
                                   .add(const PostFormEvent.saved());
                             },
                             shape: RoundedRectangleBorder(

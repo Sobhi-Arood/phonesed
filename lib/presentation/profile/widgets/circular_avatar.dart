@@ -27,14 +27,14 @@ class CircularUserAvatar extends HookWidget {
             pickImgFailure: (f) {
               f.valueFailure.maybeMap(
                   unknownError: (f) {
-                    FlushbarHelper.createError(message: 'Unknown error')
+                    FlushbarHelper.createError(message: 'Cancelled')
                         .show(context);
                   },
                   orElse: () => {});
             },
             pickImgSuccess: (url) {
               context
-                  .bloc<UserProfileBloc>()
+                  .read<UserProfileBloc>()
                   .add(UserProfileEvent.avatarChanged(url.url));
               // img.value = url.url;
               // print('hahahahahahaha'),
@@ -88,11 +88,26 @@ class CircularUserAvatar extends HookWidget {
                       ),
                   loadSuccess: (state) {
                     // img.value = state.user.avatarUrl;
+                    if (state.user.avatarUrl.isEmpty) {
+                      return CircleAvatar(
+                        radius: 70,
+                        backgroundColor: Colors.grey[300],
+                        child: CircleAvatar(
+                          radius: 65,
+                          backgroundColor: Colors.grey[100],
+                          child: const Icon(
+                            Icons.add,
+                            size: 44,
+                            color: kSecondaryLightColor,
+                          ),
+                        ),
+                      );
+                    }
                     return CircleAvatar(
-                      radius: 80,
+                      radius: 70,
                       backgroundColor: Colors.grey[300],
                       child: CircleAvatar(
-                        radius: 75,
+                        radius: 65,
                         backgroundImage:
                             CachedNetworkImageProvider(state.user.avatarUrl),
                         backgroundColor: Colors.grey[100],

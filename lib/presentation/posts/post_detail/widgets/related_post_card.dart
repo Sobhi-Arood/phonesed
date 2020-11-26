@@ -43,10 +43,11 @@ class RelatedPostCard extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   maxLines: 1,
                   textScaleFactor: 0.9,
-                  style: const TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.w600,
-                      color: kPrimaryDarkColor),
+                  style: Theme.of(context).textTheme.headline4,
+                  // style: const TextStyle(
+                  //     fontSize: 22,
+                  //     fontWeight: FontWeight.w600,
+                  //     color: kPrimaryDarkColor),
                 ),
               ),
               const SizedBox(height: 8),

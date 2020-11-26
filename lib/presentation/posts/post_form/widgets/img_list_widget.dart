@@ -157,7 +157,7 @@ class ImageTile extends StatelessWidget {
               onPressed: () {
                 context.postImages = context.postImages.minusElement(img);
                 context
-                    .bloc<PostFormBloc>()
+                    .read<PostFormBloc>()
                     .add(PostFormEvent.imagesChanged(context.postImages));
               },
             ),
@@ -210,7 +210,7 @@ class UpdateImageTile extends StatelessWidget {
               onPressed: () {
                 context.postImages = context.postImages.minusElement(img);
                 context
-                    .bloc<PostFormBloc>()
+                    .read<PostFormBloc>()
                     .add(PostFormEvent.imagesChanged(context.postImages));
               },
             ),
