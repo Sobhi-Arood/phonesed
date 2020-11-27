@@ -85,15 +85,6 @@ class PostImagesList<T> extends ValueObject<KtList<T>> {
 }
 
 class PostCity extends ValueObject<String> {
-  static const List<String> uaeCities = [
-    'Abu dhabi',
-    'Dubai',
-    'Sharjah',
-    'Ajman',
-    'Ras al khima',
-    'um al qiun',
-    'Fujira',
-  ];
   @override
   final Either<ValueFailure<String>, String> value;
 
@@ -158,16 +149,6 @@ class PostPublishedDate extends ValueObject<DateTime> {
 }
 
 class PostBrand extends ValueObject<String> {
-  static const List<String> brands = [
-    'Apple',
-    'Samsung',
-    'Google',
-    'Huwawi',
-    'Motorola',
-    'OnePlus',
-    'Other',
-  ];
-
   @override
   final Either<ValueFailure<String>, String> value;
 
@@ -208,10 +189,8 @@ class PostAge extends ValueObject<String> {
 class PostCondition extends ValueObject<String> {
   static const List<String> conditions = [
     'New',
-    'Excellent',
-    'Very good',
-    'Good',
-    'Broken',
+    'Used',
+    'Scrap',
   ];
 
   @override

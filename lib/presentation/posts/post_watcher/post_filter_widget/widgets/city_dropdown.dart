@@ -51,9 +51,8 @@ class FilterCityDropdown extends HookWidget {
                       loadCitiesSuccess: (s) {
                         // if (formState.post.city.getOrCrash().isEmpty) {
                         // cityValue.value = s.data[0];
-                        context
-                            .read<PostsFormFilterBloc>()
-                            .add(PostsFormFilterEvent.cityChanged(s.data[0]));
+                        context.read<PostsFormFilterBloc>().add(
+                            PostsFormFilterEvent.cityChanged(s.data[0].city));
                         // context
                         //     .read<PostFormAreasBloc>()
                         //     .add(PostFormAreasEvent.getAreasStarted(s.data[0]));
@@ -105,8 +104,8 @@ class FilterCityDropdown extends HookWidget {
                                 .map<DropdownMenuItem<String>>((value) {
                               // print(value);
                               return DropdownMenuItem<String>(
-                                value: value,
-                                child: Text(value),
+                                value: value.city,
+                                child: Text(value.city),
                               );
                             }).toList(),
                           ),

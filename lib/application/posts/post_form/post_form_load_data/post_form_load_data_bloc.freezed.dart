@@ -39,7 +39,7 @@ class _$PostFormLoadDataEventTearOff {
 
 // ignore: unused_element
   _CitiesReceived citiesReceived(
-      Either<PostFailure, KtList<String>> failureOrPosts) {
+      Either<PostFailure, KtList<LocationPrimitive>> failureOrPosts) {
     return _CitiesReceived(
       failureOrPosts,
     );
@@ -84,7 +84,7 @@ mixin _$PostFormLoadDataEvent {
     @required Result getDevicesStarted(int index),
     @required
         Result citiesReceived(
-            Either<PostFailure, KtList<String>> failureOrPosts),
+            Either<PostFailure, KtList<LocationPrimitive>> failureOrPosts),
     @required
         Result areasReceived(
             Either<PostFailure, KtList<String>> failureOrPosts),
@@ -101,7 +101,8 @@ mixin _$PostFormLoadDataEvent {
     Result getAreasStarted(String city),
     Result getBrandsStarted(),
     Result getDevicesStarted(int index),
-    Result citiesReceived(Either<PostFailure, KtList<String>> failureOrPosts),
+    Result citiesReceived(
+        Either<PostFailure, KtList<LocationPrimitive>> failureOrPosts),
     Result areasReceived(Either<PostFailure, KtList<String>> failureOrPosts),
     Result brandsReceived(
         Either<PostFailure, KtList<BrandPrimitive>> failureOrPosts),
@@ -195,7 +196,7 @@ class _$_GetCitiesStarted implements _GetCitiesStarted {
     @required Result getDevicesStarted(int index),
     @required
         Result citiesReceived(
-            Either<PostFailure, KtList<String>> failureOrPosts),
+            Either<PostFailure, KtList<LocationPrimitive>> failureOrPosts),
     @required
         Result areasReceived(
             Either<PostFailure, KtList<String>> failureOrPosts),
@@ -224,7 +225,8 @@ class _$_GetCitiesStarted implements _GetCitiesStarted {
     Result getAreasStarted(String city),
     Result getBrandsStarted(),
     Result getDevicesStarted(int index),
-    Result citiesReceived(Either<PostFailure, KtList<String>> failureOrPosts),
+    Result citiesReceived(
+        Either<PostFailure, KtList<LocationPrimitive>> failureOrPosts),
     Result areasReceived(Either<PostFailure, KtList<String>> failureOrPosts),
     Result brandsReceived(
         Either<PostFailure, KtList<BrandPrimitive>> failureOrPosts),
@@ -352,7 +354,7 @@ class _$_GetAreasStarted implements _GetAreasStarted {
     @required Result getDevicesStarted(int index),
     @required
         Result citiesReceived(
-            Either<PostFailure, KtList<String>> failureOrPosts),
+            Either<PostFailure, KtList<LocationPrimitive>> failureOrPosts),
     @required
         Result areasReceived(
             Either<PostFailure, KtList<String>> failureOrPosts),
@@ -381,7 +383,8 @@ class _$_GetAreasStarted implements _GetAreasStarted {
     Result getAreasStarted(String city),
     Result getBrandsStarted(),
     Result getDevicesStarted(int index),
-    Result citiesReceived(Either<PostFailure, KtList<String>> failureOrPosts),
+    Result citiesReceived(
+        Either<PostFailure, KtList<LocationPrimitive>> failureOrPosts),
     Result areasReceived(Either<PostFailure, KtList<String>> failureOrPosts),
     Result brandsReceived(
         Either<PostFailure, KtList<BrandPrimitive>> failureOrPosts),
@@ -491,7 +494,7 @@ class _$_GetBrandsStarted implements _GetBrandsStarted {
     @required Result getDevicesStarted(int index),
     @required
         Result citiesReceived(
-            Either<PostFailure, KtList<String>> failureOrPosts),
+            Either<PostFailure, KtList<LocationPrimitive>> failureOrPosts),
     @required
         Result areasReceived(
             Either<PostFailure, KtList<String>> failureOrPosts),
@@ -520,7 +523,8 @@ class _$_GetBrandsStarted implements _GetBrandsStarted {
     Result getAreasStarted(String city),
     Result getBrandsStarted(),
     Result getDevicesStarted(int index),
-    Result citiesReceived(Either<PostFailure, KtList<String>> failureOrPosts),
+    Result citiesReceived(
+        Either<PostFailure, KtList<LocationPrimitive>> failureOrPosts),
     Result areasReceived(Either<PostFailure, KtList<String>> failureOrPosts),
     Result brandsReceived(
         Either<PostFailure, KtList<BrandPrimitive>> failureOrPosts),
@@ -648,7 +652,7 @@ class _$_GetDevicesStarted implements _GetDevicesStarted {
     @required Result getDevicesStarted(int index),
     @required
         Result citiesReceived(
-            Either<PostFailure, KtList<String>> failureOrPosts),
+            Either<PostFailure, KtList<LocationPrimitive>> failureOrPosts),
     @required
         Result areasReceived(
             Either<PostFailure, KtList<String>> failureOrPosts),
@@ -677,7 +681,8 @@ class _$_GetDevicesStarted implements _GetDevicesStarted {
     Result getAreasStarted(String city),
     Result getBrandsStarted(),
     Result getDevicesStarted(int index),
-    Result citiesReceived(Either<PostFailure, KtList<String>> failureOrPosts),
+    Result citiesReceived(
+        Either<PostFailure, KtList<LocationPrimitive>> failureOrPosts),
     Result areasReceived(Either<PostFailure, KtList<String>> failureOrPosts),
     Result brandsReceived(
         Either<PostFailure, KtList<BrandPrimitive>> failureOrPosts),
@@ -747,7 +752,7 @@ abstract class _$CitiesReceivedCopyWith<$Res> {
   factory _$CitiesReceivedCopyWith(
           _CitiesReceived value, $Res Function(_CitiesReceived) then) =
       __$CitiesReceivedCopyWithImpl<$Res>;
-  $Res call({Either<PostFailure, KtList<String>> failureOrPosts});
+  $Res call({Either<PostFailure, KtList<LocationPrimitive>> failureOrPosts});
 }
 
 /// @nodoc
@@ -768,7 +773,7 @@ class __$CitiesReceivedCopyWithImpl<$Res>
     return _then(_CitiesReceived(
       failureOrPosts == freezed
           ? _value.failureOrPosts
-          : failureOrPosts as Either<PostFailure, KtList<String>>,
+          : failureOrPosts as Either<PostFailure, KtList<LocationPrimitive>>,
     ));
   }
 }
@@ -778,7 +783,7 @@ class _$_CitiesReceived implements _CitiesReceived {
   const _$_CitiesReceived(this.failureOrPosts) : assert(failureOrPosts != null);
 
   @override
-  final Either<PostFailure, KtList<String>> failureOrPosts;
+  final Either<PostFailure, KtList<LocationPrimitive>> failureOrPosts;
 
   @override
   String toString() {
@@ -812,7 +817,7 @@ class _$_CitiesReceived implements _CitiesReceived {
     @required Result getDevicesStarted(int index),
     @required
         Result citiesReceived(
-            Either<PostFailure, KtList<String>> failureOrPosts),
+            Either<PostFailure, KtList<LocationPrimitive>> failureOrPosts),
     @required
         Result areasReceived(
             Either<PostFailure, KtList<String>> failureOrPosts),
@@ -841,7 +846,8 @@ class _$_CitiesReceived implements _CitiesReceived {
     Result getAreasStarted(String city),
     Result getBrandsStarted(),
     Result getDevicesStarted(int index),
-    Result citiesReceived(Either<PostFailure, KtList<String>> failureOrPosts),
+    Result citiesReceived(
+        Either<PostFailure, KtList<LocationPrimitive>> failureOrPosts),
     Result areasReceived(Either<PostFailure, KtList<String>> failureOrPosts),
     Result brandsReceived(
         Either<PostFailure, KtList<BrandPrimitive>> failureOrPosts),
@@ -901,9 +907,10 @@ class _$_CitiesReceived implements _CitiesReceived {
 
 abstract class _CitiesReceived implements PostFormLoadDataEvent {
   const factory _CitiesReceived(
-      Either<PostFailure, KtList<String>> failureOrPosts) = _$_CitiesReceived;
+          Either<PostFailure, KtList<LocationPrimitive>> failureOrPosts) =
+      _$_CitiesReceived;
 
-  Either<PostFailure, KtList<String>> get failureOrPosts;
+  Either<PostFailure, KtList<LocationPrimitive>> get failureOrPosts;
   _$CitiesReceivedCopyWith<_CitiesReceived> get copyWith;
 }
 
@@ -977,7 +984,7 @@ class _$_AreasReceived implements _AreasReceived {
     @required Result getDevicesStarted(int index),
     @required
         Result citiesReceived(
-            Either<PostFailure, KtList<String>> failureOrPosts),
+            Either<PostFailure, KtList<LocationPrimitive>> failureOrPosts),
     @required
         Result areasReceived(
             Either<PostFailure, KtList<String>> failureOrPosts),
@@ -1006,7 +1013,8 @@ class _$_AreasReceived implements _AreasReceived {
     Result getAreasStarted(String city),
     Result getBrandsStarted(),
     Result getDevicesStarted(int index),
-    Result citiesReceived(Either<PostFailure, KtList<String>> failureOrPosts),
+    Result citiesReceived(
+        Either<PostFailure, KtList<LocationPrimitive>> failureOrPosts),
     Result areasReceived(Either<PostFailure, KtList<String>> failureOrPosts),
     Result brandsReceived(
         Either<PostFailure, KtList<BrandPrimitive>> failureOrPosts),
@@ -1142,7 +1150,7 @@ class _$_BrandsReceived implements _BrandsReceived {
     @required Result getDevicesStarted(int index),
     @required
         Result citiesReceived(
-            Either<PostFailure, KtList<String>> failureOrPosts),
+            Either<PostFailure, KtList<LocationPrimitive>> failureOrPosts),
     @required
         Result areasReceived(
             Either<PostFailure, KtList<String>> failureOrPosts),
@@ -1171,7 +1179,8 @@ class _$_BrandsReceived implements _BrandsReceived {
     Result getAreasStarted(String city),
     Result getBrandsStarted(),
     Result getDevicesStarted(int index),
-    Result citiesReceived(Either<PostFailure, KtList<String>> failureOrPosts),
+    Result citiesReceived(
+        Either<PostFailure, KtList<LocationPrimitive>> failureOrPosts),
     Result areasReceived(Either<PostFailure, KtList<String>> failureOrPosts),
     Result brandsReceived(
         Either<PostFailure, KtList<BrandPrimitive>> failureOrPosts),
@@ -1309,7 +1318,7 @@ class _$_DevicesReceived implements _DevicesReceived {
     @required Result getDevicesStarted(int index),
     @required
         Result citiesReceived(
-            Either<PostFailure, KtList<String>> failureOrPosts),
+            Either<PostFailure, KtList<LocationPrimitive>> failureOrPosts),
     @required
         Result areasReceived(
             Either<PostFailure, KtList<String>> failureOrPosts),
@@ -1338,7 +1347,8 @@ class _$_DevicesReceived implements _DevicesReceived {
     Result getAreasStarted(String city),
     Result getBrandsStarted(),
     Result getDevicesStarted(int index),
-    Result citiesReceived(Either<PostFailure, KtList<String>> failureOrPosts),
+    Result citiesReceived(
+        Either<PostFailure, KtList<LocationPrimitive>> failureOrPosts),
     Result areasReceived(Either<PostFailure, KtList<String>> failureOrPosts),
     Result brandsReceived(
         Either<PostFailure, KtList<BrandPrimitive>> failureOrPosts),
@@ -1419,7 +1429,7 @@ class _$PostFormLoadDataStateTearOff {
   }
 
 // ignore: unused_element
-  _LoadCitiesSuccess loadCitiesSuccess(KtList<String> data) {
+  _LoadCitiesSuccess loadCitiesSuccess(KtList<LocationPrimitive> data) {
     return _LoadCitiesSuccess(
       data,
     );
@@ -1485,7 +1495,7 @@ mixin _$PostFormLoadDataState {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result loadInProgress(),
-    @required Result loadCitiesSuccess(KtList<String> data),
+    @required Result loadCitiesSuccess(KtList<LocationPrimitive> data),
     @required Result loadCitiesFailure(PostFailure postFailure),
     @required Result loadAreasSuccess(KtList<String> data),
     @required Result loadAreasFailure(PostFailure postFailure),
@@ -1498,7 +1508,7 @@ mixin _$PostFormLoadDataState {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result loadInProgress(),
-    Result loadCitiesSuccess(KtList<String> data),
+    Result loadCitiesSuccess(KtList<LocationPrimitive> data),
     Result loadCitiesFailure(PostFailure postFailure),
     Result loadAreasSuccess(KtList<String> data),
     Result loadAreasFailure(PostFailure postFailure),
@@ -1593,7 +1603,7 @@ class _$_Initial implements _Initial {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result loadInProgress(),
-    @required Result loadCitiesSuccess(KtList<String> data),
+    @required Result loadCitiesSuccess(KtList<LocationPrimitive> data),
     @required Result loadCitiesFailure(PostFailure postFailure),
     @required Result loadAreasSuccess(KtList<String> data),
     @required Result loadAreasFailure(PostFailure postFailure),
@@ -1620,7 +1630,7 @@ class _$_Initial implements _Initial {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result loadInProgress(),
-    Result loadCitiesSuccess(KtList<String> data),
+    Result loadCitiesSuccess(KtList<LocationPrimitive> data),
     Result loadCitiesFailure(PostFailure postFailure),
     Result loadAreasSuccess(KtList<String> data),
     Result loadAreasFailure(PostFailure postFailure),
@@ -1732,7 +1742,7 @@ class _$_LoadInProgress implements _LoadInProgress {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result loadInProgress(),
-    @required Result loadCitiesSuccess(KtList<String> data),
+    @required Result loadCitiesSuccess(KtList<LocationPrimitive> data),
     @required Result loadCitiesFailure(PostFailure postFailure),
     @required Result loadAreasSuccess(KtList<String> data),
     @required Result loadAreasFailure(PostFailure postFailure),
@@ -1759,7 +1769,7 @@ class _$_LoadInProgress implements _LoadInProgress {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result loadInProgress(),
-    Result loadCitiesSuccess(KtList<String> data),
+    Result loadCitiesSuccess(KtList<LocationPrimitive> data),
     Result loadCitiesFailure(PostFailure postFailure),
     Result loadAreasSuccess(KtList<String> data),
     Result loadAreasFailure(PostFailure postFailure),
@@ -1835,7 +1845,7 @@ abstract class _$LoadCitiesSuccessCopyWith<$Res> {
   factory _$LoadCitiesSuccessCopyWith(
           _LoadCitiesSuccess value, $Res Function(_LoadCitiesSuccess) then) =
       __$LoadCitiesSuccessCopyWithImpl<$Res>;
-  $Res call({KtList<String> data});
+  $Res call({KtList<LocationPrimitive> data});
 }
 
 /// @nodoc
@@ -1854,7 +1864,7 @@ class __$LoadCitiesSuccessCopyWithImpl<$Res>
     Object data = freezed,
   }) {
     return _then(_LoadCitiesSuccess(
-      data == freezed ? _value.data : data as KtList<String>,
+      data == freezed ? _value.data : data as KtList<LocationPrimitive>,
     ));
   }
 }
@@ -1864,7 +1874,7 @@ class _$_LoadCitiesSuccess implements _LoadCitiesSuccess {
   const _$_LoadCitiesSuccess(this.data) : assert(data != null);
 
   @override
-  final KtList<String> data;
+  final KtList<LocationPrimitive> data;
 
   @override
   String toString() {
@@ -1892,7 +1902,7 @@ class _$_LoadCitiesSuccess implements _LoadCitiesSuccess {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result loadInProgress(),
-    @required Result loadCitiesSuccess(KtList<String> data),
+    @required Result loadCitiesSuccess(KtList<LocationPrimitive> data),
     @required Result loadCitiesFailure(PostFailure postFailure),
     @required Result loadAreasSuccess(KtList<String> data),
     @required Result loadAreasFailure(PostFailure postFailure),
@@ -1919,7 +1929,7 @@ class _$_LoadCitiesSuccess implements _LoadCitiesSuccess {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result loadInProgress(),
-    Result loadCitiesSuccess(KtList<String> data),
+    Result loadCitiesSuccess(KtList<LocationPrimitive> data),
     Result loadCitiesFailure(PostFailure postFailure),
     Result loadAreasSuccess(KtList<String> data),
     Result loadAreasFailure(PostFailure postFailure),
@@ -1987,9 +1997,10 @@ class _$_LoadCitiesSuccess implements _LoadCitiesSuccess {
 }
 
 abstract class _LoadCitiesSuccess implements PostFormLoadDataState {
-  const factory _LoadCitiesSuccess(KtList<String> data) = _$_LoadCitiesSuccess;
+  const factory _LoadCitiesSuccess(KtList<LocationPrimitive> data) =
+      _$_LoadCitiesSuccess;
 
-  KtList<String> get data;
+  KtList<LocationPrimitive> get data;
   _$LoadCitiesSuccessCopyWith<_LoadCitiesSuccess> get copyWith;
 }
 
@@ -2068,7 +2079,7 @@ class _$_LoadCitiesFailure implements _LoadCitiesFailure {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result loadInProgress(),
-    @required Result loadCitiesSuccess(KtList<String> data),
+    @required Result loadCitiesSuccess(KtList<LocationPrimitive> data),
     @required Result loadCitiesFailure(PostFailure postFailure),
     @required Result loadAreasSuccess(KtList<String> data),
     @required Result loadAreasFailure(PostFailure postFailure),
@@ -2095,7 +2106,7 @@ class _$_LoadCitiesFailure implements _LoadCitiesFailure {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result loadInProgress(),
-    Result loadCitiesSuccess(KtList<String> data),
+    Result loadCitiesSuccess(KtList<LocationPrimitive> data),
     Result loadCitiesFailure(PostFailure postFailure),
     Result loadAreasSuccess(KtList<String> data),
     Result loadAreasFailure(PostFailure postFailure),
@@ -2232,7 +2243,7 @@ class _$_LoadAreasSuccess implements _LoadAreasSuccess {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result loadInProgress(),
-    @required Result loadCitiesSuccess(KtList<String> data),
+    @required Result loadCitiesSuccess(KtList<LocationPrimitive> data),
     @required Result loadCitiesFailure(PostFailure postFailure),
     @required Result loadAreasSuccess(KtList<String> data),
     @required Result loadAreasFailure(PostFailure postFailure),
@@ -2259,7 +2270,7 @@ class _$_LoadAreasSuccess implements _LoadAreasSuccess {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result loadInProgress(),
-    Result loadCitiesSuccess(KtList<String> data),
+    Result loadCitiesSuccess(KtList<LocationPrimitive> data),
     Result loadCitiesFailure(PostFailure postFailure),
     Result loadAreasSuccess(KtList<String> data),
     Result loadAreasFailure(PostFailure postFailure),
@@ -2408,7 +2419,7 @@ class _$_LoadAreasFailure implements _LoadAreasFailure {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result loadInProgress(),
-    @required Result loadCitiesSuccess(KtList<String> data),
+    @required Result loadCitiesSuccess(KtList<LocationPrimitive> data),
     @required Result loadCitiesFailure(PostFailure postFailure),
     @required Result loadAreasSuccess(KtList<String> data),
     @required Result loadAreasFailure(PostFailure postFailure),
@@ -2435,7 +2446,7 @@ class _$_LoadAreasFailure implements _LoadAreasFailure {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result loadInProgress(),
-    Result loadCitiesSuccess(KtList<String> data),
+    Result loadCitiesSuccess(KtList<LocationPrimitive> data),
     Result loadCitiesFailure(PostFailure postFailure),
     Result loadAreasSuccess(KtList<String> data),
     Result loadAreasFailure(PostFailure postFailure),
@@ -2572,7 +2583,7 @@ class _$_LoadBrandsSuccess implements _LoadBrandsSuccess {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result loadInProgress(),
-    @required Result loadCitiesSuccess(KtList<String> data),
+    @required Result loadCitiesSuccess(KtList<LocationPrimitive> data),
     @required Result loadCitiesFailure(PostFailure postFailure),
     @required Result loadAreasSuccess(KtList<String> data),
     @required Result loadAreasFailure(PostFailure postFailure),
@@ -2599,7 +2610,7 @@ class _$_LoadBrandsSuccess implements _LoadBrandsSuccess {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result loadInProgress(),
-    Result loadCitiesSuccess(KtList<String> data),
+    Result loadCitiesSuccess(KtList<LocationPrimitive> data),
     Result loadCitiesFailure(PostFailure postFailure),
     Result loadAreasSuccess(KtList<String> data),
     Result loadAreasFailure(PostFailure postFailure),
@@ -2749,7 +2760,7 @@ class _$_LoadBrandsFailure implements _LoadBrandsFailure {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result loadInProgress(),
-    @required Result loadCitiesSuccess(KtList<String> data),
+    @required Result loadCitiesSuccess(KtList<LocationPrimitive> data),
     @required Result loadCitiesFailure(PostFailure postFailure),
     @required Result loadAreasSuccess(KtList<String> data),
     @required Result loadAreasFailure(PostFailure postFailure),
@@ -2776,7 +2787,7 @@ class _$_LoadBrandsFailure implements _LoadBrandsFailure {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result loadInProgress(),
-    Result loadCitiesSuccess(KtList<String> data),
+    Result loadCitiesSuccess(KtList<LocationPrimitive> data),
     Result loadCitiesFailure(PostFailure postFailure),
     Result loadAreasSuccess(KtList<String> data),
     Result loadAreasFailure(PostFailure postFailure),
@@ -2913,7 +2924,7 @@ class _$_LoadDevicesSuccess implements _LoadDevicesSuccess {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result loadInProgress(),
-    @required Result loadCitiesSuccess(KtList<String> data),
+    @required Result loadCitiesSuccess(KtList<LocationPrimitive> data),
     @required Result loadCitiesFailure(PostFailure postFailure),
     @required Result loadAreasSuccess(KtList<String> data),
     @required Result loadAreasFailure(PostFailure postFailure),
@@ -2940,7 +2951,7 @@ class _$_LoadDevicesSuccess implements _LoadDevicesSuccess {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result loadInProgress(),
-    Result loadCitiesSuccess(KtList<String> data),
+    Result loadCitiesSuccess(KtList<LocationPrimitive> data),
     Result loadCitiesFailure(PostFailure postFailure),
     Result loadAreasSuccess(KtList<String> data),
     Result loadAreasFailure(PostFailure postFailure),
@@ -3090,7 +3101,7 @@ class _$_LoadDevicesFailure implements _LoadDevicesFailure {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result loadInProgress(),
-    @required Result loadCitiesSuccess(KtList<String> data),
+    @required Result loadCitiesSuccess(KtList<LocationPrimitive> data),
     @required Result loadCitiesFailure(PostFailure postFailure),
     @required Result loadAreasSuccess(KtList<String> data),
     @required Result loadAreasFailure(PostFailure postFailure),
@@ -3117,7 +3128,7 @@ class _$_LoadDevicesFailure implements _LoadDevicesFailure {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result loadInProgress(),
-    Result loadCitiesSuccess(KtList<String> data),
+    Result loadCitiesSuccess(KtList<LocationPrimitive> data),
     Result loadCitiesFailure(PostFailure postFailure),
     Result loadAreasSuccess(KtList<String> data),
     Result loadAreasFailure(PostFailure postFailure),

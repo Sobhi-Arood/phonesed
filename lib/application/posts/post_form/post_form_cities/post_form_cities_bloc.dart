@@ -7,6 +7,7 @@ import 'package:injectable/injectable.dart';
 import 'package:kt_dart/kt.dart';
 import 'package:phonesed/domain/posts/i_form_repository.dart';
 import 'package:phonesed/domain/posts/post_failure.dart';
+import 'package:phonesed/infrastructure/posts/post_form_primitives.dart';
 
 part 'post_form_cities_event.dart';
 part 'post_form_cities_state.dart';

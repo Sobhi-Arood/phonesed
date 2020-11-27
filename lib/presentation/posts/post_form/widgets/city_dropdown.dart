@@ -46,7 +46,7 @@ class CityDropdown extends HookWidget {
                     ),
                     loadCitiesSuccess: (s) {
                       cityValue.value = formState.post.city.value
-                          .fold((l) => s.data[0], (r) => r);
+                          .fold((l) => s.data[0].city, (r) => r);
                       context
                           .read<PostFormBloc>()
                           .add(PostFormEvent.cityChanged(cityValue.value));
@@ -109,8 +109,8 @@ class CityDropdown extends HookWidget {
                                 .map<DropdownMenuItem<String>>((value) {
                               // print(value);
                               return DropdownMenuItem<String>(
-                                value: value,
-                                child: Text(value),
+                                value: value.city,
+                                child: Text(value.city),
                               );
                             }).toList(),
                           ),

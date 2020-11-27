@@ -11,5 +11,6 @@ Future<void> main() async {
   await Firebase.initializeApp();
   // Admob.initialize();
   Admob.initialize(testDeviceIds: ['emulator-5554']);
+  await Admob.requestTrackingAuthorization();
   runApp(AppWidget());
 }

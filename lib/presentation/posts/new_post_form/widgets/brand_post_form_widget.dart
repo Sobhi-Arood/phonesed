@@ -95,30 +95,37 @@ class BrandPostFormWidget extends StatelessWidget {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceAround,
                                 children: [
-                                  if (brand.brand == 'Oppo') ...[
-                                    Image.asset(brand.logo),
-                                  ] else if (brand.brand == 'Oppo') ...[
-                                    SvgPicture.asset(
-                                      brand.logo,
-                                      width: 35,
-                                      height: 35,
-                                      color: kPrimaryDarkColor,
-                                    ),
-                                  ] else ...[
-                                    SvgPicture.asset(
-                                      brand.logo,
-                                      width: 65,
-                                      height: 65,
-                                      color: kPrimaryDarkColor,
-                                    ),
+                                  if (brand.logo.isNotEmpty) ...[
+                                    if (brand.brand == 'Motorola') ...[
+                                      Image.asset(
+                                        brand.logo,
+                                        width: 75,
+                                        height: 75,
+                                      ),
+                                    ] else if (brand.brand == 'Oppo') ...[
+                                      SvgPicture.asset(
+                                        brand.logo,
+                                        width: 35,
+                                        height: 35,
+                                        color: kPrimaryDarkColor,
+                                      ),
+                                    ] else ...[
+                                      SvgPicture.asset(
+                                        brand.logo,
+                                        width: 75,
+                                        height: 75,
+                                        color: kPrimaryDarkColor,
+                                      ),
+                                    ],
                                   ],
                                   Text(
                                     brand.brand,
                                     textAlign: TextAlign.center,
                                     style: const TextStyle(
-                                        color: kPrimaryDarkColor,
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w700),
+                                      color: kPrimaryDarkColor,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w700,
+                                    ),
                                   ),
                                 ],
                               ),

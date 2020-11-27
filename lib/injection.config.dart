@@ -78,8 +78,7 @@ GetIt $initGetIt(
   gh.lazySingleton<GoogleSignIn>(() => firebaseInjectableModule.googleSignIn);
   gh.lazySingleton<IChatRepository>(
       () => ChatRepository(get<FirebaseFirestore>()));
-  gh.lazySingleton<IFormRepository>(
-      () => FormRepository(get<FirebaseFirestore>()));
+  gh.lazySingleton<IFormRepository>(() => FormRepository());
   gh.lazySingleton<IShareFacade>(
       () => DynamicLinksShareService(get<FirebaseDynamicLinks>()));
   gh.lazySingleton<IUploadFacade>(() => UploadFacade(get<FirebaseStorage>()));
