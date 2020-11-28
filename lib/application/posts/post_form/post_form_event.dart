@@ -9,6 +9,8 @@ abstract class PostFormEvent with _$PostFormEvent {
   const factory PostFormEvent.ageChanged(String ageStr) = _AgeChanged;
   const factory PostFormEvent.conditionChanged(String conditionStr) =
       _ConditionChanged;
+  const factory PostFormEvent.storageSizeChanged(String storageSizeStr) =
+      _StorageSizeChanged;
   const factory PostFormEvent.titleChanged(String titleStr) = _TitleChanged;
   const factory PostFormEvent.priceChanged(int priceStr) = _PriceChanged;
   const factory PostFormEvent.descriptionChanged(String descriptionStr) =

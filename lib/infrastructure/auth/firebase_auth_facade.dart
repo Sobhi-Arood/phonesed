@@ -157,7 +157,7 @@ class FirebaseAuthFacade implements IAuthFacade {
       });
 
       return right(unit);
-    } on FirebaseAuthException catch (_) {
+    } catch (_) {
       return left(const AuthFailure.serverError());
     }
   }

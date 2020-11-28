@@ -7,7 +7,6 @@ import 'package:injectable/injectable.dart';
 import 'package:phonesed/domain/chats/i_chat_repository.dart';
 import 'package:phonesed/domain/chats/message_failure.dart';
 import 'package:phonesed/domain/chats/value_objects.dart';
-import 'package:phonesed/domain/entities/conversation.dart';
 import 'package:phonesed/domain/entities/message.dart';
 import 'package:phonesed/infrastructure/posts/post_primitive_presentation.dart';
 

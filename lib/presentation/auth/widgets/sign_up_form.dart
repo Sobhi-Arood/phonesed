@@ -200,7 +200,10 @@ class SignUpForm extends StatelessWidget {
                       padding: const EdgeInsets.all(16.0),
                       child: Text(
                         'Sign up',
-                        style: Theme.of(context).textTheme.button,
+                        style: Theme.of(context)
+                            .textTheme
+                            .button
+                            .copyWith(fontSize: 21),
                         // style: TextStyle(
                         //   fontSize: 21,
                         //   color: Colors.white,

@@ -72,10 +72,16 @@ class FormRepository implements IFormRepository {
       final List<BrandPrimitive> list = parsed
           .map((e) => BrandPrimitive.fromJson(e as Map<String, dynamic>))
           .toList();
-      final devices = list[index].devices;
-      devices.sort();
+      final devices = list[index].devices.toImmutableList().sortedWith((a, b) {
+        if (a == b) return 0;
+        if (a == 'Other') return 1;
+        if (b == 'Other') return -1;
+
+        return a.compareTo(b);
+      });
+
       // print(list[index].devices);
-      return right(devices.toImmutableList());
+      return right(devices);
     } catch (e) {
       return left(const PostFailure.unexpected());
     }

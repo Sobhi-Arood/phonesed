@@ -205,3 +205,28 @@ class PostCondition extends ValueObject<String> {
 
   const PostCondition._(this.value);
 }
+
+class PostStorageSize extends ValueObject<String> {
+  static const List<String> sizes = [
+    '8 GB',
+    '16 GB',
+    '32 GB',
+    '64 GB',
+    '128 GB',
+    '256 GB',
+    '512 GB',
+    '1 TB',
+  ];
+
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  factory PostStorageSize(String input) {
+    assert(input != null);
+    return PostStorageSize._(
+      right(input),
+    );
+  }
+
+  const PostStorageSize._(this.value);
+}

@@ -99,8 +99,8 @@ class BrandPostFormWidget extends StatelessWidget {
                                     if (brand.brand == 'Motorola') ...[
                                       Image.asset(
                                         brand.logo,
-                                        width: 75,
-                                        height: 75,
+                                        width: 65,
+                                        height: 65,
                                       ),
                                     ] else if (brand.brand == 'Oppo') ...[
                                       SvgPicture.asset(
@@ -112,8 +112,8 @@ class BrandPostFormWidget extends StatelessWidget {
                                     ] else ...[
                                       SvgPicture.asset(
                                         brand.logo,
-                                        width: 75,
-                                        height: 75,
+                                        width: 65,
+                                        height: 65,
                                         color: kPrimaryDarkColor,
                                       ),
                                     ],

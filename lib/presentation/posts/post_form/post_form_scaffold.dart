@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phonesed/application/posts/post_form/post_form_bloc.dart';
 import 'package:phonesed/constants.dart';
 import 'package:phonesed/presentation/posts/post_form/misc/post_img_presentation.dart';
-import 'package:phonesed/presentation/posts/post_form/widgets/add_img_btn.dart';
 import 'package:phonesed/presentation/posts/post_form/widgets/age_dropown.dart';
 import 'package:phonesed/presentation/posts/post_form/widgets/area_dropdown.dart';
 import 'package:phonesed/presentation/posts/post_form/widgets/brand_dropdown.dart';
@@ -18,6 +17,7 @@ import 'package:phonesed/presentation/posts/post_form/widgets/device_dropdown.da
 import 'package:phonesed/presentation/posts/post_form/widgets/img_list_widget.dart';
 import 'package:phonesed/presentation/posts/post_form/widgets/moreAcc_textform.dart';
 import 'package:phonesed/presentation/posts/post_form/widgets/price_textform.dart';
+import 'package:phonesed/presentation/posts/post_form/widgets/storage_dropdown.dart';
 import 'package:phonesed/presentation/posts/post_form/widgets/title_textform.dart';
 import 'package:provider/provider.dart';
 
@@ -89,6 +89,8 @@ class PostFormPageScaffold extends StatelessWidget {
                         const AgeDropdown(),
                         const SizedBox(height: 28),
                         const ConditionDropdown(),
+                        const SizedBox(height: 28),
+                        const StorageSizeDropdown(),
                         const SizedBox(height: 28),
                         const TitleTextForm(),
                         const SizedBox(height: 28),

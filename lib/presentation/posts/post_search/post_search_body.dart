@@ -31,90 +31,92 @@ class PostSearchBody extends StatelessWidget {
         //         either.fold((failure) => print(failure), (r) => print(r)));
       },
       builder: (context, state) {
-        return Column(
-          children: [
-            const PostSearchTextField(),
-            const SizedBox(
-              height: 16,
-            ),
-            if (state.isLoading) ...[
-              const SpinKitFadingFour(
-                color: kPrimaryColor,
+        return GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: Column(
+            children: [
+              const PostSearchTextField(),
+              const SizedBox(
+                height: 16,
               ),
-            ] else ...[
-              state.saveFailureOrSuccessOption.fold(
-                (f) => const Center(
-                  child: Text('No Results'),
+              if (state.isLoading) ...[
+                const SpinKitFadingFour(
+                  color: kPrimaryColor,
                 ),
-                (a) {
-                  if (a.isEmpty()) {
-                    return Column(
-                      children: [
-                        Image.asset(
-                          'assets/images/search.png',
-                          scale: 4,
-                        ),
-                        const SizedBox(height: 30),
-                        Text(
-                          'No results',
-                          style: TextStyle(
-                              color: Colors.grey[300],
-                              fontWeight: FontWeight.w600,
-                              fontSize: 16),
-                        ),
-                      ],
-                    );
-                  }
-                  return Expanded(
-                    child: GestureDetector(
-                      onTap: () => FocusScope.of(context).unfocus(),
-                      child: ListView.builder(
-                        itemCount: a.size,
-                        itemBuilder: (context, index) {
-                          final post = a[index];
-                          if (post.failureOption.isSome()) {
-                            return const Text('Error');
-                          } else {
-                            return FavoritePostCard(post: post);
-                          }
-                        },
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ]
+              ] else ...[
+                state.saveFailureOrSuccessOption.fold(
+                  (f) => const Center(
+                    child: Text('No Results'),
+                  ),
+                  (a) {
+                    return a.isEmpty()
+                        ? Column(
+                            children: [
+                              Image.asset(
+                                'assets/images/search.png',
+                                scale: 4,
+                              ),
+                              const SizedBox(height: 30),
+                              Text(
+                                'No results',
+                                style: TextStyle(
+                                    color: Colors.grey[300],
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 16),
+                              ),
+                            ],
+                          )
+                        : Expanded(
+                            child: GestureDetector(
+                              onTap: () => FocusScope.of(context).unfocus(),
+                              child: ListView.builder(
+                                itemCount: a.size,
+                                itemBuilder: (context, index) {
+                                  final post = a[index];
+                                  if (post.failureOption.isSome()) {
+                                    return const Text('Error');
+                                  } else {
+                                    return FavoritePostCard(post: post);
+                                  }
+                                },
+                              ),
+                            ),
+                          );
+                  },
+                ),
+              ]
 
-            // state.saveFailureOrSuccessOption.fold(
-            //   () => Container(
-            //     child: Text('noooo'),
-            //   ),
-            //   (a) => a.fold(
-            //     (fail) => Center(
-            //       child: Text(fail.map(
-            //           unexpected: (_) => 'Error',
-            //           insufficientPermission: (_) => 'Error',
-            //           unableToUpdate: (_) => 'Error',
-            //           notLoggedIn: (_) => 'Error')),
-            //     ),
-            //     (list) => Expanded(
-            //       child: ListView.builder(
-            //         itemCount: list.size,
-            //         itemBuilder: (context, index) {
-            //           final post = list[index];
-            //           return Text(
-            //             post.title.getOrCrash(),
-            //             style: TextStyle(
-            //                 color: kPrimaryDarkColor,
-            //                 fontSize: 24,
-            //                 fontWeight: FontWeight.w700),
-            //           );
-            //         },
-            //       ),
-            //     ),
-            //   ),
-            // )
-          ],
+              // state.saveFailureOrSuccessOption.fold(
+              //   () => Container(
+              //     child: Text('noooo'),
+              //   ),
+              //   (a) => a.fold(
+              //     (fail) => Center(
+              //       child: Text(fail.map(
+              //           unexpected: (_) => 'Error',
+              //           insufficientPermission: (_) => 'Error',
+              //           unableToUpdate: (_) => 'Error',
+              //           notLoggedIn: (_) => 'Error')),
+              //     ),
+              //     (list) => Expanded(
+              //       child: ListView.builder(
+              //         itemCount: list.size,
+              //         itemBuilder: (context, index) {
+              //           final post = list[index];
+              //           return Text(
+              //             post.title.getOrCrash(),
+              //             style: TextStyle(
+              //                 color: kPrimaryDarkColor,
+              //                 fontSize: 24,
+              //                 fontWeight: FontWeight.w700),
+              //           );
+              //         },
+              //       ),
+              //     ),
+              //   ),
+              // )
+            ],
+          ),
         );
       },
     );

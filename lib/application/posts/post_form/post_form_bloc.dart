@@ -55,6 +55,12 @@ class PostFormBloc extends Bloc<PostFormEvent, PostFormState> {
         post: state.post.copyWith(condition: PostCondition(e.conditionStr)),
         saveFailureOrSuccessOption: none(),
       );
+    }, storageSizeChanged: (e) async* {
+      yield state.copyWith(
+        post:
+            state.post.copyWith(storageSize: PostStorageSize(e.storageSizeStr)),
+        saveFailureOrSuccessOption: none(),
+      );
     }, titleChanged: (e) async* {
       yield state.copyWith(
         post: state.post.copyWith(title: PostTitle(e.titleStr)),

@@ -57,7 +57,9 @@ class ProfileDetailsPage extends StatelessWidget {
                     style: GoogleFonts.lato(
                       fontSize: 18,
                       fontWeight: FontWeight.w900,
-                      color: kPrimaryDarkColor,
+                      color: user.numOfPublishedPosts != 0
+                          ? kPrimaryDarkColor
+                          : Colors.grey,
                     ),
                   ),
                   trailing: const Icon(Icons.chevron_right),

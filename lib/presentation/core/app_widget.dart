@@ -88,7 +88,7 @@ class AppWidget extends StatelessWidget {
           ),
           button: GoogleFonts.lato(
             color: Colors.white,
-            fontSize: 21,
+            fontSize: 14,
             fontWeight: FontWeight.w700,
           ),
         ),

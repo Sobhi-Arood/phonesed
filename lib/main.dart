@@ -9,8 +9,8 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   configureInjection(Environment.prod);
   await Firebase.initializeApp();
-  // Admob.initialize();
-  Admob.initialize(testDeviceIds: ['emulator-5554']);
+  Admob.initialize();
+  // Admob.initialize(testDeviceIds: ['emulator-5554']);
   await Admob.requestTrackingAuthorization();
   runApp(AppWidget());
 }

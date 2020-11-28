@@ -56,8 +56,15 @@ class ButtonsList extends StatelessWidget {
               // style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18),
             ),
             trailing: const Icon(Icons.chevron_right),
-            onTap: () =>
-                showAboutDialog(context: context, applicationVersion: '1.0.0'),
+            onTap: () => showAboutDialog(
+              context: context,
+              applicationVersion: '1.0.0',
+              applicationIcon: Image.asset(
+                'assets/images/app_icon/icon_02.png',
+                width: 35,
+                height: 35,
+              ),
+            ),
           ),
           const Divider(),
           ListTile(

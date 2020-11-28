@@ -3,7 +3,7 @@ import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:phonesed/application/auth/social_sign_in/social_sign_in_bloc.dart';
 import 'package:phonesed/constants.dart';
@@ -54,6 +54,11 @@ class WelcomePage extends StatelessWidget {
 }
 
 class WelcomePageBody extends StatelessWidget {
+  final String privacyPolicyLink =
+      'https://sobhi-portfolio.com/phonesed-privacy-policy';
+  final String termsConditionsLink =
+      'https://sobhi-portfolio.com/phonesed-terms&conditions';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -195,7 +200,7 @@ class WelcomePageBody extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(
-                  height: 12,
+                  height: 30,
                 ),
                 FlatButton(
                   onPressed: () =>
@@ -227,7 +232,7 @@ class WelcomePageBody extends StatelessWidget {
                   // ),
                 ),
                 const SizedBox(
-                  height: 12,
+                  height: 30,
                 ),
                 RichText(
                   text: TextSpan(
@@ -239,7 +244,8 @@ class WelcomePageBody extends StatelessWidget {
                         style: TextStyle(
                           color: kPrimaryColor,
                         ),
-                        recognizer: TapGestureRecognizer()..onTap = () {},
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () => _launchURL(termsConditionsLink),
                       ),
                       TextSpan(
                         text: 'and ',
@@ -252,7 +258,8 @@ class WelcomePageBody extends StatelessWidget {
                         style: const TextStyle(
                           color: kPrimaryColor,
                         ),
-                        recognizer: TapGestureRecognizer()..onTap = () {},
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () => _launchURL(privacyPolicyLink),
                       ),
                     ],
                   ),
@@ -270,5 +277,13 @@ class WelcomePageBody extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  _launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }

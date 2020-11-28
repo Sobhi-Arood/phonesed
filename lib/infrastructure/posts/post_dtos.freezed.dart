@@ -38,6 +38,7 @@ class _$PostDtoTearOff {
       @required String device,
       @required String age,
       @required String condition,
+      @required String storageSize,
       @required String userAvatar,
       @required String userName,
       @required List<String> searchParams,
@@ -63,6 +64,7 @@ class _$PostDtoTearOff {
       device: device,
       age: age,
       condition: condition,
+      storageSize: storageSize,
       userAvatar: userAvatar,
       userName: userName,
       searchParams: searchParams,
@@ -103,6 +105,7 @@ mixin _$PostDto {
   String get device;
   String get age;
   String get condition;
+  String get storageSize;
   String get userAvatar;
   String get userName;
   List<String> get searchParams;
@@ -137,6 +140,7 @@ abstract class $PostDtoCopyWith<$Res> {
       String device,
       String age,
       String condition,
+      String storageSize,
       String userAvatar,
       String userName,
       List<String> searchParams,
@@ -173,6 +177,7 @@ class _$PostDtoCopyWithImpl<$Res> implements $PostDtoCopyWith<$Res> {
     Object device = freezed,
     Object age = freezed,
     Object condition = freezed,
+    Object storageSize = freezed,
     Object userAvatar = freezed,
     Object userName = freezed,
     Object searchParams = freezed,
@@ -207,6 +212,8 @@ class _$PostDtoCopyWithImpl<$Res> implements $PostDtoCopyWith<$Res> {
       device: device == freezed ? _value.device : device as String,
       age: age == freezed ? _value.age : age as String,
       condition: condition == freezed ? _value.condition : condition as String,
+      storageSize:
+          storageSize == freezed ? _value.storageSize : storageSize as String,
       userAvatar:
           userAvatar == freezed ? _value.userAvatar : userAvatar as String,
       userName: userName == freezed ? _value.userName : userName as String,
@@ -246,6 +253,7 @@ abstract class _$PostDtoCopyWith<$Res> implements $PostDtoCopyWith<$Res> {
       String device,
       String age,
       String condition,
+      String storageSize,
       String userAvatar,
       String userName,
       List<String> searchParams,
@@ -283,6 +291,7 @@ class __$PostDtoCopyWithImpl<$Res> extends _$PostDtoCopyWithImpl<$Res>
     Object device = freezed,
     Object age = freezed,
     Object condition = freezed,
+    Object storageSize = freezed,
     Object userAvatar = freezed,
     Object userName = freezed,
     Object searchParams = freezed,
@@ -317,6 +326,8 @@ class __$PostDtoCopyWithImpl<$Res> extends _$PostDtoCopyWithImpl<$Res>
       device: device == freezed ? _value.device : device as String,
       age: age == freezed ? _value.age : age as String,
       condition: condition == freezed ? _value.condition : condition as String,
+      storageSize:
+          storageSize == freezed ? _value.storageSize : storageSize as String,
       userAvatar:
           userAvatar == freezed ? _value.userAvatar : userAvatar as String,
       userName: userName == freezed ? _value.userName : userName as String,
@@ -355,6 +366,7 @@ class _$_PostDto extends _PostDto {
       @required this.device,
       @required this.age,
       @required this.condition,
+      @required this.storageSize,
       @required this.userAvatar,
       @required this.userName,
       @required this.searchParams,
@@ -379,6 +391,7 @@ class _$_PostDto extends _PostDto {
         assert(device != null),
         assert(age != null),
         assert(condition != null),
+        assert(storageSize != null),
         assert(userAvatar != null),
         assert(userName != null),
         assert(searchParams != null),
@@ -429,6 +442,8 @@ class _$_PostDto extends _PostDto {
   @override
   final String condition;
   @override
+  final String storageSize;
+  @override
   final String userAvatar;
   @override
   final String userName;
@@ -439,7 +454,7 @@ class _$_PostDto extends _PostDto {
 
   @override
   String toString() {
-    return 'PostDto(id: $id, userId: $userId, title: $title, price: $price, description: $description, images: $images, publishedDate: $publishedDate, city: $city, area: $area, country: $country, moreAccessories: $moreAccessories, avaliable: $avaliable, exhangable: $exhangable, negiotable: $negiotable, headphones: $headphones, charger: $charger, brand: $brand, device: $device, age: $age, condition: $condition, userAvatar: $userAvatar, userName: $userName, searchParams: $searchParams, filterParams: $filterParams)';
+    return 'PostDto(id: $id, userId: $userId, title: $title, price: $price, description: $description, images: $images, publishedDate: $publishedDate, city: $city, area: $area, country: $country, moreAccessories: $moreAccessories, avaliable: $avaliable, exhangable: $exhangable, negiotable: $negiotable, headphones: $headphones, charger: $charger, brand: $brand, device: $device, age: $age, condition: $condition, storageSize: $storageSize, userAvatar: $userAvatar, userName: $userName, searchParams: $searchParams, filterParams: $filterParams)';
   }
 
   @override
@@ -496,6 +511,9 @@ class _$_PostDto extends _PostDto {
             (identical(other.condition, condition) ||
                 const DeepCollectionEquality()
                     .equals(other.condition, condition)) &&
+            (identical(other.storageSize, storageSize) ||
+                const DeepCollectionEquality()
+                    .equals(other.storageSize, storageSize)) &&
             (identical(other.userAvatar, userAvatar) ||
                 const DeepCollectionEquality()
                     .equals(other.userAvatar, userAvatar)) &&
@@ -533,6 +551,7 @@ class _$_PostDto extends _PostDto {
       const DeepCollectionEquality().hash(device) ^
       const DeepCollectionEquality().hash(age) ^
       const DeepCollectionEquality().hash(condition) ^
+      const DeepCollectionEquality().hash(storageSize) ^
       const DeepCollectionEquality().hash(userAvatar) ^
       const DeepCollectionEquality().hash(userName) ^
       const DeepCollectionEquality().hash(searchParams) ^
@@ -571,6 +590,7 @@ abstract class _PostDto extends PostDto {
       @required String device,
       @required String age,
       @required String condition,
+      @required String storageSize,
       @required String userAvatar,
       @required String userName,
       @required List<String> searchParams,
@@ -618,6 +638,8 @@ abstract class _PostDto extends PostDto {
   String get age;
   @override
   String get condition;
+  @override
+  String get storageSize;
   @override
   String get userAvatar;
   @override

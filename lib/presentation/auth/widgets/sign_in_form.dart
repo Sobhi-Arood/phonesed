@@ -163,7 +163,10 @@ class SignInForm extends StatelessWidget {
                     padding: const EdgeInsets.all(16),
                     child: Text(
                       'Sign in',
-                      style: Theme.of(context).textTheme.button,
+                      style: Theme.of(context)
+                          .textTheme
+                          .button
+                          .copyWith(fontSize: 21),
                       // style: TextStyle(
                       //   fontSize: 21,
                       //   color: Colors.white,

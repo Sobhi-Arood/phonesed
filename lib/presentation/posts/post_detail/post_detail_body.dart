@@ -207,6 +207,7 @@ class PostDetailBody extends HookWidget {
                   model: post.device.getOrCrash(),
                   age: post.age.getOrCrash(),
                   condition: post.condition.getOrCrash(),
+                  storageSize: post.storageSize.getOrCrash(),
                   description: post.description.getOrCrash(),
                 ),
                 // Ad

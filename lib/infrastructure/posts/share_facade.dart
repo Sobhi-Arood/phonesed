@@ -62,7 +62,7 @@ class DynamicLinksShareService implements IShareFacade {
       String postId, String title, String description, String imageUrl) async {
     try {
       final DynamicLinkParameters parameters = DynamicLinkParameters(
-          uriPrefix: 'https://phonesed.page.link',
+          uriPrefix: 'https://phonesedapp.page.link',
           link: Uri.parse('https://www.phonesed.com/post?id=$postId'),
           androidParameters:
               AndroidParameters(packageName: 'com.sobhi.phonesed'),

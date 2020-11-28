@@ -224,7 +224,7 @@ class PostCard extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              post.condition.getOrCrash(),
+                              post.storageSize.getOrCrash(),
                               style: Theme.of(context)
                                   .textTheme
                                   .subtitle1

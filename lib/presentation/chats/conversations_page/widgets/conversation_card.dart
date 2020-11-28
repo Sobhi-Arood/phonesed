@@ -19,8 +19,8 @@ class ConversationCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.all(0),
-      elevation: 0.5,
+      margin: const EdgeInsets.all(0.2),
+      elevation: 0.8,
       child: InkWell(
         onTap: () => ExtendedNavigator.of(context).pushChatPage(
           // conversation: conversation,

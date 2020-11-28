@@ -49,6 +49,13 @@ class _$PostFormEventTearOff {
   }
 
 // ignore: unused_element
+  _StorageSizeChanged storageSizeChanged(String storageSizeStr) {
+    return _StorageSizeChanged(
+      storageSizeStr,
+    );
+  }
+
+// ignore: unused_element
   _TitleChanged titleChanged(String titleStr) {
     return _TitleChanged(
       titleStr,
@@ -144,6 +151,7 @@ mixin _$PostFormEvent {
     @required Result deviceChanged(String deviceStr),
     @required Result ageChanged(String ageStr),
     @required Result conditionChanged(String conditionStr),
+    @required Result storageSizeChanged(String storageSizeStr),
     @required Result titleChanged(String titleStr),
     @required Result priceChanged(int priceStr),
     @required Result descriptionChanged(String descriptionStr),
@@ -164,6 +172,7 @@ mixin _$PostFormEvent {
     Result deviceChanged(String deviceStr),
     Result ageChanged(String ageStr),
     Result conditionChanged(String conditionStr),
+    Result storageSizeChanged(String storageSizeStr),
     Result titleChanged(String titleStr),
     Result priceChanged(int priceStr),
     Result descriptionChanged(String descriptionStr),
@@ -185,6 +194,7 @@ mixin _$PostFormEvent {
     @required Result deviceChanged(_DeviceChanged value),
     @required Result ageChanged(_AgeChanged value),
     @required Result conditionChanged(_ConditionChanged value),
+    @required Result storageSizeChanged(_StorageSizeChanged value),
     @required Result titleChanged(_TitleChanged value),
     @required Result priceChanged(_PriceChanged value),
     @required Result descriptionChanged(_DescriptionChanged value),
@@ -205,6 +215,7 @@ mixin _$PostFormEvent {
     Result deviceChanged(_DeviceChanged value),
     Result ageChanged(_AgeChanged value),
     Result conditionChanged(_ConditionChanged value),
+    Result storageSizeChanged(_StorageSizeChanged value),
     Result titleChanged(_TitleChanged value),
     Result priceChanged(_PriceChanged value),
     Result descriptionChanged(_DescriptionChanged value),
@@ -307,6 +318,7 @@ class _$_Initialized implements _Initialized {
     @required Result deviceChanged(String deviceStr),
     @required Result ageChanged(String ageStr),
     @required Result conditionChanged(String conditionStr),
+    @required Result storageSizeChanged(String storageSizeStr),
     @required Result titleChanged(String titleStr),
     @required Result priceChanged(int priceStr),
     @required Result descriptionChanged(String descriptionStr),
@@ -325,6 +337,7 @@ class _$_Initialized implements _Initialized {
     assert(deviceChanged != null);
     assert(ageChanged != null);
     assert(conditionChanged != null);
+    assert(storageSizeChanged != null);
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
@@ -348,6 +361,7 @@ class _$_Initialized implements _Initialized {
     Result deviceChanged(String deviceStr),
     Result ageChanged(String ageStr),
     Result conditionChanged(String conditionStr),
+    Result storageSizeChanged(String storageSizeStr),
     Result titleChanged(String titleStr),
     Result priceChanged(int priceStr),
     Result descriptionChanged(String descriptionStr),
@@ -377,6 +391,7 @@ class _$_Initialized implements _Initialized {
     @required Result deviceChanged(_DeviceChanged value),
     @required Result ageChanged(_AgeChanged value),
     @required Result conditionChanged(_ConditionChanged value),
+    @required Result storageSizeChanged(_StorageSizeChanged value),
     @required Result titleChanged(_TitleChanged value),
     @required Result priceChanged(_PriceChanged value),
     @required Result descriptionChanged(_DescriptionChanged value),
@@ -395,6 +410,7 @@ class _$_Initialized implements _Initialized {
     assert(deviceChanged != null);
     assert(ageChanged != null);
     assert(conditionChanged != null);
+    assert(storageSizeChanged != null);
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
@@ -418,6 +434,7 @@ class _$_Initialized implements _Initialized {
     Result deviceChanged(_DeviceChanged value),
     Result ageChanged(_AgeChanged value),
     Result conditionChanged(_ConditionChanged value),
+    Result storageSizeChanged(_StorageSizeChanged value),
     Result titleChanged(_TitleChanged value),
     Result priceChanged(_PriceChanged value),
     Result descriptionChanged(_DescriptionChanged value),
@@ -513,6 +530,7 @@ class _$_BrandChanged implements _BrandChanged {
     @required Result deviceChanged(String deviceStr),
     @required Result ageChanged(String ageStr),
     @required Result conditionChanged(String conditionStr),
+    @required Result storageSizeChanged(String storageSizeStr),
     @required Result titleChanged(String titleStr),
     @required Result priceChanged(int priceStr),
     @required Result descriptionChanged(String descriptionStr),
@@ -531,6 +549,7 @@ class _$_BrandChanged implements _BrandChanged {
     assert(deviceChanged != null);
     assert(ageChanged != null);
     assert(conditionChanged != null);
+    assert(storageSizeChanged != null);
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
@@ -554,6 +573,7 @@ class _$_BrandChanged implements _BrandChanged {
     Result deviceChanged(String deviceStr),
     Result ageChanged(String ageStr),
     Result conditionChanged(String conditionStr),
+    Result storageSizeChanged(String storageSizeStr),
     Result titleChanged(String titleStr),
     Result priceChanged(int priceStr),
     Result descriptionChanged(String descriptionStr),
@@ -583,6 +603,7 @@ class _$_BrandChanged implements _BrandChanged {
     @required Result deviceChanged(_DeviceChanged value),
     @required Result ageChanged(_AgeChanged value),
     @required Result conditionChanged(_ConditionChanged value),
+    @required Result storageSizeChanged(_StorageSizeChanged value),
     @required Result titleChanged(_TitleChanged value),
     @required Result priceChanged(_PriceChanged value),
     @required Result descriptionChanged(_DescriptionChanged value),
@@ -601,6 +622,7 @@ class _$_BrandChanged implements _BrandChanged {
     assert(deviceChanged != null);
     assert(ageChanged != null);
     assert(conditionChanged != null);
+    assert(storageSizeChanged != null);
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
@@ -624,6 +646,7 @@ class _$_BrandChanged implements _BrandChanged {
     Result deviceChanged(_DeviceChanged value),
     Result ageChanged(_AgeChanged value),
     Result conditionChanged(_ConditionChanged value),
+    Result storageSizeChanged(_StorageSizeChanged value),
     Result titleChanged(_TitleChanged value),
     Result priceChanged(_PriceChanged value),
     Result descriptionChanged(_DescriptionChanged value),
@@ -719,6 +742,7 @@ class _$_DeviceChanged implements _DeviceChanged {
     @required Result deviceChanged(String deviceStr),
     @required Result ageChanged(String ageStr),
     @required Result conditionChanged(String conditionStr),
+    @required Result storageSizeChanged(String storageSizeStr),
     @required Result titleChanged(String titleStr),
     @required Result priceChanged(int priceStr),
     @required Result descriptionChanged(String descriptionStr),
@@ -737,6 +761,7 @@ class _$_DeviceChanged implements _DeviceChanged {
     assert(deviceChanged != null);
     assert(ageChanged != null);
     assert(conditionChanged != null);
+    assert(storageSizeChanged != null);
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
@@ -760,6 +785,7 @@ class _$_DeviceChanged implements _DeviceChanged {
     Result deviceChanged(String deviceStr),
     Result ageChanged(String ageStr),
     Result conditionChanged(String conditionStr),
+    Result storageSizeChanged(String storageSizeStr),
     Result titleChanged(String titleStr),
     Result priceChanged(int priceStr),
     Result descriptionChanged(String descriptionStr),
@@ -789,6 +815,7 @@ class _$_DeviceChanged implements _DeviceChanged {
     @required Result deviceChanged(_DeviceChanged value),
     @required Result ageChanged(_AgeChanged value),
     @required Result conditionChanged(_ConditionChanged value),
+    @required Result storageSizeChanged(_StorageSizeChanged value),
     @required Result titleChanged(_TitleChanged value),
     @required Result priceChanged(_PriceChanged value),
     @required Result descriptionChanged(_DescriptionChanged value),
@@ -807,6 +834,7 @@ class _$_DeviceChanged implements _DeviceChanged {
     assert(deviceChanged != null);
     assert(ageChanged != null);
     assert(conditionChanged != null);
+    assert(storageSizeChanged != null);
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
@@ -830,6 +858,7 @@ class _$_DeviceChanged implements _DeviceChanged {
     Result deviceChanged(_DeviceChanged value),
     Result ageChanged(_AgeChanged value),
     Result conditionChanged(_ConditionChanged value),
+    Result storageSizeChanged(_StorageSizeChanged value),
     Result titleChanged(_TitleChanged value),
     Result priceChanged(_PriceChanged value),
     Result descriptionChanged(_DescriptionChanged value),
@@ -923,6 +952,7 @@ class _$_AgeChanged implements _AgeChanged {
     @required Result deviceChanged(String deviceStr),
     @required Result ageChanged(String ageStr),
     @required Result conditionChanged(String conditionStr),
+    @required Result storageSizeChanged(String storageSizeStr),
     @required Result titleChanged(String titleStr),
     @required Result priceChanged(int priceStr),
     @required Result descriptionChanged(String descriptionStr),
@@ -941,6 +971,7 @@ class _$_AgeChanged implements _AgeChanged {
     assert(deviceChanged != null);
     assert(ageChanged != null);
     assert(conditionChanged != null);
+    assert(storageSizeChanged != null);
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
@@ -964,6 +995,7 @@ class _$_AgeChanged implements _AgeChanged {
     Result deviceChanged(String deviceStr),
     Result ageChanged(String ageStr),
     Result conditionChanged(String conditionStr),
+    Result storageSizeChanged(String storageSizeStr),
     Result titleChanged(String titleStr),
     Result priceChanged(int priceStr),
     Result descriptionChanged(String descriptionStr),
@@ -993,6 +1025,7 @@ class _$_AgeChanged implements _AgeChanged {
     @required Result deviceChanged(_DeviceChanged value),
     @required Result ageChanged(_AgeChanged value),
     @required Result conditionChanged(_ConditionChanged value),
+    @required Result storageSizeChanged(_StorageSizeChanged value),
     @required Result titleChanged(_TitleChanged value),
     @required Result priceChanged(_PriceChanged value),
     @required Result descriptionChanged(_DescriptionChanged value),
@@ -1011,6 +1044,7 @@ class _$_AgeChanged implements _AgeChanged {
     assert(deviceChanged != null);
     assert(ageChanged != null);
     assert(conditionChanged != null);
+    assert(storageSizeChanged != null);
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
@@ -1034,6 +1068,7 @@ class _$_AgeChanged implements _AgeChanged {
     Result deviceChanged(_DeviceChanged value),
     Result ageChanged(_AgeChanged value),
     Result conditionChanged(_ConditionChanged value),
+    Result storageSizeChanged(_StorageSizeChanged value),
     Result titleChanged(_TitleChanged value),
     Result priceChanged(_PriceChanged value),
     Result descriptionChanged(_DescriptionChanged value),
@@ -1129,6 +1164,7 @@ class _$_ConditionChanged implements _ConditionChanged {
     @required Result deviceChanged(String deviceStr),
     @required Result ageChanged(String ageStr),
     @required Result conditionChanged(String conditionStr),
+    @required Result storageSizeChanged(String storageSizeStr),
     @required Result titleChanged(String titleStr),
     @required Result priceChanged(int priceStr),
     @required Result descriptionChanged(String descriptionStr),
@@ -1147,6 +1183,7 @@ class _$_ConditionChanged implements _ConditionChanged {
     assert(deviceChanged != null);
     assert(ageChanged != null);
     assert(conditionChanged != null);
+    assert(storageSizeChanged != null);
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
@@ -1170,6 +1207,7 @@ class _$_ConditionChanged implements _ConditionChanged {
     Result deviceChanged(String deviceStr),
     Result ageChanged(String ageStr),
     Result conditionChanged(String conditionStr),
+    Result storageSizeChanged(String storageSizeStr),
     Result titleChanged(String titleStr),
     Result priceChanged(int priceStr),
     Result descriptionChanged(String descriptionStr),
@@ -1199,6 +1237,7 @@ class _$_ConditionChanged implements _ConditionChanged {
     @required Result deviceChanged(_DeviceChanged value),
     @required Result ageChanged(_AgeChanged value),
     @required Result conditionChanged(_ConditionChanged value),
+    @required Result storageSizeChanged(_StorageSizeChanged value),
     @required Result titleChanged(_TitleChanged value),
     @required Result priceChanged(_PriceChanged value),
     @required Result descriptionChanged(_DescriptionChanged value),
@@ -1217,6 +1256,7 @@ class _$_ConditionChanged implements _ConditionChanged {
     assert(deviceChanged != null);
     assert(ageChanged != null);
     assert(conditionChanged != null);
+    assert(storageSizeChanged != null);
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
@@ -1240,6 +1280,7 @@ class _$_ConditionChanged implements _ConditionChanged {
     Result deviceChanged(_DeviceChanged value),
     Result ageChanged(_AgeChanged value),
     Result conditionChanged(_ConditionChanged value),
+    Result storageSizeChanged(_StorageSizeChanged value),
     Result titleChanged(_TitleChanged value),
     Result priceChanged(_PriceChanged value),
     Result descriptionChanged(_DescriptionChanged value),
@@ -1267,6 +1308,223 @@ abstract class _ConditionChanged implements PostFormEvent {
 
   String get conditionStr;
   _$ConditionChangedCopyWith<_ConditionChanged> get copyWith;
+}
+
+/// @nodoc
+abstract class _$StorageSizeChangedCopyWith<$Res> {
+  factory _$StorageSizeChangedCopyWith(
+          _StorageSizeChanged value, $Res Function(_StorageSizeChanged) then) =
+      __$StorageSizeChangedCopyWithImpl<$Res>;
+  $Res call({String storageSizeStr});
+}
+
+/// @nodoc
+class __$StorageSizeChangedCopyWithImpl<$Res>
+    extends _$PostFormEventCopyWithImpl<$Res>
+    implements _$StorageSizeChangedCopyWith<$Res> {
+  __$StorageSizeChangedCopyWithImpl(
+      _StorageSizeChanged _value, $Res Function(_StorageSizeChanged) _then)
+      : super(_value, (v) => _then(v as _StorageSizeChanged));
+
+  @override
+  _StorageSizeChanged get _value => super._value as _StorageSizeChanged;
+
+  @override
+  $Res call({
+    Object storageSizeStr = freezed,
+  }) {
+    return _then(_StorageSizeChanged(
+      storageSizeStr == freezed
+          ? _value.storageSizeStr
+          : storageSizeStr as String,
+    ));
+  }
+}
+
+/// @nodoc
+class _$_StorageSizeChanged implements _StorageSizeChanged {
+  const _$_StorageSizeChanged(this.storageSizeStr)
+      : assert(storageSizeStr != null);
+
+  @override
+  final String storageSizeStr;
+
+  @override
+  String toString() {
+    return 'PostFormEvent.storageSizeChanged(storageSizeStr: $storageSizeStr)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _StorageSizeChanged &&
+            (identical(other.storageSizeStr, storageSizeStr) ||
+                const DeepCollectionEquality()
+                    .equals(other.storageSizeStr, storageSizeStr)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(storageSizeStr);
+
+  @override
+  _$StorageSizeChangedCopyWith<_StorageSizeChanged> get copyWith =>
+      __$StorageSizeChangedCopyWithImpl<_StorageSizeChanged>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initialized(Option<Post> initialPostOption),
+    @required Result brandChanged(String brandStr),
+    @required Result deviceChanged(String deviceStr),
+    @required Result ageChanged(String ageStr),
+    @required Result conditionChanged(String conditionStr),
+    @required Result storageSizeChanged(String storageSizeStr),
+    @required Result titleChanged(String titleStr),
+    @required Result priceChanged(int priceStr),
+    @required Result descriptionChanged(String descriptionStr),
+    @required Result imagesChanged(KtList<File> images),
+    @required Result cityChanged(String cityStr),
+    @required Result areaChanged(String areaStr),
+    @required Result exchangableChanged(bool exchangable),
+    @required Result negotiableChanged(bool negotiable),
+    @required Result headphonesChanged(bool headphones),
+    @required Result chargerChanged(bool charger),
+    @required Result moreAccContentChanged(String moreAccContentStr),
+    @required Result saved(),
+  }) {
+    assert(initialized != null);
+    assert(brandChanged != null);
+    assert(deviceChanged != null);
+    assert(ageChanged != null);
+    assert(conditionChanged != null);
+    assert(storageSizeChanged != null);
+    assert(titleChanged != null);
+    assert(priceChanged != null);
+    assert(descriptionChanged != null);
+    assert(imagesChanged != null);
+    assert(cityChanged != null);
+    assert(areaChanged != null);
+    assert(exchangableChanged != null);
+    assert(negotiableChanged != null);
+    assert(headphonesChanged != null);
+    assert(chargerChanged != null);
+    assert(moreAccContentChanged != null);
+    assert(saved != null);
+    return storageSizeChanged(storageSizeStr);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initialized(Option<Post> initialPostOption),
+    Result brandChanged(String brandStr),
+    Result deviceChanged(String deviceStr),
+    Result ageChanged(String ageStr),
+    Result conditionChanged(String conditionStr),
+    Result storageSizeChanged(String storageSizeStr),
+    Result titleChanged(String titleStr),
+    Result priceChanged(int priceStr),
+    Result descriptionChanged(String descriptionStr),
+    Result imagesChanged(KtList<File> images),
+    Result cityChanged(String cityStr),
+    Result areaChanged(String areaStr),
+    Result exchangableChanged(bool exchangable),
+    Result negotiableChanged(bool negotiable),
+    Result headphonesChanged(bool headphones),
+    Result chargerChanged(bool charger),
+    Result moreAccContentChanged(String moreAccContentStr),
+    Result saved(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (storageSizeChanged != null) {
+      return storageSizeChanged(storageSizeStr);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initialized(_Initialized value),
+    @required Result brandChanged(_BrandChanged value),
+    @required Result deviceChanged(_DeviceChanged value),
+    @required Result ageChanged(_AgeChanged value),
+    @required Result conditionChanged(_ConditionChanged value),
+    @required Result storageSizeChanged(_StorageSizeChanged value),
+    @required Result titleChanged(_TitleChanged value),
+    @required Result priceChanged(_PriceChanged value),
+    @required Result descriptionChanged(_DescriptionChanged value),
+    @required Result imagesChanged(_ImagesChanged value),
+    @required Result cityChanged(_CityChanged value),
+    @required Result areaChanged(_AreaChanged value),
+    @required Result exchangableChanged(_ExchangableChanged value),
+    @required Result negotiableChanged(_NegotiableChanged value),
+    @required Result headphonesChanged(_HeadphonesChanged value),
+    @required Result chargerChanged(_ChargerChanged value),
+    @required Result moreAccContentChanged(_MoreAccContentChanged value),
+    @required Result saved(_Saved value),
+  }) {
+    assert(initialized != null);
+    assert(brandChanged != null);
+    assert(deviceChanged != null);
+    assert(ageChanged != null);
+    assert(conditionChanged != null);
+    assert(storageSizeChanged != null);
+    assert(titleChanged != null);
+    assert(priceChanged != null);
+    assert(descriptionChanged != null);
+    assert(imagesChanged != null);
+    assert(cityChanged != null);
+    assert(areaChanged != null);
+    assert(exchangableChanged != null);
+    assert(negotiableChanged != null);
+    assert(headphonesChanged != null);
+    assert(chargerChanged != null);
+    assert(moreAccContentChanged != null);
+    assert(saved != null);
+    return storageSizeChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initialized(_Initialized value),
+    Result brandChanged(_BrandChanged value),
+    Result deviceChanged(_DeviceChanged value),
+    Result ageChanged(_AgeChanged value),
+    Result conditionChanged(_ConditionChanged value),
+    Result storageSizeChanged(_StorageSizeChanged value),
+    Result titleChanged(_TitleChanged value),
+    Result priceChanged(_PriceChanged value),
+    Result descriptionChanged(_DescriptionChanged value),
+    Result imagesChanged(_ImagesChanged value),
+    Result cityChanged(_CityChanged value),
+    Result areaChanged(_AreaChanged value),
+    Result exchangableChanged(_ExchangableChanged value),
+    Result negotiableChanged(_NegotiableChanged value),
+    Result headphonesChanged(_HeadphonesChanged value),
+    Result chargerChanged(_ChargerChanged value),
+    Result moreAccContentChanged(_MoreAccContentChanged value),
+    Result saved(_Saved value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (storageSizeChanged != null) {
+      return storageSizeChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _StorageSizeChanged implements PostFormEvent {
+  const factory _StorageSizeChanged(String storageSizeStr) =
+      _$_StorageSizeChanged;
+
+  String get storageSizeStr;
+  _$StorageSizeChangedCopyWith<_StorageSizeChanged> get copyWith;
 }
 
 /// @nodoc
@@ -1335,6 +1593,7 @@ class _$_TitleChanged implements _TitleChanged {
     @required Result deviceChanged(String deviceStr),
     @required Result ageChanged(String ageStr),
     @required Result conditionChanged(String conditionStr),
+    @required Result storageSizeChanged(String storageSizeStr),
     @required Result titleChanged(String titleStr),
     @required Result priceChanged(int priceStr),
     @required Result descriptionChanged(String descriptionStr),
@@ -1353,6 +1612,7 @@ class _$_TitleChanged implements _TitleChanged {
     assert(deviceChanged != null);
     assert(ageChanged != null);
     assert(conditionChanged != null);
+    assert(storageSizeChanged != null);
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
@@ -1376,6 +1636,7 @@ class _$_TitleChanged implements _TitleChanged {
     Result deviceChanged(String deviceStr),
     Result ageChanged(String ageStr),
     Result conditionChanged(String conditionStr),
+    Result storageSizeChanged(String storageSizeStr),
     Result titleChanged(String titleStr),
     Result priceChanged(int priceStr),
     Result descriptionChanged(String descriptionStr),
@@ -1405,6 +1666,7 @@ class _$_TitleChanged implements _TitleChanged {
     @required Result deviceChanged(_DeviceChanged value),
     @required Result ageChanged(_AgeChanged value),
     @required Result conditionChanged(_ConditionChanged value),
+    @required Result storageSizeChanged(_StorageSizeChanged value),
     @required Result titleChanged(_TitleChanged value),
     @required Result priceChanged(_PriceChanged value),
     @required Result descriptionChanged(_DescriptionChanged value),
@@ -1423,6 +1685,7 @@ class _$_TitleChanged implements _TitleChanged {
     assert(deviceChanged != null);
     assert(ageChanged != null);
     assert(conditionChanged != null);
+    assert(storageSizeChanged != null);
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
@@ -1446,6 +1709,7 @@ class _$_TitleChanged implements _TitleChanged {
     Result deviceChanged(_DeviceChanged value),
     Result ageChanged(_AgeChanged value),
     Result conditionChanged(_ConditionChanged value),
+    Result storageSizeChanged(_StorageSizeChanged value),
     Result titleChanged(_TitleChanged value),
     Result priceChanged(_PriceChanged value),
     Result descriptionChanged(_DescriptionChanged value),
@@ -1541,6 +1805,7 @@ class _$_PriceChanged implements _PriceChanged {
     @required Result deviceChanged(String deviceStr),
     @required Result ageChanged(String ageStr),
     @required Result conditionChanged(String conditionStr),
+    @required Result storageSizeChanged(String storageSizeStr),
     @required Result titleChanged(String titleStr),
     @required Result priceChanged(int priceStr),
     @required Result descriptionChanged(String descriptionStr),
@@ -1559,6 +1824,7 @@ class _$_PriceChanged implements _PriceChanged {
     assert(deviceChanged != null);
     assert(ageChanged != null);
     assert(conditionChanged != null);
+    assert(storageSizeChanged != null);
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
@@ -1582,6 +1848,7 @@ class _$_PriceChanged implements _PriceChanged {
     Result deviceChanged(String deviceStr),
     Result ageChanged(String ageStr),
     Result conditionChanged(String conditionStr),
+    Result storageSizeChanged(String storageSizeStr),
     Result titleChanged(String titleStr),
     Result priceChanged(int priceStr),
     Result descriptionChanged(String descriptionStr),
@@ -1611,6 +1878,7 @@ class _$_PriceChanged implements _PriceChanged {
     @required Result deviceChanged(_DeviceChanged value),
     @required Result ageChanged(_AgeChanged value),
     @required Result conditionChanged(_ConditionChanged value),
+    @required Result storageSizeChanged(_StorageSizeChanged value),
     @required Result titleChanged(_TitleChanged value),
     @required Result priceChanged(_PriceChanged value),
     @required Result descriptionChanged(_DescriptionChanged value),
@@ -1629,6 +1897,7 @@ class _$_PriceChanged implements _PriceChanged {
     assert(deviceChanged != null);
     assert(ageChanged != null);
     assert(conditionChanged != null);
+    assert(storageSizeChanged != null);
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
@@ -1652,6 +1921,7 @@ class _$_PriceChanged implements _PriceChanged {
     Result deviceChanged(_DeviceChanged value),
     Result ageChanged(_AgeChanged value),
     Result conditionChanged(_ConditionChanged value),
+    Result storageSizeChanged(_StorageSizeChanged value),
     Result titleChanged(_TitleChanged value),
     Result priceChanged(_PriceChanged value),
     Result descriptionChanged(_DescriptionChanged value),
@@ -1751,6 +2021,7 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     @required Result deviceChanged(String deviceStr),
     @required Result ageChanged(String ageStr),
     @required Result conditionChanged(String conditionStr),
+    @required Result storageSizeChanged(String storageSizeStr),
     @required Result titleChanged(String titleStr),
     @required Result priceChanged(int priceStr),
     @required Result descriptionChanged(String descriptionStr),
@@ -1769,6 +2040,7 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     assert(deviceChanged != null);
     assert(ageChanged != null);
     assert(conditionChanged != null);
+    assert(storageSizeChanged != null);
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
@@ -1792,6 +2064,7 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     Result deviceChanged(String deviceStr),
     Result ageChanged(String ageStr),
     Result conditionChanged(String conditionStr),
+    Result storageSizeChanged(String storageSizeStr),
     Result titleChanged(String titleStr),
     Result priceChanged(int priceStr),
     Result descriptionChanged(String descriptionStr),
@@ -1821,6 +2094,7 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     @required Result deviceChanged(_DeviceChanged value),
     @required Result ageChanged(_AgeChanged value),
     @required Result conditionChanged(_ConditionChanged value),
+    @required Result storageSizeChanged(_StorageSizeChanged value),
     @required Result titleChanged(_TitleChanged value),
     @required Result priceChanged(_PriceChanged value),
     @required Result descriptionChanged(_DescriptionChanged value),
@@ -1839,6 +2113,7 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     assert(deviceChanged != null);
     assert(ageChanged != null);
     assert(conditionChanged != null);
+    assert(storageSizeChanged != null);
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
@@ -1862,6 +2137,7 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     Result deviceChanged(_DeviceChanged value),
     Result ageChanged(_AgeChanged value),
     Result conditionChanged(_ConditionChanged value),
+    Result storageSizeChanged(_StorageSizeChanged value),
     Result titleChanged(_TitleChanged value),
     Result priceChanged(_PriceChanged value),
     Result descriptionChanged(_DescriptionChanged value),
@@ -1957,6 +2233,7 @@ class _$_ImagesChanged implements _ImagesChanged {
     @required Result deviceChanged(String deviceStr),
     @required Result ageChanged(String ageStr),
     @required Result conditionChanged(String conditionStr),
+    @required Result storageSizeChanged(String storageSizeStr),
     @required Result titleChanged(String titleStr),
     @required Result priceChanged(int priceStr),
     @required Result descriptionChanged(String descriptionStr),
@@ -1975,6 +2252,7 @@ class _$_ImagesChanged implements _ImagesChanged {
     assert(deviceChanged != null);
     assert(ageChanged != null);
     assert(conditionChanged != null);
+    assert(storageSizeChanged != null);
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
@@ -1998,6 +2276,7 @@ class _$_ImagesChanged implements _ImagesChanged {
     Result deviceChanged(String deviceStr),
     Result ageChanged(String ageStr),
     Result conditionChanged(String conditionStr),
+    Result storageSizeChanged(String storageSizeStr),
     Result titleChanged(String titleStr),
     Result priceChanged(int priceStr),
     Result descriptionChanged(String descriptionStr),
@@ -2027,6 +2306,7 @@ class _$_ImagesChanged implements _ImagesChanged {
     @required Result deviceChanged(_DeviceChanged value),
     @required Result ageChanged(_AgeChanged value),
     @required Result conditionChanged(_ConditionChanged value),
+    @required Result storageSizeChanged(_StorageSizeChanged value),
     @required Result titleChanged(_TitleChanged value),
     @required Result priceChanged(_PriceChanged value),
     @required Result descriptionChanged(_DescriptionChanged value),
@@ -2045,6 +2325,7 @@ class _$_ImagesChanged implements _ImagesChanged {
     assert(deviceChanged != null);
     assert(ageChanged != null);
     assert(conditionChanged != null);
+    assert(storageSizeChanged != null);
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
@@ -2068,6 +2349,7 @@ class _$_ImagesChanged implements _ImagesChanged {
     Result deviceChanged(_DeviceChanged value),
     Result ageChanged(_AgeChanged value),
     Result conditionChanged(_ConditionChanged value),
+    Result storageSizeChanged(_StorageSizeChanged value),
     Result titleChanged(_TitleChanged value),
     Result priceChanged(_PriceChanged value),
     Result descriptionChanged(_DescriptionChanged value),
@@ -2161,6 +2443,7 @@ class _$_CityChanged implements _CityChanged {
     @required Result deviceChanged(String deviceStr),
     @required Result ageChanged(String ageStr),
     @required Result conditionChanged(String conditionStr),
+    @required Result storageSizeChanged(String storageSizeStr),
     @required Result titleChanged(String titleStr),
     @required Result priceChanged(int priceStr),
     @required Result descriptionChanged(String descriptionStr),
@@ -2179,6 +2462,7 @@ class _$_CityChanged implements _CityChanged {
     assert(deviceChanged != null);
     assert(ageChanged != null);
     assert(conditionChanged != null);
+    assert(storageSizeChanged != null);
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
@@ -2202,6 +2486,7 @@ class _$_CityChanged implements _CityChanged {
     Result deviceChanged(String deviceStr),
     Result ageChanged(String ageStr),
     Result conditionChanged(String conditionStr),
+    Result storageSizeChanged(String storageSizeStr),
     Result titleChanged(String titleStr),
     Result priceChanged(int priceStr),
     Result descriptionChanged(String descriptionStr),
@@ -2231,6 +2516,7 @@ class _$_CityChanged implements _CityChanged {
     @required Result deviceChanged(_DeviceChanged value),
     @required Result ageChanged(_AgeChanged value),
     @required Result conditionChanged(_ConditionChanged value),
+    @required Result storageSizeChanged(_StorageSizeChanged value),
     @required Result titleChanged(_TitleChanged value),
     @required Result priceChanged(_PriceChanged value),
     @required Result descriptionChanged(_DescriptionChanged value),
@@ -2249,6 +2535,7 @@ class _$_CityChanged implements _CityChanged {
     assert(deviceChanged != null);
     assert(ageChanged != null);
     assert(conditionChanged != null);
+    assert(storageSizeChanged != null);
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
@@ -2272,6 +2559,7 @@ class _$_CityChanged implements _CityChanged {
     Result deviceChanged(_DeviceChanged value),
     Result ageChanged(_AgeChanged value),
     Result conditionChanged(_ConditionChanged value),
+    Result storageSizeChanged(_StorageSizeChanged value),
     Result titleChanged(_TitleChanged value),
     Result priceChanged(_PriceChanged value),
     Result descriptionChanged(_DescriptionChanged value),
@@ -2365,6 +2653,7 @@ class _$_AreaChanged implements _AreaChanged {
     @required Result deviceChanged(String deviceStr),
     @required Result ageChanged(String ageStr),
     @required Result conditionChanged(String conditionStr),
+    @required Result storageSizeChanged(String storageSizeStr),
     @required Result titleChanged(String titleStr),
     @required Result priceChanged(int priceStr),
     @required Result descriptionChanged(String descriptionStr),
@@ -2383,6 +2672,7 @@ class _$_AreaChanged implements _AreaChanged {
     assert(deviceChanged != null);
     assert(ageChanged != null);
     assert(conditionChanged != null);
+    assert(storageSizeChanged != null);
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
@@ -2406,6 +2696,7 @@ class _$_AreaChanged implements _AreaChanged {
     Result deviceChanged(String deviceStr),
     Result ageChanged(String ageStr),
     Result conditionChanged(String conditionStr),
+    Result storageSizeChanged(String storageSizeStr),
     Result titleChanged(String titleStr),
     Result priceChanged(int priceStr),
     Result descriptionChanged(String descriptionStr),
@@ -2435,6 +2726,7 @@ class _$_AreaChanged implements _AreaChanged {
     @required Result deviceChanged(_DeviceChanged value),
     @required Result ageChanged(_AgeChanged value),
     @required Result conditionChanged(_ConditionChanged value),
+    @required Result storageSizeChanged(_StorageSizeChanged value),
     @required Result titleChanged(_TitleChanged value),
     @required Result priceChanged(_PriceChanged value),
     @required Result descriptionChanged(_DescriptionChanged value),
@@ -2453,6 +2745,7 @@ class _$_AreaChanged implements _AreaChanged {
     assert(deviceChanged != null);
     assert(ageChanged != null);
     assert(conditionChanged != null);
+    assert(storageSizeChanged != null);
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
@@ -2476,6 +2769,7 @@ class _$_AreaChanged implements _AreaChanged {
     Result deviceChanged(_DeviceChanged value),
     Result ageChanged(_AgeChanged value),
     Result conditionChanged(_ConditionChanged value),
+    Result storageSizeChanged(_StorageSizeChanged value),
     Result titleChanged(_TitleChanged value),
     Result priceChanged(_PriceChanged value),
     Result descriptionChanged(_DescriptionChanged value),
@@ -2571,6 +2865,7 @@ class _$_ExchangableChanged implements _ExchangableChanged {
     @required Result deviceChanged(String deviceStr),
     @required Result ageChanged(String ageStr),
     @required Result conditionChanged(String conditionStr),
+    @required Result storageSizeChanged(String storageSizeStr),
     @required Result titleChanged(String titleStr),
     @required Result priceChanged(int priceStr),
     @required Result descriptionChanged(String descriptionStr),
@@ -2589,6 +2884,7 @@ class _$_ExchangableChanged implements _ExchangableChanged {
     assert(deviceChanged != null);
     assert(ageChanged != null);
     assert(conditionChanged != null);
+    assert(storageSizeChanged != null);
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
@@ -2612,6 +2908,7 @@ class _$_ExchangableChanged implements _ExchangableChanged {
     Result deviceChanged(String deviceStr),
     Result ageChanged(String ageStr),
     Result conditionChanged(String conditionStr),
+    Result storageSizeChanged(String storageSizeStr),
     Result titleChanged(String titleStr),
     Result priceChanged(int priceStr),
     Result descriptionChanged(String descriptionStr),
@@ -2641,6 +2938,7 @@ class _$_ExchangableChanged implements _ExchangableChanged {
     @required Result deviceChanged(_DeviceChanged value),
     @required Result ageChanged(_AgeChanged value),
     @required Result conditionChanged(_ConditionChanged value),
+    @required Result storageSizeChanged(_StorageSizeChanged value),
     @required Result titleChanged(_TitleChanged value),
     @required Result priceChanged(_PriceChanged value),
     @required Result descriptionChanged(_DescriptionChanged value),
@@ -2659,6 +2957,7 @@ class _$_ExchangableChanged implements _ExchangableChanged {
     assert(deviceChanged != null);
     assert(ageChanged != null);
     assert(conditionChanged != null);
+    assert(storageSizeChanged != null);
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
@@ -2682,6 +2981,7 @@ class _$_ExchangableChanged implements _ExchangableChanged {
     Result deviceChanged(_DeviceChanged value),
     Result ageChanged(_AgeChanged value),
     Result conditionChanged(_ConditionChanged value),
+    Result storageSizeChanged(_StorageSizeChanged value),
     Result titleChanged(_TitleChanged value),
     Result priceChanged(_PriceChanged value),
     Result descriptionChanged(_DescriptionChanged value),
@@ -2777,6 +3077,7 @@ class _$_NegotiableChanged implements _NegotiableChanged {
     @required Result deviceChanged(String deviceStr),
     @required Result ageChanged(String ageStr),
     @required Result conditionChanged(String conditionStr),
+    @required Result storageSizeChanged(String storageSizeStr),
     @required Result titleChanged(String titleStr),
     @required Result priceChanged(int priceStr),
     @required Result descriptionChanged(String descriptionStr),
@@ -2795,6 +3096,7 @@ class _$_NegotiableChanged implements _NegotiableChanged {
     assert(deviceChanged != null);
     assert(ageChanged != null);
     assert(conditionChanged != null);
+    assert(storageSizeChanged != null);
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
@@ -2818,6 +3120,7 @@ class _$_NegotiableChanged implements _NegotiableChanged {
     Result deviceChanged(String deviceStr),
     Result ageChanged(String ageStr),
     Result conditionChanged(String conditionStr),
+    Result storageSizeChanged(String storageSizeStr),
     Result titleChanged(String titleStr),
     Result priceChanged(int priceStr),
     Result descriptionChanged(String descriptionStr),
@@ -2847,6 +3150,7 @@ class _$_NegotiableChanged implements _NegotiableChanged {
     @required Result deviceChanged(_DeviceChanged value),
     @required Result ageChanged(_AgeChanged value),
     @required Result conditionChanged(_ConditionChanged value),
+    @required Result storageSizeChanged(_StorageSizeChanged value),
     @required Result titleChanged(_TitleChanged value),
     @required Result priceChanged(_PriceChanged value),
     @required Result descriptionChanged(_DescriptionChanged value),
@@ -2865,6 +3169,7 @@ class _$_NegotiableChanged implements _NegotiableChanged {
     assert(deviceChanged != null);
     assert(ageChanged != null);
     assert(conditionChanged != null);
+    assert(storageSizeChanged != null);
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
@@ -2888,6 +3193,7 @@ class _$_NegotiableChanged implements _NegotiableChanged {
     Result deviceChanged(_DeviceChanged value),
     Result ageChanged(_AgeChanged value),
     Result conditionChanged(_ConditionChanged value),
+    Result storageSizeChanged(_StorageSizeChanged value),
     Result titleChanged(_TitleChanged value),
     Result priceChanged(_PriceChanged value),
     Result descriptionChanged(_DescriptionChanged value),
@@ -2983,6 +3289,7 @@ class _$_HeadphonesChanged implements _HeadphonesChanged {
     @required Result deviceChanged(String deviceStr),
     @required Result ageChanged(String ageStr),
     @required Result conditionChanged(String conditionStr),
+    @required Result storageSizeChanged(String storageSizeStr),
     @required Result titleChanged(String titleStr),
     @required Result priceChanged(int priceStr),
     @required Result descriptionChanged(String descriptionStr),
@@ -3001,6 +3308,7 @@ class _$_HeadphonesChanged implements _HeadphonesChanged {
     assert(deviceChanged != null);
     assert(ageChanged != null);
     assert(conditionChanged != null);
+    assert(storageSizeChanged != null);
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
@@ -3024,6 +3332,7 @@ class _$_HeadphonesChanged implements _HeadphonesChanged {
     Result deviceChanged(String deviceStr),
     Result ageChanged(String ageStr),
     Result conditionChanged(String conditionStr),
+    Result storageSizeChanged(String storageSizeStr),
     Result titleChanged(String titleStr),
     Result priceChanged(int priceStr),
     Result descriptionChanged(String descriptionStr),
@@ -3053,6 +3362,7 @@ class _$_HeadphonesChanged implements _HeadphonesChanged {
     @required Result deviceChanged(_DeviceChanged value),
     @required Result ageChanged(_AgeChanged value),
     @required Result conditionChanged(_ConditionChanged value),
+    @required Result storageSizeChanged(_StorageSizeChanged value),
     @required Result titleChanged(_TitleChanged value),
     @required Result priceChanged(_PriceChanged value),
     @required Result descriptionChanged(_DescriptionChanged value),
@@ -3071,6 +3381,7 @@ class _$_HeadphonesChanged implements _HeadphonesChanged {
     assert(deviceChanged != null);
     assert(ageChanged != null);
     assert(conditionChanged != null);
+    assert(storageSizeChanged != null);
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
@@ -3094,6 +3405,7 @@ class _$_HeadphonesChanged implements _HeadphonesChanged {
     Result deviceChanged(_DeviceChanged value),
     Result ageChanged(_AgeChanged value),
     Result conditionChanged(_ConditionChanged value),
+    Result storageSizeChanged(_StorageSizeChanged value),
     Result titleChanged(_TitleChanged value),
     Result priceChanged(_PriceChanged value),
     Result descriptionChanged(_DescriptionChanged value),
@@ -3188,6 +3500,7 @@ class _$_ChargerChanged implements _ChargerChanged {
     @required Result deviceChanged(String deviceStr),
     @required Result ageChanged(String ageStr),
     @required Result conditionChanged(String conditionStr),
+    @required Result storageSizeChanged(String storageSizeStr),
     @required Result titleChanged(String titleStr),
     @required Result priceChanged(int priceStr),
     @required Result descriptionChanged(String descriptionStr),
@@ -3206,6 +3519,7 @@ class _$_ChargerChanged implements _ChargerChanged {
     assert(deviceChanged != null);
     assert(ageChanged != null);
     assert(conditionChanged != null);
+    assert(storageSizeChanged != null);
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
@@ -3229,6 +3543,7 @@ class _$_ChargerChanged implements _ChargerChanged {
     Result deviceChanged(String deviceStr),
     Result ageChanged(String ageStr),
     Result conditionChanged(String conditionStr),
+    Result storageSizeChanged(String storageSizeStr),
     Result titleChanged(String titleStr),
     Result priceChanged(int priceStr),
     Result descriptionChanged(String descriptionStr),
@@ -3258,6 +3573,7 @@ class _$_ChargerChanged implements _ChargerChanged {
     @required Result deviceChanged(_DeviceChanged value),
     @required Result ageChanged(_AgeChanged value),
     @required Result conditionChanged(_ConditionChanged value),
+    @required Result storageSizeChanged(_StorageSizeChanged value),
     @required Result titleChanged(_TitleChanged value),
     @required Result priceChanged(_PriceChanged value),
     @required Result descriptionChanged(_DescriptionChanged value),
@@ -3276,6 +3592,7 @@ class _$_ChargerChanged implements _ChargerChanged {
     assert(deviceChanged != null);
     assert(ageChanged != null);
     assert(conditionChanged != null);
+    assert(storageSizeChanged != null);
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
@@ -3299,6 +3616,7 @@ class _$_ChargerChanged implements _ChargerChanged {
     Result deviceChanged(_DeviceChanged value),
     Result ageChanged(_AgeChanged value),
     Result conditionChanged(_ConditionChanged value),
+    Result storageSizeChanged(_StorageSizeChanged value),
     Result titleChanged(_TitleChanged value),
     Result priceChanged(_PriceChanged value),
     Result descriptionChanged(_DescriptionChanged value),
@@ -3399,6 +3717,7 @@ class _$_MoreAccContentChanged implements _MoreAccContentChanged {
     @required Result deviceChanged(String deviceStr),
     @required Result ageChanged(String ageStr),
     @required Result conditionChanged(String conditionStr),
+    @required Result storageSizeChanged(String storageSizeStr),
     @required Result titleChanged(String titleStr),
     @required Result priceChanged(int priceStr),
     @required Result descriptionChanged(String descriptionStr),
@@ -3417,6 +3736,7 @@ class _$_MoreAccContentChanged implements _MoreAccContentChanged {
     assert(deviceChanged != null);
     assert(ageChanged != null);
     assert(conditionChanged != null);
+    assert(storageSizeChanged != null);
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
@@ -3440,6 +3760,7 @@ class _$_MoreAccContentChanged implements _MoreAccContentChanged {
     Result deviceChanged(String deviceStr),
     Result ageChanged(String ageStr),
     Result conditionChanged(String conditionStr),
+    Result storageSizeChanged(String storageSizeStr),
     Result titleChanged(String titleStr),
     Result priceChanged(int priceStr),
     Result descriptionChanged(String descriptionStr),
@@ -3469,6 +3790,7 @@ class _$_MoreAccContentChanged implements _MoreAccContentChanged {
     @required Result deviceChanged(_DeviceChanged value),
     @required Result ageChanged(_AgeChanged value),
     @required Result conditionChanged(_ConditionChanged value),
+    @required Result storageSizeChanged(_StorageSizeChanged value),
     @required Result titleChanged(_TitleChanged value),
     @required Result priceChanged(_PriceChanged value),
     @required Result descriptionChanged(_DescriptionChanged value),
@@ -3487,6 +3809,7 @@ class _$_MoreAccContentChanged implements _MoreAccContentChanged {
     assert(deviceChanged != null);
     assert(ageChanged != null);
     assert(conditionChanged != null);
+    assert(storageSizeChanged != null);
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
@@ -3510,6 +3833,7 @@ class _$_MoreAccContentChanged implements _MoreAccContentChanged {
     Result deviceChanged(_DeviceChanged value),
     Result ageChanged(_AgeChanged value),
     Result conditionChanged(_ConditionChanged value),
+    Result storageSizeChanged(_StorageSizeChanged value),
     Result titleChanged(_TitleChanged value),
     Result priceChanged(_PriceChanged value),
     Result descriptionChanged(_DescriptionChanged value),
@@ -3581,6 +3905,7 @@ class _$_Saved implements _Saved {
     @required Result deviceChanged(String deviceStr),
     @required Result ageChanged(String ageStr),
     @required Result conditionChanged(String conditionStr),
+    @required Result storageSizeChanged(String storageSizeStr),
     @required Result titleChanged(String titleStr),
     @required Result priceChanged(int priceStr),
     @required Result descriptionChanged(String descriptionStr),
@@ -3599,6 +3924,7 @@ class _$_Saved implements _Saved {
     assert(deviceChanged != null);
     assert(ageChanged != null);
     assert(conditionChanged != null);
+    assert(storageSizeChanged != null);
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
@@ -3622,6 +3948,7 @@ class _$_Saved implements _Saved {
     Result deviceChanged(String deviceStr),
     Result ageChanged(String ageStr),
     Result conditionChanged(String conditionStr),
+    Result storageSizeChanged(String storageSizeStr),
     Result titleChanged(String titleStr),
     Result priceChanged(int priceStr),
     Result descriptionChanged(String descriptionStr),
@@ -3651,6 +3978,7 @@ class _$_Saved implements _Saved {
     @required Result deviceChanged(_DeviceChanged value),
     @required Result ageChanged(_AgeChanged value),
     @required Result conditionChanged(_ConditionChanged value),
+    @required Result storageSizeChanged(_StorageSizeChanged value),
     @required Result titleChanged(_TitleChanged value),
     @required Result priceChanged(_PriceChanged value),
     @required Result descriptionChanged(_DescriptionChanged value),
@@ -3669,6 +3997,7 @@ class _$_Saved implements _Saved {
     assert(deviceChanged != null);
     assert(ageChanged != null);
     assert(conditionChanged != null);
+    assert(storageSizeChanged != null);
     assert(titleChanged != null);
     assert(priceChanged != null);
     assert(descriptionChanged != null);
@@ -3692,6 +4021,7 @@ class _$_Saved implements _Saved {
     Result deviceChanged(_DeviceChanged value),
     Result ageChanged(_AgeChanged value),
     Result conditionChanged(_ConditionChanged value),
+    Result storageSizeChanged(_StorageSizeChanged value),
     Result titleChanged(_TitleChanged value),
     Result priceChanged(_PriceChanged value),
     Result descriptionChanged(_DescriptionChanged value),

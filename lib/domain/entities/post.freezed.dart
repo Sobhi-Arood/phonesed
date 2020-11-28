@@ -34,6 +34,7 @@ class _$PostTearOff {
       @required PostDevice device,
       @required PostAge age,
       @required PostCondition condition,
+      @required PostStorageSize storageSize,
       UniqueId userId,
       String userAvatar,
       UserName userName}) {
@@ -57,6 +58,7 @@ class _$PostTearOff {
       device: device,
       age: age,
       condition: condition,
+      storageSize: storageSize,
       userId: userId,
       userAvatar: userAvatar,
       userName: userName,
@@ -89,6 +91,7 @@ mixin _$Post {
   PostDevice get device;
   PostAge get age;
   PostCondition get condition;
+  PostStorageSize get storageSize;
   UniqueId get userId;
   String get userAvatar;
   UserName get userName;
@@ -120,6 +123,7 @@ abstract class $PostCopyWith<$Res> {
       PostDevice device,
       PostAge age,
       PostCondition condition,
+      PostStorageSize storageSize,
       UniqueId userId,
       String userAvatar,
       UserName userName});
@@ -154,6 +158,7 @@ class _$PostCopyWithImpl<$Res> implements $PostCopyWith<$Res> {
     Object device = freezed,
     Object age = freezed,
     Object condition = freezed,
+    Object storageSize = freezed,
     Object userId = freezed,
     Object userAvatar = freezed,
     Object userName = freezed,
@@ -189,6 +194,9 @@ class _$PostCopyWithImpl<$Res> implements $PostCopyWith<$Res> {
       age: age == freezed ? _value.age : age as PostAge,
       condition:
           condition == freezed ? _value.condition : condition as PostCondition,
+      storageSize: storageSize == freezed
+          ? _value.storageSize
+          : storageSize as PostStorageSize,
       userId: userId == freezed ? _value.userId : userId as UniqueId,
       userAvatar:
           userAvatar == freezed ? _value.userAvatar : userAvatar as String,
@@ -222,6 +230,7 @@ abstract class _$PostCopyWith<$Res> implements $PostCopyWith<$Res> {
       PostDevice device,
       PostAge age,
       PostCondition condition,
+      PostStorageSize storageSize,
       UniqueId userId,
       String userAvatar,
       UserName userName});
@@ -257,6 +266,7 @@ class __$PostCopyWithImpl<$Res> extends _$PostCopyWithImpl<$Res>
     Object device = freezed,
     Object age = freezed,
     Object condition = freezed,
+    Object storageSize = freezed,
     Object userId = freezed,
     Object userAvatar = freezed,
     Object userName = freezed,
@@ -292,6 +302,9 @@ class __$PostCopyWithImpl<$Res> extends _$PostCopyWithImpl<$Res>
       age: age == freezed ? _value.age : age as PostAge,
       condition:
           condition == freezed ? _value.condition : condition as PostCondition,
+      storageSize: storageSize == freezed
+          ? _value.storageSize
+          : storageSize as PostStorageSize,
       userId: userId == freezed ? _value.userId : userId as UniqueId,
       userAvatar:
           userAvatar == freezed ? _value.userAvatar : userAvatar as String,
@@ -322,6 +335,7 @@ class _$_Post extends _Post {
       @required this.device,
       @required this.age,
       @required this.condition,
+      @required this.storageSize,
       this.userId,
       this.userAvatar,
       this.userName})
@@ -344,6 +358,7 @@ class _$_Post extends _Post {
         assert(device != null),
         assert(age != null),
         assert(condition != null),
+        assert(storageSize != null),
         super._();
 
   @override
@@ -385,6 +400,8 @@ class _$_Post extends _Post {
   @override
   final PostCondition condition;
   @override
+  final PostStorageSize storageSize;
+  @override
   final UniqueId userId;
   @override
   final String userAvatar;
@@ -393,7 +410,7 @@ class _$_Post extends _Post {
 
   @override
   String toString() {
-    return 'Post(id: $id, title: $title, price: $price, description: $description, images: $images, publishedDate: $publishedDate, city: $city, area: $area, country: $country, moreAccessories: $moreAccessories, avaliable: $avaliable, exhangable: $exhangable, negiotable: $negiotable, headphones: $headphones, charger: $charger, brand: $brand, device: $device, age: $age, condition: $condition, userId: $userId, userAvatar: $userAvatar, userName: $userName)';
+    return 'Post(id: $id, title: $title, price: $price, description: $description, images: $images, publishedDate: $publishedDate, city: $city, area: $area, country: $country, moreAccessories: $moreAccessories, avaliable: $avaliable, exhangable: $exhangable, negiotable: $negiotable, headphones: $headphones, charger: $charger, brand: $brand, device: $device, age: $age, condition: $condition, storageSize: $storageSize, userId: $userId, userAvatar: $userAvatar, userName: $userName)';
   }
 
   @override
@@ -448,6 +465,9 @@ class _$_Post extends _Post {
             (identical(other.condition, condition) ||
                 const DeepCollectionEquality()
                     .equals(other.condition, condition)) &&
+            (identical(other.storageSize, storageSize) ||
+                const DeepCollectionEquality()
+                    .equals(other.storageSize, storageSize)) &&
             (identical(other.userId, userId) ||
                 const DeepCollectionEquality().equals(other.userId, userId)) &&
             (identical(other.userAvatar, userAvatar) ||
@@ -480,6 +500,7 @@ class _$_Post extends _Post {
       const DeepCollectionEquality().hash(device) ^
       const DeepCollectionEquality().hash(age) ^
       const DeepCollectionEquality().hash(condition) ^
+      const DeepCollectionEquality().hash(storageSize) ^
       const DeepCollectionEquality().hash(userId) ^
       const DeepCollectionEquality().hash(userAvatar) ^
       const DeepCollectionEquality().hash(userName);
@@ -511,6 +532,7 @@ abstract class _Post extends Post {
       @required PostDevice device,
       @required PostAge age,
       @required PostCondition condition,
+      @required PostStorageSize storageSize,
       UniqueId userId,
       String userAvatar,
       UserName userName}) = _$_Post;
@@ -553,6 +575,8 @@ abstract class _Post extends Post {
   PostAge get age;
   @override
   PostCondition get condition;
+  @override
+  PostStorageSize get storageSize;
   @override
   UniqueId get userId;
   @override

@@ -6,12 +6,14 @@ class DetailBottomWidget extends StatelessWidget {
   final String model;
   final String age;
   final String condition;
+  final String storageSize;
   final String description;
   const DetailBottomWidget(
       {Key key,
       @required this.model,
       @required this.age,
       @required this.condition,
+      @required this.storageSize,
       @required this.description})
       : super(key: key);
   @override
@@ -88,7 +90,6 @@ class DetailBottomWidget extends StatelessWidget {
             width: MediaQuery.of(context).size.width / 2,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              // spacing: 40,
               children: [
                 const Text(
                   'Condition',
@@ -103,8 +104,29 @@ class DetailBottomWidget extends StatelessWidget {
                       .textTheme
                       .caption
                       .copyWith(fontWeight: FontWeight.w700),
-                  // style: const TextStyle(
-                  //     fontSize: 16, fontWeight: FontWeight.w700),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 11),
+          Container(
+            width: MediaQuery.of(context).size.width / 2,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  'Storage Size',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Color(0x60000000),
+                  ),
+                ),
+                Text(
+                  storageSize,
+                  style: Theme.of(context)
+                      .textTheme
+                      .caption
+                      .copyWith(fontWeight: FontWeight.w700),
                 ),
               ],
             ),
