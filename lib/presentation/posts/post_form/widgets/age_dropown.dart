@@ -42,6 +42,7 @@ class AgeDropdown extends StatelessWidget {
                       fontSize: 18,
                     ),
                     onChanged: (v) {
+                      FocusScope.of(context).unfocus();
                       context
                           .read<PostFormBloc>()
                           .add(PostFormEvent.ageChanged(v));

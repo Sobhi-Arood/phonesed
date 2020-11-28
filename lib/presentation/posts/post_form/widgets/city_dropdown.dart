@@ -95,6 +95,7 @@ class CityDropdown extends HookWidget {
                               fontSize: 18,
                             ),
                             onChanged: (v) {
+                              FocusScope.of(context).unfocus();
                               // print(v);
                               // cityValue.value = v;
                               context
